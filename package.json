@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@astrojs/vue": "^4.0.0",
+    "@types/canvas-confetti": "^1.9.0",
     "astro": "^4.15.0",
+    "canvas-confetti": "^1.9.4",
     "vue": "^3.5.18"
   },
   "devDependencies": {
@@ -19,4 +21,3 @@
     "typescript": "^5.8.3"
   }
 }
-

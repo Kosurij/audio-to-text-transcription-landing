@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WelcomePage from '../components/WelcomePage.vue';
+
+const title = 'Welcome - Audio To Text Transcription';
+const description = 'Welcome to Audio To Text Transcription! Learn how to get started with our Chrome extension.';
+---
+
+<Layout title={title} description={description}>
+  <WelcomePage client:load />
+</Layout>
+
