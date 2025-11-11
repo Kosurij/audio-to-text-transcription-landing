@@ -10,6 +10,7 @@
       >
         <source src="/background.mp4" type="video/mp4" />
       </video>
+      <div class="hero-gradient"></div>
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -72,6 +73,47 @@ import InstallButton from './InstallButton.vue';
   z-index: 0;
 }
 
+html[data-theme='dark'] .hero-video {
+  display: none;
+}
+
+.hero-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+html[data-theme='dark'] .hero-gradient {
+  opacity: 1;
+  background: linear-gradient(
+    135deg,
+    rgb(32, 33, 36) 0%,
+    rgb(41, 42, 45) 25%,
+    rgb(48, 49, 52) 50%,
+    rgb(41, 42, 45) 75%,
+    rgb(32, 33, 36) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -80,6 +122,10 @@ import InstallButton from './InstallButton.vue';
   bottom: 0;
   background: linear-gradient(135deg, rgba(239, 246, 255, 0.85), rgba(219, 234, 254, 0.85), rgba(191, 219, 254, 0.85));
   z-index: 1;
+}
+
+html[data-theme='dark'] .hero-overlay {
+  background: linear-gradient(135deg, rgba(32, 33, 36, 0.6), rgba(41, 42, 45, 0.6), rgba(48, 49, 52, 0.6));
 }
 
 .hero-content {
@@ -107,6 +153,10 @@ import InstallButton from './InstallButton.vue';
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+html[data-theme='dark'] .headline {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
 .gradient-text {
   background: var(--gradient-primary);
   background-clip: text;
@@ -117,6 +167,10 @@ import InstallButton from './InstallButton.vue';
   filter: drop-shadow(0 2px 4px rgba(26, 115, 232, 0.2));
 }
 
+html[data-theme='dark'] .gradient-text {
+  filter: drop-shadow(0 2px 6px rgba(138, 180, 248, 0.4));
+}
+
 .subtext {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--color-text);
@@ -124,6 +178,10 @@ import InstallButton from './InstallButton.vue';
   max-width: 650px;
   font-weight: 400;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] .subtext {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
 }
 
 .hero-actions {
@@ -150,6 +208,10 @@ import InstallButton from './InstallButton.vue';
   position: relative;
 }
 
+html[data-theme='dark'] .main-button {
+  box-shadow: 0 4px 16px rgba(138, 180, 248, 0.4), 0 2px 8px rgba(138, 180, 248, 0.3);
+}
+
 .main-button::before {
   content: '';
   position: absolute;
@@ -167,9 +229,17 @@ import InstallButton from './InstallButton.vue';
   box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4), 0 4px 8px rgba(26, 115, 232, 0.3);
 }
 
+html[data-theme='dark'] .main-button:hover {
+  box-shadow: 0 6px 24px rgba(138, 180, 248, 0.5), 0 4px 12px rgba(138, 180, 248, 0.4);
+}
+
 .main-button:active {
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3), 0 1px 2px rgba(26, 115, 232, 0.2);
+}
+
+html[data-theme='dark'] .main-button:active {
+  box-shadow: 0 2px 12px rgba(138, 180, 248, 0.4), 0 1px 4px rgba(138, 180, 248, 0.3);
 }
 
 @media (max-width: 768px) {

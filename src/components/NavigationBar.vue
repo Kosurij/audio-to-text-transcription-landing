@@ -336,6 +336,10 @@ onBeforeUnmount(() => {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+html[data-theme='dark'] .mobile-link {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .mobile-link:last-child {
   border-bottom: none;
 }
@@ -343,6 +347,10 @@ onBeforeUnmount(() => {
 .mobile-link:hover {
   background: rgba(26, 115, 232, 0.08);
   color: var(--accent-primary);
+}
+
+html[data-theme='dark'] .mobile-link:hover {
+  background: rgba(138, 180, 248, 0.15);
 }
 
 .fade-enter-active,
