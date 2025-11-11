@@ -2,7 +2,6 @@
   <section class="how-it-works" id="how-it-works">
     <div class="how-it-works-container">
       <div class="section-header">
-        <div class="section-badge">How It Works</div>
         <h2 class="section-title">
           Get started in <span class="gradient-text">three simple steps</span>
         </h2>
@@ -52,19 +51,6 @@ const steps = [
 .section-header {
   text-align: center;
   margin-bottom: 80px;
-}
-
-.section-badge {
-  display: inline-block;
-  padding: 8px 16px;
-  background: var(--color-surface-elevated);
-  background-image: var(--gradient-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--accent-primary);
-  margin-bottom: 24px;
 }
 
 .section-title {

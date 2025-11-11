@@ -2,7 +2,6 @@
   <section class="faq" id="faq">
     <div class="faq-container">
       <div class="section-header">
-        <div class="section-badge">FAQ</div>
         <h2 class="section-title">
           Frequently Asked <span class="gradient-text">Questions</span>
         </h2>
@@ -98,19 +97,6 @@ const faqs = [
 .section-header {
   text-align: center;
   margin-bottom: 64px;
-}
-
-.section-badge {
-  display: inline-block;
-  padding: 8px 16px;
-  background: var(--color-surface-elevated);
-  background-image: var(--gradient-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--accent-primary);
-  margin-bottom: 24px;
 }
 
 .section-title {
