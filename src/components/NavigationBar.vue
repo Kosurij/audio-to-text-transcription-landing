@@ -314,11 +314,11 @@ onBeforeUnmount(() => {
 .mobile-menu {
   position: absolute;
   top: 88px;
-  right: 20px;
-  left: 20px;
+  right: 0;
+  left: 0;
   background: var(--navbar-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
