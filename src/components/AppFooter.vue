@@ -10,15 +10,8 @@
         </div>
         <div class="footer-links">
           <div class="footer-column">
-            <h4 class="footer-heading">Product</h4>
-            <a href="#features" class="footer-link">Features</a>
-            <a href="#how-it-works" class="footer-link">How It Works</a>
-            <a href="#faq" class="footer-link">FAQ</a>
-          </div>
-          <div class="footer-column">
             <h4 class="footer-heading">Legal</h4>
             <a href="/privacy" class="footer-link">Privacy Policy</a>
-            <a href="/terms" class="footer-link">Terms of Service</a>
           </div>
         </div>
       </div>
@@ -50,9 +43,11 @@ const currentYear = new Date().getFullYear();
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 80px;
+  flex-wrap: wrap;
   margin-bottom: 60px;
 }
 
@@ -71,8 +66,8 @@ const currentYear = new Date().getFullYear();
 }
 
 .footer-links {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  align-items: center;
   gap: 48px;
 }
 
@@ -80,6 +75,7 @@ const currentYear = new Date().getFullYear();
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 160px;
 }
 
 .footer-heading {
@@ -100,7 +96,6 @@ const currentYear = new Date().getFullYear();
 
 .footer-link:hover {
   color: var(--accent-primary);
-  transform: translateX(4px);
 }
 
 .footer-bottom {
@@ -121,13 +116,8 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 48px;
-  }
-
-  .footer-links {
-    grid-template-columns: 1fr;
-    gap: 40px;
   }
 }
 </style>

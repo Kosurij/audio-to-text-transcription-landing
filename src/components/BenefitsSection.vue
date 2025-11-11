@@ -41,16 +41,8 @@ const benefits = [
     ])
   },
   {
-    title: 'Works Offline',
-    description: 'No internet connection required. Process your audio files locally with complete privacy.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z', fill: 'currentColor' }),
-      h('path', { d: 'M12 6C9.79 6 8 7.79 8 10C8 12.21 9.79 14 12 14C14.21 14 16 12.21 16 10C16 7.79 14.21 6 12 6Z', fill: 'currentColor' })
-    ])
-  },
-  {
     title: 'Multiple Formats',
-    description: 'Supports MP3, WAV, M4A, FLAC, and more. Export transcriptions as TXT, DOCX, or SRT.',
+    description: 'Supports FLAC, MP3, M4A, MPEG, MPGA, OGG, WAV, WEBM and more. Export to TXT, DOCX, and SRT.',
     icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
       h('path', { d: 'M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z', fill: 'currentColor' })
     ])
@@ -60,13 +52,6 @@ const benefits = [
     description: 'One-click transcription. Simply drag and drop your audio file or record directly in the browser.',
     icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
       h('path', { d: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z', fill: 'currentColor' })
-    ])
-  },
-  {
-    title: '100% Free',
-    description: 'No hidden fees, no subscriptions. Completely free to use with unlimited transcriptions.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z', fill: 'currentColor' })
     ])
   }
 ];
@@ -129,13 +114,7 @@ const benefits = [
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 32px;
-  transition: box-shadow 0.2s ease;
   box-shadow: var(--shadow-sm);
-}
-
-.benefit-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent-primary);
 }
 
 .benefit-icon {
@@ -162,6 +141,13 @@ const benefits = [
   line-height: 1.6;
   color: var(--color-text-secondary);
   font-weight: 400;
+}
+
+.formats {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 @media (max-width: 768px) {

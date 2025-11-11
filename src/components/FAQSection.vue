@@ -49,36 +49,32 @@ const toggle = (index: number) => {
 
 const faqs = [
   {
-    question: 'Is Audio To Text Transcription really free?',
-    answer: 'Yes, completely free! There are no hidden fees, subscriptions, or usage limits. You can transcribe as many audio files as you need without any cost.'
+    question: 'What is Audio To Text Transcription?',
+    answer: 'Audio To Text Transcription is a Chrome extension that turns any audio—from meetings, lectures, podcasts, or browser tabs—into searchable text powered by Groq + Whisper AI.'
   },
   {
-    question: 'What audio formats are supported?',
-    answer: 'We support all major audio formats including MP3, WAV, M4A, FLAC, OGG, and more. You can also record audio directly from your microphone.'
+    question: 'What recording modes are available?',
+    answer: 'You can upload an audio file, capture audio from your microphone, record the current browser tab, or combine microphone + tab recording. Switch between modes instantly.'
   },
   {
-    question: 'Does it work offline?',
-    answer: 'Yes! Audio To Text Transcription processes audio files locally on your device, so you can use it without an internet connection. Your data never leaves your computer.'
+    question: 'Which transcription engine do you use?',
+    answer: 'We run Groq together with Whisper AI under the hood to deliver fast, high-quality transcripts—even for long sessions and diverse accents.'
   },
   {
-    question: 'How accurate is the transcription?',
-    answer: 'Our AI-powered transcription engine achieves 95%+ accuracy for clear audio. Accuracy may vary depending on audio quality, background noise, and speaker accents.'
+    question: 'Does the extension support themes?',
+    answer: 'Yes. Audio To Text Transcription adapts to both light and dark themes automatically, and you can toggle them manually in the settings.'
   },
   {
-    question: 'Can I export transcriptions?',
-    answer: 'Absolutely! You can copy transcriptions to clipboard, download as TXT files, or export in DOCX and SRT formats for subtitles.'
+    question: 'Which audio formats are supported?',
+    answer: 'All popular formats are supported: FLAC, MP3, M4A, MPEG, MPGA, OGG, WAV, WEBM, and more.'
   },
   {
-    question: 'What languages are supported?',
-    answer: 'We support over 50 languages including English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, Japanese, and many more.'
+    question: 'Can I edit transcripts inside the extension?',
+    answer: 'Inline editing is not available. You can copy the transcript to the clipboard or download it as a .txt file. The last 10 transcripts are saved automatically in your history.'
   },
   {
-    question: 'Is my data secure?',
-    answer: 'Your privacy is our priority. All processing happens locally on your device. We never upload, store, or share your audio files or transcriptions.'
-  },
-  {
-    question: 'Can I edit transcriptions?',
-    answer: 'Yes! All transcriptions are fully editable. You can make corrections, add punctuation, format text, and customize the output to your needs.'
+    question: 'How accurate are the results?',
+    answer: 'Accuracy depends on the recording quality. The Groq + Whisper AI stack delivers excellent results for clear speech with minimal background noise.'
   }
 ];
 </script>

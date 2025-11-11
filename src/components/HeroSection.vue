@@ -23,14 +23,7 @@
       </p>
       <div class="hero-actions">
         <InstallButton class="main-button">
-          <template #icon>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </template>
-          Install Free Extension
+          Install Audio To Text Transcription
         </InstallButton>
       </div>
     </div>

@@ -52,6 +52,7 @@ const chromeStoreUrl = buildChromeStoreUrl()
   cursor: pointer;
   border: none;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
 .icon {
@@ -62,17 +63,39 @@ const chromeStoreUrl = buildChromeStoreUrl()
 
 /* --- PRIMARY --- */
 .primary {
-  background: var(--accent-primary);
+  background: linear-gradient(135deg, #4c8dff 0%, #1a73e8 35%, #5a91ff 68%, #2d7bff 100%);
+  background-size: 200% 200%;
   color: #fff;
+  box-shadow: 0 8px 24px rgba(26, 115, 232, 0.35);
+  transition: background-position 0.5s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  animation: gradientFlow 6s ease infinite;
 }
 
 .primary:hover {
-  background: var(--accent-primary-hover);
-  box-shadow: var(--shadow-md);
+  background-position: 100% 50%;
+  box-shadow: 0 10px 30px rgba(26, 115, 232, 0.45);
+  transform: translateY(-2px);
 }
 
 .primary:active {
-  box-shadow: var(--shadow-sm);
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(26, 115, 232, 0.35);
+}
+
+.primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.primary:hover::after {
+  opacity: 0.8;
 }
 
 /* --- OUTLINE --- */
@@ -95,5 +118,17 @@ const chromeStoreUrl = buildChromeStoreUrl()
 
 .outline svg {
   color: var(--accent-primary);
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 </style>

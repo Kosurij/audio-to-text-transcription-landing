@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar">
     <div class="navbar-left">
-      <div class="branding">
+      <a href="https://audio-to-text-transcription.com" class="branding" target="_blank" rel="noopener noreferrer">
         <Logo />
         <span class="product-name">Audio To Text Transcription</span>
-      </div>
+      </a>
 
       <div class="nav-links">
         <a href="#features" class="nav-link">Features</a>
@@ -60,6 +60,13 @@ import Logo from './Logo.vue';
   align-items: center;
   gap: 20px;
   flex-shrink: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.branding:hover {
+  opacity: 0.9;
 }
 
 .product-name {
