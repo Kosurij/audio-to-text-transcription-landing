@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://audio-to-text-transcription.pro/sitemap.xml
+

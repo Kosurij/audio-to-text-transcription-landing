@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.vue';
+import BenefitsSection from '../components/BenefitsSection.vue';
+import HowItWorksSection from '../components/HowItWorksSection.vue';
+import FAQSection from '../components/FAQSection.vue';
+import CTASection from '../components/CTASection.vue';
+import AppFooter from '../components/AppFooter.vue';
+import NavigationBar from '../components/NavigationBar.vue';
+
+const title = 'Audio To Text Transcription - Convert Audio to Text Instantly | Chrome Extension';
+const description = 'Transform any audio into accurate text with our powerful Chrome extension. Perfect for meetings, interviews, podcasts, and more. Install now and boost your productivity!';
+---
+
+<Layout title={title} description={description}>
+  <NavigationBar client:load />
+  <main class="landing-page">
+    <HeroSection client:load />
+    <BenefitsSection client:load />
+    <HowItWorksSection client:load />
+    <FAQSection client:load />
+    <CTASection client:load />
+    <AppFooter client:load />
+  </main>
+</Layout>
+
+<style>
+  .landing-page {
+    min-height: 100vh;
+    background: transparent;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
