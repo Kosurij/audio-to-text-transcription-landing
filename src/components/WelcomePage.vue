@@ -12,14 +12,16 @@
         </div>
       </div>
       <div class="big-arrow">
-        <svg width="40" height="80" viewBox="0 0 40 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
-          <defs>
-            <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#1A73E8;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#4285F4;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <path d="M20 5L20 60L8 50L20 60L32 50" stroke="url(#arrowGradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <svg
+          width="40"
+          height="80"
+          viewBox="0 0 40 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="transform: rotate(180deg);"
+        >
+          <path d="M20 5L20 60" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+          <path d="M8 50L20 60L32 50" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </div>
     </div>
@@ -61,18 +63,22 @@ onMounted(launchConfetti)
   top: 100px;
   right: 20px;
   z-index: 1000;
-  background: var(--gradient-primary);
-  color: white;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
   padding: 24px 28px;
   border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(26, 115, 232, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.5), 0 4px 12px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.6s ease-out, bounceUpDown 2s ease-in-out infinite 0.6s;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   min-width: 280px;
 }
 
 html[data-theme='dark'] .puzzle-hint {
-  box-shadow: 0 12px 40px rgba(138, 180, 248, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.95), rgba(17, 24, 39, 0.95));
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35), 0 4px 16px rgba(0, 0, 0, 0.55);
+  color: #e8f1ff;
 }
 
 .hint-content {
@@ -83,7 +89,7 @@ html[data-theme='dark'] .puzzle-hint {
 }
 
 .hint-icon-container {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   padding: 12px;
   border-radius: 12px;
   display: flex;
@@ -91,12 +97,15 @@ html[data-theme='dark'] .puzzle-hint {
   justify-content: center;
 }
 
+html[data-theme='dark'] .hint-icon-container {
+  background: rgba(96, 165, 250, 0.18);
+}
+
 .puzzle-icon {
   width: 28px;
   height: 28px;
   filter: brightness(0) invert(1);
   flex-shrink: 0;
-  color: white;
 }
 
 .hint-text-container {
@@ -115,7 +124,7 @@ html[data-theme='dark'] .puzzle-hint {
 .hint-subtitle {
   font-size: 14px;
   font-weight: 500;
-  opacity: 0.9;
+  opacity: 0.85;
   line-height: 1.2;
   white-space: nowrap;
 }
@@ -129,11 +138,13 @@ html[data-theme='dark'] .puzzle-hint {
   align-items: center;
   justify-content: center;
   animation: arrowBounce 2s ease-in-out infinite 0.6s;
-  filter: drop-shadow(0 6px 16px rgba(26, 115, 232, 0.4));
+  color: #3b82f6;
+  filter: drop-shadow(0 6px 16px rgba(59, 130, 246, 0.5));
 }
 
 html[data-theme='dark'] .big-arrow {
-  filter: drop-shadow(0 6px 16px rgba(138, 180, 248, 0.4));
+  color: #60a5fa;
+  filter: drop-shadow(0 6px 16px rgba(96, 165, 250, 0.45));
 }
 
 .big-arrow svg {

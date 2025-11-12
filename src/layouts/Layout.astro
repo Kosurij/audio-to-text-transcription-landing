@@ -53,6 +53,44 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    
+    <script is:inline>
+      const storageKey = 'theme';
+      const root = document.documentElement;
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      const applyTheme = (theme) => {
+        if (theme === 'dark' || theme === 'light') {
+          root.setAttribute('data-theme', theme);
+        }
+      };
+
+      const resolvePreferredTheme = () => (mediaQuery.matches ? 'dark' : 'light');
+
+      const savedTheme = localStorage.getItem(storageKey);
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        applyTheme(savedTheme);
+      } else {
+        applyTheme(resolvePreferredTheme());
+      }
+
+      mediaQuery.addEventListener('change', (event) => {
+        if (!localStorage.getItem(storageKey)) {
+          applyTheme(event.matches ? 'dark' : 'light');
+        }
+      });
+
+      window.addEventListener('storage', (event) => {
+        if (event.key === storageKey) {
+          const newValue = event.newValue;
+          if (newValue === null) {
+            applyTheme(resolvePreferredTheme());
+          } else {
+            applyTheme(newValue);
+          }
+        }
+      });
+    </script>
   </head>
   <body>
     <slot />
