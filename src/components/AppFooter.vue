@@ -112,7 +112,7 @@ const currentYear = new Date().getFullYear();
 
 @media (max-width: 768px) {
   .footer {
-    padding: 60px 20px 32px;
+    padding: 40px 20px 24px;
   }
 
   .footer-content {

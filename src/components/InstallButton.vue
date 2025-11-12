@@ -40,6 +40,7 @@ const chromeStoreUrl = buildChromeStoreUrl()
 .install-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   text-decoration: none;
   font-weight: 500;

@@ -190,6 +190,7 @@ html[data-theme='dark'] .subtext {
   gap: 24px;
   align-items: center;
   margin: 0;
+  width: 100%;
 }
 
 .main-button {
@@ -250,6 +251,12 @@ html[data-theme='dark'] .main-button:active {
   .hero-content {
     gap: 32px;
     padding: 0 20px;
+  }
+
+  .main-button {
+    width: min(100%, 320px);
+    font-size: 16px;
+    padding: 16px 24px;
   }
 }
 </style>

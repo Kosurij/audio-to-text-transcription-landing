@@ -110,7 +110,7 @@ import InstallButton from './InstallButton.vue';
 
 @media (max-width: 768px) {
   .cta {
-    padding: 80px 20px;
+    padding: 40px 20px;
   }
 
   .cta-content {
@@ -129,6 +129,20 @@ import InstallButton from './InstallButton.vue';
     font-size: 18px;
     padding: 18px 36px;
     height: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cta-content {
+    padding: 40px 24px;
+    gap: 28px;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    padding: 16px 24px;
   }
 }
 </style>

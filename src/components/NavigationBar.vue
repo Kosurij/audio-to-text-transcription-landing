@@ -195,7 +195,8 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
   text-decoration: none;
   color: inherit;
   transition: opacity 0.2s ease;
@@ -210,6 +211,7 @@ onBeforeUnmount(() => {
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .desktop-nav {
@@ -388,6 +390,7 @@ html[data-theme='dark'] .mobile-link:hover {
 
   .product-name {
     font-size: 18px;
+    white-space: normal;
   }
 
   .theme-toggle {
@@ -397,6 +400,35 @@ html[data-theme='dark'] .mobile-link:hover {
 
   .navbar-right {
     gap: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .navbar-left {
+    gap: 16px;
+  }
+
+  .branding {
+    gap: 6px;
+  }
+
+  .product-name {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .navbar-right {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-name {
+    font-size: 15px;
   }
 }
 </style>
