@@ -12,9 +12,9 @@
       </a>
 
       <nav class="desktop-nav">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#how-it-works" class="nav-link">How it works</a>
-        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="/#features" class="nav-link" @click.prevent="navigateToSection('features')">Features</a>
+        <a href="/#how-it-works" class="nav-link" @click.prevent="navigateToSection('how-it-works')">How it works</a>
+        <a href="/#faq" class="nav-link" @click.prevent="navigateToSection('faq')">FAQ</a>
       </nav>
     </div>
 
@@ -72,13 +72,13 @@
 
     <transition name="fade">
       <div v-if="isMenuOpen" class="mobile-menu">
-        <a href="#features" class="mobile-link" @click.prevent="handleMobileNavigate('features')">
+        <a href="/#features" class="mobile-link" @click.prevent="handleMobileNavigate('features')">
           Features
         </a>
-        <a href="#how-it-works" class="mobile-link" @click.prevent="handleMobileNavigate('how-it-works')">
+        <a href="/#how-it-works" class="mobile-link" @click.prevent="handleMobileNavigate('how-it-works')">
           How it works
         </a>
-        <a href="#faq" class="mobile-link" @click.prevent="handleMobileNavigate('faq')">
+        <a href="/#faq" class="mobile-link" @click.prevent="handleMobileNavigate('faq')">
           FAQ
         </a>
       </div>
@@ -122,9 +122,23 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
+const navigateToSection = (sectionId: string) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const currentPath = window.location.pathname;
+
+  if (currentPath === '/' || currentPath === '/index.html') {
+    scrollToSection(sectionId);
+  } else {
+    window.location.href = `/#${sectionId}`;
+  }
+};
+
 const handleMobileNavigate = (sectionId: string) => {
   isMenuOpen.value = false;
-  scrollToSection(sectionId);
+  navigateToSection(sectionId);
 };
 
 onMounted(() => {

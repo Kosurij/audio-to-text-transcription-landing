@@ -31,16 +31,15 @@
     </header>
 
     <main class="welcome-content">
-      <div class="gif-container">
-        <img src="/welcome.gif" alt="How to use Audio To Text Transcription" class="welcome-gif" />
-      </div>
-      <div class="welcome-text">
-        <p>
-          Click the puzzle icon in your browser toolbar, then pin <strong>Audio To Text Transcription</strong> to keep it easily accessible.
-        </p>
-        <p>
-          Once pinned, click the extension icon to start transcribing audio files or recording from your microphone.
-        </p>
+      <div class="instructions-card">
+        <div class="gif-container">
+          <img src="/how_to_pin.gif" alt="How to pin the Audio To Text Transcription extension" class="welcome-gif" />
+        </div>
+        <div class="welcome-text">
+          <p>
+            Click the puzzle icon in your browser toolbar and pin <strong>Audio To Text Transcription</strong> to keep it handy. Then use the extension icon whenever you want to transcribe audio files or start a microphone recording.
+          </p>
+        </div>
       </div>
     </main>
   </div>
@@ -227,7 +226,7 @@ html[data-theme='dark'] .big-arrow {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 16px 120px 32px;
+  padding: 56px 16px 120px 32px;
   color: var(--color-text);
   min-height: 100vh;
   background: var(--gradient-bg);
@@ -267,25 +266,33 @@ html[data-theme='dark'] .big-arrow {
 
 .welcome-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
+  justify-content: center;
   width: 100%;
   max-width: 1080px;
+  margin-top: 32px;
+}
+
+.instructions-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 960px;
+  background: var(--color-surface-elevated);
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg, var(--shadow-md));
+  padding: 32px 32px 40px;
 }
 
 .gif-container {
   width: 100%;
-  max-width: 900px;
-  background: var(--color-surface-elevated);
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
 }
 
 .welcome-gif {
-  width: 100%;
+  width: min(100%, 560px);
   height: auto;
   border-radius: 12px;
   display: block;
@@ -320,6 +327,22 @@ html[data-theme='dark'] .big-arrow {
 
   .welcome-text p {
     font-size: 19px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .instructions-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .welcome-text {
+    text-align: left;
+  }
+
+  .gif-container {
+    flex: 0 0 520px;
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" id="privacy-policy">
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-brand">
