@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<{
 })
 
 // TODO: Replace with actual Chrome Web Store URL
-const baseUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/PLACEHOLDER?hl=en'
+const baseUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en'
 
 const buildChromeStoreUrl = (): string => {
   const url = new URL(baseUrl)
