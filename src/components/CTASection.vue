@@ -142,7 +142,7 @@ import InstallButton from './InstallButton.vue';
     width: 100%;
     max-width: 320px;
     font-size: 16px;
-    padding: 16px 24px;
+    padding: 8px;
   }
 }
 </style>

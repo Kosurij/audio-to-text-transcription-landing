@@ -121,6 +121,12 @@ const chromeStoreUrl = buildChromeStoreUrl()
   color: var(--accent-primary);
 }
 
+@media (max-width: 355px) {
+  .icon {
+    display: none;
+  }
+}
+
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
