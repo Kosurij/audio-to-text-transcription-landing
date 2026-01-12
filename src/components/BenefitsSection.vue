@@ -2,9 +2,7 @@
   <section class="benefits" id="features">
     <div class="benefits-container">
       <div class="section-header">
-        <h2 class="section-title">
-          Everything you need for <span class="gradient-text">perfect transcription</span>
-        </h2>
+        <h2 class="section-title">Features</h2>
         <p class="section-subtitle">
           Powerful features designed to make audio-to-text conversion seamless and accurate
         </p>
@@ -53,20 +51,36 @@ const benefits = [
     icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
       h('path', { d: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z', fill: 'currentColor' })
     ])
+  },
+  {
+    title: 'Privacy First',
+    description: 'Your audio files are processed securely. We respect your privacy and never store your data.',
+    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
+      h('path', { d: 'M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z', fill: 'currentColor' })
+    ])
+  },
+  {
+    title: 'Personalized Experience',
+    description: 'Choose between dark and light themes. Support for multiple interface languages to match your preferences.',
+    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
+      h('path', { d: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z', fill: 'currentColor' }),
+      h('path', { d: 'M12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18V6Z', fill: 'currentColor' })
+    ])
   }
 ];
 </script>
 
 <style scoped>
 .benefits {
-  padding: 120px 20px;
+  padding: 60px 0;
   background: var(--gradient-bg-subtle);
   position: relative;
 }
 
 .benefits-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .section-header {
@@ -152,7 +166,7 @@ const benefits = [
 
 @media (max-width: 768px) {
   .benefits {
-    padding: 40px 20px;
+    padding: 40px 0;
   }
 
   .section-header {

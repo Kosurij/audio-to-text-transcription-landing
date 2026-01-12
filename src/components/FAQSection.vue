@@ -81,13 +81,14 @@ const faqs = [
 
 <style scoped>
 .faq {
-  padding: 120px 20px;
+  padding: 60px 0;
   background: var(--gradient-bg-subtle);
 }
 
 .faq-container {
-  max-width: 900px;
+  max-width: 720px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .section-header {
@@ -198,7 +199,7 @@ const faqs = [
 
 @media (max-width: 768px) {
   .faq {
-    padding: 40px 20px;
+    padding: 40px 0;
   }
 
   .section-header {

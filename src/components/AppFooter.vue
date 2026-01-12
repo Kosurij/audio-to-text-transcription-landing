@@ -34,21 +34,22 @@ const currentYear = new Date().getFullYear();
 .footer {
   background: var(--gradient-bg-subtle);
   border-top: 1px solid var(--color-border);
-  padding: 80px 20px 40px;
+  padding: 40px 0 24px;
 }
 
 .footer-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 80px;
+  gap: 48px;
   flex-wrap: wrap;
-  margin-bottom: 60px;
+  margin-bottom: 32px;
 }
 
 .footer-brand {
@@ -99,7 +100,7 @@ const currentYear = new Date().getFullYear();
 }
 
 .footer-bottom {
-  padding-top: 40px;
+  padding-top: 24px;
   border-top: 1px solid var(--color-border);
   text-align: center;
 }
@@ -112,12 +113,13 @@ const currentYear = new Date().getFullYear();
 
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 20px 24px;
+    padding: 32px 0 20px;
   }
 
   .footer-content {
     flex-direction: column;
-    gap: 48px;
+    gap: 32px;
+    margin-bottom: 24px;
   }
 }
 </style>

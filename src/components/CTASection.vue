@@ -14,9 +14,6 @@
         <InstallButton class="cta-button">
           Install Free Extension
         </InstallButton>
-        <p class="cta-note">
-          Free forever • No credit card required • Install in seconds
-        </p>
       </div>
     </div>
   </section>
@@ -28,7 +25,7 @@ import InstallButton from './InstallButton.vue';
 
 <style scoped>
 .cta {
-  padding: 120px 20px;
+  padding: 60px 0;
   position: relative;
   background: var(--gradient-bg);
   overflow: hidden;
@@ -56,8 +53,9 @@ import InstallButton from './InstallButton.vue';
 }
 
 .cta-container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
   position: relative;
   z-index: 1;
 }
@@ -66,13 +64,13 @@ import InstallButton from './InstallButton.vue';
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   align-items: center;
   background: var(--color-surface-elevated);
   background-image: var(--gradient-bg-subtle);
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  padding: 80px 60px;
+  padding: 48px 40px;
   box-shadow: var(--shadow-md);
 }
 
@@ -101,20 +99,13 @@ import InstallButton from './InstallButton.vue';
   margin-top: 8px;
 }
 
-.cta-note {
-  font-size: 14px;
-  color: var(--color-text-muted);
-  font-weight: 500;
-  margin-top: 8px;
-}
-
 @media (max-width: 768px) {
   .cta {
     padding: 40px 20px;
   }
 
   .cta-content {
-    padding: 48px 32px;
+    padding: 40px 32px;
   }
 
   .cta-title {
@@ -134,8 +125,8 @@ import InstallButton from './InstallButton.vue';
 
 @media (max-width: 600px) {
   .cta-content {
-    padding: 40px 24px;
-    gap: 28px;
+    padding: 32px 24px;
+    gap: 20px;
   }
 
   .cta-button {
