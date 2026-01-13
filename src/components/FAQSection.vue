@@ -65,12 +65,12 @@ const faqs = [
     answer: 'Yes. Audio To Text Transcription adapts to both light and dark themes automatically, and you can toggle them manually in the settings.'
   },
   {
-    question: 'Which audio formats are supported?',
-    answer: 'All popular formats are supported: FLAC, MP3, M4A, MPEG, MPGA, OGG, WAV, WEBM, and more.'
+    question: 'Which audio/video formats are supported?',
+    answer: 'We support the following audio and video formats: FLAC, MP3, MP4, MPEG, MPGA, M4A, OGG, OPUS, WAV, and WEBM. The extension can extract and transcribe audio from video files as well.'
   },
   {
     question: 'Can I edit transcripts inside the extension?',
-    answer: 'Inline editing is not available. You can copy the transcript to the clipboard or download it as a .txt file. The last 10 transcripts are saved automatically in your history.'
+    answer: 'Yes, users can edit transcripts. You will see both the original and edited versions side by side.'
   },
   {
     question: 'How accurate are the results?',
