@@ -1,73 +1,70 @@
 <template>
   <nav :class="['navbar', { scrolled: isScrolled }]">
-    <div class="navbar-left">
+    <div class="navbar-inner">
       <a
-        href="https://audio-to-text-transcription.com"
+        href="/"
         class="branding"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         <Logo />
-        <span class="product-name">Audio To Text Transcription</span>
       </a>
 
       <nav class="desktop-nav">
         <a href="/#features" class="nav-link" @click.prevent="navigateToSection('features')">Features</a>
-        <a href="/#how-it-works" class="nav-link" @click.prevent="navigateToSection('how-it-works')">How it works</a>
+        <a href="/#how-it-works" class="nav-link" @click.prevent="navigateToSection('how-it-works')">How it Works</a>
         <a href="/#faq" class="nav-link" @click.prevent="navigateToSection('faq')">FAQ</a>
       </nav>
-    </div>
 
-    <div class="navbar-right">
-      <button
-        class="theme-toggle"
-        @click="toggleTheme"
-        :aria-label="currentTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
-      >
-        <svg
-          v-if="currentTheme === 'dark'"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      <div class="navbar-right">
+        <button
+          class="theme-toggle"
+          @click="toggleTheme"
+          :aria-label="currentTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
         >
-          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
-          <path
-            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-        </svg>
-        <svg
-          v-else
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
+          <svg
+            v-if="currentTheme === 'dark'"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
+            <path
+              d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <svg
+            v-else
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
 
-      <button
-        class="burger-button"
-        :class="{ open: isMenuOpen }"
-        @click="isMenuOpen = !isMenuOpen"
-        aria-label="Toggle navigation"
-      >
-        <span />
-        <span />
-        <span />
-      </button>
+        <InstallButton :compact="true" class="navbar-cta" />
+
+        <button
+          class="burger-button"
+          :class="{ open: isMenuOpen }"
+          @click="isMenuOpen = !isMenuOpen"
+          aria-label="Toggle navigation"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </div>
 
     <transition name="fade">
@@ -76,11 +73,14 @@
           Features
         </a>
         <a href="/#how-it-works" class="mobile-link" @click.prevent="handleMobileNavigate('how-it-works')">
-          How it works
+          How it Works
         </a>
         <a href="/#faq" class="mobile-link" @click.prevent="handleMobileNavigate('faq')">
           FAQ
         </a>
+        <div class="mobile-cta">
+          <InstallButton />
+        </div>
       </div>
     </transition>
   </nav>
@@ -89,6 +89,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import Logo from './Logo.vue';
+import InstallButton from './InstallButton.vue';
 
 const isScrolled = ref(false);
 const isMenuOpen = ref(false);
@@ -123,12 +124,8 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const navigateToSection = (sectionId: string) => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
+  if (typeof window === 'undefined') return;
   const currentPath = window.location.pathname;
-
   if (currentPath === '/' || currentPath === '/index.html') {
     scrollToSection(sectionId);
   } else {
@@ -157,10 +154,8 @@ onMounted(() => {
         applyTheme(event.matches ? 'dark' : 'light');
       }
     };
-
     mediaQuery.addEventListener('change', mediaQueryListener);
   }
-
   window.addEventListener('scroll', handleScroll, { passive: true });
 });
 
@@ -179,117 +174,110 @@ onBeforeUnmount(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 88px;
-  padding: 0 40px;
   background: var(--navbar-bg);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  box-shadow: var(--shadow-md);
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.9);
 }
 
-.navbar-left,
-.navbar-right {
+html[data-theme='dark'] .navbar.scrolled {
+  background: rgba(26, 22, 20, 0.9);
+}
+
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-}
-
-.navbar-left {
-  gap: 32px;
-  flex: 1;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 0 32px;
 }
 
 .branding {
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-shrink: 1;
-  min-width: 0;
   text-decoration: none;
   color: inherit;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
 .branding:hover {
-  opacity: 0.9;
-}
-
-.product-name {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--color-text);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
+  opacity: 0.85;
 }
 
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 36px;
 }
 
 .nav-link {
-  position: relative;
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--color-text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: color 0.2s ease;
+  position: relative;
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -10px;
+  bottom: -4px;
   width: 100%;
   height: 2px;
   background: var(--accent-primary);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.2s ease;
-  opacity: 0.8;
 }
 
 .nav-link:hover {
-  color: var(--accent-primary);
+  color: var(--color-text);
 }
 
 .nav-link:hover::after {
   transform: scaleX(1);
-  opacity: 1;
 }
 
 .navbar-right {
-  justify-content: flex-end;
-  flex: 0 0 auto;
-  gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border: none;
   background: transparent;
-  color: var(--color-text);
+  color: var(--color-text-muted);
   cursor: pointer;
   transition: color 0.2s ease;
   padding: 0;
+  border-radius: var(--radius-sm);
 }
 
 .theme-toggle:hover {
-  color: var(--accent-primary);
+  color: var(--color-text);
+}
+
+.navbar-cta {
+  /* Visible on desktop */
 }
 
 .burger-button {
@@ -302,14 +290,13 @@ onBeforeUnmount(() => {
   border: none;
   background: none;
   padding: 0;
-  margin-left: 0;
   cursor: pointer;
 }
 
 .burger-button span {
   display: block;
   height: 2px;
-  background: var(--accent-primary);
+  background: var(--color-text);
   border-radius: 999px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
@@ -329,7 +316,7 @@ onBeforeUnmount(() => {
 
 .mobile-menu {
   position: absolute;
-  top: 88px;
+  top: 72px;
   right: 0;
   left: 0;
   background: var(--navbar-bg);
@@ -344,29 +331,25 @@ onBeforeUnmount(() => {
 
 .mobile-link {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text);
   text-decoration: none;
-  padding: 18px 24px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  transition: background 0.2s ease, color 0.2s ease;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background 0.2s ease;
 }
 
-html[data-theme='dark'] .mobile-link {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.mobile-link:last-child {
+.mobile-link:last-of-type {
   border-bottom: none;
 }
 
 .mobile-link:hover {
-  background: rgba(26, 115, 232, 0.08);
-  color: var(--accent-primary);
+  background: var(--accent-primary-light);
 }
 
-html[data-theme='dark'] .mobile-link:hover {
-  background: rgba(138, 180, 248, 0.15);
+.mobile-cta {
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border-light);
 }
 
 .fade-enter-active,
@@ -379,22 +362,17 @@ html[data-theme='dark'] .mobile-link:hover {
   opacity: 0;
 }
 
-@media (max-width: 1024px) {
-  .navbar-left {
-    gap: 32px;
-  }
-
-  .desktop-nav {
-    gap: 24px;
-  }
-}
-
 @media (max-width: 768px) {
-  .navbar {
+  .navbar-inner {
     padding: 0 20px;
+    min-height: 64px;
   }
 
   .desktop-nav {
+    display: none;
+  }
+
+  .navbar-cta {
     display: none;
   }
 
@@ -402,47 +380,8 @@ html[data-theme='dark'] .mobile-link:hover {
     display: flex;
   }
 
-  .product-name {
-    font-size: 18px;
-    white-space: normal;
-  }
-
-  .theme-toggle {
-    width: 44px;
-    height: 44px;
-  }
-
-  .navbar-right {
-    gap: 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .navbar {
-    padding: 0 16px;
-  }
-
-  .navbar-left {
-    gap: 16px;
-  }
-
-  .branding {
-    gap: 6px;
-  }
-
-  .product-name {
-    font-size: 16px;
-    line-height: 1.25;
-  }
-
-  .navbar-right {
-    gap: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .product-name {
-    font-size: 15px;
+  .mobile-menu {
+    top: 64px;
   }
 }
 </style>

@@ -17,7 +17,7 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copyright">
-          © {{ currentYear }} Audio To Text Transcription. All rights reserved.
+          &copy; {{ currentYear }} Audio To Text Transcription. All rights reserved.
         </p>
       </div>
     </div>
@@ -32,15 +32,19 @@ const currentYear = new Date().getFullYear();
 
 <style scoped>
 .footer {
-  background: var(--gradient-bg-subtle);
+  background: var(--color-paper-tertiary);
   border-top: 1px solid var(--color-border);
-  padding: 40px 0 24px;
+  padding: 48px 0 28px;
+}
+
+html[data-theme='dark'] .footer {
+  background: var(--color-paper-secondary);
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .footer-content {
@@ -55,14 +59,14 @@ const currentYear = new Date().getFullYear();
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .footer-description {
-  font-size: 16px;
-  color: var(--color-text-secondary);
-  line-height: 1.7;
-  max-width: 400px;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 360px;
   font-weight: 400;
 }
 
@@ -75,28 +79,30 @@ const currentYear = new Date().getFullYear();
 .footer-column {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  min-width: 160px;
+  gap: 16px;
+  min-width: 140px;
 }
 
 .footer-heading {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 4px;
-  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 0;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .footer-link {
-  font-size: 15px;
+  font-size: 0.95rem;
   color: var(--color-text-secondary);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
   font-weight: 400;
 }
 
 .footer-link:hover {
-  color: var(--accent-primary);
+  color: var(--accent-coral);
 }
 
 .footer-bottom {
@@ -106,19 +112,19 @@ const currentYear = new Date().getFullYear();
 }
 
 .footer-copyright {
-  font-size: 14px;
+  font-size: 0.85rem;
   color: var(--color-text-muted);
   font-weight: 400;
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 32px 0 20px;
+    padding: 36px 0 24px;
   }
 
   .footer-content {
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
     margin-bottom: 24px;
   }
 }

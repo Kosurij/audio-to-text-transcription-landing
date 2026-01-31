@@ -3,7 +3,7 @@
     :href="chromeStoreUrl"
     target="_blank"
     rel="noopener noreferrer"
-    :class="['install-button', props.variant]"
+    :class="['install-button', props.variant, { compact: props.compact }]"
   >
     <slot name="icon">
       <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,20 +11,21 @@
       </svg>
     </slot>
     <span class="text">
-      <slot>Install the extension</slot>
+      <slot>Add to Chrome — It's Free</slot>
     </span>
   </a>
 </template>
 
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  variant?: 'primary' | 'outline'
+  variant?: 'primary' | 'outline' | 'secondary'
+  compact?: boolean
 }>(), {
   variant: 'primary',
+  compact: false,
 })
 
-// TODO: Replace with actual Chrome Web Store URL
-const baseUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en'
+const baseUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcripti/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en'
 
 const buildChromeStoreUrl = (): string => {
   const url = new URL(baseUrl)
@@ -41,19 +42,26 @@ const chromeStoreUrl = buildChromeStoreUrl()
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 8px 24px;
-  border-radius: 4px;
-  height: 36px;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  height: 48px;
+  transition: all 0.2s ease;
   position: relative;
   cursor: pointer;
   border: none;
-  box-shadow: var(--shadow-sm);
   overflow: hidden;
+  white-space: nowrap;
+}
+
+.install-button.compact {
+  font-size: 14px;
+  padding: 8px 20px;
+  height: 40px;
+  border-radius: var(--radius-sm);
 }
 
 .icon {
@@ -62,80 +70,63 @@ const chromeStoreUrl = buildChromeStoreUrl()
   height: 18px;
 }
 
-/* --- PRIMARY --- */
+.compact .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- PRIMARY: Violet --- */
 .primary {
-  background: linear-gradient(135deg, #4c8dff 0%, #1a73e8 35%, #5a91ff 68%, #2d7bff 100%);
-  background-size: 200% 200%;
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(26, 115, 232, 0.35);
-  transition: background-position 0.5s ease, box-shadow 0.3s ease, transform 0.2s ease;
-  animation: gradientFlow 6s ease infinite;
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  box-shadow: var(--shadow-button);
 }
 
 .primary:hover {
-  background-position: 100% 50%;
-  box-shadow: 0 10px 30px rgba(26, 115, 232, 0.45);
+  background: var(--button-primary-hover);
+  box-shadow: var(--shadow-button-hover);
   transform: translateY(-2px);
 }
 
 .primary:active {
   transform: translateY(0);
-  box-shadow: 0 6px 18px rgba(26, 115, 232, 0.35);
+  box-shadow: var(--shadow-sm);
 }
 
-.primary::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* --- SECONDARY: Dark --- */
+.secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  box-shadow: var(--shadow-sm);
 }
 
-.primary:hover::after {
-  opacity: 0.8;
+.secondary:hover {
+  background: var(--button-secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.secondary:active {
+  transform: translateY(0);
 }
 
 /* --- OUTLINE --- */
 .outline {
   background: transparent;
-  border: 1px solid var(--color-border);
-  color: var(--accent-primary);
+  border: 2px solid var(--button-outline-border);
+  color: var(--button-outline-text);
   box-shadow: none;
 }
 
 .outline:hover {
-  background: var(--color-surface);
-  border-color: var(--accent-primary);
+  background: var(--button-outline-hover-bg);
+  color: var(--button-outline-hover-text);
   box-shadow: var(--shadow-sm);
-}
-
-.outline .text {
-  color: var(--accent-primary);
-}
-
-.outline svg {
-  color: var(--accent-primary);
 }
 
 @media (max-width: 355px) {
   .icon {
     display: none;
-  }
-}
-
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
 </style>

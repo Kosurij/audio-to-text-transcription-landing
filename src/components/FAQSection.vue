@@ -10,20 +10,20 @@
         </p>
       </div>
       <div class="faq-list">
-        <div 
-          class="faq-item" 
-          v-for="(item, index) in faqs" 
+        <div
+          class="faq-item"
+          v-for="(item, index) in faqs"
           :key="index"
           :class="{ active: activeIndex === index }"
         >
           <button class="faq-question" @click="toggle(index)">
             <span>{{ item.question }}</span>
-            <svg 
-              class="faq-icon" 
+            <svg
+              class="faq-icon"
               :class="{ rotated: activeIndex === index }"
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
               fill="none"
             >
               <path d="M7 10L12 15L17 10H7Z" fill="currentColor"/>
@@ -81,32 +81,32 @@ const faqs = [
 
 <style scoped>
 .faq {
-  padding: 60px 0;
-  background: var(--gradient-bg-subtle);
+  padding: 80px 0;
+  background: var(--color-paper-secondary);
 }
 
 .faq-container {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 .section-title {
-  font-size: clamp(40px, 6vw, 64px);
-  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   color: var(--color-text);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .gradient-text {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, #FF9B7D 0%, #FFB39A 50%, #FFA585 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -114,7 +114,7 @@ const faqs = [
 }
 
 .section-subtitle {
-  font-size: 20px;
+  font-size: 1.1rem;
   text-align: center;
   color: var(--color-text-secondary);
   font-weight: 400;
@@ -123,26 +123,25 @@ const faqs = [
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .faq-item {
-  background: var(--color-surface-elevated);
-  background-image: var(--gradient-bg-subtle);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .faq-item:hover {
   border-color: var(--accent-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .faq-item.active {
   border-color: var(--accent-primary);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .faq-question {
@@ -150,20 +149,20 @@ const faqs = [
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 28px;
+  padding: 20px 24px;
   background: transparent;
   border: none;
   text-align: left;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--color-text);
   transition: color 0.2s ease;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .faq-question:hover {
-  color: var(--accent-primary);
+  color: var(--accent-coral);
 }
 
 .faq-icon {
@@ -178,10 +177,10 @@ const faqs = [
 }
 
 .faq-answer {
-  padding: 0 28px 28px;
+  padding: 0 24px 24px;
   color: var(--color-text-secondary);
   line-height: 1.7;
-  font-size: 16px;
+  font-size: 0.95rem;
   font-weight: 400;
   animation: slideDown 0.3s ease;
 }
@@ -199,21 +198,21 @@ const faqs = [
 
 @media (max-width: 768px) {
   .faq {
-    padding: 40px 0;
+    padding: 56px 0;
   }
 
   .section-header {
-    margin-bottom: 48px;
+    margin-bottom: 36px;
   }
 
   .faq-question {
-    font-size: 16px;
-    padding: 20px;
+    font-size: 0.95rem;
+    padding: 18px 20px;
   }
 
   .faq-answer {
     padding: 0 20px 20px;
-    font-size: 15px;
+    font-size: 0.9rem;
   }
 }
 </style>

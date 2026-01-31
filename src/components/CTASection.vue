@@ -25,9 +25,9 @@ import InstallButton from './InstallButton.vue';
 
 <style scoped>
 .cta {
-  padding: 60px 0;
+  padding: 80px 0;
   position: relative;
-  background: var(--gradient-bg);
+  background: var(--color-background);
   overflow: hidden;
 }
 
@@ -45,17 +45,21 @@ import InstallButton from './InstallButton.vue';
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1200px;
-  height: 1200px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.1) 50%, transparent 70%);
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle, rgba(255, 179, 154, 0.15) 0%, rgba(255, 218, 185, 0.08) 40%, transparent 65%);
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(40px);
+}
+
+html[data-theme='dark'] .cta-gradient {
+  background: radial-gradient(circle, rgba(255, 179, 154, 0.06) 0%, transparent 50%);
 }
 
 .cta-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
   position: relative;
   z-index: 1;
 }
@@ -64,75 +68,66 @@ import InstallButton from './InstallButton.vue';
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   align-items: center;
-  background: var(--color-surface-elevated);
-  background-image: var(--gradient-bg-subtle);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 48px 40px;
+  border-radius: var(--radius-xl);
+  padding: 56px 48px;
   box-shadow: var(--shadow-md);
 }
 
 .cta-title {
-  font-size: clamp(36px, 6vw, 56px);
-  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
   color: var(--color-text);
   margin: 0;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .cta-subtitle {
-  font-size: 20px;
+  font-size: 1.1rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 520px;
   font-weight: 400;
 }
 
 .cta-button {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
-  padding: 20px 48px;
-  border-radius: 16px;
-  height: 64px;
+  padding: 16px 40px;
+  border-radius: var(--radius-md);
+  height: 56px;
   margin-top: 8px;
 }
 
 @media (max-width: 768px) {
   .cta {
-    padding: 40px 20px;
+    padding: 56px 20px;
   }
 
   .cta-content {
-    padding: 40px 32px;
-  }
-
-  .cta-title {
-    font-size: 32px;
-  }
-
-  .cta-subtitle {
-    font-size: 18px;
+    padding: 40px 28px;
   }
 
   .cta-button {
-    font-size: 18px;
-    padding: 18px 36px;
-    height: 56px;
+    font-size: 16px;
+    padding: 14px 32px;
+    height: 52px;
   }
 }
 
 @media (max-width: 600px) {
   .cta-content {
     padding: 32px 24px;
-    gap: 20px;
+    gap: 16px;
   }
 
   .cta-button {
     width: 100%;
     max-width: 320px;
-    font-size: 16px;
+    font-size: 15px;
     padding: 8px;
   }
 }

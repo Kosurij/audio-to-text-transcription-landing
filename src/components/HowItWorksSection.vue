@@ -38,7 +38,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const videoLoaded = ref(false)
 const videoContainer = ref<HTMLElement | null>(null)
 
-// Intersection Observer для ленивой загрузки при скролле
 onMounted(() => {
   if (!videoContainer.value) return
 
@@ -46,21 +45,19 @@ onMounted(() => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !videoLoaded.value) {
-          // Загружаем видео когда пользователь доскроллил до него
           videoLoaded.value = true
           observer.unobserve(entry.target)
         }
       })
     },
     {
-      rootMargin: '100px', // Загружаем за 100px до появления в viewport
+      rootMargin: '100px',
       threshold: 0.1
     }
   )
 
   observer.observe(videoContainer.value)
 
-  // Cleanup
   onUnmounted(() => {
     if (videoContainer.value) {
       observer.unobserve(videoContainer.value)
@@ -86,34 +83,34 @@ const steps = [
 
 <style scoped>
 .how-it-works {
-  padding: 60px 0;
-  background: var(--gradient-bg);
+  padding: 80px 0;
+  background: var(--color-background);
   position: relative;
 }
 
 .how-it-works-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 
 .section-title {
-  font-size: clamp(40px, 6vw, 64px);
-  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   text-align: center;
   color: var(--color-text);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .demo-video-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 56px;
 }
 
 .youtube-container {
@@ -121,10 +118,11 @@ const steps = [
   width: 100%;
   max-width: 900px;
   height: 500px;
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
 }
 
 .youtube-iframe {
@@ -133,15 +131,7 @@ const steps = [
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 16px;
-}
-
-.gradient-text {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  border-radius: var(--radius-xl);
 }
 
 .steps {
@@ -157,24 +147,29 @@ const steps = [
   text-align: center;
   gap: 20px;
   flex: 1;
-  background: var(--color-surface-elevated);
-  background-image: var(--gradient-bg-subtle);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 32px 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .step-number {
-  width: 50px;
-  height: 50px;
-  background: var(--gradient-primary);
-  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 800;
-  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
   flex-shrink: 0;
 }
 
@@ -183,26 +178,26 @@ const steps = [
 }
 
 .step-title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
   color: var(--color-text);
 }
 
 .step-description {
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--color-text-secondary);
   font-weight: 400;
 }
 
 @media (max-width: 768px) {
   .how-it-works {
-    padding: 40px 0;
+    padding: 56px 0;
   }
 
   .section-header {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
 
   .demo-video-container {
@@ -219,7 +214,7 @@ const steps = [
   }
 
   .step {
-    padding: 32px;
+    padding: 28px;
   }
 }
 </style>

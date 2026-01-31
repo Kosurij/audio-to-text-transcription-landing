@@ -15,7 +15,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1A73E8" />
+    <meta name="theme-color" content="#FAF8F5" />
     <meta name="keywords" content="audio to text, transcription, speech to text, audio transcription, chrome extension, voice to text, audio converter, meeting transcription, interview transcription, podcast transcription" />
     <meta name="author" content="Audio To Text Transcription" />
     
@@ -51,7 +51,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Additional SEO -->
     <meta name="application-name" content="Audio To Text Transcription" />
     <meta name="apple-mobile-web-app-title" content="Audio To Text Transcription" />
-    <meta name="msapplication-TileColor" content="#1A73E8" />
+    <meta name="msapplication-TileColor" content="#FAF8F5" />
     
     <!-- SEO -->
     <meta name="robots" content="index, follow" />
@@ -280,25 +280,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <style>
       html {
         scroll-behavior: smooth;
-        background: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-        background-attachment: fixed;
+        background: #FAF8F5;
         overflow-x: hidden;
         margin: 0;
         padding: 0;
         width: 100%;
       }
 
+      html[data-theme='dark'] {
+        background: #1A1614;
+      }
+
       body {
-        background: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-        background-attachment: fixed;
-        color: #202124;
-        font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #FAF8F5;
+        color: #1E1B18;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         padding: 0;
         margin: 0;
         overflow-x: hidden;
+      }
+
+      html[data-theme='dark'] body {
+        background: #1A1614;
+        color: #F5F1EB;
       }
 
       .landing-page {
@@ -314,10 +321,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Preload important fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap" /></noscript>
+
+    <!-- Preload important fonts (Inter + Outfit) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" /></noscript>
     
     <script is:inline>
       const storageKey = 'theme';
@@ -401,79 +408,149 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   :root {
-    /* Chrome Extension Style - Clean & Minimal (Light Theme) */
-    --color-text: #202124;
-    --color-text-secondary: #5F6368;
-    --color-text-muted: #80868B;
-    --color-background: #FFFFFF;
-    --color-surface: #F8F9FA;
-    --color-surface-elevated: #FFFFFF;
-    --color-border: #DADCE0;
-    --color-border-strong: #BDC1C6;
-    
-    /* Chrome Blue Accent */
-    --accent-primary: #1A73E8;
-    --accent-primary-hover: #1765CC;
-    --accent-secondary: #34A853;
-    --accent-blue: #1A73E8;
-    
-    /* Chrome Extension Gradients */
-    --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #1765CC 0%, #357AE8 100%);
-    --gradient-bg: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-    --gradient-bg-subtle: linear-gradient(135deg, rgba(239, 246, 255, 0.5), rgba(219, 234, 254, 0.5), rgba(191, 219, 254, 0.5));
-    
-    /* Material Design Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    --shadow-md: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-    --shadow-lg: 0 2px 4px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
-    --shadow-xl: 0 4px 8px 0 rgba(60, 64, 67, 0.3), 0 8px 16px 4px rgba(60, 64, 67, 0.15);
-    
+    /* Violet + Warm Cream Design System (Light Theme) */
+
+    /* Paper backgrounds */
+    --color-paper-primary: #FAF8F5;
+    --color-paper-secondary: #F5F1EB;
+    --color-paper-tertiary: #F0EBE3;
+
+    /* Backgrounds & surfaces */
+    --color-background: #FAF8F5;
+    --color-background-alt: #FFFFFF;
+    --color-surface: #FFFFFF;
+    --color-surface-elevated: #FEFDFB;
+
+    /* Text colors */
+    --color-text: #1E1B18;
+    --color-text-secondary: #5C534D;
+    --color-text-muted: #8A7F76;
+    --color-text-light: #AFA49A;
+
+    /* Accent - vibrant violet */
+    --accent-primary: #7C5CFC;
+    --accent-primary-hover: #6B4AEB;
+    --accent-primary-light: #F3F0FF;
+    --accent-primary-light-border: #E4DEFF;
+    --accent-secondary: #9B85FD;
+
+    /* Buttons */
+    --button-primary-bg: #7C5CFC;
+    --button-primary-text: #FFFFFF;
+    --button-primary-hover: #6B4AEB;
+    --button-secondary-bg: #1E1B18;
+    --button-secondary-text: #FFFFFF;
+    --button-secondary-hover: #2D2A26;
+    --button-outline-border: #1E1B18;
+    --button-outline-text: #1E1B18;
+    --button-outline-hover-bg: #1E1B18;
+    --button-outline-hover-text: #FFFFFF;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #7C5CFC 0%, #9B85FD 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #6B4AEB 0%, #7C5CFC 100%);
+    --gradient-bg: #FAF8F5;
+    --gradient-bg-subtle: linear-gradient(135deg, #FAF8F5, #F5F1EB);
+
+    /* Borders */
+    --color-border: #E8E3DB;
+    --color-border-strong: #D4CEC3;
+    --color-border-light: #F0EBE3;
+
+    /* Warm soft shadows */
+    --shadow-xs: 0 1px 2px 0 rgba(30, 27, 24, 0.04);
+    --shadow-sm: 0 1px 3px 0 rgba(30, 27, 24, 0.06), 0 1px 2px 0 rgba(30, 27, 24, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(30, 27, 24, 0.08), 0 2px 4px -1px rgba(30, 27, 24, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(30, 27, 24, 0.08), 0 4px 6px -2px rgba(30, 27, 24, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(30, 27, 24, 0.1), 0 10px 10px -5px rgba(30, 27, 24, 0.04);
+    --shadow-button: 0 2px 8px rgba(124, 92, 252, 0.25);
+    --shadow-button-hover: 0 4px 16px rgba(124, 92, 252, 0.35);
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
     /* Navbar */
     --navbar-bg: #FFFFFF;
     --navbar-blur: none;
-    
+
     font-size: 16px;
     font-weight: 400;
   }
 
   html[data-theme='dark'] {
     /* Dark Theme */
-    --color-text: #E8EAED;
-    --color-text-secondary: #9AA0A6;
-    --color-text-muted: #80868B;
-    --color-background: #202124;
-    --color-surface: #2D2E30;
-    --color-surface-elevated: #303134;
-    --color-border: #3C4043;
-    --color-border-strong: #5F6368;
-    
-    /* Chrome Blue Accent (lighter for dark theme) */
-    --accent-primary: #8AB4F8;
-    --accent-primary-hover: #AECBFA;
-    --accent-secondary: #81C995;
-    --accent-blue: #8AB4F8;
-    
-    /* Dark Theme Gradients */
-    --gradient-primary: linear-gradient(135deg, #8AB4F8 0%, #AECBFA 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #AECBFA 0%, #C5E1FA 100%);
-    --gradient-bg: linear-gradient(135deg, rgb(32, 33, 36), rgb(41, 42, 45), rgb(48, 49, 52));
-    --gradient-bg-subtle: linear-gradient(135deg, rgba(32, 33, 36, 0.8), rgba(41, 42, 45, 0.8), rgba(48, 49, 52, 0.8));
-    
-    /* Dark Theme Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 3px 1px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 6px 2px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 2px 4px 0 rgba(0, 0, 0, 0.6), 0 4px 8px 3px rgba(0, 0, 0, 0.5);
-    --shadow-xl: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 8px 16px 4px rgba(0, 0, 0, 0.6);
-    
-    /* Navbar Dark */
-    --navbar-bg: #202124;
+    --color-paper-primary: #2C2420;
+    --color-paper-secondary: #352D28;
+    --color-paper-tertiary: #3D342E;
+
+    --color-background: #1A1614;
+    --color-background-alt: #221E1A;
+    --color-surface: #2C2420;
+    --color-surface-elevated: #352D28;
+
+    --color-text: #F5F1EB;
+    --color-text-secondary: #AFA49A;
+    --color-text-muted: #8A7F76;
+    --color-text-light: #5C534D;
+
+    --accent-primary: #9B85FD;
+    --accent-primary-hover: #B0A0FE;
+    --accent-primary-light: rgba(124, 92, 252, 0.12);
+    --accent-primary-light-border: rgba(124, 92, 252, 0.2);
+    --accent-secondary: #B0A0FE;
+
+    --button-primary-bg: #9B85FD;
+    --button-primary-text: #1A1614;
+    --button-primary-hover: #B0A0FE;
+    --button-secondary-bg: #F5F1EB;
+    --button-secondary-text: #1A1614;
+    --button-secondary-hover: #FFFFFF;
+    --button-outline-border: #F5F1EB;
+    --button-outline-text: #F5F1EB;
+    --button-outline-hover-bg: #F5F1EB;
+    --button-outline-hover-text: #1A1614;
+
+    --gradient-primary: linear-gradient(135deg, #9B85FD 0%, #B0A0FE 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #B0A0FE 0%, #C5B8FE 100%);
+    --gradient-bg: #1A1614;
+    --gradient-bg-subtle: linear-gradient(135deg, #1A1614, #2C2420);
+
+    --color-border: #3D342E;
+    --color-border-strong: #5C534D;
+    --color-border-light: #352D28;
+
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    --shadow-button: 0 2px 8px rgba(155, 133, 253, 0.3);
+    --shadow-button-hover: 0 4px 16px rgba(155, 133, 253, 0.4);
+
+    --navbar-bg: #1A1614;
   }
 
   html {
     scroll-behavior: smooth;
-    background: var(--gradient-bg);
-    background-attachment: fixed;
+    background: var(--color-background);
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -481,10 +558,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   body {
-    background: var(--gradient-bg);
-    background-attachment: fixed;
+    background: var(--color-background);
     color: var(--color-text);
-    font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -492,28 +568,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     margin: 0;
     overflow-x: hidden;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 400;
-    letter-spacing: 0;
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.01em;
     line-height: 1.2;
     color: var(--color-text);
   }
-  
+
   h1 {
-    font-weight: 400;
-    font-size: 2.25rem;
+    font-weight: 600;
+    font-size: clamp(2.5rem, 5vw, 4rem);
   }
-  
+
   h2 {
-    font-weight: 400;
-    font-size: 1.75rem;
+    font-weight: 600;
+    font-size: clamp(2rem, 4vw, 3rem);
   }
-  
+
   h3 {
     font-weight: 500;
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   }
 </style>
 
