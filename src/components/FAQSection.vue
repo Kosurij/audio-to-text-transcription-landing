@@ -82,7 +82,7 @@ const faqs = [
 <style scoped>
 .faq {
   padding: 80px 0;
-  background: var(--color-paper-secondary);
+  background: transparent;
 }
 
 .faq-container {
@@ -106,7 +106,7 @@ const faqs = [
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #FF9B7D 0%, #FFB39A 50%, #FFA585 100%);
+  background: linear-gradient(135deg, #5C534D 0%, #8A7F76 50%, #AFA49A 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -162,7 +162,7 @@ const faqs = [
 }
 
 .faq-question:hover {
-  color: var(--accent-coral);
+  color: var(--accent-primary);
 }
 
 .faq-icon {

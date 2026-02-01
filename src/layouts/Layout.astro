@@ -292,7 +292,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       }
 
       body {
-        background: #FAF8F5;
+        background-color: #FAF8F5;
+        background-image: radial-gradient(circle, #e5e0d8 1px, transparent 1px);
+        background-size: 24px 24px;
         color: #1E1B18;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         line-height: 1.5;
@@ -304,7 +306,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       }
 
       html[data-theme='dark'] body {
-        background: #1A1614;
+        background-color: #1A1614;
+        background-image: radial-gradient(circle, #2a2520 1px, transparent 1px);
         color: #F5F1EB;
       }
 
@@ -322,9 +325,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload important fonts (Inter + Outfit) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" /></noscript>
+    <!-- Preload important fonts (Figtree for headings, Inter for body) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
     
     <script is:inline>
       const storageKey = 'theme';
@@ -427,28 +430,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --color-text-muted: #8A7F76;
     --color-text-light: #AFA49A;
 
-    /* Accent - vibrant violet */
-    --accent-primary: #7C5CFC;
-    --accent-primary-hover: #6B4AEB;
-    --accent-primary-light: #F3F0FF;
-    --accent-primary-light-border: #E4DEFF;
-    --accent-secondary: #9B85FD;
+    /* Accent — neutral dark (restrained, like tactiq.io) */
+    --accent-primary: #1E1B18;
+    --accent-primary-hover: #333029;
+    --accent-primary-light: #F5F3F0;
+    --accent-primary-light-border: #E8E3DB;
+    --accent-secondary: #5C534D;
 
-    /* Buttons */
-    --button-primary-bg: #7C5CFC;
+    /* Buttons — black primary, white secondary (like tactiq.io) */
+    --button-primary-bg: #1E1B18;
     --button-primary-text: #FFFFFF;
-    --button-primary-hover: #6B4AEB;
-    --button-secondary-bg: #1E1B18;
-    --button-secondary-text: #FFFFFF;
-    --button-secondary-hover: #2D2A26;
+    --button-primary-hover: #333029;
+    --button-secondary-bg: #FFFFFF;
+    --button-secondary-text: #1E1B18;
+    --button-secondary-hover: #F5F1EB;
     --button-outline-border: #1E1B18;
     --button-outline-text: #1E1B18;
     --button-outline-hover-bg: #1E1B18;
     --button-outline-hover-text: #FFFFFF;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #7C5CFC 0%, #9B85FD 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #6B4AEB 0%, #7C5CFC 100%);
+    --gradient-primary: linear-gradient(135deg, #1E1B18 0%, #3D3830 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #333029 0%, #1E1B18 100%);
     --gradient-bg: #FAF8F5;
     --gradient-bg-subtle: linear-gradient(135deg, #FAF8F5, #F5F1EB);
 
@@ -463,8 +466,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --shadow-md: 0 4px 6px -1px rgba(30, 27, 24, 0.08), 0 2px 4px -1px rgba(30, 27, 24, 0.04);
     --shadow-lg: 0 10px 15px -3px rgba(30, 27, 24, 0.08), 0 4px 6px -2px rgba(30, 27, 24, 0.04);
     --shadow-xl: 0 20px 25px -5px rgba(30, 27, 24, 0.1), 0 10px 10px -5px rgba(30, 27, 24, 0.04);
-    --shadow-button: 0 2px 8px rgba(124, 92, 252, 0.25);
-    --shadow-button-hover: 0 4px 16px rgba(124, 92, 252, 0.35);
+    --shadow-button: 0 2px 8px rgba(30, 27, 24, 0.15);
+    --shadow-button-hover: 0 4px 16px rgba(30, 27, 24, 0.25);
 
     /* Radii */
     --radius-sm: 8px;
@@ -512,25 +515,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --color-text-muted: #8A7F76;
     --color-text-light: #5C534D;
 
-    --accent-primary: #9B85FD;
-    --accent-primary-hover: #B0A0FE;
-    --accent-primary-light: rgba(124, 92, 252, 0.12);
-    --accent-primary-light-border: rgba(124, 92, 252, 0.2);
-    --accent-secondary: #B0A0FE;
+    --accent-primary: #F5F1EB;
+    --accent-primary-hover: #FFFFFF;
+    --accent-primary-light: rgba(245, 241, 235, 0.1);
+    --accent-primary-light-border: rgba(245, 241, 235, 0.15);
+    --accent-secondary: #AFA49A;
 
-    --button-primary-bg: #9B85FD;
+    --button-primary-bg: #F5F1EB;
     --button-primary-text: #1A1614;
-    --button-primary-hover: #B0A0FE;
-    --button-secondary-bg: #F5F1EB;
-    --button-secondary-text: #1A1614;
-    --button-secondary-hover: #FFFFFF;
+    --button-primary-hover: #FFFFFF;
+    --button-secondary-bg: #2C2420;
+    --button-secondary-text: #F5F1EB;
+    --button-secondary-hover: #3D342E;
     --button-outline-border: #F5F1EB;
     --button-outline-text: #F5F1EB;
     --button-outline-hover-bg: #F5F1EB;
     --button-outline-hover-text: #1A1614;
 
-    --gradient-primary: linear-gradient(135deg, #9B85FD 0%, #B0A0FE 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #B0A0FE 0%, #C5B8FE 100%);
+    --gradient-primary: linear-gradient(135deg, #F5F1EB 0%, #E8E3DB 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #FFFFFF 0%, #F5F1EB 100%);
     --gradient-bg: #1A1614;
     --gradient-bg-subtle: linear-gradient(135deg, #1A1614, #2C2420);
 
@@ -542,8 +545,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-    --shadow-button: 0 2px 8px rgba(155, 133, 253, 0.3);
-    --shadow-button-hover: 0 4px 16px rgba(155, 133, 253, 0.4);
+    --shadow-button: 0 2px 8px rgba(245, 241, 235, 0.2);
+    --shadow-button-hover: 0 4px 16px rgba(245, 241, 235, 0.3);
 
     --navbar-bg: #1A1614;
   }
@@ -558,7 +561,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   body {
-    background: var(--color-background);
+    background-color: var(--color-background);
+    background-image: radial-gradient(circle, var(--color-border-light) 1px, transparent 1px);
+    background-size: 24px 24px;
     color: var(--color-text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.5;
@@ -570,7 +575,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Figtree', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: -0.01em;
     line-height: 1.2;
     color: var(--color-text);

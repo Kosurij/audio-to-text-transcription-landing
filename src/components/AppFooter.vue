@@ -32,13 +32,9 @@ const currentYear = new Date().getFullYear();
 
 <style scoped>
 .footer {
-  background: var(--color-paper-tertiary);
+  background: transparent;
   border-top: 1px solid var(--color-border);
   padding: 48px 0 28px;
-}
-
-html[data-theme='dark'] .footer {
-  background: var(--color-paper-secondary);
 }
 
 .footer-container {
@@ -102,7 +98,7 @@ html[data-theme='dark'] .footer {
 }
 
 .footer-link:hover {
-  color: var(--accent-coral);
+  color: var(--accent-primary);
 }
 
 .footer-bottom {

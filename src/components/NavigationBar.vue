@@ -192,13 +192,11 @@ html[data-theme='dark'] .navbar.scrolled {
 }
 
 .navbar-inner {
-  max-width: 1280px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 72px;
-  padding: 0 32px;
+  padding: 0 48px;
 }
 
 .branding {
@@ -277,7 +275,7 @@ html[data-theme='dark'] .navbar.scrolled {
 }
 
 .navbar-cta {
-  /* Visible on desktop */
+  border-radius: var(--radius-full) !important;
 }
 
 .burger-button {

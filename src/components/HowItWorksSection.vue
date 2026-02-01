@@ -2,7 +2,15 @@
   <section class="how-it-works" id="how-it-works">
     <div class="how-it-works-container">
       <div class="section-header">
-        <h2 class="section-title">How it works</h2>
+        <h2 class="section-title">Get started in three simple steps.</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step" v-for="(step, index) in steps" :key="index">
+          <div class="step-number">{{ index + 1 }}</div>
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-description">{{ step.description }}</p>
+        </div>
       </div>
 
       <!-- Demo Video -->
@@ -16,15 +24,11 @@
             allowfullscreen
             class="youtube-iframe"
           ></iframe>
-        </div>
-      </div>
-
-      <div class="steps">
-        <div class="step" v-for="(step, index) in steps" :key="index">
-          <div class="step-number">{{ index + 1 }}</div>
-          <div class="step-content">
-            <h3 class="step-title">{{ step.title }}</h3>
-            <p class="step-description">{{ step.description }}</p>
+          <div v-else class="video-placeholder" @click="videoLoaded = true">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+            </svg>
+            <span>Watch demo</span>
           </div>
         </div>
       </div>
@@ -68,56 +72,104 @@ onMounted(() => {
 const steps = [
   {
     title: 'Install the Extension',
-    description: 'Add Audio To Text Transcription to your Chrome browser with one click. No registration required.'
+    description: 'Add Audio To Text Transcription to Chrome with one click. No registration required.'
   },
   {
-    title: 'Upload or Record Audio',
-    description: 'Drag and drop your audio file or record directly from your microphone. Supports all major audio formats.'
+    title: 'Upload or Record',
+    description: 'Drag and drop an audio file or record directly from your microphone or browser tab.'
   },
   {
-    title: 'Get Your Transcription',
-    description: 'Receive accurate text transcriptions instantly. Copy, edit, or export in your preferred format.'
+    title: 'Get Your Transcript',
+    description: 'Receive accurate text instantly. Copy, edit, or export in your preferred format.'
   }
 ];
 </script>
 
 <style scoped>
 .how-it-works {
-  padding: 80px 0;
-  background: var(--color-background);
+  padding: 100px 0;
+  background: transparent;
   position: relative;
 }
 
 .how-it-works-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 700;
   text-align: center;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }
 
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.step {
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.step-number {
+  width: 44px;
+  height: 44px;
+  background: var(--color-text);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-background);
+  margin-bottom: 16px;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.step-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
 .demo-video-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 56px;
 }
 
 .youtube-container {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  height: 500px;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -131,90 +183,44 @@ const steps = [
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-xl);
 }
 
-.steps {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-}
-
-.step {
+.video-placeholder {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 20px;
-  flex: 1;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 32px 24px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.step:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.step-number {
-  width: 48px;
-  height: 48px;
-  background: var(--accent-primary);
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-text);
-  flex-shrink: 0;
-}
-
-.step-content {
-  flex: 1;
-}
-
-.step-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--color-text);
-}
-
-.step-description {
+  gap: 12px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
   font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--color-text-secondary);
-  font-weight: 400;
+  font-weight: 500;
+}
+
+.video-placeholder:hover {
+  color: var(--color-text);
 }
 
 @media (max-width: 768px) {
   .how-it-works {
-    padding: 56px 0;
+    padding: 64px 0;
   }
 
   .section-header {
-    margin-bottom: 32px;
-  }
-
-  .demo-video-container {
     margin-bottom: 40px;
   }
 
-  .youtube-container {
-    max-width: 100%;
-    height: 300px;
-  }
-
   .steps {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
   }
 
   .step {
-    padding: 28px;
+    padding: 24px;
   }
 }
 </style>

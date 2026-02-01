@@ -85,11 +85,9 @@ const chromeStoreUrl = buildChromeStoreUrl()
 .primary:hover {
   background: var(--button-primary-hover);
   box-shadow: var(--shadow-button-hover);
-  transform: translateY(-2px);
 }
 
 .primary:active {
-  transform: translateY(0);
   box-shadow: var(--shadow-sm);
 }
 
@@ -102,12 +100,7 @@ const chromeStoreUrl = buildChromeStoreUrl()
 
 .secondary:hover {
   background: var(--button-secondary-hover);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-}
-
-.secondary:active {
-  transform: translateY(0);
 }
 
 /* --- OUTLINE --- */

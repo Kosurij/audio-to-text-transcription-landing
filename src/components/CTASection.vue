@@ -27,7 +27,7 @@ import InstallButton from './InstallButton.vue';
 .cta {
   padding: 80px 0;
   position: relative;
-  background: var(--color-background);
+  background: transparent;
   overflow: hidden;
 }
 
@@ -47,13 +47,13 @@ import InstallButton from './InstallButton.vue';
   transform: translate(-50%, -50%);
   width: 1000px;
   height: 1000px;
-  background: radial-gradient(circle, rgba(255, 179, 154, 0.15) 0%, rgba(255, 218, 185, 0.08) 40%, transparent 65%);
+  background: radial-gradient(circle, rgba(30, 27, 24, 0.04) 0%, rgba(30, 27, 24, 0.02) 40%, transparent 65%);
   border-radius: 50%;
   filter: blur(40px);
 }
 
 html[data-theme='dark'] .cta-gradient {
-  background: radial-gradient(circle, rgba(255, 179, 154, 0.06) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(245, 241, 235, 0.06) 0%, transparent 50%);
 }
 
 .cta-container {
