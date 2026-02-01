@@ -293,8 +293,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
       body {
         background-color: #FAF8F5;
-        background-image: radial-gradient(circle, #e5e0d8 1px, transparent 1px);
-        background-size: 24px 24px;
         color: #1E1B18;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         line-height: 1.5;
@@ -307,7 +305,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
       html[data-theme='dark'] body {
         background-color: #1A1614;
-        background-image: radial-gradient(circle, #2a2520 1px, transparent 1px);
         color: #F5F1EB;
       }
 
@@ -397,6 +394,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- /Yandex.Metrika counter -->
   </head>
   <body>
+    <svg class="noise-svg" aria-hidden="true">
+      <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#noise)" opacity="1" />
+    </svg>
     <slot />
   </body>
 </html>
@@ -562,9 +566,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   body {
     background-color: var(--color-background);
-    background-image: radial-gradient(circle, var(--color-border-light) 1px, transparent 1px);
-    background-size: 24px 24px;
     color: var(--color-text);
+    position: relative;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -572,6 +575,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     padding: 0;
     margin: 0;
     overflow-x: hidden;
+  }
+
+  .noise-svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.035;
+  }
+
+  html[data-theme='dark'] .noise-svg {
+    opacity: 0.05;
   }
 
   h1, h2, h3, h4, h5, h6 {
