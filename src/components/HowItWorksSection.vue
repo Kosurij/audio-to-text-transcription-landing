@@ -2,34 +2,33 @@
   <section class="how-it-works" id="how-it-works">
     <div class="how-it-works-container">
       <div class="section-header">
+        <p class="section-label">How it works</p>
         <h2 class="section-title">Get started in three simple steps.</h2>
+        <p class="section-subtitle">
+          Install, upload, and get your transcript. It's that simple.
+        </p>
       </div>
 
-      <div class="steps">
-        <div class="step" v-for="(step, index) in steps" :key="index">
-          <div class="step-number">{{ index + 1 }}</div>
-          <h3 class="step-title">{{ step.title }}</h3>
-          <p class="step-description">{{ step.description }}</p>
+      <div class="bento-grid">
+        <!-- Steps cards (left side) -->
+        <div class="bento-card bento-card--step" v-for="(step, index) in steps" :key="index">
+          <div class="bento-card__icon">
+            <span class="step-number">{{ index + 1 }}</span>
+          </div>
+          <h3 class="bento-card__title">{{ step.title }}</h3>
+          <p class="bento-card__description">{{ step.description }}</p>
         </div>
-      </div>
 
-      <!-- Demo Video -->
-      <div class="demo-video-container">
-        <div ref="videoContainer" class="youtube-container">
+        <!-- Demo Video card (right side) -->
+        <div class="bento-card bento-card--video">
           <iframe
-            v-if="videoLoaded"
             src="https://www.youtube.com/embed/Jp9s63e7xqU?autoplay=0&mute=0&controls=1&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=1&cc_load_policy=0&loop=0"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
-            class="youtube-iframe"
+            loading="lazy"
+            class="video-iframe"
           ></iframe>
-          <div v-else class="video-placeholder" @click="videoLoaded = true">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-              <polygon points="5,3 19,12 5,21" fill="currentColor"/>
-            </svg>
-            <span>Watch demo</span>
-          </div>
         </div>
       </div>
     </div>
@@ -37,38 +36,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const videoLoaded = ref(false)
-const videoContainer = ref<HTMLElement | null>(null)
-
-onMounted(() => {
-  if (!videoContainer.value) return
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !videoLoaded.value) {
-          videoLoaded.value = true
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    {
-      rootMargin: '100px',
-      threshold: 0.1
-    }
-  )
-
-  observer.observe(videoContainer.value)
-
-  onUnmounted(() => {
-    if (videoContainer.value) {
-      observer.unobserve(videoContainer.value)
-    }
-  })
-})
-
 const steps = [
   {
     title: 'Install the Extension',
@@ -93,134 +60,212 @@ const steps = [
 }
 
 .how-it-works-container {
-  max-width: 1100px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 48px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 64px;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
 }
 
 .section-title {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 700;
   text-align: center;
+  margin-top: 0;
+  margin-bottom: 16px;
   color: var(--color-text);
   letter-spacing: -0.02em;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 64px;
-}
-
-.step {
+.section-subtitle {
+  font-size: 1.05rem;
   text-align: center;
-  padding: 32px 24px;
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+/* Step cards positioning */
+.bento-card--step:nth-child(1) {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.bento-card--step:nth-child(2) {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+
+.bento-card--step:nth-child(3) {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}
+
+/* Video card positioning */
+.bento-card--video {
+  grid-column: 3 / 7;
+  grid-row: 1 / 4;
+}
+
+/* Card base styles */
+.bento-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  overflow: hidden;
+  position: relative;
 }
 
-.step:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.step-number {
-  width: 44px;
-  height: 44px;
-  background: var(--color-text);
-  border-radius: var(--radius-full);
-  display: inline-flex;
+/* Step card styles */
+.bento-card--step .bento-card__icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-primary-light);
+  border: 1px solid var(--accent-primary-light-border);
+  border-radius: var(--radius-md);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-background);
   margin-bottom: 16px;
 }
 
-.step-title {
-  font-size: 1.15rem;
+.step-number {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.bento-card__title {
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 8px;
   color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 
-.step-description {
-  font-size: 0.9rem;
+.bento-card__description {
+  font-size: 0.88rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
   font-weight: 400;
 }
 
-.demo-video-container {
-  display: flex;
-  justify-content: center;
-}
-
-.youtube-container {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-xl);
+/* Video card styles */
+.bento-card--video {
+  padding: 0;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-}
-
-.youtube-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.video-placeholder {
-  position: absolute;
-  inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  cursor: pointer;
-  color: var(--color-text-muted);
-  transition: color 0.2s ease;
-  font-size: 0.95rem;
-  font-weight: 500;
+  min-height: 400px;
 }
 
-.video-placeholder:hover {
-  color: var(--color-text);
+.video-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  min-height: 400px;
 }
 
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bento-card--step:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .bento-card--step:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+
+  .bento-card--step:nth-child(3) {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  .bento-card--video {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    min-height: 300px;
+  }
+
+  .video-iframe {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
   .how-it-works {
     padding: 64px 0;
+  }
+
+  .how-it-works-container {
+    padding: 0 24px;
   }
 
   .section-header {
     margin-bottom: 40px;
   }
 
-  .steps {
+  .bento-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 48px;
+    gap: 12px;
   }
 
-  .step {
+  .bento-card--step:nth-child(1),
+  .bento-card--step:nth-child(2),
+  .bento-card--step:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .bento-card--video {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 240px;
+  }
+
+  .video-iframe {
+    min-height: 240px;
+  }
+
+  .bento-card {
     padding: 24px;
+    border-radius: var(--radius-lg);
+  }
+
+  .bento-card--video {
+    padding: 0;
   }
 }
 </style>

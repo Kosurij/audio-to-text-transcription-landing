@@ -188,15 +188,8 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: 32px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
   overflow: hidden;
   position: relative;
-}
-
-.bento-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-  border-color: var(--color-border-strong);
 }
 
 /* Large card content layout */
@@ -229,11 +222,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
-}
-
-.bento-card:hover .visual-placeholder {
-  background: var(--color-paper-tertiary);
 }
 
 .visual-placeholder__inner {

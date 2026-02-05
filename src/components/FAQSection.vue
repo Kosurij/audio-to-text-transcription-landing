@@ -2,13 +2,12 @@
   <section class="faq" id="faq">
     <div class="faq-container">
       <div class="section-header">
-        <h2 class="section-title">
-          Frequently Asked <span class="gradient-text">Questions</span>
-        </h2>
+        <h2 class="section-title">Your questions, answered.</h2>
         <p class="section-subtitle">
-          Everything you need to know about Audio To Text Transcription
+          If you have any further questions, <a href="mailto:kosurij.dm@gmail.com" class="contact-link">Get in touch</a> with our friendly team
         </p>
       </div>
+
       <div class="faq-list">
         <div
           class="faq-item"
@@ -17,20 +16,25 @@
           :class="{ active: activeIndex === index }"
         >
           <button class="faq-question" @click="toggle(index)">
-            <span>{{ item.question }}</span>
             <svg
               class="faq-icon"
-              :class="{ rotated: activeIndex === index }"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
+              :class="{ active: activeIndex === index }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
               fill="none"
             >
-              <path d="M7 10L12 15L17 10H7Z" fill="currentColor"/>
+              <line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
+            <span>{{ item.question }}</span>
           </button>
-          <div class="faq-answer" v-show="activeIndex === index">
-            <p>{{ item.answer }}</p>
+          <div class="faq-answer" :class="{ open: activeIndex === index }">
+            <div class="faq-answer-inner">
+              <div class="faq-answer-content">
+                <p>{{ item.answer }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -81,43 +85,50 @@ const faqs = [
 
 <style scoped>
 .faq {
-  padding: 80px 0;
+  padding: 100px 0;
   background: transparent;
 }
 
 .faq-container {
-  max-width: 720px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 48px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 64px;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
   text-align: center;
+  margin-top: 0;
   margin-bottom: 16px;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #5C534D 0%, #8A7F76 50%, #AFA49A 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
 .section-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   text-align: center;
   color: var(--color-text-secondary);
+  max-width: 580px;
+  margin: 0 auto;
   font-weight: 400;
+  line-height: 1.6;
+}
+
+.contact-link {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent-primary);
 }
 
 .faq-list {
@@ -147,8 +158,9 @@ const faqs = [
 .faq-question {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
   padding: 20px 24px;
   background: transparent;
   border: none;
@@ -161,48 +173,68 @@ const faqs = [
   font-family: 'Inter', sans-serif;
 }
 
+.faq-question span {
+  flex: 1;
+  text-align: left;
+}
+
 .faq-question:hover {
   color: var(--accent-primary);
 }
 
 .faq-icon {
   flex-shrink: 0;
-  margin-left: 16px;
-  color: var(--accent-primary);
+  color: var(--color-text);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 2px;
 }
 
-.faq-icon.rotated {
-  transform: rotate(180deg);
+.faq-icon.active {
+  transform: rotate(45deg);
 }
 
 .faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer.open {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer-inner {
+  overflow: hidden;
+}
+
+.faq-answer-content {
   padding: 0 24px 24px;
   color: var(--color-text-secondary);
   line-height: 1.7;
   font-size: 0.95rem;
   font-weight: 400;
-  animation: slideDown 0.3s ease;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.faq-answer.open .faq-answer-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
 }
 
 @media (max-width: 768px) {
   .faq {
-    padding: 56px 0;
+    padding: 64px 0;
+  }
+
+  .faq-container {
+    padding: 0 24px;
   }
 
   .section-header {
-    margin-bottom: 36px;
+    margin-bottom: 40px;
   }
 
   .faq-question {
@@ -210,7 +242,7 @@ const faqs = [
     padding: 18px 20px;
   }
 
-  .faq-answer {
+  .faq-answer-content {
     padding: 0 20px 20px;
     font-size: 0.9rem;
   }
