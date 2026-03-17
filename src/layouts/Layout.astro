@@ -280,8 +280,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <style>
       html {
         scroll-behavior: smooth;
-        background: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-        background-attachment: fixed;
+        background: #ffffff;
         overflow-x: hidden;
         margin: 0;
         padding: 0;
@@ -289,10 +288,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       }
 
       body {
-        background: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-        background-attachment: fixed;
+        background: #ffffff;
         color: #202124;
-        font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -401,79 +399,58 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   :root {
-    /* Chrome Extension Style - Clean & Minimal (Light Theme) */
     --color-text: #202124;
     --color-text-secondary: #5F6368;
     --color-text-muted: #80868B;
     --color-background: #FFFFFF;
     --color-surface: #F8F9FA;
     --color-surface-elevated: #FFFFFF;
-    --color-border: #DADCE0;
-    --color-border-strong: #BDC1C6;
-    
-    /* Chrome Blue Accent */
-    --accent-primary: #1A73E8;
-    --accent-primary-hover: #1765CC;
-    --accent-secondary: #34A853;
-    --accent-blue: #1A73E8;
-    
-    /* Chrome Extension Gradients */
-    --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #1765CC 0%, #357AE8 100%);
-    --gradient-bg: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-    --gradient-bg-subtle: linear-gradient(135deg, rgba(239, 246, 255, 0.5), rgba(219, 234, 254, 0.5), rgba(191, 219, 254, 0.5));
-    
-    /* Material Design Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    --shadow-md: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-    --shadow-lg: 0 2px 4px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
-    --shadow-xl: 0 4px 8px 0 rgba(60, 64, 67, 0.3), 0 8px 16px 4px rgba(60, 64, 67, 0.15);
-    
-    /* Navbar */
-    --navbar-bg: #FFFFFF;
-    --navbar-blur: none;
-    
+    --color-border: #E2E8F0;        /* was #DADCE0 — global change, affects all components */
+    --color-border-strong: #CBD5E1; /* was #BDC1C6 */
+    --accent-primary: #2563EB;
+    --accent-primary-hover: #1D4ED8;
+    --accent-secondary: #0EA5E9;
+    --accent-blue: #2563EB;
+    --gradient-primary: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #1D4ED8 0%, #0284C7 100%);
+    --gradient-bg: #FFFFFF;
+    --gradient-bg-subtle: #F8FAFC;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.08), 0 8px 10px rgba(0, 0, 0, 0.04);
+    /* --navbar-bg and --navbar-blur removed — NavigationBar no longer uses them after Task 2 */
+
     font-size: 16px;
     font-weight: 400;
   }
 
   html[data-theme='dark'] {
-    /* Dark Theme */
-    --color-text: #E8EAED;
-    --color-text-secondary: #9AA0A6;
-    --color-text-muted: #80868B;
-    --color-background: #202124;
-    --color-surface: #2D2E30;
-    --color-surface-elevated: #303134;
-    --color-border: #3C4043;
-    --color-border-strong: #5F6368;
-    
-    /* Chrome Blue Accent (lighter for dark theme) */
-    --accent-primary: #8AB4F8;
-    --accent-primary-hover: #AECBFA;
-    --accent-secondary: #81C995;
-    --accent-blue: #8AB4F8;
-    
-    /* Dark Theme Gradients */
-    --gradient-primary: linear-gradient(135deg, #8AB4F8 0%, #AECBFA 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #AECBFA 0%, #C5E1FA 100%);
-    --gradient-bg: linear-gradient(135deg, rgb(32, 33, 36), rgb(41, 42, 45), rgb(48, 49, 52));
-    --gradient-bg-subtle: linear-gradient(135deg, rgba(32, 33, 36, 0.8), rgba(41, 42, 45, 0.8), rgba(48, 49, 52, 0.8));
-    
-    /* Dark Theme Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 3px 1px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 6px 2px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 2px 4px 0 rgba(0, 0, 0, 0.6), 0 4px 8px 3px rgba(0, 0, 0, 0.5);
-    --shadow-xl: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 8px 16px 4px rgba(0, 0, 0, 0.6);
-    
-    /* Navbar Dark */
-    --navbar-bg: #202124;
+    --color-text: #F1F5F9;
+    --color-text-secondary: #94A3B8;
+    --color-text-muted: #64748B;
+    --color-background: #0F172A;
+    --color-surface: #1E293B;
+    --color-surface-elevated: #1E293B;
+    --color-border: #334155;
+    --color-border-strong: #475569;
+    --accent-primary: #3B82F6;
+    --accent-primary-hover: #60A5FA;
+    --accent-secondary: #38BDF8;
+    --accent-blue: #3B82F6;
+    --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #38BDF8 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #60A5FA 0%, #7DD3FC 100%);
+    --gradient-bg: #0F172A;
+    --gradient-bg-subtle: #1E293B;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6), 0 8px 10px rgba(0, 0, 0, 0.4);
   }
 
   html {
     scroll-behavior: smooth;
-    background: var(--gradient-bg);
-    background-attachment: fixed;
+    background: var(--color-background);
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -481,8 +458,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   body {
-    background: var(--gradient-bg);
-    background-attachment: fixed;
+    background: var(--color-background);
     color: var(--color-text);
     font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.5;

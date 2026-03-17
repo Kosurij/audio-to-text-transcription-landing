@@ -174,20 +174,26 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 88px;
   padding: 0 40px;
-  background: var(--navbar-bg);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  transition: background 0.2s ease;
+}
+
+html[data-theme='dark'] .navbar {
+  background: rgba(15, 23, 42, 0.88);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
 }
 
 .navbar.scrolled {
@@ -332,7 +338,7 @@ onBeforeUnmount(() => {
   top: 88px;
   right: 0;
   left: 0;
-  background: var(--navbar-bg);
+  background: var(--color-background);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
