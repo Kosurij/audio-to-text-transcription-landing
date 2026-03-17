@@ -1,20 +1,14 @@
 <template>
   <section class="cta">
-    <div class="cta-background">
-      <div class="cta-gradient"></div>
-    </div>
     <div class="cta-container">
-      <div class="cta-content">
-        <h2 class="cta-title">
-          Ready to Transform Your Audio?
-        </h2>
-        <p class="cta-subtitle">
-          Join thousands of users who are already boosting their productivity with Audio To Text Transcription
-        </p>
-        <InstallButton class="cta-button">
-          Install Free Extension
-        </InstallButton>
-      </div>
+      <h2 class="cta-title">Ready to transcribe your audio?</h2>
+      <p class="cta-subtitle">
+        Join thousands of professionals and students. Install free — no account required.
+      </p>
+      <InstallButton class="cta-button">
+        + Add to Chrome — It's free
+      </InstallButton>
+      <p class="cta-hint">Works in Chrome · No sign-up needed</p>
     </div>
   </section>
 </template>
@@ -25,115 +19,84 @@ import InstallButton from './InstallButton.vue';
 
 <style scoped>
 .cta {
-  padding: 60px 0;
-  position: relative;
-  background: var(--gradient-bg);
-  overflow: hidden;
+  padding: 80px 0;
+  background: var(--accent-primary);
+  text-align: center;
 }
 
-.cta-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-}
-
-.cta-gradient {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1200px;
-  height: 1200px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.1) 50%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(60px);
+html[data-theme='dark'] .cta {
+  background: var(--color-surface); /* в dark mode — поверхность, чтобы выделяться на #0F172A фоне */
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cta-container {
-  max-width: 1200px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-  z-index: 1;
-}
-
-.cta-content {
-  text-align: center;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
   align-items: center;
-  background: var(--color-surface-elevated);
-  background-image: var(--gradient-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 48px 40px;
-  box-shadow: var(--shadow-md);
+  gap: 20px;
 }
 
 .cta-title {
-  font-size: clamp(36px, 6vw, 56px);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 800;
-  color: var(--color-text);
-  margin: 0;
   letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+html[data-theme='dark'] .cta-title {
+  color: var(--color-text);
 }
 
 .cta-subtitle {
-  font-size: 20px;
-  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
-  max-width: 600px;
-  font-weight: 400;
+  max-width: 480px;
+  margin: 0;
+}
+
+html[data-theme='dark'] .cta-subtitle {
+  color: var(--color-text-secondary);
 }
 
 .cta-button {
-  font-size: 20px;
-  font-weight: 600;
-  padding: 20px 48px;
-  border-radius: 16px;
-  height: 64px;
-  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 8px;
+  height: auto; /* override InstallButton's internal height: 36px */
+  background: #FFFFFF;
+  color: var(--accent-primary);
 }
 
-@media (max-width: 768px) {
-  .cta {
-    padding: 40px 20px;
-  }
+html[data-theme='dark'] .cta-button {
+  background: var(--accent-primary);
+  color: #FFFFFF;
+}
 
-  .cta-content {
-    padding: 40px 32px;
-  }
+.cta-hint {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
 
-  .cta-title {
-    font-size: 32px;
-  }
-
-  .cta-subtitle {
-    font-size: 18px;
-  }
-
-  .cta-button {
-    font-size: 18px;
-    padding: 18px 36px;
-    height: 56px;
-  }
+html[data-theme='dark'] .cta-hint {
+  color: var(--color-text-muted);
 }
 
 @media (max-width: 600px) {
-  .cta-content {
-    padding: 32px 24px;
-    gap: 20px;
+  .cta {
+    padding: 60px 0;
   }
 
   .cta-button {
     width: 100%;
     max-width: 320px;
-    font-size: 16px;
-    padding: 8px;
   }
 }
 </style>
