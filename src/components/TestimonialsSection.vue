@@ -17,16 +17,19 @@
         <div class="card card-tall" style="grid-column: 1; grid-row: 1 / 3">
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ tall[0].text }}"</p>
-          <!-- Large photo slot: replace src with real photo URL when ready -->
+          <!-- Large photo: fills bottom, replaces avatar circle -->
           <div v-if="tall[0].photo" class="card-photo">
             <img :src="tall[0].photo" :alt="tall[0].name" />
           </div>
           <div v-else class="card-photo-placeholder">
             [Photo: {{ tall[0].name }}, {{ tall[0].role }}]
           </div>
+          <!-- photo present → no circle; avatar → circle img; neither → initials -->
           <div class="card-author">
-            <img v-if="tall[0].avatar" :src="tall[0].avatar" :alt="tall[0].name" class="author-img" />
-            <div v-else class="author-initials">{{ tall[0].name[0] }}</div>
+            <template v-if="!tall[0].photo">
+              <img v-if="tall[0].avatar" :src="tall[0].avatar" :alt="tall[0].name" class="author-img" />
+              <div v-else class="author-initials">{{ tall[0].name[0] }}</div>
+            </template>
             <div>
               <div class="author-name">{{ tall[0].name }}</div>
               <div class="author-role">{{ tall[0].role }}</div>
@@ -73,8 +76,10 @@
             [Photo: {{ tall[1].name }}, {{ tall[1].role }}]
           </div>
           <div class="card-author">
-            <img v-if="tall[1].avatar" :src="tall[1].avatar" :alt="tall[1].name" class="author-img" />
-            <div v-else class="author-initials">{{ tall[1].name[0] }}</div>
+            <template v-if="!tall[1].photo">
+              <img v-if="tall[1].avatar" :src="tall[1].avatar" :alt="tall[1].name" class="author-img" />
+              <div v-else class="author-initials">{{ tall[1].name[0] }}</div>
+            </template>
             <div>
               <div class="author-name">{{ tall[1].name }}</div>
               <div class="author-role">{{ tall[1].role }}</div>
