@@ -27,7 +27,7 @@
               ▶ Watch Demo
             </a>
           </div>
-          <p class="hero-cta-hint">No account required · Works in Chrome</p>
+          <p class="hero-cta-hint">Works in Chrome</p>
         </div>
 
         <div class="hero-stats">

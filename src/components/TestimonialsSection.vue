@@ -3,7 +3,6 @@
     <div class="testimonials-container">
       <div class="section-header">
         <h2 class="section-title">What Our Users Say</h2>
-        <p class="section-subtitle">Based on <strong>19 reviews</strong> on Chrome Web Store</p>
       </div>
       <div class="testimonials-masonry">
         <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.name">

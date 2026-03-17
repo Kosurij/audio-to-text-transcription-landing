@@ -281,7 +281,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       html {
         scroll-behavior: smooth;
         background: #ffffff;
-        overflow-x: hidden;
+        overflow-x: clip;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -305,7 +305,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         -moz-osx-font-smoothing: grayscale;
         padding: 0;
         margin: 0;
-        overflow-x: hidden;
+        overflow-x: clip;
       }
 
       .landing-page {
@@ -460,7 +460,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   html {
     scroll-behavior: smooth;
     background: var(--color-background);
-    overflow-x: hidden;
+    overflow-x: clip;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -475,7 +475,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     -moz-osx-font-smoothing: grayscale;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   
   h1, h2, h3, h4, h5, h6 {
