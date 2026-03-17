@@ -19,26 +19,36 @@
         </p>
 
         <div class="hero-cta">
-          <InstallButton class="hero-install-btn">
-            + Add to Chrome — It's free
-          </InstallButton>
+          <div class="hero-cta-row">
+            <InstallButton class="hero-install-btn">
+              + Add to Chrome — It's free
+            </InstallButton>
+            <a href="#demo" class="watch-demo-btn" @click.prevent="scrollToDemo">
+              ▶ Watch Demo
+            </a>
+          </div>
           <p class="hero-cta-hint">No account required · Works in Chrome</p>
         </div>
 
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-value">10k+</span>
-            <span class="stat-label">Users</span>
+            <span class="stat-value">1.2k+</span>
+            <span class="stat-label">Weekly Active Users</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <span class="stat-value">★ 4.8</span>
+            <span class="stat-value">★ 5.0</span>
             <span class="stat-label">Chrome Store</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <span class="stat-value">95%+</span>
+            <span class="stat-value">99%</span>
             <span class="stat-label">Accuracy</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">90+</span>
+            <span class="stat-label">Languages</span>
           </div>
         </div>
       </div>
@@ -60,6 +70,10 @@
 
 <script setup lang="ts">
 import InstallButton from './InstallButton.vue';
+
+const scrollToDemo = () => {
+  document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <style scoped>
@@ -137,6 +151,13 @@ html[data-theme='dark'] .hero-badge {
   gap: 10px;
 }
 
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 .hero-install-btn {
   font-size: 16px;
   font-weight: 700;
@@ -145,6 +166,23 @@ html[data-theme='dark'] .hero-badge {
   width: fit-content;
   height: auto; /* override InstallButton's internal height: 36px */
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.watch-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  text-decoration: none;
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.watch-demo-btn:hover {
+  border-bottom-color: var(--accent-primary);
 }
 
 html[data-theme='dark'] .hero-install-btn {
