@@ -66,9 +66,7 @@
           <div v-if="tall[1].photo" class="card-photo">
             <img :src="tall[1].photo" :alt="tall[1].name" />
           </div>
-          <div v-else class="card-photo-placeholder">
-            [Photo: {{ tall[1].name }}, {{ tall[1].role }}]
-          </div>
+          <div v-else class="card-photo-placeholder"></div>
           <div class="card-author">
             <div>
               <div class="author-name">{{ tall[1].name }}</div>
