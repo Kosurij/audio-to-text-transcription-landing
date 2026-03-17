@@ -189,7 +189,12 @@ const features = [
   }
 
   .features-list {
-    gap: 56px;
+    gap: 40px;
+  }
+
+  /* Hide media placeholders on mobile — text content is sufficient */
+  .feature-media {
+    display: none;
   }
 }
 </style>

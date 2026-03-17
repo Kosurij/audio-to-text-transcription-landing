@@ -158,5 +158,14 @@ const steps = [
   .how-it-works {
     padding: 60px 0;
   }
+
+  /* Hide media placeholders on mobile — steps read fine as number + text */
+  .step-media {
+    display: none;
+  }
+
+  .step {
+    border-radius: 12px;
+  }
 }
 </style>
