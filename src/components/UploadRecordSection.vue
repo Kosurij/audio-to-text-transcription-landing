@@ -48,34 +48,55 @@
             <div class="waveform-zone">
               <div class="record-dot"></div>
               <div class="waveform">
-                <span class="bar" style="--h: 18px"></span>
-                <span class="bar" style="--h: 36px"></span>
-                <span class="bar" style="--h: 52px"></span>
-                <span class="bar" style="--h: 64px"></span>
-                <span class="bar" style="--h: 44px"></span>
-                <span class="bar" style="--h: 70px"></span>
-                <span class="bar" style="--h: 40px"></span>
-                <span class="bar" style="--h: 60px"></span>
-                <span class="bar" style="--h: 32px"></span>
-                <span class="bar" style="--h: 56px"></span>
-                <span class="bar" style="--h: 68px"></span>
+                <span class="bar" style="--h: 14px"></span>
                 <span class="bar" style="--h: 28px"></span>
                 <span class="bar" style="--h: 48px"></span>
                 <span class="bar" style="--h: 62px"></span>
-                <span class="bar" style="--h: 36px"></span>
-                <span class="bar" style="--h: 54px"></span>
-                <span class="bar" style="--h: 44px"></span>
-                <span class="bar" style="--h: 66px"></span>
-                <span class="bar" style="--h: 30px"></span>
-                <span class="bar" style="--h: 50px"></span>
                 <span class="bar" style="--h: 38px"></span>
+                <span class="bar" style="--h: 70px"></span>
+                <span class="bar" style="--h: 44px"></span>
                 <span class="bar" style="--h: 58px"></span>
-                <span class="bar" style="--h: 24px"></span>
-                <span class="bar" style="--h: 42px"></span>
-                <span class="bar" style="--h: 34px"></span>
+                <span class="bar" style="--h: 30px"></span>
+                <span class="bar" style="--h: 66px"></span>
+                <span class="bar" style="--h: 52px"></span>
                 <span class="bar" style="--h: 22px"></span>
+                <span class="bar" style="--h: 60px"></span>
+                <span class="bar" style="--h: 36px"></span>
+                <span class="bar" style="--h: 72px"></span>
                 <span class="bar" style="--h: 46px"></span>
+                <span class="bar" style="--h: 26px"></span>
+                <span class="bar" style="--h: 64px"></span>
+                <span class="bar" style="--h: 40px"></span>
+                <span class="bar" style="--h: 56px"></span>
+                <span class="bar" style="--h: 18px"></span>
+                <span class="bar" style="--h: 68px"></span>
+                <span class="bar" style="--h: 34px"></span>
+                <span class="bar" style="--h: 54px"></span>
+                <span class="bar" style="--h: 42px"></span>
+                <span class="bar" style="--h: 70px"></span>
+                <span class="bar" style="--h: 24px"></span>
+                <span class="bar" style="--h: 58px"></span>
+                <span class="bar" style="--h: 48px"></span>
+                <span class="bar" style="--h: 32px"></span>
+                <span class="bar" style="--h: 66px"></span>
+                <span class="bar" style="--h: 20px"></span>
+                <span class="bar" style="--h: 52px"></span>
+                <span class="bar" style="--h: 38px"></span>
+                <span class="bar" style="--h: 62px"></span>
+                <span class="bar" style="--h: 28px"></span>
+                <span class="bar" style="--h: 44px"></span>
+                <span class="bar" style="--h: 68px"></span>
                 <span class="bar" style="--h: 16px"></span>
+                <span class="bar" style="--h: 56px"></span>
+                <span class="bar" style="--h: 36px"></span>
+                <span class="bar" style="--h: 60px"></span>
+                <span class="bar" style="--h: 24px"></span>
+                <span class="bar" style="--h: 46px"></span>
+                <span class="bar" style="--h: 30px"></span>
+                <span class="bar" style="--h: 54px"></span>
+                <span class="bar" style="--h: 20px"></span>
+                <span class="bar" style="--h: 40px"></span>
+                <span class="bar" style="--h: 14px"></span>
               </div>
             </div>
           </div>
@@ -251,20 +272,20 @@ const platforms = [
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 2px;
   height: 80px;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, black 60%, rgba(0,0,0,0.15) 85%, transparent 100%);
-  mask-image: linear-gradient(to right, black 60%, rgba(0,0,0,0.15) 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 55%, rgba(0,0,0,0.2) 80%, transparent 100%);
+  mask-image: linear-gradient(to right, black 55%, rgba(0,0,0,0.2) 80%, transparent 100%);
 }
 
 .bar {
   display: block;
-  flex: 1;
-  max-width: 5px;
+  flex-shrink: 0;
+  width: 3px;
   height: var(--h, 16px);
   background: var(--accent-primary);
-  border-radius: 3px;
+  border-radius: 2px;
   animation: wave 1.2s ease-in-out infinite alternate;
 }
 
