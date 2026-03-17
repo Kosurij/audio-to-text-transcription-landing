@@ -57,7 +57,9 @@
       <div class="hero-right">
         <div class="hero-panel">
           <!-- Placeholder: replace with actual GIF of the extension -->
-          <div class="hero-panel-placeholder"></div>
+          <div class="hero-panel-placeholder">
+            <!-- TODO: вставить GIF расширения — флоу: открыть попап → загрузить файл → получить транскрипт -->
+          </div>
         </div>
       </div>
 
