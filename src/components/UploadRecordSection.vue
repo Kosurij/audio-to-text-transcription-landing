@@ -95,7 +95,7 @@ const platforms = [
 
 <style scoped>
 .upload-record {
-  padding: 64px 0;
+  padding: 80px 0;
   background: linear-gradient(180deg, #ffffff 0%, #E8F0FE 30%, #EDE8FE 65%, #ffffff 100%);
 }
 
@@ -337,7 +337,7 @@ html[data-theme='dark'] .upload-record {
   }
 
   .upload-record {
-    padding: 36px 0;
+    padding: 60px 0;
   }
 
   .compat-logos {

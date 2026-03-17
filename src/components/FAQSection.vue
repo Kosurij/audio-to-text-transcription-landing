@@ -81,14 +81,14 @@ const faqs = [
 
 <style scoped>
 .faq {
-  padding: 60px 0;
+  padding: 80px 0;
   background: var(--color-surface);
 }
 
 .faq-container {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .section-header {
@@ -198,7 +198,7 @@ const faqs = [
 
 @media (max-width: 768px) {
   .faq {
-    padding: 40px 0;
+    padding: 60px 0;
   }
 
   .section-header {
