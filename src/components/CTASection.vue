@@ -6,9 +6,9 @@
         Join thousands of professionals and students. Install free — no account required.
       </p>
       <InstallButton class="cta-button">
-        + Add to Chrome — It's free
+        + Add to Chrome
       </InstallButton>
-      <p class="cta-hint">Works in Chrome · No sign-up needed</p>
+      <p class="cta-hint">Works in Chrome</p>
     </div>
   </section>
 </template>

@@ -21,7 +21,7 @@
         <div class="hero-cta">
           <div class="hero-cta-row">
             <InstallButton class="hero-install-btn">
-              + Add to Chrome — It's free
+              + Add to Chrome
             </InstallButton>
             <a href="#demo" class="watch-demo-btn" @click.prevent="scrollToDemo">
               ▶ Watch Demo
