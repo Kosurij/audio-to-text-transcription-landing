@@ -1,19 +1,32 @@
 <template>
-  <section class="benefits" id="features">
-    <div class="benefits-container">
+  <section class="features" id="features">
+    <div class="features-container">
       <div class="section-header">
-        <h2 class="section-title">Features</h2>
-        <p class="section-subtitle">
-          Powerful features designed to make audio-to-text conversion seamless and accurate
-        </p>
+        <h2 class="section-title">Everything you need to transcribe</h2>
+        <p class="section-subtitle">Powerful features that make audio-to-text conversion fast and effortless</p>
       </div>
-      <div class="benefits-grid">
-        <div class="benefit-card" v-for="benefit in benefits" :key="benefit.title">
-          <div class="benefit-icon">
-            <component :is="benefit.icon" />
+
+      <div class="features-list">
+        <div
+          class="feature-row"
+          v-for="(feature, index) in features"
+          :key="feature.title"
+          :class="{ 'feature-row--reversed': index % 2 === 1 }"
+        >
+          <!-- Text -->
+          <div class="feature-text">
+            <div class="feature-icon">{{ feature.emoji }}</div>
+            <h3 class="feature-title">{{ feature.title }}</h3>
+            <p class="feature-description">{{ feature.description }}</p>
           </div>
-          <h3 class="benefit-title">{{ benefit.title }}</h3>
-          <p class="benefit-description">{{ benefit.description }}</p>
+
+          <!-- Media -->
+          <div class="feature-media">
+            <!-- Placeholder: replace with <img :src="feature.media" :alt="feature.title" /> when ready -->
+            <div class="media-placeholder">
+              <span class="media-placeholder-label">{{ feature.mediaLabel }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -21,165 +34,162 @@
 </template>
 
 <script setup lang="ts">
-import { h } from 'vue';
-
-const benefits = [
+// mediaLabel — remove after replacing placeholders with real GIF/screenshots
+const features = [
   {
-    title: 'Lightning Fast',
-    description: 'Convert audio to text in seconds, not minutes. Get instant transcriptions for any audio file.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M13 2L3 14H12L11 22L21 10H12L13 2Z', fill: 'currentColor' })
-    ])
+    emoji: '⚡',
+    title: 'Lightning Fast Transcription',
+    description: 'Upload any audio file and get accurate text in seconds. Powered by Groq + Whisper AI — one of the fastest transcription engines available. No waiting, no delays.',
+    mediaLabel: 'GIF: Upload file → transcript appears',
   },
   {
-    title: 'Highly Accurate',
-    description: 'Advanced AI-powered transcription with 95%+ accuracy. Supports multiple languages and accents.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z', fill: 'currentColor' })
-    ])
+    emoji: '🎙',
+    title: 'Record Mic or Browser Tab',
+    description: 'Transcribe live audio directly in Chrome. Record from your microphone for in-person meetings, or capture any browser tab audio — perfect for online meetings, webinars, and podcasts.',
+    mediaLabel: 'GIF: Click record → waveform → text',
   },
   {
-    title: 'Multiple Formats',
-    description: 'Supports FLAC, MP3, M4A, MPEG, MPGA, OGG, WAV, WEBM and more. Export to TXT, DOCX, and SRT.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z', fill: 'currentColor' })
-    ])
+    emoji: '📄',
+    title: 'Export in Any Format',
+    description: "Copy text to clipboard, or export as TXT, DOCX, or SRT. The SRT format is ideal for video subtitles — just upload and you're done.",
+    mediaLabel: 'Screenshot: Export buttons TXT/DOCX/SRT',
   },
   {
-    title: 'Easy to Use',
-    description: 'One-click transcription. Simply drag and drop your audio file or record directly in the browser.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z', fill: 'currentColor' })
-    ])
-  },
-  {
+    emoji: '🔒',
     title: 'Privacy First',
-    description: 'Your audio files are processed securely. We respect your privacy and never store your data.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM12 11.99H19C18.47 16.11 15.72 19.78 12 20.93V12H5V6.3L12 3.19V11.99Z', fill: 'currentColor' })
-    ])
+    description: "Your audio is processed via the Groq API and never stored. We don't save recordings, transcripts, or personal data. What you transcribe stays yours.",
+    mediaLabel: 'Illustration or icon (no GIF needed)',
   },
-  {
-    title: 'Personalized Experience',
-    description: 'Choose between dark and light themes. Support for multiple interface languages to match your preferences.',
-    icon: () => h('svg', { width: '32', height: '32', viewBox: '0 0 24 24', fill: 'none', xmlns: 'http://www.w3.org/2000/svg' }, [
-      h('path', { d: 'M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z', fill: 'currentColor' }),
-      h('path', { d: 'M12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18V6Z', fill: 'currentColor' })
-    ])
-  }
 ];
 </script>
 
 <style scoped>
-.benefits {
-  padding: 60px 0;
-  background: var(--gradient-bg-subtle);
-  position: relative;
+.features {
+  padding: 80px 0;
+  background: var(--color-background);
 }
 
-.benefits-container {
+.features-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 72px;
 }
 
 .section-title {
-  font-size: clamp(40px, 6vw, 64px);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 800;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 24px;
-  color: var(--color-text);
   letter-spacing: -0.03em;
-}
-
-.gradient-text {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: var(--color-text);
+  margin-bottom: 12px;
 }
 
 .section-subtitle {
-  font-size: 20px;
-  text-align: center;
+  font-size: 1.125rem;
   color: var(--color-text-secondary);
-  max-width: 600px;
+  max-width: 520px;
   margin: 0 auto;
-  font-weight: 400;
   line-height: 1.6;
 }
 
-.benefits-grid {
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.feature-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
 }
 
-.benefit-card {
-  background: var(--color-surface-elevated);
-  background-image: var(--gradient-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 32px;
-  box-shadow: var(--shadow-sm);
+.feature-row--reversed {
+  direction: rtl;
 }
 
-.benefit-icon {
-  width: 48px;
-  height: 48px;
+.feature-row--reversed > * {
+  direction: ltr;
+}
+
+/* Dark mode: handled via CSS variables in Layout.astro — no additional rules needed */
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left; /* explicit — protection against RTL inheritance */
+}
+
+.feature-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.feature-title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
+  text-align: left; /* explicit — protection against RTL inheritance */
+}
+
+.feature-description {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-align: left; /* explicit — protection against RTL inheritance */
+}
+
+.feature-media {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Placeholder — remove after replacing with real img */
+.media-placeholder {
+  aspect-ratio: 16 / 10;
   background: var(--color-surface);
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  color: var(--accent-primary);
+  padding: 20px;
 }
 
-.benefit-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-bottom: 12px;
-  color: var(--color-text);
+.media-placeholder-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.5;
 }
 
-.benefit-description {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-  font-weight: 400;
-}
-
-.formats {
-  margin-top: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
+/* Mobile */
 @media (max-width: 768px) {
-  .benefits {
-    padding: 40px 0;
+  .features {
+    padding: 60px 0;
   }
 
-  .section-header {
-    margin-bottom: 48px;
-  }
-
-  .benefits-grid {
+  .feature-row {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 32px;
   }
 
-  .benefit-card {
-    padding: 32px;
+  .feature-row--reversed {
+    direction: ltr;
+  }
+
+  .features-list {
+    gap: 56px;
   }
 }
 </style>
