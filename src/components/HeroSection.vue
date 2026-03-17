@@ -60,7 +60,7 @@
       <!-- Right column: floating panel -->
       <div class="hero-right">
         <div class="hero-panel">
-          <!-- Placeholder: replace with actual GIF of the extension -->
+          <!-- TODO: replace with <img src="/screenshots/hero-transcript.png" alt="Extension popup with completed transcription" /> -->
           <div class="hero-panel-placeholder">
             <span class="placeholder-label">Скриншот расширения</span>
             <span class="placeholder-note">попап с готовой транскрипцией и кнопками Download / Copy</span>

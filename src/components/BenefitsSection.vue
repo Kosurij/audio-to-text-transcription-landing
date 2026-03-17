@@ -15,7 +15,7 @@
         >
           <!-- Text -->
           <div class="feature-text">
-            <div class="feature-icon">{{ feature.emoji }}</div>
+
             <h3 class="feature-title">{{ feature.title }}</h3>
             <p class="feature-description">{{ feature.description }}</p>
           </div>
@@ -34,31 +34,27 @@
 </template>
 
 <script setup lang="ts">
-// mediaLabel — remove after replacing placeholders with real GIF/screenshots
+// mediaLabel — TODO: replace each placeholder div with <img src="..." /> or <video autoplay loop muted playsinline>
 const features = [
   {
-    emoji: '⚡',
     title: 'Upload Files or Record Live',
     description: 'Drag and drop any audio or video file — MP3, WAV, M4A, OGG, MP4. Or click Record to capture your microphone or any browser tab in real time. Transcription starts instantly.',
-    mediaLabel: '[GIF: user drags audio file into extension popup → transcript text appears in seconds]',
+    mediaLabel: 'GIF → /gifs/upload-flow.gif\nЗапись: открыть попап → перетащить MP3 файл → прогресс бар → появляется текст транскрипции',
   },
   {
-    emoji: '🌐',
-    title: '90+ Languages with Timestamps',
+    title: '99+ Languages with Timestamps',
     description: 'Transcribe in any language — detected automatically. Each segment includes a timestamp so you can navigate to any moment. Perfect for multilingual meetings and interviews.',
-    mediaLabel: '[Screenshot: transcript with timestamps visible, language auto-detected label shown]',
+    mediaLabel: 'Screenshot → /screenshots/timestamps.png\nПоказать: транскрипт с временными метками слева, в шапке видно "Auto-detected: Russian" или другой язык',
   },
   {
-    emoji: '✨',
     title: 'AI-Powered Summary',
     description: 'After transcription, get an automatic summary of key points. No more reading through long transcripts — the important parts are extracted for you instantly.',
-    mediaLabel: '[Screenshot: summary panel below transcript text with key points bulleted]',
+    mediaLabel: 'Screenshot → /screenshots/summary.png\nПоказать: вкладка Summary открыта, список ключевых тезисов буллитами под транскриптом',
   },
   {
-    emoji: '📋',
     title: 'History, Edit & Export',
     description: 'All your transcriptions are saved. Edit the text directly in the extension, then download as TXT or copy to clipboard. Your history is always one click away.',
-    mediaLabel: '[Screenshot: transcription history list with edit icon and Download TXT button visible]',
+    mediaLabel: 'Screenshot → /screenshots/history.png\nПоказать: экран истории — список прошлых транскрипций, одна выбрана, видны кнопки Edit и Download TXT',
   },
 ];
 </script>
@@ -124,11 +120,6 @@ const features = [
   flex-direction: column;
   gap: 16px;
   text-align: left; /* explicit — protection against RTL inheritance */
-}
-
-.feature-icon {
-  font-size: 2.5rem;
-  line-height: 1;
 }
 
 .feature-title {

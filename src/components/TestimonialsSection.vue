@@ -128,7 +128,7 @@ const tall: Testimonial[] = [
   {
     name: 'Anna R.',
     role: 'Legal Assistant',
-    text: 'We use this to transcribe client consultations. The privacy-first approach matters to us — no data stored, quick results. The 90+ language support is a bonus since we work with international clients.',
+    text: 'We use this to transcribe client consultations. The privacy-first approach matters to us — no data stored, quick results. The 99+ language support is a bonus since we work with international clients.',
     // photo: '/photos/anna.jpg',
   },
 ]

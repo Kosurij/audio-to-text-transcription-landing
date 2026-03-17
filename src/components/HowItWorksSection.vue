@@ -29,21 +29,22 @@
 </template>
 
 <script setup lang="ts">
+// TODO: replace each media-placeholder with <img> or <video autoplay loop muted playsinline>
 const steps = [
   {
     title: 'Install the Extension',
     description: 'Add Audio to Text to Chrome with one click. The extension appears in your toolbar instantly.',
-    mediaLabel: '[Screenshot: Chrome Web Store install page for the Audio to Text extension]',
+    mediaLabel: 'Screenshot → /screenshots/chrome-store.png\nСкрин страницы расширения в Chrome Web Store: кнопка "Add to Chrome", иконка, рейтинг',
   },
   {
     title: 'Upload or Record Audio',
     description: 'Drop an audio or video file, or click Record to capture your microphone or any browser tab in real time. MP3, WAV, M4A, OGG, MP4 and more.',
-    mediaLabel: '[GIF: extension popup — user clicks Upload, selects file, loading progress starts]',
+    mediaLabel: 'GIF → /gifs/upload-step.gif\nЗапись: открыть попап → нажать Upload → выбрать файл в диалоге → появляется прогресс-бар загрузки',
   },
   {
     title: 'Get Your Transcript',
     description: 'Accurate text appears in seconds. Edit inline, copy to clipboard, or download as TXT.',
-    mediaLabel: '[GIF: transcript text appearing, then user clicks Download TXT button]',
+    mediaLabel: 'GIF → /gifs/transcript-result.gif\nЗапись: прогресс завершается → текст транскрипции появляется → пользователь нажимает Copy или Download TXT',
   },
 ]
 </script>

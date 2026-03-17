@@ -95,8 +95,12 @@ const platforms = [
 
 <style scoped>
 .upload-record {
-  padding: 48px 0;
-  background: var(--color-background);
+  padding: 64px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #E8F0FE 30%, #EDE8FE 65%, #ffffff 100%);
+}
+
+html[data-theme='dark'] .upload-record {
+  background: linear-gradient(180deg, #0F172A 0%, #0D1B35 30%, #130D28 65%, #0F172A 100%);
 }
 
 .upload-record-container {

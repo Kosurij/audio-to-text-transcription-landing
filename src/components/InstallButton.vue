@@ -23,7 +23,6 @@ const props = withDefaults(defineProps<{
   variant: 'primary',
 })
 
-// TODO: Replace with actual Chrome Web Store URL
 const baseUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en'
 
 const buildChromeStoreUrl = (): string => {

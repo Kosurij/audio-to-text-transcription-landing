@@ -10,7 +10,7 @@
             <span class="footer-logo-text">Audio to Text</span>
           </div>
           <p class="footer-tagline">
-            Chrome extension for instant audio transcription. Powered by Groq + Whisper AI.
+            Chrome extension for instant audio transcription. Powered by OpenAI Whisper.
           </p>
         </div>
 

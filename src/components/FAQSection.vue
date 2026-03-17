@@ -50,7 +50,7 @@ const toggle = (index: number) => {
 const faqs = [
   {
     question: 'What is Audio To Text Transcription?',
-    answer: 'Audio To Text Transcription is a Chrome extension that turns any audio—from meetings, lectures, podcasts, or browser tabs—into searchable text powered by Groq + Whisper AI.'
+    answer: 'Audio To Text Transcription is a Chrome extension that turns any audio—from meetings, lectures, podcasts, or browser tabs—into searchable text powered by OpenAI Whisper.'
   },
   {
     question: 'What recording modes are available?',
@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     question: 'Which transcription engine do you use?',
-    answer: 'We run Groq together with Whisper AI under the hood to deliver fast, high-quality transcripts—even for long sessions and diverse accents.'
+    answer: 'We use OpenAI Whisper to deliver fast, high-quality transcripts—even for long sessions and diverse accents.'
   },
   {
     question: 'Does the extension support themes?',
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     question: 'How accurate are the results?',
-    answer: 'Accuracy depends on the recording quality. The Groq + Whisper AI stack delivers excellent results for clear speech with minimal background noise.'
+    answer: 'Accuracy depends on the recording quality. OpenAI Whisper delivers excellent results for clear speech with minimal background noise.'
   }
 ];
 </script>
