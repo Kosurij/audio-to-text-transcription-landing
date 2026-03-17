@@ -7,7 +7,7 @@
       </div>
 
       <div class="steps">
-        <div class="step" v-for="(step, index) in steps" :key="index">
+        <div class="step" v-for="(step, index) in steps" :key="step.title">
           <div class="step-media">
             <!-- Placeholder: replace with <img :src="step.media" :alt="step.title" /> -->
             <div class="media-placeholder">
