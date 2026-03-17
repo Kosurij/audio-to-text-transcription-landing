@@ -1,32 +1,59 @@
 <template>
   <section class="hero">
-    <div class="hero-background">
-      <video 
-        class="hero-video" 
-        autoplay 
-        muted 
-        loop 
-        playsinline
-      >
-        <source src="/background.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-gradient"></div>
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <h1 class="headline">
-        Transform <span class="gradient-text">Audio to Text</span><br />
-        in Seconds
-      </h1>
-      <p class="subtext">
-        The most accurate Chrome extension for converting audio to text. 
-        Perfect for meetings, interviews, podcasts, and lectures.
-      </p>
-      <div class="hero-actions">
-        <InstallButton class="main-button">
-          Install Audio To Text Transcription
-        </InstallButton>
+    <div class="hero-container">
+
+      <!-- Left column -->
+      <div class="hero-left">
+        <div class="hero-badge">
+          ✦ Powered by Groq + Whisper AI
+        </div>
+
+        <h1 class="hero-title">
+          Audio to Text<br />
+          <span class="gradient-text">in seconds.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Chrome extension for meetings, interviews and lectures.
+          Upload audio files, record mic or browser tab — get accurate text instantly.
+        </p>
+
+        <div class="hero-cta">
+          <InstallButton class="hero-install-btn">
+            + Add to Chrome — It's free
+          </InstallButton>
+          <p class="hero-cta-hint">No account required · Works in Chrome</p>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">10k+</span>
+            <span class="stat-label">Users</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">★ 4.8</span>
+            <span class="stat-label">Chrome Store</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">95%+</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Right column: floating panel -->
+      <div class="hero-right">
+        <div class="hero-panel">
+          <!-- Placeholder: replace with actual GIF of the extension -->
+          <div class="hero-panel-placeholder">
+            <div class="placeholder-label">Extension UI Preview</div>
+            <div class="placeholder-note">Replace with actual GIF/screenshot</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
@@ -37,124 +64,55 @@ import InstallButton from './InstallButton.vue';
 
 <style scoped>
 .hero {
-  position: relative;
-  height: 100vh;
+  padding: 80px 0 60px;
+  background: var(--color-background);
+  overflow: hidden;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  width: 100%;
+  gap: 64px;
 }
 
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: cover;
-  z-index: 0;
-}
-
-html[data-theme='dark'] .hero-video {
-  display: none;
-}
-
-.hero-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-html[data-theme='dark'] .hero-gradient {
-  opacity: 1;
-  background: linear-gradient(
-    135deg,
-    rgb(32, 33, 36) 0%,
-    rgb(41, 42, 45) 25%,
-    rgb(48, 49, 52) 50%,
-    rgb(41, 42, 45) 75%,
-    rgb(32, 33, 36) 100%
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(239, 246, 255, 0.85), rgba(219, 234, 254, 0.85), rgba(191, 219, 254, 0.85));
-  z-index: 1;
-}
-
-html[data-theme='dark'] .hero-overlay {
-  background: linear-gradient(135deg, rgba(32, 33, 36, 0.6), rgba(41, 42, 45, 0.6), rgba(48, 49, 52, 0.6));
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  width: 100%;
-  padding: 0 24px;
-  text-align: center;
+/* Left column */
+.hero-left {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  margin: 0 auto;
+  gap: 24px;
 }
 
-.headline {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 400;
-  line-height: 1.1;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563EB;
+  width: fit-content;
+}
+
+html[data-theme='dark'] .hero-badge {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.25);
+  color: #60A5FA;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   color: var(--color-text);
   margin: 0;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme='dark'] .headline {
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .gradient-text {
@@ -163,100 +121,150 @@ html[data-theme='dark'] .headline {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  font-weight: 500;
-  filter: drop-shadow(0 2px 4px rgba(26, 115, 232, 0.2));
 }
 
-html[data-theme='dark'] .gradient-text {
-  filter: drop-shadow(0 2px 6px rgba(138, 180, 248, 0.4));
-}
-
-.subtext {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--color-text);
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
   line-height: 1.7;
-  max-width: 650px;
-  font-weight: 400;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+  margin: 0;
 }
 
-html[data-theme='dark'] .subtext {
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-}
-
-.hero-actions {
+.hero-cta {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  align-items: center;
+  gap: 10px;
+}
+
+.hero-install-btn {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 8px;
+  width: fit-content;
+  height: auto; /* override InstallButton's internal height: 36px */
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+html[data-theme='dark'] .hero-install-btn {
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+}
+
+.hero-cta-hint {
+  font-size: 13px;
+  color: var(--color-text-muted);
   margin: 0;
-  width: 100%;
 }
 
-.main-button {
-  font-size: 18px;
-  font-weight: 500;
-  padding: 16px 40px;
-  border-radius: 8px;
-  height: 56px;
-  display: inline-flex;
+.hero-stats {
+  display: flex;
   align-items: center;
-  gap: 12px;
-  text-transform: none;
-  letter-spacing: 0;
-  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3), 0 2px 4px rgba(26, 115, 232, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
 }
 
-html[data-theme='dark'] .main-button {
-  box-shadow: 0 4px 16px rgba(138, 180, 248, 0.4), 0 2px 8px rgba(138, 180, 248, 0.3);
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.main-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
-  border-radius: 8px;
-  pointer-events: none;
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
 }
 
-.main-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4), 0 4px 8px rgba(26, 115, 232, 0.3);
+.stat-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
 }
 
-html[data-theme='dark'] .main-button:hover {
-  box-shadow: 0 6px 24px rgba(138, 180, 248, 0.5), 0 4px 12px rgba(138, 180, 248, 0.4);
+.stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--color-border);
 }
 
-.main-button:active {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3), 0 1px 2px rgba(26, 115, 232, 0.2);
+/* Right column */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-html[data-theme='dark'] .main-button:active {
-  box-shadow: 0 2px 12px rgba(138, 180, 248, 0.4), 0 1px 4px rgba(138, 180, 248, 0.3);
+.hero-panel {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 440px;
 }
 
+html[data-theme='dark'] .hero-panel {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Placeholder — replace with img when real GIF is ready */
+.hero-panel-placeholder {
+  aspect-ratio: 3 / 4;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.placeholder-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.placeholder-note {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .hero {
-    height: 100vh;
+    padding: 60px 0 40px;
   }
 
-  .hero-content {
-    gap: 32px;
-    padding: 0 20px;
+  .hero-container {
+    flex-direction: column;
+    gap: 40px;
   }
 
-  .main-button {
-    width: min(100%, 320px);
-    font-size: 16px;
-    padding: 16px 24px;
+  .hero-left {
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-install-btn {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero-right {
+    width: 100%;
+  }
+
+  .hero-panel {
+    max-width: 100%;
   }
 }
 </style>
