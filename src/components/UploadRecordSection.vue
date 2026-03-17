@@ -27,7 +27,6 @@
               </svg>
               <span class="drop-text">Click to upload and transcribe for free</span>
             </div>
-            <p class="dev-note">[Screenshot: extension upload UI with drag-and-drop area]</p>
           </div>
         </a>
 
@@ -79,7 +78,6 @@
                 <span class="bar" style="--h: 16px"></span>
               </div>
             </div>
-            <p class="dev-note">[Screenshot: extension record UI with waveform and Record button]</p>
           </div>
         </a>
 
@@ -253,20 +251,20 @@ const platforms = [
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 3px;
+  justify-content: space-between;
   height: 80px;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
-  mask-image: linear-gradient(to right, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 60%, rgba(0,0,0,0.15) 85%, transparent 100%);
+  mask-image: linear-gradient(to right, black 60%, rgba(0,0,0,0.15) 85%, transparent 100%);
 }
 
 .bar {
   display: block;
-  flex-shrink: 0;
-  width: 4px;
+  flex: 1;
+  max-width: 5px;
   height: var(--h, 16px);
   background: var(--accent-primary);
-  border-radius: 2px;
+  border-radius: 3px;
   animation: wave 1.2s ease-in-out infinite alternate;
 }
 
@@ -278,15 +276,6 @@ const platforms = [
 @keyframes wave {
   0%   { transform: scaleY(0.35); }
   100% { transform: scaleY(1); }
-}
-
-/* Developer placeholder note */
-.dev-note {
-  font-size: 11px;
-  color: var(--color-text-muted);
-  text-align: center;
-  font-style: italic;
-  margin: 0;
 }
 
 /* Compatibility strip */
