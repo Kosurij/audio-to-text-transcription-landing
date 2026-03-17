@@ -187,5 +187,9 @@ const features = [
   .feature-media {
     display: none;
   }
+
+  .feature-title {
+    text-align: center;
+  }
 }
 </style>

@@ -288,6 +288,7 @@ html[data-theme='dark'] .upload-record {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0;
+  text-align: center;
 }
 
 .compat-logos {

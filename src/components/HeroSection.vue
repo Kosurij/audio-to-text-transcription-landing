@@ -32,27 +32,27 @@
         <div class="hero-stats">
           <div class="stat">
             <span class="stat-value">1.2k+</span>
-            <span class="stat-label">Weekly Active Users</span>
+            <span class="stat-label">People use it every week</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-value"><span class="stat-star">★</span> 5.0</span>
-            <span class="stat-label">Chrome Store</span>
+            <span class="stat-label">Rating on Chrome Store</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-value">99%</span>
-            <span class="stat-label">Accuracy</span>
+            <span class="stat-label">Transcription accuracy</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-value">90+</span>
-            <span class="stat-label">Languages</span>
+            <span class="stat-label">Languages supported</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-value">14+</span>
-            <span class="stat-label">File Formats</span>
+            <span class="stat-label">Audio & video formats</span>
           </div>
         </div>
       </div>
@@ -302,13 +302,54 @@ html[data-theme='dark'] .hero-panel {
     justify-content: center;
   }
 
-  .hero-stats {
-    flex-wrap: wrap;
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
+  }
+
+  .watch-demo-btn {
+    align-self: center;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 4px;
   }
 
   .stat-divider {
     display: none;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    background: var(--color-surface);
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    width: 80px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    text-align: left;
   }
 
   .hero-right {

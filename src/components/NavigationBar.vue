@@ -396,6 +396,11 @@ html[data-theme='dark'] .mobile-link:hover {
 @media (max-width: 768px) {
   .navbar {
     padding: 0 20px;
+    min-height: 56px;
+  }
+
+  .mobile-menu {
+    top: 56px;
   }
 
   .desktop-nav {
@@ -412,8 +417,7 @@ html[data-theme='dark'] .mobile-link:hover {
   }
 
   .theme-toggle {
-    width: 44px;
-    height: 44px;
+    display: none;
   }
 
   .navbar-right {
@@ -445,8 +449,16 @@ html[data-theme='dark'] .mobile-link:hover {
 }
 
 @media (max-width: 480px) {
+  .branding {
+    gap: 10px;
+  }
+
   .product-name {
     font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 190px;
   }
 }
 </style>
