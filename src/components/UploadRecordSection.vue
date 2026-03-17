@@ -48,55 +48,12 @@
             <div class="waveform-zone">
               <div class="record-dot"></div>
               <div class="waveform">
-                <span class="bar" style="--h: 14px"></span>
-                <span class="bar" style="--h: 28px"></span>
-                <span class="bar" style="--h: 48px"></span>
-                <span class="bar" style="--h: 62px"></span>
-                <span class="bar" style="--h: 38px"></span>
-                <span class="bar" style="--h: 70px"></span>
-                <span class="bar" style="--h: 44px"></span>
-                <span class="bar" style="--h: 58px"></span>
-                <span class="bar" style="--h: 30px"></span>
-                <span class="bar" style="--h: 66px"></span>
-                <span class="bar" style="--h: 52px"></span>
-                <span class="bar" style="--h: 22px"></span>
-                <span class="bar" style="--h: 60px"></span>
-                <span class="bar" style="--h: 36px"></span>
-                <span class="bar" style="--h: 72px"></span>
-                <span class="bar" style="--h: 46px"></span>
-                <span class="bar" style="--h: 26px"></span>
-                <span class="bar" style="--h: 64px"></span>
-                <span class="bar" style="--h: 40px"></span>
-                <span class="bar" style="--h: 56px"></span>
-                <span class="bar" style="--h: 18px"></span>
-                <span class="bar" style="--h: 68px"></span>
-                <span class="bar" style="--h: 34px"></span>
-                <span class="bar" style="--h: 54px"></span>
-                <span class="bar" style="--h: 42px"></span>
-                <span class="bar" style="--h: 70px"></span>
-                <span class="bar" style="--h: 24px"></span>
-                <span class="bar" style="--h: 58px"></span>
-                <span class="bar" style="--h: 48px"></span>
-                <span class="bar" style="--h: 32px"></span>
-                <span class="bar" style="--h: 66px"></span>
-                <span class="bar" style="--h: 20px"></span>
-                <span class="bar" style="--h: 52px"></span>
-                <span class="bar" style="--h: 38px"></span>
-                <span class="bar" style="--h: 62px"></span>
-                <span class="bar" style="--h: 28px"></span>
-                <span class="bar" style="--h: 44px"></span>
-                <span class="bar" style="--h: 68px"></span>
-                <span class="bar" style="--h: 16px"></span>
-                <span class="bar" style="--h: 56px"></span>
-                <span class="bar" style="--h: 36px"></span>
-                <span class="bar" style="--h: 60px"></span>
-                <span class="bar" style="--h: 24px"></span>
-                <span class="bar" style="--h: 46px"></span>
-                <span class="bar" style="--h: 30px"></span>
-                <span class="bar" style="--h: 54px"></span>
-                <span class="bar" style="--h: 20px"></span>
-                <span class="bar" style="--h: 40px"></span>
-                <span class="bar" style="--h: 14px"></span>
+                <span
+                  v-for="(h, i) in barHeights"
+                  :key="i"
+                  class="bar"
+                  :style="{ '--h': h + 'px', '--i': i }"
+                ></span>
               </div>
             </div>
           </div>
@@ -123,6 +80,9 @@
 
 <script setup lang="ts">
 const storeUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en&utm_source=site&utm_medium=cpc'
+
+const wavePattern = [14,32,52,68,40,72,46,60,28,66,50,20,62,38,74,44,24,64,42,56,18,70,36,54,48,30,68,22,58,44,72,26,60,38,66,20,52,34,64,28,46,70,16,56,40,62,24,50,32,58,18,66,44,72,30,54,20,60,36,68,26,48,74,22,56,38,64,18,46,30,52,14,40,24,58,16,44,28,62,12]
+const barHeights = Array.from({ length: 80 }, (_, i) => wavePattern[i % wavePattern.length])
 
 const platforms = [
   { name: 'Google Meet', img: '/logos/icons8-google-meet.svg' },
@@ -272,27 +232,34 @@ const platforms = [
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 1.5px;
   height: 80px;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, black 55%, rgba(0,0,0,0.2) 80%, transparent 100%);
-  mask-image: linear-gradient(to right, black 55%, rgba(0,0,0,0.2) 80%, transparent 100%);
+  position: relative;
+}
+
+.waveform::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  -webkit-mask-image: linear-gradient(to right, transparent 45%, rgba(0,0,0,0.4) 65%, black 100%);
+  mask-image: linear-gradient(to right, transparent 45%, rgba(0,0,0,0.4) 65%, black 100%);
+  pointer-events: none;
 }
 
 .bar {
   display: block;
   flex-shrink: 0;
-  width: 3px;
+  width: 2px;
   height: var(--h, 16px);
   background: var(--accent-primary);
-  border-radius: 2px;
+  border-radius: 1px;
   animation: wave 1.2s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i, 0) * 0.04s);
 }
 
-.bar:nth-child(odd)  { animation-delay: 0s; }
-.bar:nth-child(even) { animation-delay: 0.25s; }
-.bar:nth-child(3n)   { animation-delay: 0.5s; }
-.bar:nth-child(5n)   { animation-delay: 0.75s; }
 
 @keyframes wave {
   0%   { transform: scaleY(0.35); }
