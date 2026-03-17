@@ -88,7 +88,7 @@ const scrollToDemo = () => {
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 64px;
 }
 
@@ -231,8 +231,7 @@ html[data-theme='dark'] .hero-install-btn {
 .hero-right {
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
 .hero-panel {
@@ -242,7 +241,8 @@ html[data-theme='dark'] .hero-install-btn {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 100%;
-  max-width: 440px;
+  display: flex;
+  flex-direction: column;
 }
 
 html[data-theme='dark'] .hero-panel {
@@ -251,13 +251,14 @@ html[data-theme='dark'] .hero-panel {
 
 /* Placeholder — replace with img when real GIF is ready */
 .hero-panel-placeholder {
-  aspect-ratio: 3 / 4;
+  flex: 1;
   background: var(--color-surface);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  min-height: 300px;
 }
 
 .placeholder-label {
