@@ -21,9 +21,7 @@
           <div v-if="tall[0].photo" class="card-photo">
             <img :src="tall[0].photo" :alt="tall[0].name" />
           </div>
-          <div v-else class="card-photo-placeholder">
-            [Photo: {{ tall[0].name }}, {{ tall[0].role }}]
-          </div>
+          <div v-else class="card-photo-placeholder"></div>
           <!-- tall cards: never show circle — photo or placeholder fills that role -->
           <div class="card-author">
             <div>
