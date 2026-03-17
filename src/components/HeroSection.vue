@@ -90,20 +90,20 @@ import InstallButton from './InstallButton.vue';
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #EFF6FF;
-  border: 1px solid #BFDBFE;
+  background: #EFF6FF; /* blue-50 — intentional brand badge color */
+  border: 1px solid #BFDBFE; /* blue-200 */
   border-radius: 100px;
   padding: 5px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: #2563EB;
+  color: var(--accent-primary); /* uses CSS token, flips in dark mode */
   width: fit-content;
 }
 
 html[data-theme='dark'] .hero-badge {
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(59, 130, 246, 0.1); /* dark blue tint */
   border-color: rgba(59, 130, 246, 0.25);
-  color: #60A5FA;
+  /* color: var(--accent-primary) already handles dark (#3B82F6) */
 }
 
 .hero-title {
