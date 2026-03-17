@@ -82,7 +82,7 @@ const faqs = [
 <style scoped>
 .faq {
   padding: 60px 0;
-  background: var(--gradient-bg-subtle);
+  background: var(--color-surface);
 }
 
 .faq-container {
@@ -159,7 +159,6 @@ const faqs = [
   font-weight: 600;
   color: var(--color-text);
   transition: color 0.2s ease;
-  font-family: 'Space Grotesk', sans-serif;
 }
 
 .faq-question:hover {
