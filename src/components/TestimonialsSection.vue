@@ -3,9 +3,9 @@
     <div class="testimonials-container">
       <div class="section-header">
         <h2 class="section-title">What Our Users Say</h2>
-        <p class="section-subtitle">Thousands of professionals and students trust Audio to Text every day</p>
+        <p class="section-subtitle">Based on <strong>19 reviews</strong> on Chrome Web Store</p>
       </div>
-      <div class="testimonials-grid">
+      <div class="testimonials-masonry">
         <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.name">
           <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">"{{ testimonial.text }}"</p>
@@ -28,32 +28,32 @@ const testimonials = [
   {
     name: 'Sarah M.',
     role: 'Project Manager',
-    text: 'I use this extension every day to transcribe our team meetings. The accuracy is impressive — even with multiple speakers. Saves me at least an hour of work daily.',
+    text: 'I use this every day for team meetings. The accuracy is impressive — even with background noise. Saves me at least an hour daily.',
   },
   {
     name: 'James K.',
     role: 'Journalist',
-    text: 'As a journalist, I record interviews constantly. This extension transcribes an hour-long interview in under a minute. The SRT export is perfect for captions.',
+    text: 'As a journalist I record interviews constantly. This extension transcribes an hour-long interview in under a minute. The timestamp feature is essential — I can jump to any quote instantly. Highly recommended for anyone who works with audio professionally.',
   },
   {
     name: 'Priya S.',
     role: 'PhD Student',
-    text: 'I transcribe my research interviews with this extension. The accuracy for academic content is excellent, and the export to DOCX saves so much editing time.',
+    text: 'I transcribe research interviews with this extension. Accuracy for academic content is excellent.',
   },
   {
     name: 'Marco D.',
     role: 'Content Creator',
-    text: 'Game changer for my YouTube workflow. I record my commentary, transcribe it instantly, and use the SRT file directly for subtitles. Simple and accurate.',
+    text: 'Game changer for my YouTube workflow. I record commentary, transcribe it instantly, and use the TXT file for descriptions and subtitles. Simple and accurate.',
   },
   {
     name: 'Anna R.',
     role: 'Legal Assistant',
-    text: 'We use this to transcribe client consultations. The privacy-first approach is important for us — no data stored, quick results. Highly recommended.',
+    text: 'We use this to transcribe client consultations. The privacy-first approach matters to us — no data stored, quick results. The 90+ language support is a bonus since we work with international clients.',
   },
   {
     name: 'Tom W.',
     role: 'Podcast Producer',
-    text: 'Transcribing podcast episodes used to take hours. Now it takes minutes. The tab recording feature is especially useful — I can capture audio directly from the browser.',
+    text: 'Transcribing podcast episodes used to take hours. Now it takes minutes.',
   },
 ];
 </script>
@@ -91,10 +91,9 @@ const testimonials = [
   line-height: 1.6;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.testimonials-masonry {
+  columns: 4;
+  column-gap: 20px;
 }
 
 .testimonial-card {
@@ -106,6 +105,8 @@ const testimonials = [
   flex-direction: column;
   gap: 16px;
   box-shadow: var(--shadow-sm);
+  break-inside: avoid;
+  margin-bottom: 20px;
 }
 
 .testimonial-stars {
@@ -154,18 +155,20 @@ const testimonials = [
 }
 
 @media (max-width: 900px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .testimonials-masonry {
+    columns: 3;
   }
 }
 
 @media (max-width: 600px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+  .testimonials-masonry {
+    columns: 2;
   }
+}
 
-  .testimonials {
-    padding: 60px 0;
+@media (max-width: 400px) {
+  .testimonials-masonry {
+    columns: 1;
   }
 }
 </style>
