@@ -97,7 +97,6 @@ const platforms = [
   { name: 'MS Teams',     img: 'https://logo.clearbit.com/teams.microsoft.com' },
   { name: 'YouTube',      img: 'https://logo.clearbit.com/youtube.com' },
   { name: 'Spotify',      img: 'https://logo.clearbit.com/spotify.com' },
-  { name: 'Loom',         img: 'https://logo.clearbit.com/loom.com' },
 ]
 </script>
 
