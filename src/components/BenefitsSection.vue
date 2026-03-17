@@ -38,27 +38,27 @@
 const features = [
   {
     emoji: '⚡',
-    title: 'Lightning Fast Transcription',
-    description: 'Upload any audio file and get accurate text in seconds. Powered by Groq + Whisper AI — one of the fastest transcription engines available. No waiting, no delays.',
-    mediaLabel: 'GIF: Upload file → transcript appears',
+    title: 'Upload Files or Record Live',
+    description: 'Drag and drop any audio or video file — MP3, WAV, M4A, OGG, MP4. Or click Record to capture your microphone or any browser tab in real time. Transcription starts instantly.',
+    mediaLabel: '[GIF: user drags audio file into extension popup → transcript text appears in seconds]',
   },
   {
-    emoji: '🎙',
-    title: 'Record Mic or Browser Tab',
-    description: 'Transcribe live audio directly in Chrome. Record from your microphone for in-person meetings, or capture any browser tab audio — perfect for online meetings, webinars, and podcasts.',
-    mediaLabel: 'GIF: Click record → waveform → text',
+    emoji: '🌐',
+    title: '90+ Languages with Timestamps',
+    description: 'Transcribe in any language — detected automatically. Each segment includes a timestamp so you can navigate to any moment. Perfect for multilingual meetings and interviews.',
+    mediaLabel: '[Screenshot: transcript with timestamps visible, language auto-detected label shown]',
   },
   {
-    emoji: '📄',
-    title: 'Export in Any Format',
-    description: "Copy text to clipboard, or export as TXT, DOCX, or SRT. The SRT format is ideal for video subtitles — just upload and you're done.",
-    mediaLabel: 'Screenshot: Export buttons TXT/DOCX/SRT',
+    emoji: '✨',
+    title: 'AI-Powered Summary',
+    description: 'After transcription, get an automatic summary of key points. No more reading through long transcripts — the important parts are extracted for you instantly.',
+    mediaLabel: '[Screenshot: summary panel below transcript text with key points bulleted]',
   },
   {
-    emoji: '🔒',
-    title: 'Privacy First',
-    description: "Your audio is processed via the Groq API and never stored. We don't save recordings, transcripts, or personal data. What you transcribe stays yours.",
-    mediaLabel: 'Illustration or icon (no GIF needed)',
+    emoji: '📋',
+    title: 'History, Edit & Export',
+    description: 'All your transcriptions are saved. Edit the text directly in the extension, then download as TXT or copy to clipboard. Your history is always one click away.',
+    mediaLabel: '[Screenshot: transcription history list with edit icon and Download TXT button visible]',
   },
 ];
 </script>
@@ -127,21 +127,21 @@ const features = [
 }
 
 .feature-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 1;
 }
 
 .feature-title {
-  font-size: 1.625rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--color-text);
   margin: 0;
   text-align: left; /* explicit — protection against RTL inheritance */
 }
 
 .feature-description {
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.75;
   color: var(--color-text-secondary);
   margin: 0;
