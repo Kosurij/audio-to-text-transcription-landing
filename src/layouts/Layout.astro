@@ -15,7 +15,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1A73E8" />
+    <meta name="theme-color" content="#2563EB" />
     <meta name="keywords" content="audio to text, transcription, speech to text, audio transcription, chrome extension, voice to text, audio converter, meeting transcription, interview transcription, podcast transcription" />
     <meta name="author" content="Audio To Text Transcription" />
     
@@ -51,7 +51,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Additional SEO -->
     <meta name="application-name" content="Audio To Text Transcription" />
     <meta name="apple-mobile-web-app-title" content="Audio To Text Transcription" />
-    <meta name="msapplication-TileColor" content="#1A73E8" />
+    <meta name="msapplication-TileColor" content="#2563EB" />
     
     <!-- SEO -->
     <meta name="robots" content="index, follow" />
@@ -285,6 +285,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         margin: 0;
         padding: 0;
         width: 100%;
+      }
+
+      html[data-theme='dark'] {
+        background: #0F172A;
+      }
+
+      html[data-theme='dark'] body {
+        background: #0F172A;
+        color: #F1F5F9;
       }
 
       body {

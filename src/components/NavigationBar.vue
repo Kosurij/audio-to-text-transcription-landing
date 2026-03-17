@@ -176,8 +176,6 @@ onBeforeUnmount(() => {
 .navbar {
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -367,12 +365,12 @@ html[data-theme='dark'] .mobile-link {
 }
 
 .mobile-link:hover {
-  background: rgba(26, 115, 232, 0.08);
+  background: rgba(37, 99, 235, 0.08);
   color: var(--accent-primary);
 }
 
 html[data-theme='dark'] .mobile-link:hover {
-  background: rgba(138, 180, 248, 0.15);
+  background: rgba(59, 130, 246, 0.15);
 }
 
 .fade-enter-active,
