@@ -82,7 +82,7 @@
 const storeUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en&utm_source=site&utm_medium=cpc'
 
 const wavePattern = [14,32,52,68,40,72,46,60,28,66,50,20,62,38,74,44,24,64,42,56,18,70,36,54,48,30,68,22,58,44,72,26,60,38,66,20,52,34,64,28,46,70,16,56,40,62,24,50,32,58,18,66,44,72,30,54,20,60,36,68,26,48,74,22,56,38,64,18,46,30,52,14,40,24,58,16,44,28,62,12]
-const barHeights = Array.from({ length: 80 }, (_, i) => wavePattern[i % wavePattern.length])
+const barHeights = Array.from({ length: 120 }, (_, i) => wavePattern[i % wavePattern.length])
 
 const platforms = [
   { name: 'Google Meet', img: '/logos/icons8-google-meet.svg' },
