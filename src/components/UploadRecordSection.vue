@@ -348,6 +348,12 @@ const platforms = [
   display: flex;
   align-items: center;
   justify-content: center;
+  /* brand bg intentional; darken in dark mode */
+  filter: none;
+}
+
+html[data-theme='dark'] .logo-wrap {
+  filter: brightness(0.25) saturate(1.5);
 }
 
 .logo-name {

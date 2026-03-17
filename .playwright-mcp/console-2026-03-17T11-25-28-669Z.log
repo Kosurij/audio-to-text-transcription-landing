@@ -1,2 +1,0 @@
-[  397520ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4321/src/components/TestimonialsSection.vue?t=1773747126176:0
-[  397521ms] [ERROR] [hmr] Failed to reload /src/components/TestimonialsSection.vue. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:4321/@vite/client:175

@@ -14,7 +14,7 @@
       <div class="testimonials-grid">
 
         <!-- Col 1 — TALL (spans 2 rows) -->
-        <div class="card card-tall" style="grid-column: 1; grid-row: 1 / 3">
+        <div class="card card-tall" style="grid-column: 1">
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ tall[0].text }}"</p>
           <!-- Large photo: fills bottom, replaces avatar circle -->
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Col 3 — TALL (spans 2 rows) -->
-        <div class="card card-tall" style="grid-column: 3; grid-row: 1 / 3">
+        <div class="card card-tall" style="grid-column: 3">
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ tall[1].text }}"</p>
           <div v-if="tall[1].photo" class="card-photo">
@@ -206,9 +206,9 @@ const short: Testimonial[] = [
   box-shadow: var(--shadow-sm);
 }
 
-/* Tall card: text-flex grows, photo sits in middle, author pinned to bottom */
+/* Tall card: spans both rows */
 .card-tall {
-  /* grid-row: 1 / 3 is set inline */
+  grid-row: 1 / 3;
 }
 
 .card-stars {

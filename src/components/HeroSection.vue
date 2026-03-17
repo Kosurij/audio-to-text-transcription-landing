@@ -298,6 +298,15 @@ html[data-theme='dark'] .hero-panel {
     justify-content: center;
   }
 
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
   .hero-right {
     width: 100%;
   }
