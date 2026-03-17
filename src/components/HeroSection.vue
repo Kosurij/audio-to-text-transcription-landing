@@ -58,7 +58,8 @@
         <div class="hero-panel">
           <!-- Placeholder: replace with actual GIF of the extension -->
           <div class="hero-panel-placeholder">
-            <!-- TODO: вставить GIF расширения — флоу: открыть попап → загрузить файл → получить транскрипт -->
+            <span class="placeholder-label">GIF расширения</span>
+            <span class="placeholder-note">попап → загрузить файл → транскрипт</span>
           </div>
         </div>
       </div>
@@ -258,6 +259,17 @@ html[data-theme='dark'] .hero-panel {
   justify-content: center;
   gap: 8px;
   min-height: 300px;
+}
+
+.placeholder-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.placeholder-note {
+  font-size: 12px;
+  color: var(--color-text-muted);
 }
 
 
