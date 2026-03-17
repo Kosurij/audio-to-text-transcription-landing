@@ -24,12 +24,8 @@
           <div v-else class="card-photo-placeholder">
             [Photo: {{ tall[0].name }}, {{ tall[0].role }}]
           </div>
-          <!-- photo present → no circle; avatar → circle img; neither → initials -->
+          <!-- tall cards: never show circle — photo or placeholder fills that role -->
           <div class="card-author">
-            <template v-if="!tall[0].photo">
-              <img v-if="tall[0].avatar" :src="tall[0].avatar" :alt="tall[0].name" class="author-img" />
-              <div v-else class="author-initials">{{ tall[0].name[0] }}</div>
-            </template>
             <div>
               <div class="author-name">{{ tall[0].name }}</div>
               <div class="author-role">{{ tall[0].role }}</div>
@@ -76,10 +72,6 @@
             [Photo: {{ tall[1].name }}, {{ tall[1].role }}]
           </div>
           <div class="card-author">
-            <template v-if="!tall[1].photo">
-              <img v-if="tall[1].avatar" :src="tall[1].avatar" :alt="tall[1].name" class="author-img" />
-              <div v-else class="author-initials">{{ tall[1].name[0] }}</div>
-            </template>
             <div>
               <div class="author-name">{{ tall[1].name }}</div>
               <div class="author-role">{{ tall[1].role }}</div>
