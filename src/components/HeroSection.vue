@@ -5,7 +5,7 @@
       <!-- Left column -->
       <div class="hero-left">
         <div class="hero-badge">
-          ✦ Powered by Groq + Whisper AI
+          ✦ Powered by OpenAI Whisper
         </div>
 
         <h1 class="hero-title">
@@ -27,7 +27,6 @@
               ▶ Watch Demo
             </a>
           </div>
-          <p class="hero-cta-hint">Works in Chrome</p>
         </div>
 
         <div class="hero-stats">
@@ -37,7 +36,7 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <span class="stat-value">★ 5.0</span>
+            <span class="stat-value"><span class="stat-star">★</span> 5.0</span>
             <span class="stat-label">Chrome Store</span>
           </div>
           <div class="stat-divider"></div>
@@ -50,6 +49,11 @@
             <span class="stat-value">90+</span>
             <span class="stat-label">Languages</span>
           </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">14+</span>
+            <span class="stat-label">File Formats</span>
+          </div>
         </div>
       </div>
 
@@ -58,8 +62,8 @@
         <div class="hero-panel">
           <!-- Placeholder: replace with actual GIF of the extension -->
           <div class="hero-panel-placeholder">
-            <span class="placeholder-label">GIF расширения</span>
-            <span class="placeholder-note">попап → загрузить файл → транскрипт</span>
+            <span class="placeholder-label">Скриншот расширения</span>
+            <span class="placeholder-note">попап с готовой транскрипцией и кнопками Download / Copy</span>
           </div>
         </div>
       </div>
@@ -104,20 +108,18 @@ const scrollToDemo = () => {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #EFF6FF; /* blue-50 — intentional brand badge color */
-  border: 1px solid #BFDBFE; /* blue-200 */
+  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  border: none;
   border-radius: 100px;
   padding: 5px 14px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--accent-primary); /* uses CSS token, flips in dark mode */
+  color: #fff;
   width: fit-content;
 }
 
 html[data-theme='dark'] .hero-badge {
-  background: rgba(59, 130, 246, 0.1); /* dark blue tint */
-  border-color: rgba(59, 130, 246, 0.25);
-  /* color: var(--accent-primary) already handles dark (#3B82F6) */
+  background: linear-gradient(135deg, #8B5CF6 0%, #F472B6 100%);
 }
 
 .hero-title {
@@ -174,31 +176,28 @@ html[data-theme='dark'] .hero-badge {
   gap: 6px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--accent-primary);
+  color: var(--color-text-secondary);
   text-decoration: none;
   padding: 8px 4px;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .watch-demo-btn:hover {
-  border-bottom-color: var(--accent-primary);
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
 }
 
 html[data-theme='dark'] .hero-install-btn {
   box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
 }
 
-.hero-cta-hint {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  margin: 0;
-}
 
 .hero-stats {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 12px;
   padding-top: 20px;
   border-top: 1px solid var(--color-border);
 }
@@ -219,6 +218,10 @@ html[data-theme='dark'] .hero-install-btn {
 .stat-label {
   font-size: 12px;
   color: var(--color-text-muted);
+}
+
+.stat-star {
+  color: #F59E0B;
 }
 
 .stat-divider {
