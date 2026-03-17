@@ -338,5 +338,11 @@ const platforms = [
   .compat-logos {
     gap: 16px;
   }
+
+  /* Show ~1 in 3 bars on mobile (~27 bars) */
+  .bar:nth-child(3n),
+  .bar:nth-child(3n+2) {
+    display: none;
+  }
 }
 </style>
