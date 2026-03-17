@@ -2,10 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import NavigationBar from '../components/NavigationBar.vue';
 import HeroSection from '../components/HeroSection.vue';
-import DemoSection from '../components/DemoSection.vue';
 import UploadRecordSection from '../components/UploadRecordSection.vue';
 import BenefitsSection from '../components/BenefitsSection.vue';
 import HowItWorksSection from '../components/HowItWorksSection.vue';
+import DemoSection from '../components/DemoSection.vue';
 import TestimonialsSection from '../components/TestimonialsSection.vue';
 import FAQSection from '../components/FAQSection.vue';
 import CTASection from '../components/CTASection.vue';
@@ -19,14 +19,14 @@ const description = 'Convert audio and video to text instantly with our Chrome e
   <NavigationBar client:load />
   <main class="landing-page">
     <HeroSection client:load />
-    <UploadRecordSection client:load />
-    <BenefitsSection client:load />
-    <HowItWorksSection client:load />
-    <DemoSection client:load />
-    <TestimonialsSection client:load />
-    <FAQSection client:load />
-    <CTASection client:load />
-    <AppFooter client:load />
+    <UploadRecordSection client:visible />
+    <BenefitsSection client:visible />
+    <HowItWorksSection client:visible />
+    <DemoSection client:visible />
+    <TestimonialsSection client:visible />
+    <FAQSection client:visible />
+    <CTASection client:visible />
+    <AppFooter client:visible />
   </main>
 </Layout>
 
