@@ -99,7 +99,7 @@ const columns = [
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  align-items: start;
+  /* align-items: stretch (default) — all columns same height */
 }
 
 .testimonials-col {
@@ -109,6 +109,7 @@ const columns = [
 }
 
 .testimonial-card {
+  flex: 1; /* equal share of column height → same height as Tactiq */
   background: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
   border-radius: 12px;

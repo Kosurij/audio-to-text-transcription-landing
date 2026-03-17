@@ -1,0 +1,14 @@
+{"type":"server-started","port":60994,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:60994","screen_dir":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/waiting.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/style-direction.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/style-themes.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/style-radical.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/style-refined.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/style-refined-v2.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/style-correct.html"}
+{"source":"user-event","type":"click","text":"Transform audioto text instantly\n          Chrome extension powered byGroq + Whisper AI\n          Install free →\n        \n        \n          \n          \n          \n          \n        \n      \n      \n        \n          Transform audioto text instantly\n          Chrome extension powered byGroq + Whisper AI\n          Install free →\n        \n        \n          \n          \n          \n          \n        \n      \n    \n    \n      B — Minimal / Clean\n      Чистый белый, синий акцент, тонкие тени. Split-layout с заглушкой-превью. Нейтрально и профессионально. Dark — slate.","choice":"minimal","id":null,"timestamp":1773727229980}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/waiting-2.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/design-hero.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/hero-product-preview.html"}
+{"type":"screen-added","file":"/Users/yuri/projects/audio-to-text-transcription-landing/.superpowers/brainstorm/10137-1773724942/design-hero-v2.html"}
+{"type":"server-stopped","reason":"idle timeout"}
