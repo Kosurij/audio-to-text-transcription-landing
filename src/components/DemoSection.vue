@@ -48,9 +48,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  if (videoContainer.value && observer) {
-    observer.unobserve(videoContainer.value)
-  }
+  observer?.disconnect()
 })
 </script>
 

@@ -37,7 +37,7 @@
           </button>
           <button
             class="arrow-btn"
-            :disabled="currentStep === steps.length - 2"
+            :disabled="currentStep === maxStep"
             @click="next"
             aria-label="Next step"
           >
@@ -76,17 +76,17 @@ const steps = [
   },
 ]
 
+const VISIBLE_COUNT = 2
+const maxStep = steps.length - VISIBLE_COUNT
+
 const currentStep = ref(0)
 
-// Show 2 steps at a time; second slot is currentStep+1
-const visibleSteps = computed(() => [
-  steps[currentStep.value],
-  steps[currentStep.value + 1],
-])
+const visibleSteps = computed(() =>
+  steps.slice(currentStep.value, currentStep.value + VISIBLE_COUNT)
+)
 
-// Progress: 0% at start (step 0), 100% at end (step 1)
 const progressPercent = computed(() =>
-  (currentStep.value / (steps.length - 2)) * 100
+  (currentStep.value / maxStep) * 100
 )
 
 const prev = () => {
@@ -94,7 +94,7 @@ const prev = () => {
 }
 
 const next = () => {
-  if (currentStep.value < steps.length - 2) currentStep.value++
+  if (currentStep.value < maxStep) currentStep.value++
 }
 </script>
 
