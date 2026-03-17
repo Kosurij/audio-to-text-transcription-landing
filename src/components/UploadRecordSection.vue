@@ -90,13 +90,12 @@
 <script setup lang="ts">
 const storeUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en&utm_source=site&utm_medium=cpc'
 
-// Logo images via Clearbit Logo API — replace with local files for production
 const platforms = [
-  { name: 'Google Meet',  img: 'https://logo.clearbit.com/meet.google.com' },
-  { name: 'Zoom',         img: 'https://logo.clearbit.com/zoom.us' },
-  { name: 'MS Teams',     img: 'https://logo.clearbit.com/teams.microsoft.com' },
-  { name: 'YouTube',      img: 'https://logo.clearbit.com/youtube.com' },
-  { name: 'Spotify',      img: 'https://logo.clearbit.com/spotify.com' },
+  { name: 'Google Meet', img: '/logos/icons8-google-meet.svg' },
+  { name: 'Zoom',        img: '/logos/zoom-communication-network-conversation-connection-internet-svgrepo-com.svg' },
+  { name: 'MS Teams',    img: '/logos/microsoft-teams-svgrepo-com.svg' },
+  { name: 'YouTube',     img: '/logos/youtube-circle-logo-svgrepo-com.svg' },
+  { name: 'Spotify',     img: '/logos/spotify-color-svgrepo-com.svg' },
 ]
 </script>
 
