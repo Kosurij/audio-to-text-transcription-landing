@@ -49,19 +49,34 @@
             <div class="waveform-zone">
               <div class="record-dot"></div>
               <div class="waveform">
-                <span class="bar" style="--h: 8px"></span>
-                <span class="bar" style="--h: 20px"></span>
-                <span class="bar" style="--h: 32px"></span>
-                <span class="bar" style="--h: 14px"></span>
-                <span class="bar" style="--h: 26px"></span>
-                <span class="bar" style="--h: 36px"></span>
                 <span class="bar" style="--h: 18px"></span>
+                <span class="bar" style="--h: 36px"></span>
+                <span class="bar" style="--h: 52px"></span>
+                <span class="bar" style="--h: 64px"></span>
+                <span class="bar" style="--h: 44px"></span>
+                <span class="bar" style="--h: 70px"></span>
+                <span class="bar" style="--h: 40px"></span>
+                <span class="bar" style="--h: 60px"></span>
+                <span class="bar" style="--h: 32px"></span>
+                <span class="bar" style="--h: 56px"></span>
+                <span class="bar" style="--h: 68px"></span>
                 <span class="bar" style="--h: 28px"></span>
-                <span class="bar" style="--h: 10px"></span>
-                <span class="bar" style="--h: 22px"></span>
-                <span class="bar" style="--h: 34px"></span>
-                <span class="bar" style="--h: 16px"></span>
+                <span class="bar" style="--h: 48px"></span>
+                <span class="bar" style="--h: 62px"></span>
+                <span class="bar" style="--h: 36px"></span>
+                <span class="bar" style="--h: 54px"></span>
+                <span class="bar" style="--h: 44px"></span>
+                <span class="bar" style="--h: 66px"></span>
+                <span class="bar" style="--h: 30px"></span>
+                <span class="bar" style="--h: 50px"></span>
+                <span class="bar" style="--h: 38px"></span>
+                <span class="bar" style="--h: 58px"></span>
                 <span class="bar" style="--h: 24px"></span>
+                <span class="bar" style="--h: 42px"></span>
+                <span class="bar" style="--h: 34px"></span>
+                <span class="bar" style="--h: 22px"></span>
+                <span class="bar" style="--h: 46px"></span>
+                <span class="bar" style="--h: 16px"></span>
               </div>
             </div>
             <p class="dev-note">[Screenshot: extension record UI with waveform and Record button]</p>
@@ -211,52 +226,57 @@ const platforms = [
 .waveform-zone {
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 24px 20px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 16px;
+  overflow: hidden;
 }
 
 .record-dot {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #ef4444;
+  background: #ef4444; /* recording red — intentional semantic color */
   flex-shrink: 0;
   box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
   animation: pulse 1.8s infinite;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
   100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
 }
 
 .waveform {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 3px;
-  height: 44px;
+  height: 80px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
+  mask-image: linear-gradient(to right, black 55%, transparent 100%);
 }
 
 .bar {
   display: block;
+  flex-shrink: 0;
   width: 4px;
   height: var(--h, 16px);
   background: var(--accent-primary);
   border-radius: 2px;
   animation: wave 1.2s ease-in-out infinite alternate;
-  opacity: 0.7;
 }
 
 .bar:nth-child(odd)  { animation-delay: 0s; }
-.bar:nth-child(even) { animation-delay: 0.3s; }
-.bar:nth-child(3n)   { animation-delay: 0.6s; }
+.bar:nth-child(even) { animation-delay: 0.25s; }
+.bar:nth-child(3n)   { animation-delay: 0.5s; }
+.bar:nth-child(5n)   { animation-delay: 0.75s; }
 
 @keyframes wave {
-  0%   { transform: scaleY(0.4); }
+  0%   { transform: scaleY(0.35); }
   100% { transform: scaleY(1); }
 }
 
