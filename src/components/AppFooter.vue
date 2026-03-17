@@ -30,7 +30,6 @@
           <h4 class="footer-col-title">Support</h4>
           <ul class="footer-links">
             <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/uninstall">Uninstall</a></li>
             <li>
               <a
                 href="https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en"
