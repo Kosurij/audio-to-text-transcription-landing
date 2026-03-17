@@ -72,7 +72,7 @@
 
       <!-- Compatibility strip -->
       <div class="compat-strip">
-        <p class="compat-label">Works with recordings from any app</p>
+        <p class="compat-label">Works with recordings from any app or website</p>
         <div class="compat-logos">
           <div v-for="platform in platforms" :key="platform.name" class="logo-item">
             <div class="logo-wrap" :style="{ background: platform.bg }">
