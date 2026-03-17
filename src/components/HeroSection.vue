@@ -57,10 +57,7 @@
       <div class="hero-right">
         <div class="hero-panel">
           <!-- Placeholder: replace with actual GIF of the extension -->
-          <div class="hero-panel-placeholder">
-            <div class="placeholder-label">Extension UI Preview</div>
-            <div class="placeholder-note">Replace with actual GIF/screenshot</div>
-          </div>
+          <div class="hero-panel-placeholder"></div>
         </div>
       </div>
 
@@ -261,16 +258,6 @@ html[data-theme='dark'] .hero-panel {
   min-height: 300px;
 }
 
-.placeholder-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-}
-
-.placeholder-note {
-  font-size: 12px;
-  color: var(--color-text-muted);
-}
 
 /* Mobile */
 @media (max-width: 768px) {
