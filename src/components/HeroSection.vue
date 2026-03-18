@@ -250,6 +250,7 @@ html[data-theme='dark'] .hero-install-btn {
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hero-panel {
@@ -260,7 +261,7 @@ html[data-theme='dark'] .hero-install-btn {
 }
 
 .hero-screenshot {
-  height: 630px;
+  max-height: 550px;
   width: auto;
   display: block;
   border-radius: 16px;
@@ -346,6 +347,10 @@ html[data-theme='dark'] .hero-install-btn {
 
   .hero-right {
     width: 100%;
+  }
+
+  .hero-screenshot {
+    max-height: 400px;
   }
 
   .hero-panel {
