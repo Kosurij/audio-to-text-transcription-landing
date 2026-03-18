@@ -83,7 +83,7 @@ let embla: EmblaCarouselType | null = null
 
 onMounted(() => {
   if (!emblaViewportRef.value) return
-  embla = EmblaCarousel(emblaViewportRef.value, { loop: true })
+  embla = EmblaCarousel(emblaViewportRef.value, { loop: false })
   const updateProgress = () => {
     if (!embla) return
     const index = embla.selectedScrollSnap()
@@ -238,10 +238,9 @@ onUnmounted(() => {
   }
   .hiw-carousel .embla__container {
     display: flex;
-    gap: 12px;
   }
   .hiw-carousel .embla__slide {
-    flex: 0 0 calc(100% - 48px);
+    flex: 0 0 100%;
     min-width: 0;
   }
 
