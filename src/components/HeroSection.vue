@@ -60,8 +60,7 @@
       <!-- Right column: floating panel -->
       <div class="hero-right">
         <div class="hero-panel">
-          <img src="/hero_light.png" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot--light" />
-          <img src="/hero_dark.png" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot--dark" />
+          <img :src="heroScreenshot" alt="Extension popup with transcription" class="hero-screenshot" />
         </div>
       </div>
 
@@ -70,11 +69,29 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import InstallButton from './InstallButton.vue';
 
 const scrollToDemo = () => {
   document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
 }
+
+const isDark = ref(false)
+let themeObserver: MutationObserver | null = null
+
+onMounted(() => {
+  isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
+  themeObserver = new MutationObserver(() => {
+    isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
+  })
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+})
+
+onUnmounted(() => {
+  themeObserver?.disconnect()
+})
+
+const heroScreenshot = computed(() => isDark.value ? '/hero_dark.png' : '/hero_light.png')
 </script>
 
 <style scoped>
@@ -240,26 +257,14 @@ html[data-theme='dark'] .hero-install-btn {
   border: 1px solid var(--color-border);
   border-radius: 16px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 100%;
-  padding: 20px;
-}
-
-html[data-theme='dark'] .hero-panel {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
 .hero-screenshot {
-  width: 100%;
-  height: auto;
+  height: 630px;
+  width: auto;
   display: block;
-  border-radius: 10px;
+  border-radius: 16px;
 }
-
-.hero-screenshot--dark { display: none; }
-
-html[data-theme='dark'] .hero-screenshot--light { display: none; }
-html[data-theme='dark'] .hero-screenshot--dark  { display: block; }
 
 
 /* Mobile */
