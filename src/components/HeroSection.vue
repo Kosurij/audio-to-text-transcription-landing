@@ -228,10 +228,11 @@ html[data-theme='dark'] .hero-install-btn {
   background: var(--color-border);
 }
 
-/* Right column — без вертикальных отступов, заполняет всю высоту */
+/* Right column */
 .hero-right {
   flex: 1;
-  align-self: stretch;
+  display: flex;
+  align-items: center;
 }
 
 .hero-panel {
@@ -241,9 +242,7 @@ html[data-theme='dark'] .hero-install-btn {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  padding: 20px;
 }
 
 html[data-theme='dark'] .hero-panel {
@@ -252,10 +251,9 @@ html[data-theme='dark'] .hero-panel {
 
 .hero-screenshot {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
+  height: auto;
   display: block;
+  border-radius: 10px;
 }
 
 .hero-screenshot--dark { display: none; }
