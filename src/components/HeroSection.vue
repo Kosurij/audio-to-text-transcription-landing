@@ -243,6 +243,9 @@ html[data-theme='dark'] .hero-install-btn {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
 }
 
 html[data-theme='dark'] .hero-panel {
@@ -250,11 +253,11 @@ html[data-theme='dark'] .hero-panel {
 }
 
 .hero-screenshot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
+  max-width: 100%;
+  height: auto;
   display: block;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
 }
 
 .hero-screenshot--dark {
