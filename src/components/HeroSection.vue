@@ -82,26 +82,26 @@ const scrollToDemo = () => {
 
 <style scoped>
 .hero {
-  padding: 80px 0 60px;
   background: var(--color-background);
   overflow: hidden;
 }
 
 .hero-container {
-  max-width: 1200px;
+  max-width: 80rem;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 64px;
 }
 
-/* Left column */
+/* Left column — несёт вертикальные отступы секции */
 .hero-left {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 80px 0 60px;
 }
 
 .hero-badge {
@@ -230,11 +230,10 @@ html[data-theme='dark'] .hero-install-btn {
   background: var(--color-border);
 }
 
-/* Right column */
+/* Right column — без вертикальных отступов, заполняет всю высоту */
 .hero-right {
   flex: 1;
-  display: flex;
-  align-items: stretch;
+  align-self: stretch;
 }
 
 .hero-panel {
@@ -244,6 +243,7 @@ html[data-theme='dark'] .hero-install-btn {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -278,17 +278,18 @@ html[data-theme='dark'] .hero-panel {
 
 /* Mobile */
 @media (max-width: 768px) {
-  .hero {
-    padding: 60px 0 40px;
-  }
-
   .hero-container {
     flex-direction: column;
     gap: 40px;
   }
 
   .hero-left {
+    padding: 60px 0 0;
     gap: 20px;
+  }
+
+  .hero-right {
+    align-self: auto;
   }
 
   .hero-title {
