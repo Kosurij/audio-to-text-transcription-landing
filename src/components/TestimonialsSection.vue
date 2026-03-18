@@ -192,7 +192,8 @@ let slider: EmblaCarouselType | null = null
 onMounted(() => {
   if (!sliderViewportRef.value) return
   slider = EmblaCarousel(sliderViewportRef.value, {
-    loop: true,
+    loop: false,
+    containScroll: 'keepSnaps',
   })
 })
 

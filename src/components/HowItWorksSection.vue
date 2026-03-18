@@ -83,7 +83,7 @@ let embla: EmblaCarouselType | null = null
 
 onMounted(() => {
   if (!emblaViewportRef.value) return
-  embla = EmblaCarousel(emblaViewportRef.value, { loop: true })
+  embla = EmblaCarousel(emblaViewportRef.value, { loop: false })
   const updateProgress = () => {
     if (!embla) return
     const index = embla.selectedScrollSnap()
