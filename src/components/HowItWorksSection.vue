@@ -83,10 +83,13 @@ let embla: EmblaCarouselType | null = null
 
 onMounted(() => {
   if (!emblaViewportRef.value) return
-  embla = EmblaCarousel(emblaViewportRef.value, { loop: false })
-  embla.on('scroll', () => {
-    progress.value = Math.round((embla?.scrollProgress() ?? 0) * 100)
-  })
+  embla = EmblaCarousel(emblaViewportRef.value, { loop: true })
+  const updateProgress = () => {
+    if (!embla) return
+    const index = embla.selectedScrollSnap()
+    progress.value = Math.round((index / (steps.length - 1)) * 100)
+  }
+  embla.on('select', updateProgress)
 })
 
 onUnmounted(() => {
@@ -235,10 +238,38 @@ onUnmounted(() => {
   }
   .hiw-carousel .embla__container {
     display: flex;
+    gap: 12px;
   }
   .hiw-carousel .embla__slide {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% - 48px);
     min-width: 0;
+  }
+
+  /* Number + title on one line */
+  .hiw-carousel .step-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 0;
+    padding: 20px;
+  }
+  .hiw-carousel .step-number {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: baseline;
+    font-size: 2.25rem;
+  }
+  .hiw-carousel .step-title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: baseline;
+    font-size: 1.25rem;
+  }
+  .hiw-carousel .step-description {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 10px;
   }
 
   /* Progress bar */

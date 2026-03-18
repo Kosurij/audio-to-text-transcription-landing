@@ -380,6 +380,10 @@ onUnmounted(() => {
   .testimonials-slider .embla__slide {
     flex: 0 0 calc(100% - 32px);
     min-width: 0;
+    display: flex;
+  }
+  .testimonials-slider .card {
+    flex: 1;
   }
 
   /* Hide photo blocks (no real photos yet) */
