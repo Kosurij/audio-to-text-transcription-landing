@@ -229,19 +229,23 @@ onUnmounted(() => {
   }
   .hiw-carousel {
     display: block;
+    overflow: hidden;
   }
 
   /* Embla core */
   .hiw-carousel .embla__viewport {
+    width: 100%;
     overflow: hidden;
     touch-action: pan-y;
   }
   .hiw-carousel .embla__container {
     display: flex;
+    backface-visibility: hidden;
   }
   .hiw-carousel .embla__slide {
     flex: 0 0 100%;
     min-width: 0;
+    overflow: hidden;
   }
 
   /* Number + title on one line */
