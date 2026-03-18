@@ -245,9 +245,12 @@ html[data-theme='dark'] .hero-install-btn {
   background: var(--color-border);
 }
 
-/* Right column — фиксированная ширина под скрин */
+/* Right column */
 .hero-right {
-  flex: 0 0 auto;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-panel {
@@ -258,8 +261,8 @@ html[data-theme='dark'] .hero-install-btn {
 }
 
 .hero-screenshot {
-  width: 300px;
-  height: auto;
+  max-height: 550px;
+  width: auto;
   display: block;
   border-radius: 16px;
 }
