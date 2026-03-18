@@ -24,11 +24,40 @@
           </div>
         </div>
       </div>
+
+      <!-- Mobile carousel — hidden on desktop via CSS -->
+      <div class="hiw-carousel">
+        <div class="embla__viewport" ref="emblaViewportRef">
+          <div class="embla__container">
+            <div class="embla__slide" v-for="(step, index) in steps" :key="step.title">
+              <div class="step">
+                <div class="step-media">
+                  <div class="media-placeholder">
+                    <span class="media-placeholder-label">{{ step.mediaLabel }}</span>
+                  </div>
+                </div>
+                <div class="step-content">
+                  <div class="step-number">{{ index + 1 }}.</div>
+                  <h3 class="step-title">{{ step.title }}</h3>
+                  <p class="step-description">{{ step.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hiw-progress-track">
+          <div class="hiw-progress-fill" :style="{ width: progress + '%' }"></div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import EmblaCarousel from 'embla-carousel'
+import type { EmblaCarouselType } from 'embla-carousel'
+
 // TODO: replace each media-placeholder with <img> or <video autoplay loop muted playsinline>
 const steps = [
   {
@@ -47,6 +76,23 @@ const steps = [
     mediaLabel: 'GIF → /gifs/transcript-result.gif\nЗапись: прогресс завершается → текст транскрипции появляется → пользователь нажимает Copy или Download TXT',
   },
 ]
+
+const emblaViewportRef = ref<HTMLElement | null>(null)
+const progress = ref(0)
+let embla: EmblaCarouselType | null = null
+
+onMounted(() => {
+  if (!emblaViewportRef.value) return
+  embla = EmblaCarousel(emblaViewportRef.value, { loop: false })
+  embla.on('scroll', () => {
+    progress.value = Math.round((embla?.scrollProgress() ?? 0) * 100)
+  })
+})
+
+onUnmounted(() => {
+  embla?.destroy()
+  embla = null
+})
 </script>
 
 <style scoped>
@@ -155,18 +201,59 @@ const steps = [
   }
 }
 
+/* Scope media hide to desktop grid only (not the mobile carousel) */
+.steps .step-media {
+  display: none;
+}
+
+/* Mobile carousel — hidden by default */
+.hiw-carousel {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .how-it-works {
     padding: 60px 0;
   }
 
-  /* Hide media placeholders on mobile — steps read fine as number + text */
-  .step-media {
-    display: none;
-  }
-
   .step {
     border-radius: 12px;
+  }
+
+  /* Hide desktop grid, show carousel */
+  .steps {
+    display: none;
+  }
+  .hiw-carousel {
+    display: block;
+  }
+
+  /* Embla core */
+  .hiw-carousel .embla__viewport {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  .hiw-carousel .embla__container {
+    display: flex;
+  }
+  .hiw-carousel .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+
+  /* Progress bar */
+  .hiw-progress-track {
+    margin-top: 16px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-border);
+    overflow: hidden;
+  }
+  .hiw-progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent-primary);
+    transition: width 0.1s ease;
   }
 }
 </style>
