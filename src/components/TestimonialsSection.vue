@@ -192,8 +192,9 @@ let slider: EmblaCarouselType | null = null
 onMounted(() => {
   if (!sliderViewportRef.value) return
   slider = EmblaCarousel(sliderViewportRef.value, {
-    loop: false,
-    containScroll: 'keepSnaps',
+    loop: true,
+    align: 'center',
+    containScroll: false,
   })
 })
 
@@ -375,12 +376,12 @@ onUnmounted(() => {
   }
   .testimonials-slider .embla__container {
     display: flex;
-    gap: 16px;
   }
   .testimonials-slider .embla__slide {
-    flex: 0 0 calc(100% - 32px);
+    flex: 0 0 calc(100% - 48px);
     min-width: 0;
     display: flex;
+    padding: 0 8px;
   }
   .testimonials-slider .card {
     flex: 1;
