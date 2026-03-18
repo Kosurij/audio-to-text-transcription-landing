@@ -253,6 +253,7 @@ html[data-theme='dark'] .hero-panel {
 }
 
 .hero-screenshot {
+  width: 280px;
   max-width: 100%;
   height: auto;
   display: block;
