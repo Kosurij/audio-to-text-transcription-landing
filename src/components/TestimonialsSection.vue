@@ -104,11 +104,37 @@
         </div>
 
       </div>
+
+      <!-- Mobile slider — hidden on desktop via CSS -->
+      <div class="testimonials-slider">
+        <div class="embla__viewport" ref="sliderViewportRef">
+          <div class="embla__container">
+            <div class="embla__slide" v-for="item in allTestimonials" :key="item.name">
+              <div class="card">
+                <div class="card-stars">★★★★★</div>
+                <p class="card-text">"{{ item.text }}"</p>
+                <div class="card-author">
+                  <img v-if="item.avatar" :src="item.avatar" :alt="item.name" class="author-img" />
+                  <div v-else class="author-initials">{{ item.name[0] }}</div>
+                  <div>
+                    <div class="author-name">{{ item.name }}</div>
+                    <div class="author-role">{{ item.role }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import EmblaCarousel from 'embla-carousel'
+import type { EmblaCarouselType } from 'embla-carousel'
+
 interface Testimonial {
   name: string
   role: string
@@ -156,6 +182,25 @@ const short: Testimonial[] = [
     text: 'Game changer for my YouTube workflow. I record commentary, transcribe it instantly, and use the TXT file for descriptions and subtitles. Simple and accurate.',
   },
 ]
+
+// Flat ordered array for mobile slider: tall cards first, then short
+const allTestimonials = [...tall, ...short]
+
+const sliderViewportRef = ref<HTMLElement | null>(null)
+let slider: EmblaCarouselType | null = null
+
+onMounted(() => {
+  if (!sliderViewportRef.value) return
+  slider = EmblaCarousel(sliderViewportRef.value, {
+    loop: false,
+    containScroll: 'keepSnaps',
+  })
+})
+
+onUnmounted(() => {
+  slider?.destroy()
+  slider = null
+})
 </script>
 
 <style scoped>
@@ -306,9 +351,41 @@ const short: Testimonial[] = [
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile slider — hidden by default */
+.testimonials-slider {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop grid */
   .testimonials-grid {
-    grid-template-columns: 1fr;
+    display: none;
+  }
+
+  /* Show slider */
+  .testimonials-slider {
+    display: block;
+    overflow: visible;
+  }
+
+  /* Embla core */
+  .testimonials-slider .embla__viewport {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  .testimonials-slider .embla__container {
+    display: flex;
+    gap: 16px;
+  }
+  .testimonials-slider .embla__slide {
+    flex: 0 0 calc(100% - 32px);
+    min-width: 0;
+  }
+
+  /* Hide photo blocks (no real photos yet) */
+  .testimonials-slider .card-photo,
+  .testimonials-slider .card-photo-placeholder {
+    display: none;
   }
 }
 </style>
