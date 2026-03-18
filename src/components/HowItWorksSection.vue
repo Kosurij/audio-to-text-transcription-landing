@@ -240,6 +240,7 @@ onUnmounted(() => {
   }
   .hiw-carousel .embla__container {
     display: flex;
+    gap: 16px;
     backface-visibility: hidden;
   }
   .hiw-carousel .embla__slide {
