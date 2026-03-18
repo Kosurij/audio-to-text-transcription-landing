@@ -60,8 +60,11 @@
       <!-- Right column: floating panel -->
       <div class="hero-right">
         <div class="hero-panel">
-          <img src="/screen_light.png" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot--light" />
-          <img src="/screen_dark.png" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot--dark" />
+          <!-- TODO: replace with <img src="/screenshots/hero-transcript.png" alt="Extension popup with completed transcription" /> -->
+          <div class="hero-panel-placeholder">
+            <span class="placeholder-label">Скриншот расширения</span>
+            <span class="placeholder-note">попап с готовой транскрипцией и кнопками Download / Copy</span>
+          </div>
         </div>
       </div>
 
@@ -243,34 +246,33 @@ html[data-theme='dark'] .hero-install-btn {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
 }
 
 html[data-theme='dark'] .hero-panel {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
-.hero-screenshot {
-  width: 280px;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+/* Placeholder — replace with img when real GIF is ready */
+.hero-panel-placeholder {
+  flex: 1;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 300px;
 }
 
-.hero-screenshot--dark {
-  display: none;
+.placeholder-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
 }
 
-html[data-theme='dark'] .hero-screenshot--light {
-  display: none;
-}
-
-html[data-theme='dark'] .hero-screenshot--dark {
-  display: block;
+.placeholder-note {
+  font-size: 12px;
+  color: var(--color-text-muted);
 }
 
 
