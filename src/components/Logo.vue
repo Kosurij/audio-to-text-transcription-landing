@@ -1,6 +1,6 @@
 <template>
   <div class="logo" :class="{ 'logo-compact': compact }">
-    <img :src="logoImage" alt="Audio To Text" class="logo-image" />
+    <img :src="logoImage" alt="Audio To Text" class="logo-image" :loading="loading" />
   </div>
 </template>
 
@@ -9,10 +9,12 @@ import logoImage from '../../assets/logo.png?url';
 
 interface Props {
   compact?: boolean;
+  loading?: 'eager' | 'lazy';
 }
 
 withDefaults(defineProps<Props>(), {
   compact: false,
+  loading: 'eager',
 });
 </script>
 

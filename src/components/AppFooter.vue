@@ -6,7 +6,7 @@
         <!-- Колонка 1: Бренд -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <Logo />
+            <Logo loading="lazy" />
             <span class="footer-logo-text">Audio to Text</span>
           </div>
           <p class="footer-tagline">

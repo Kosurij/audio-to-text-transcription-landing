@@ -10,9 +10,11 @@
         <iframe
           v-if="videoLoaded"
           src="https://www.youtube.com/embed/Jp9s63e7xqU?autoplay=0&mute=0&controls=1&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=1&cc_load_policy=0&loop=0"
+          title="Audio to Text Transcription — How It Works | Chrome Extension"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
+          loading="lazy"
           class="youtube-iframe"
         ></iframe>
         <div v-else class="youtube-placeholder">

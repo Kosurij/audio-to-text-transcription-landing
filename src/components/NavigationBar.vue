@@ -19,44 +19,7 @@
     </div>
 
     <div class="navbar-right">
-      <button
-        class="theme-toggle"
-        @click="toggleTheme"
-        :aria-label="currentTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
-      >
-        <svg
-          v-if="currentTheme === 'dark'"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
-          <path
-            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-        </svg>
-        <svg
-          v-else
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
+      <InstallButton class="navbar-cta">+ Add to Chrome</InstallButton>
 
       <button
         class="burger-button"
@@ -89,27 +52,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import Logo from './Logo.vue';
+import InstallButton from './InstallButton.vue';
 
 const isScrolled = ref(false);
 const isMenuOpen = ref(false);
-const currentTheme = ref<'light' | 'dark'>('light');
-let mediaQuery: MediaQueryList | null = null;
-let mediaQueryListener: ((event: MediaQueryListEvent) => void) | null = null;
-
-const applyTheme = (theme: 'light' | 'dark') => {
-  currentTheme.value = theme;
-  document.documentElement.setAttribute('data-theme', theme);
-};
-
-const setTheme = (theme: 'light' | 'dark') => {
-  applyTheme(theme);
-  localStorage.setItem('theme', theme);
-};
-
-const toggleTheme = () => {
-  const nextTheme = currentTheme.value === 'dark' ? 'light' : 'dark';
-  setTheme(nextTheme);
-};
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 8;
@@ -123,12 +69,8 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const navigateToSection = (sectionId: string) => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
+  if (typeof window === 'undefined') return;
   const currentPath = window.location.pathname;
-
   if (currentPath === '/' || currentPath === '/index.html') {
     scrollToSection(sectionId);
   } else {
@@ -142,33 +84,11 @@ const handleMobileNavigate = (sectionId: string) => {
 };
 
 onMounted(() => {
-  if (typeof window !== 'undefined') {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    if (savedTheme === 'dark' || savedTheme === 'light') {
-      applyTheme(savedTheme);
-    } else {
-      applyTheme(mediaQuery.matches ? 'dark' : 'light');
-    }
-
-    mediaQueryListener = (event: MediaQueryListEvent) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(event.matches ? 'dark' : 'light');
-      }
-    };
-
-    mediaQuery.addEventListener('change', mediaQueryListener);
-  }
-
   window.addEventListener('scroll', handleScroll, { passive: true });
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll);
-  if (mediaQuery && mediaQueryListener) {
-    mediaQuery.removeEventListener('change', mediaQueryListener);
-  }
 });
 </script>
 
@@ -278,22 +198,12 @@ html[data-theme='dark'] .navbar {
   gap: 16px;
 }
 
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border: none;
-  background: transparent;
-  color: var(--color-text);
-  cursor: pointer;
-  transition: color 0.2s ease;
-  padding: 0;
-}
-
-.theme-toggle:hover {
-  color: var(--accent-primary);
+.navbar-cta {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 20px;
+  height: 38px;
+  border-radius: 100px !important;
 }
 
 .burger-button {
@@ -416,7 +326,7 @@ html[data-theme='dark'] .mobile-link:hover {
     white-space: normal;
   }
 
-  .theme-toggle {
+  .navbar-cta {
     display: none;
   }
 
