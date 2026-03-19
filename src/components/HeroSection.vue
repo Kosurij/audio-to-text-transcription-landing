@@ -247,29 +247,27 @@ html[data-theme='dark'] .hero-install-btn {
 
 /* Right column */
 .hero-right {
-  flex: 1;
+  flex: 1.3;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .hero-panel {
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .hero-screenshot {
-  max-height: 550px;
-  width: auto;
-  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 16px;
 }
 
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 768px)А {
   .hero-container {
     flex-direction: column;
     gap: 40px;
