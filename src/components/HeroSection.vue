@@ -215,7 +215,7 @@ html[data-theme='dark'] .hero-install-btn {
 
 .stat-label {
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .stat-star {
@@ -351,6 +351,7 @@ html[data-theme='dark'] .hero-screenshot-dark {
 
   .hero-screenshot {
     max-height: 400px;
+    object-fit: contain;
   }
 
   .hero-panel {

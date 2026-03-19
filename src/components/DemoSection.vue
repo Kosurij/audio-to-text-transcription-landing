@@ -118,12 +118,12 @@ html[data-theme='dark'] .youtube-wrapper {
 
 .placeholder-icon {
   font-size: 48px;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .placeholder-text {
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 768px) {

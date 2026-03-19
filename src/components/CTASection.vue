@@ -54,7 +54,7 @@ html[data-theme='dark'] .cta-title {
 
 .cta-subtitle {
   font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   line-height: 1.6;
   max-width: 480px;
   margin: 0;
@@ -81,7 +81,7 @@ html[data-theme='dark'] .cta-button {
 
 .cta-hint {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
 }
 

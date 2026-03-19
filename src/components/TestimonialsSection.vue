@@ -350,7 +350,7 @@ onUnmounted(() => {
 
 .author-role {
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 /* Responsive */
