@@ -164,10 +164,9 @@ const tall: Testimonial[] = [
 // SHORT cards — cols 2, 3, 4, two per column, equal height
 const short: Testimonial[] = [
   {
-    name: 'Camila B.',
-    role: 'Journalist',
-    text: 'Muito bom',
-    avatar: '/reviews/review-camila.webp',
+    name: 'Mariana C.',
+    role: 'Translator',
+    text: 'Simples e fácil de utilizar. Recomendado!',
   },
   {
     name: 'Sergei S.',
@@ -176,9 +175,10 @@ const short: Testimonial[] = [
     avatar: '/reviews/review-marco.webp',
   },
   {
-    name: 'Mariana C.',
-    role: 'Translator',
-    text: 'Simples e fácil de utilizar. Recomendado!',
+    name: 'Camila B.',
+    role: 'Journalist',
+    text: 'Muito bom',
+    avatar: '/reviews/review-camila.webp',
   },
   {
     name: 'David K.',
