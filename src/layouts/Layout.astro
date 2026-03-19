@@ -113,9 +113,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           "applicationCategory": "ProductivityApplication",
           "operatingSystem": "Chrome Browser",
           "browserRequirements": "Requires Chrome browser",
-          "softwareVersion": "1.0",
+          "softwareVersion": "1.5",
           "datePublished": "2025-01-01",
-          "dateModified": "2025-01-13",
+          "dateModified": "2026-03-19",
           "author": {
             "@id": "https://audio-to-text-transcription.pro/#organization"
           },
@@ -321,6 +321,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       }
     </style>
     
+    <!-- Preload LCP images -->
+    <link rel="preload" as="image" href="/hero_light.webp" media="(prefers-color-scheme: light)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero_dark.webp" media="(prefers-color-scheme: dark)" fetchpriority="high" />
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

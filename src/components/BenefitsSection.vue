@@ -30,6 +30,7 @@
               loop
               :muted="true"
               playsinline
+              preload="none"
             />
             <img v-else :src="feature.media" :alt="feature.title" class="feature-gif" loading="lazy" />
             <p v-if="feature.mediaLabel" class="media-label">{{ feature.mediaLabel }}</p>

@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Audio To Text Transcription",
+  "short_name": "Audio to Text",
   "icons": [
     {
       "src": "/favicon/web-app-manifest-192x192.png",

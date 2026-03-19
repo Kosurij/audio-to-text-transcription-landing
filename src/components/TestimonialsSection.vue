@@ -32,7 +32,7 @@
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[0].text }}"</p>
           <div class="card-author">
-            <img v-if="short[0].avatar" :src="short[0].avatar" :alt="short[0].name" class="author-img" loading="lazy" />
+            <img v-if="short[0].avatar" :src="short[0].avatar" :alt="short[0].name" class="author-img" loading="lazy" width="36" height="36" />
             <div v-else class="author-initials">{{ short[0].name[0] }}</div>
             <div>
               <div class="author-name">{{ short[0].name }}</div>
@@ -46,7 +46,7 @@
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[1].text }}"</p>
           <div class="card-author">
-            <img v-if="short[1].avatar" :src="short[1].avatar" :alt="short[1].name" class="author-img" loading="lazy" />
+            <img v-if="short[1].avatar" :src="short[1].avatar" :alt="short[1].name" class="author-img" loading="lazy" width="36" height="36" />
             <div v-else class="author-initials">{{ short[1].name[0] }}</div>
             <div>
               <div class="author-name">{{ short[1].name }}</div>
@@ -60,7 +60,7 @@
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[2].text }}"</p>
           <div class="card-author">
-            <img v-if="short[2].avatar" :src="short[2].avatar" :alt="short[2].name" class="author-img" loading="lazy" />
+            <img v-if="short[2].avatar" :src="short[2].avatar" :alt="short[2].name" class="author-img" loading="lazy" width="36" height="36" />
             <div v-else class="author-initials">{{ short[2].name[0] }}</div>
             <div>
               <div class="author-name">{{ short[2].name }}</div>
@@ -74,7 +74,7 @@
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[3].text }}"</p>
           <div class="card-author">
-            <img v-if="short[3].avatar" :src="short[3].avatar" :alt="short[3].name" class="author-img" loading="lazy" />
+            <img v-if="short[3].avatar" :src="short[3].avatar" :alt="short[3].name" class="author-img" loading="lazy" width="36" height="36" />
             <div v-else class="author-initials">{{ short[3].name[0] }}</div>
             <div>
               <div class="author-name">{{ short[3].name }}</div>
@@ -88,7 +88,7 @@
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[4].text }}"</p>
           <div class="card-author">
-            <img v-if="short[4].avatar" :src="short[4].avatar" :alt="short[4].name" class="author-img" loading="lazy" />
+            <img v-if="short[4].avatar" :src="short[4].avatar" :alt="short[4].name" class="author-img" loading="lazy" width="36" height="36" />
             <div v-else class="author-initials">{{ short[4].name[0] }}</div>
             <div>
               <div class="author-name">{{ short[4].name }}</div>
@@ -102,7 +102,7 @@
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[5].text }}"</p>
           <div class="card-author">
-            <img v-if="short[5].avatar" :src="short[5].avatar" :alt="short[5].name" class="author-img" loading="lazy" />
+            <img v-if="short[5].avatar" :src="short[5].avatar" :alt="short[5].name" class="author-img" loading="lazy" width="36" height="36" />
             <div v-else class="author-initials">{{ short[5].name[0] }}</div>
             <div>
               <div class="author-name">{{ short[5].name }}</div>
@@ -122,7 +122,7 @@
                 <div class="card-stars">★★★★★</div>
                 <p class="card-text">"{{ item.text }}"</p>
                 <div class="card-author">
-                  <img v-if="item.avatar" :src="item.avatar" :alt="item.name" class="author-img" loading="lazy" />
+                  <img v-if="item.avatar" :src="item.avatar" :alt="item.name" class="author-img" loading="lazy" width="36" height="36" />
                   <div v-else class="author-initials">{{ item.name[0] }}</div>
                   <div>
                     <div class="author-name">{{ item.name }}</div>
