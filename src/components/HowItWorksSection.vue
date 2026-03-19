@@ -31,11 +31,6 @@
           <div class="embla__container">
             <div class="embla__slide" v-for="(step, index) in steps" :key="step.title">
               <div class="step">
-                <div class="step-media">
-                  <div class="media-placeholder">
-                    <span class="media-placeholder-label">{{ step.mediaLabel }}</span>
-                  </div>
-                </div>
                 <div class="step-content">
                   <div class="step-number">{{ index + 1 }}.</div>
                   <h3 class="step-title">{{ step.title }}</h3>

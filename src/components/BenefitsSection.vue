@@ -22,10 +22,17 @@
 
           <!-- Media -->
           <div class="feature-media">
-            <!-- Placeholder: replace with <img :src="feature.media" :alt="feature.title" /> when ready -->
-            <div class="media-placeholder">
-              <span class="media-placeholder-label">{{ feature.mediaLabel }}</span>
-            </div>
+            <video
+              v-if="feature.mediaType === 'video'"
+              :src="feature.media"
+              class="feature-gif"
+              autoplay
+              loop
+              :muted="true"
+              playsinline
+            />
+            <img v-else :src="feature.media" :alt="feature.title" class="feature-gif" loading="lazy" />
+            <p v-if="feature.mediaLabel" class="media-label">{{ feature.mediaLabel }}</p>
           </div>
         </div>
       </div>
@@ -34,27 +41,30 @@
 </template>
 
 <script setup lang="ts">
-// mediaLabel — TODO: replace each placeholder div with <img src="..." /> or <video autoplay loop muted playsinline>
 const features = [
   {
     title: 'Upload Files or Record Live',
-    description: 'Drag and drop any audio or video file — MP3, WAV, M4A, OGG, MP4. Or click Record to capture your microphone or any browser tab in real time. Transcription starts instantly.',
-    mediaLabel: 'GIF → /gifs/upload-flow.gif\nЗапись: открыть попап → перетащить MP3 файл → прогресс бар → появляется текст транскрипции',
+    description: 'Drag and drop any audio or video file — MP3, WAV, M4A, OGG, MP4. Or click Record to capture your microphone or any browser tab in real time. Supports 90+ languages, detected automatically.',
+    media: '/videos/feature-upload.mp4',
+    mediaType: 'video',
   },
   {
-    title: '99+ Languages with Timestamps',
-    description: 'Transcribe in any language — detected automatically. Each segment includes a timestamp so you can navigate to any moment. Perfect for multilingual meetings and interviews.',
-    mediaLabel: 'Screenshot → /screenshots/timestamps.png\nПоказать: транскрипт с временными метками слева, в шапке видно "Auto-detected: Russian" или другой язык',
+    title: 'Navigate by Timestamps',
+    description: 'Every transcript is split into segments with precise timestamps. Jump to any moment instantly — no more scrubbing through audio to find a quote.',
+    media: '/videos/feature-timestamps.mp4',
+    mediaType: 'video',
   },
   {
     title: 'AI-Powered Summary',
     description: 'After transcription, get an automatic summary of key points. No more reading through long transcripts — the important parts are extracted for you instantly.',
-    mediaLabel: 'Screenshot → /screenshots/summary.png\nПоказать: вкладка Summary открыта, список ключевых тезисов буллитами под транскриптом',
+    media: '/videos/feature-summary.mp4',
+    mediaType: 'video',
   },
   {
     title: 'History, Edit & Export',
     description: 'All your transcriptions are saved. Edit the text directly in the extension, then download as TXT or copy to clipboard. Your history is always one click away.',
-    mediaLabel: 'Screenshot → /screenshots/history.png\nПоказать: экран истории — список прошлых транскрипций, одна выбрана, видны кнопки Edit и Download TXT',
+    media: '/videos/feature-history.mp4',
+    mediaType: 'video',
   },
 ];
 </script>
@@ -140,28 +150,29 @@ const features = [
 }
 
 .feature-media {
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  max-width: clamp(220px, 25vw, 320px);
+  margin: 0 auto;
 }
 
-/* Placeholder — remove after replacing with real img */
-.media-placeholder {
-  aspect-ratio: 16 / 10;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+html[data-theme='dark'] .feature-media {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
 }
 
-.media-placeholder-label {
-  font-size: 13px;
+.feature-gif {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-label {
+  margin: 10px 0 0;
+  font-size: 12px;
   color: var(--color-text-muted);
-  text-align: center;
   line-height: 1.5;
+  font-style: italic;
 }
 
 /* Mobile */
@@ -181,11 +192,6 @@ const features = [
 
   .features-list {
     gap: 40px;
-  }
-
-  /* Hide media placeholders on mobile — text content is sufficient */
-  .feature-media {
-    display: none;
   }
 
   .feature-title {

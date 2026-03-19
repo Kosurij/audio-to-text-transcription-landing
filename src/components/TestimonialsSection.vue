@@ -6,10 +6,8 @@
       </div>
 
       <!--
-        Grid layout: [tall] [short] [tall] [short]
-                               [short]        [short]
-        grid-template-rows: 1fr 1fr → both rows equal height
-        tall cards span 2 rows → same total height as 2 stacked shorts
+        Grid layout: [tall] [short] [short] [short]
+                            [short] [short] [short]
       -->
       <div class="testimonials-grid">
 
@@ -17,12 +15,10 @@
         <div class="card card-tall" style="grid-column: 1">
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ tall[0].text }}"</p>
-          <!-- Large photo: fills bottom, replaces avatar circle -->
           <div v-if="tall[0].photo" class="card-photo">
             <img :src="tall[0].photo" :alt="tall[0].name" loading="lazy" />
           </div>
           <div v-else class="card-photo-placeholder"></div>
-          <!-- tall cards: never show circle — photo or placeholder fills that role -->
           <div class="card-author">
             <div>
               <div class="author-name">{{ tall[0].name }}</div>
@@ -59,24 +55,8 @@
           </div>
         </div>
 
-        <!-- Col 3 — TALL (spans 2 rows) -->
-        <div class="card card-tall" style="grid-column: 3">
-          <div class="card-stars">★★★★★</div>
-          <p class="card-text">"{{ tall[1].text }}"</p>
-          <div v-if="tall[1].photo" class="card-photo">
-            <img :src="tall[1].photo" :alt="tall[1].name" loading="lazy" />
-          </div>
-          <div v-else class="card-photo-placeholder"></div>
-          <div class="card-author">
-            <div>
-              <div class="author-name">{{ tall[1].name }}</div>
-              <div class="author-role">{{ tall[1].role }}</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Col 4 — SHORT row 1 -->
-        <div class="card" style="grid-column: 4; grid-row: 1">
+        <!-- Col 3 — SHORT row 1 -->
+        <div class="card" style="grid-column: 3; grid-row: 1">
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[2].text }}"</p>
           <div class="card-author">
@@ -89,8 +69,8 @@
           </div>
         </div>
 
-        <!-- Col 4 — SHORT row 2 -->
-        <div class="card" style="grid-column: 4; grid-row: 2">
+        <!-- Col 3 — SHORT row 2 -->
+        <div class="card" style="grid-column: 3; grid-row: 2">
           <div class="card-stars">★★★★★</div>
           <p class="card-text">"{{ short[3].text }}"</p>
           <div class="card-author">
@@ -99,6 +79,34 @@
             <div>
               <div class="author-name">{{ short[3].name }}</div>
               <div class="author-role">{{ short[3].role }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 4 — SHORT row 1 -->
+        <div class="card" style="grid-column: 4; grid-row: 1">
+          <div class="card-stars">★★★★★</div>
+          <p class="card-text">"{{ short[4].text }}"</p>
+          <div class="card-author">
+            <img v-if="short[4].avatar" :src="short[4].avatar" :alt="short[4].name" class="author-img" loading="lazy" />
+            <div v-else class="author-initials">{{ short[4].name[0] }}</div>
+            <div>
+              <div class="author-name">{{ short[4].name }}</div>
+              <div class="author-role">{{ short[4].role }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 4 — SHORT row 2 -->
+        <div class="card" style="grid-column: 4; grid-row: 2">
+          <div class="card-stars">★★★★★</div>
+          <p class="card-text">"{{ short[5].text }}"</p>
+          <div class="card-author">
+            <img v-if="short[5].avatar" :src="short[5].avatar" :alt="short[5].name" class="author-img" loading="lazy" />
+            <div v-else class="author-initials">{{ short[5].name[0] }}</div>
+            <div>
+              <div class="author-name">{{ short[5].name }}</div>
+              <div class="author-role">{{ short[5].role }}</div>
             </div>
           </div>
         </div>
@@ -143,43 +151,51 @@ interface Testimonial {
   avatar?: string  // URL of small avatar image
 }
 
-// TALL cards — cols 1 and 3, span full height, support large photo
+// TALL cards — col 1, spans full height, supports large photo
 const tall: Testimonial[] = [
   {
-    name: 'James K.',
-    role: 'Journalist',
-    text: 'As a journalist I record interviews constantly. This extension transcribes an hour-long interview in under a minute. The timestamp feature is essential — I can jump to any quote instantly. Highly recommended for anyone who works with audio professionally.',
-    // photo: '/photos/james.jpg',  // uncomment and set real path when ready
-  },
-  {
-    name: 'Anna R.',
-    role: 'Legal Assistant',
-    text: 'We use this to transcribe client consultations. The privacy-first approach matters to us — no data stored, quick results. The 99+ language support is a bonus since we work with international clients.',
-    // photo: '/photos/anna.jpg',
+    name: 'Emma R.',
+    role: 'Student',
+    text: 'This extension is awesome. You can either record audio from your microphone, web tab, or both; or upload an audio file to convert it into a full transcript. Highly recommend for people who don\'t feel like watching lecture videos and would rather copy the transcript into ChatGPT and ask it to make a study guide out of it ;)',
+    photo: '/reviews/review-emma.webp',
   },
 ]
 
-// SHORT cards — cols 2 and 4, two per column, equal height
+// SHORT cards — cols 2, 3, 4, two per column, equal height
 const short: Testimonial[] = [
   {
-    name: 'Sarah M.',
-    role: 'Project Manager',
-    text: 'I use this every day for team meetings. The accuracy is impressive — even with background noise. Saves me at least an hour daily.',
+    name: 'Camila B.',
+    role: 'Journalist',
+    text: 'Muito bom',
+    avatar: '/reviews/review-camila.webp',
   },
   {
-    name: 'Tom W.',
-    role: 'Podcast Producer',
-    text: 'Transcribing podcast episodes used to take hours. Now it takes minutes.',
+    name: 'Sergei S.',
+    role: 'Software Engineer',
+    text: 'I loved this extension. The audio-to-text conversion is accurate. The browser tab recording feature is especially useful. I recommend it to everyone!',
+    avatar: '/reviews/review-marco.webp',
+  },
+  {
+    name: 'Mariana C.',
+    role: 'Translator',
+    text: 'Simples e fácil de utilizar. Recomendado!',
+  },
+  {
+    name: 'David K.',
+    role: 'Student',
+    text: '생각보다 괜찮네?? 외국 강의 들으면서 이해하기 좋을듯.',
   },
   {
     name: 'Priya S.',
     role: 'PhD Student',
     text: 'I transcribe research interviews with this extension. Accuracy for academic content is excellent.',
+    avatar: '/reviews/review-priya.webp',
   },
   {
-    name: 'Marco D.',
+    name: 'Sofia D.',
     role: 'Content Creator',
     text: 'Game changer for my YouTube workflow. I record commentary, transcribe it instantly, and use the TXT file for descriptions and subtitles. Simple and accurate.',
+    avatar: '/reviews/review-sergei.webp',
   },
 ]
 
@@ -312,17 +328,17 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
-/* Fallback: initials circle */
+/* Fallback: initials circle (Google-style neutral gray) */
 .author-initials {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--gradient-primary);
+  background: #9AA0A6;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   flex-shrink: 0;
 }
