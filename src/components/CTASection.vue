@@ -3,7 +3,7 @@
     <div class="cta-container">
       <h2 class="cta-title">Ready to transcribe your audio?</h2>
       <p class="cta-subtitle">
-        Join thousands of professionals and students using Audio to Text every day.
+        Join thousands of professionals and students using Audio to Text Transcription every day.
       </p>
       <InstallButton class="cta-button">
         + Add to Chrome
