@@ -398,10 +398,49 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <slot />
+    {import.meta.env.DEV && (
+      <button id="dev-theme-toggle" title="Toggle theme (dev only)">
+        🌓
+      </button>
+    )}
+    {import.meta.env.DEV && (
+      <script>
+        const btn = document.getElementById('dev-theme-toggle');
+        btn?.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      </script>
+    )}
   </body>
 </html>
 
 <style is:global>
+  #dev-theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px dashed #888;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+  }
+  #dev-theme-toggle:hover {
+    opacity: 1;
+  }
+
   *,
   *::before,
   *::after {

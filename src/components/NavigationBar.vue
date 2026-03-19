@@ -7,7 +7,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Logo />
+        <Logo loading="eager" />
         <span class="product-name">Audio To Text Transcription</span>
       </a>
 
