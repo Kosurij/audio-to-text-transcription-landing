@@ -23,7 +23,6 @@ const props = withDefaults(defineProps<{
   variant: 'primary',
 })
 
-// TODO: Replace with actual Chrome Web Store URL
 const baseUrl = 'https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en'
 
 const buildChromeStoreUrl = (): string => {
@@ -68,18 +67,16 @@ const chromeStoreUrl = buildChromeStoreUrl()
   background-size: 200% 200%;
   color: #fff;
   box-shadow: 0 8px 24px rgba(26, 115, 232, 0.35);
-  transition: background-position 0.5s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  transition: background-position 0.5s ease, box-shadow 0.3s ease;
   animation: gradientFlow 6s ease infinite;
 }
 
 .primary:hover {
   background-position: 100% 50%;
   box-shadow: 0 10px 30px rgba(26, 115, 232, 0.45);
-  transform: translateY(-2px);
 }
 
 .primary:active {
-  transform: translateY(0);
   box-shadow: 0 6px 18px rgba(26, 115, 232, 0.35);
 }
 

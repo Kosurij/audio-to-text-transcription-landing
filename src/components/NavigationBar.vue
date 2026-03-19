@@ -7,7 +7,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Logo />
+        <Logo loading="eager" />
         <span class="product-name">Audio To Text Transcription</span>
       </a>
 
@@ -19,44 +19,7 @@
     </div>
 
     <div class="navbar-right">
-      <button
-        class="theme-toggle"
-        @click="toggleTheme"
-        :aria-label="currentTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
-      >
-        <svg
-          v-if="currentTheme === 'dark'"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
-          <path
-            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-        </svg>
-        <svg
-          v-else
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
+      <InstallButton class="navbar-cta">+ Add to Chrome</InstallButton>
 
       <button
         class="burger-button"
@@ -89,27 +52,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import Logo from './Logo.vue';
+import InstallButton from './InstallButton.vue';
 
 const isScrolled = ref(false);
 const isMenuOpen = ref(false);
-const currentTheme = ref<'light' | 'dark'>('light');
-let mediaQuery: MediaQueryList | null = null;
-let mediaQueryListener: ((event: MediaQueryListEvent) => void) | null = null;
-
-const applyTheme = (theme: 'light' | 'dark') => {
-  currentTheme.value = theme;
-  document.documentElement.setAttribute('data-theme', theme);
-};
-
-const setTheme = (theme: 'light' | 'dark') => {
-  applyTheme(theme);
-  localStorage.setItem('theme', theme);
-};
-
-const toggleTheme = () => {
-  const nextTheme = currentTheme.value === 'dark' ? 'light' : 'dark';
-  setTheme(nextTheme);
-};
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 8;
@@ -123,12 +69,8 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const navigateToSection = (sectionId: string) => {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
+  if (typeof window === 'undefined') return;
   const currentPath = window.location.pathname;
-
   if (currentPath === '/' || currentPath === '/index.html') {
     scrollToSection(sectionId);
   } else {
@@ -142,52 +84,34 @@ const handleMobileNavigate = (sectionId: string) => {
 };
 
 onMounted(() => {
-  if (typeof window !== 'undefined') {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    if (savedTheme === 'dark' || savedTheme === 'light') {
-      applyTheme(savedTheme);
-    } else {
-      applyTheme(mediaQuery.matches ? 'dark' : 'light');
-    }
-
-    mediaQueryListener = (event: MediaQueryListEvent) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(event.matches ? 'dark' : 'light');
-      }
-    };
-
-    mediaQuery.addEventListener('change', mediaQueryListener);
-  }
-
   window.addEventListener('scroll', handleScroll, { passive: true });
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll);
-  if (mediaQuery && mediaQueryListener) {
-    mediaQuery.removeEventListener('change', mediaQueryListener);
-  }
 });
 </script>
 
 <style scoped>
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 88px;
   padding: 0 40px;
-  background: var(--navbar-bg);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  transition: background 0.2s ease;
+}
+
+html[data-theme='dark'] .navbar {
+  background: rgba(15, 23, 42, 0.88);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
 }
 
 .navbar.scrolled {
@@ -274,22 +198,12 @@ onBeforeUnmount(() => {
   gap: 16px;
 }
 
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border: none;
-  background: transparent;
-  color: var(--color-text);
-  cursor: pointer;
-  transition: color 0.2s ease;
-  padding: 0;
-}
-
-.theme-toggle:hover {
-  color: var(--accent-primary);
+.navbar-cta {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 20px;
+  height: 38px;
+  border-radius: 100px !important;
 }
 
 .burger-button {
@@ -332,7 +246,7 @@ onBeforeUnmount(() => {
   top: 88px;
   right: 0;
   left: 0;
-  background: var(--navbar-bg);
+  background: var(--color-background);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-lg);
@@ -361,12 +275,12 @@ html[data-theme='dark'] .mobile-link {
 }
 
 .mobile-link:hover {
-  background: rgba(26, 115, 232, 0.08);
+  background: rgba(37, 99, 235, 0.08);
   color: var(--accent-primary);
 }
 
 html[data-theme='dark'] .mobile-link:hover {
-  background: rgba(138, 180, 248, 0.15);
+  background: rgba(59, 130, 246, 0.15);
 }
 
 .fade-enter-active,
@@ -392,6 +306,11 @@ html[data-theme='dark'] .mobile-link:hover {
 @media (max-width: 768px) {
   .navbar {
     padding: 0 20px;
+    min-height: 56px;
+  }
+
+  .mobile-menu {
+    top: 56px;
   }
 
   .desktop-nav {
@@ -407,9 +326,8 @@ html[data-theme='dark'] .mobile-link:hover {
     white-space: normal;
   }
 
-  .theme-toggle {
-    width: 44px;
-    height: 44px;
+  .navbar-cta {
+    display: none;
   }
 
   .navbar-right {
@@ -441,8 +359,16 @@ html[data-theme='dark'] .mobile-link:hover {
 }
 
 @media (max-width: 480px) {
+  .branding {
+    gap: 10px;
+  }
+
   .product-name {
     font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 190px;
   }
 }
 </style>

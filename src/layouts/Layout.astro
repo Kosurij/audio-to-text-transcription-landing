@@ -1,11 +1,13 @@
 ---
+import 'modern-normalize/modern-normalize.css';
 interface Props {
   title: string;
   description: string;
   image?: string;
+  noindex?: boolean;
 }
 
-const { title, description, image = '/og-image.jpg' } = Astro.props;
+const { title, description, image = '/og-image.jpg', noindex = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -15,7 +17,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1A73E8" />
+    <meta name="theme-color" content="#2563EB" />
     <meta name="keywords" content="audio to text, transcription, speech to text, audio transcription, chrome extension, voice to text, audio converter, meeting transcription, interview transcription, podcast transcription" />
     <meta name="author" content="Audio To Text Transcription" />
     
@@ -28,6 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/favicon/site.webmanifest" />
     
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -51,7 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Additional SEO -->
     <meta name="application-name" content="Audio To Text Transcription" />
     <meta name="apple-mobile-web-app-title" content="Audio To Text Transcription" />
-    <meta name="msapplication-TileColor" content="#1A73E8" />
+    <meta name="msapplication-TileColor" content="#2563EB" />
     
     <!-- SEO -->
     <meta name="robots" content="index, follow" />
@@ -280,31 +283,38 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <style>
       html {
         scroll-behavior: smooth;
-        background: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-        background-attachment: fixed;
-        overflow-x: hidden;
+        background: #ffffff;
+        overflow-x: clip;
         margin: 0;
         padding: 0;
         width: 100%;
       }
 
+      html[data-theme='dark'] {
+        background: #0F172A;
+      }
+
+      html[data-theme='dark'] body {
+        background: #0F172A;
+        color: #F1F5F9;
+      }
+
       body {
-        background: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-        background-attachment: fixed;
+        background: #ffffff;
         color: #202124;
-        font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         padding: 0;
         margin: 0;
-        overflow-x: hidden;
+        overflow-x: clip;
       }
 
       .landing-page {
         min-height: 100vh;
         background: transparent;
-        overflow-x: hidden;
+        overflow-x: clip;
         margin: 0;
         padding: 0;
         width: 100%;
@@ -388,10 +398,49 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <slot />
+    {import.meta.env.DEV && (
+      <button id="dev-theme-toggle" title="Toggle theme (dev only)">
+        🌓
+      </button>
+    )}
+    {import.meta.env.DEV && (
+      <script>
+        const btn = document.getElementById('dev-theme-toggle');
+        btn?.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      </script>
+    )}
   </body>
 </html>
 
 <style is:global>
+  #dev-theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px dashed #888;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+  }
+  #dev-theme-toggle:hover {
+    opacity: 1;
+  }
+
   *,
   *::before,
   *::after {
@@ -401,88 +450,66 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   :root {
-    /* Chrome Extension Style - Clean & Minimal (Light Theme) */
     --color-text: #202124;
     --color-text-secondary: #5F6368;
     --color-text-muted: #80868B;
     --color-background: #FFFFFF;
     --color-surface: #F8F9FA;
     --color-surface-elevated: #FFFFFF;
-    --color-border: #DADCE0;
-    --color-border-strong: #BDC1C6;
-    
-    /* Chrome Blue Accent */
-    --accent-primary: #1A73E8;
-    --accent-primary-hover: #1765CC;
-    --accent-secondary: #34A853;
-    --accent-blue: #1A73E8;
-    
-    /* Chrome Extension Gradients */
-    --gradient-primary: linear-gradient(135deg, #1A73E8 0%, #4285F4 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #1765CC 0%, #357AE8 100%);
-    --gradient-bg: linear-gradient(135deg, rgb(239, 246, 255), rgb(219, 234, 254), rgb(191, 219, 254));
-    --gradient-bg-subtle: linear-gradient(135deg, rgba(239, 246, 255, 0.5), rgba(219, 234, 254, 0.5), rgba(191, 219, 254, 0.5));
-    
-    /* Material Design Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    --shadow-md: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-    --shadow-lg: 0 2px 4px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
-    --shadow-xl: 0 4px 8px 0 rgba(60, 64, 67, 0.3), 0 8px 16px 4px rgba(60, 64, 67, 0.15);
-    
-    /* Navbar */
-    --navbar-bg: #FFFFFF;
-    --navbar-blur: none;
-    
+    --color-border: #E2E8F0;        /* was #DADCE0 — global change, affects all components */
+    --color-border-strong: #CBD5E1; /* was #BDC1C6 */
+    --accent-primary: #2563EB;
+    --accent-primary-hover: #1D4ED8;
+    --accent-secondary: #0EA5E9;
+    --accent-blue: #2563EB;
+    --gradient-primary: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #1D4ED8 0%, #0284C7 100%);
+    --gradient-bg: #FFFFFF;
+    --gradient-bg-subtle: #F8FAFC;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.08), 0 8px 10px rgba(0, 0, 0, 0.04);
+    /* --navbar-bg and --navbar-blur removed — NavigationBar no longer uses them after Task 2 */
+
     font-size: 16px;
     font-weight: 400;
   }
 
   html[data-theme='dark'] {
-    /* Dark Theme */
-    --color-text: #E8EAED;
-    --color-text-secondary: #9AA0A6;
-    --color-text-muted: #80868B;
-    --color-background: #202124;
-    --color-surface: #2D2E30;
-    --color-surface-elevated: #303134;
-    --color-border: #3C4043;
-    --color-border-strong: #5F6368;
-    
-    /* Chrome Blue Accent (lighter for dark theme) */
-    --accent-primary: #8AB4F8;
-    --accent-primary-hover: #AECBFA;
-    --accent-secondary: #81C995;
-    --accent-blue: #8AB4F8;
-    
-    /* Dark Theme Gradients */
-    --gradient-primary: linear-gradient(135deg, #8AB4F8 0%, #AECBFA 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #AECBFA 0%, #C5E1FA 100%);
-    --gradient-bg: linear-gradient(135deg, rgb(32, 33, 36), rgb(41, 42, 45), rgb(48, 49, 52));
-    --gradient-bg-subtle: linear-gradient(135deg, rgba(32, 33, 36, 0.8), rgba(41, 42, 45, 0.8), rgba(48, 49, 52, 0.8));
-    
-    /* Dark Theme Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 1px 3px 1px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 6px 2px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 2px 4px 0 rgba(0, 0, 0, 0.6), 0 4px 8px 3px rgba(0, 0, 0, 0.5);
-    --shadow-xl: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 8px 16px 4px rgba(0, 0, 0, 0.6);
-    
-    /* Navbar Dark */
-    --navbar-bg: #202124;
+    --color-text: #F1F5F9;
+    --color-text-secondary: #94A3B8;
+    --color-text-muted: #64748B;
+    --color-background: #0F172A;
+    --color-surface: #1E293B;
+    --color-surface-elevated: #1E293B;
+    --color-border: #334155;
+    --color-border-strong: #475569;
+    --accent-primary: #3B82F6;
+    --accent-primary-hover: #60A5FA;
+    --accent-secondary: #38BDF8;
+    --accent-blue: #3B82F6;
+    --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #38BDF8 100%);
+    --gradient-primary-hover: linear-gradient(135deg, #60A5FA 0%, #7DD3FC 100%);
+    --gradient-bg: #0F172A;
+    --gradient-bg-subtle: #1E293B;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6), 0 8px 10px rgba(0, 0, 0, 0.4);
   }
 
   html {
     scroll-behavior: smooth;
-    background: var(--gradient-bg);
-    background-attachment: fixed;
-    overflow-x: hidden;
+    background: var(--color-background);
+    overflow-x: clip;
     margin: 0;
     padding: 0;
     width: 100%;
   }
 
   body {
-    background: var(--gradient-bg);
-    background-attachment: fixed;
+    background: var(--color-background);
     color: var(--color-text);
     font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.5;
@@ -490,7 +517,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     -moz-osx-font-smoothing: grayscale;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   
   h1, h2, h3, h4, h5, h6 {
