@@ -187,7 +187,7 @@ const short: Testimonial[] = [
   },
   {
     name: 'Priya S.',
-    role: 'PhD Student',
+    role: 'Researcher',
     text: 'I transcribe research interviews with this extension. Accuracy for academic content is excellent.',
   },
   {
