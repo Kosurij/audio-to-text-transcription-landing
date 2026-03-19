@@ -60,7 +60,8 @@
       <!-- Right column: floating panel -->
       <div class="hero-right">
         <div class="hero-panel">
-          <img :src="heroScreenshot" alt="Extension popup with transcription" class="hero-screenshot" />
+          <img src="/hero_light.webp" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot-light" />
+          <img src="/hero_dark.webp" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot-dark" />
         </div>
       </div>
 
@@ -69,29 +70,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
 import InstallButton from './InstallButton.vue';
 
 const scrollToDemo = () => {
   document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
 }
-
-const isDark = ref(false)
-let themeObserver: MutationObserver | null = null
-
-onMounted(() => {
-  isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
-  themeObserver = new MutationObserver(() => {
-    isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
-  })
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
-})
-
-onUnmounted(() => {
-  themeObserver?.disconnect()
-})
-
-const heroScreenshot = computed(() => isDark.value ? '/hero_dark.png' : '/hero_light.png')
 </script>
 
 <style scoped>
@@ -257,6 +240,13 @@ html[data-theme='dark'] .hero-install-btn {
 
 .hero-panel {
   width: 100%;
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 55%, transparent 100%);
+}
+
+html[data-theme='dark'] .hero-panel {
+  mask-image: radial-gradient(ellipse 70% 70% at 55% 50%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 55% 50%, black 30%, transparent 75%);
 }
 
 .hero-screenshot {
@@ -265,9 +255,21 @@ html[data-theme='dark'] .hero-install-btn {
   border-radius: 16px;
 }
 
+.hero-screenshot-dark {
+  display: none;
+}
+
+html[data-theme='dark'] .hero-screenshot-light {
+  display: none;
+}
+
+html[data-theme='dark'] .hero-screenshot-dark {
+  display: block;
+}
+
 
 /* Mobile */
-@media (max-width: 768px)А {
+@media (max-width: 768px) {
   .hero-container {
     flex-direction: column;
     gap: 40px;
