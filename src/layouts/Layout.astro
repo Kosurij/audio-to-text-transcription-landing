@@ -30,7 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/favicon/site.webmanifest" />
     
     <meta name="generator" content={Astro.generator} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -55,10 +55,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="application-name" content="Audio To Text Transcription" />
     <meta name="apple-mobile-web-app-title" content="Audio To Text Transcription" />
     <meta name="msapplication-TileColor" content="#2563EB" />
-    
-    <!-- SEO -->
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
     
     <title>{title}</title>
     
