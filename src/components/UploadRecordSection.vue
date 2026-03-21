@@ -1,6 +1,7 @@
 <template>
   <section class="upload-record">
     <div class="upload-record-container">
+      <h2 class="sr-only">Try it now</h2>
 
       <!-- Two action cards -->
       <div class="cards">
@@ -94,6 +95,18 @@ const platforms = [
 </script>
 
 <style scoped>
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .upload-record {
   padding: 80px 0;
   background: linear-gradient(180deg, #ffffff 0%, #E8F0FE 30%, #EDE8FE 65%, #ffffff 100%);
