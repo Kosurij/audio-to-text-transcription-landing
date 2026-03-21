@@ -32,9 +32,9 @@
             <div class="embla__slide" v-for="(step, index) in steps" :key="step.title">
               <div class="step">
                 <div class="step-content">
-                  <div class="step-number">{{ index + 1 }}.</div>
+                  <div class="step-number" aria-hidden="true">{{ index + 1 }}.</div>
                   <h3 class="step-title" aria-hidden="true">{{ step.title }}</h3>
-                  <p class="step-description">{{ step.description }}</p>
+                  <p class="step-description" aria-hidden="true">{{ step.description }}</p>
                 </div>
               </div>
             </div>
