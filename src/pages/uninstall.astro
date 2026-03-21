@@ -21,26 +21,6 @@ const description = 'We\'re sorry to see you go. Please let us know why you\'re 
   </div>
 </Layout>
 
-<script is:inline>
-  // Устанавливаем светлую тему для страницы uninstall
-  document.documentElement.setAttribute('data-theme', 'light');
-  
-  // Добавляем мета-теги для предотвращения индексации
-  document.title = 'Uninstall - Audio To Text Transcription';
-  
-  // Удаляем существующий robots meta если есть
-  const existingRobots = document.querySelector('meta[name="robots"]');
-  if (existingRobots) {
-    existingRobots.remove();
-  }
-  
-  // Добавляем noindex
-  const robotsMeta = document.createElement('meta');
-  robotsMeta.name = 'robots';
-  robotsMeta.content = 'noindex, nofollow';
-  document.head.appendChild(robotsMeta);
-</script>
-
 <style>
   .uninstall-page {
     min-height: 100vh;

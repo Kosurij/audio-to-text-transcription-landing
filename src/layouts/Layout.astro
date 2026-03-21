@@ -30,6 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/favicon/site.webmanifest" />
     
     <meta name="generator" content={Astro.generator} />
+    <!-- Robots / Indexing -->
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     
     <!-- Canonical URL -->
