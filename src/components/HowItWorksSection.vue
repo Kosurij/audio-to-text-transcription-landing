@@ -33,7 +33,7 @@
               <div class="step">
                 <div class="step-content">
                   <div class="step-number">{{ index + 1 }}.</div>
-                  <h3 class="step-title">{{ step.title }}</h3>
+                  <h3 class="step-title" aria-hidden="true">{{ step.title }}</h3>
                   <p class="step-description">{{ step.description }}</p>
                 </div>
               </div>
