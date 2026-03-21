@@ -5,7 +5,7 @@ import vue from '@astrojs/vue';
 export default defineConfig({
   integrations: [vue()],
   output: 'static',
-  site: 'https://audio-to-text-transcription.pro',
+  site: 'https://audio-to-text-transcription.com',
   vite: {
     resolve: {
       alias: {

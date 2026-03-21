@@ -16,7 +16,7 @@
 
         <!-- Колонка 2: Product -->
         <div class="footer-col">
-          <h4 class="footer-col-title">Product</h4>
+          <h3 class="footer-col-title">Product</h3>
           <ul class="footer-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#how-it-works">How it works</a></li>
@@ -27,7 +27,7 @@
 
         <!-- Колонка 3: Legal & Support -->
         <div class="footer-col">
-          <h4 class="footer-col-title">Support</h4>
+          <h3 class="footer-col-title">Support</h3>
           <ul class="footer-links">
             <li><a href="/privacy">Privacy Policy</a></li>
             <li>

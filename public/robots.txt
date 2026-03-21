@@ -1,8 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /welcome
-Disallow: /privacy
 Disallow: /uninstall
 
-Sitemap: https://audio-to-text-transcription.pro/sitemap.xml
-
+Sitemap: https://audio-to-text-transcription.com/sitemap.xml
