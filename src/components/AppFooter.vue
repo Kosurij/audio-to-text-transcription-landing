@@ -46,6 +46,9 @@
 
       <div class="footer-bottom">
         <p class="footer-copyright">© {{ currentYear }} Audio to Text Transcription. All rights reserved.</p>
+        <a href="https://saasfame.com/item/audio-to-text-transcription" target="_blank" rel="noopener noreferrer" class="footer-badge">
+          <img src="https://saasfame.com/badge-light.svg" alt="Featured on saasfame.com" />
+        </a>
       </div>
     </div>
   </footer>
@@ -135,6 +138,11 @@ const currentYear = new Date().getFullYear();
 .footer-bottom {
   border-top: 1px solid var(--color-border);
   padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .footer-badge {
@@ -144,7 +152,7 @@ const currentYear = new Date().getFullYear();
 
 .footer-badge img {
   display: block;
-  height: 48px;
+  height: 54px;
   width: auto;
 }
 
