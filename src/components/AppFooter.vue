@@ -46,18 +46,6 @@
 
       <div class="footer-bottom">
         <p class="footer-copyright">© {{ currentYear }} Audio to Text Transcription. All rights reserved.</p>
-        <a
-          href="https://www.nxgntools.com/tools/audio-to-text-transcription?utm_source=audio-to-text-transcription"
-          target="_blank"
-          rel="noopener"
-          class="footer-badge"
-        >
-          <img
-            src="https://www.nxgntools.com/api/embed/audio-to-text-transcription?type=FEATURED_ON&hideUpvotes=true"
-            alt="Featured on NextGen Tools"
-            height="48"
-          />
-        </a>
       </div>
     </div>
   </footer>
@@ -147,11 +135,6 @@ const currentYear = new Date().getFullYear();
 .footer-bottom {
   border-top: 1px solid var(--color-border);
   padding-top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
 }
 
 .footer-badge {
