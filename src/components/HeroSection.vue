@@ -31,12 +31,12 @@
 
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-value">1.2k+</span>
+            <span class="stat-value">2.5k+</span>
             <span class="stat-label">People use it every week</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <span class="stat-value"><span class="stat-star">★</span> 5.0</span>
+            <span class="stat-value"><span class="stat-star">★</span>4.9</span>
             <span class="stat-label">Rating on Chrome Store</span>
           </div>
           <div class="stat-divider"></div>
