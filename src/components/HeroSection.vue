@@ -31,7 +31,7 @@
 
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-value">2.5k+</span>
+            <span class="stat-value">3k+</span>
             <span class="stat-label">People use it every week</span>
           </div>
           <div class="stat-divider"></div>
@@ -51,7 +51,7 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <span class="stat-value">14+</span>
+            <span class="stat-value">20+</span>
             <span class="stat-label">Audio & video formats</span>
           </div>
         </div>
