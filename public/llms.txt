@@ -1,0 +1,10 @@
+# Audio To Text Transcription
+
+> Chrome extension that converts audio and video to text instantly, powered by OpenAI Whisper. Upload files or record from microphone/browser tab. Free to install and use, 90+ languages, exports to TXT/DOCX/PDF.
+
+## Product
+- [Homepage](https://audio-to-text-transcription.com/): Features, how it works, FAQ, and demo
+- [Chrome Web Store listing](https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd): Install the extension
+
+## Legal
+- [Privacy Policy](https://audio-to-text-transcription.com/privacy/): Data handling and privacy practices
