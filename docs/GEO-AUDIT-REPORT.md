@@ -1,29 +1,44 @@
 # GEO Audit Report: Audio To Text Transcription
 
-**Audit Date:** 2026-07-22
+**Audit Date:** 2026-07-22 (re-audit, post-fix)
+**Original Audit:** 2026-07-22
 **URL:** https://audio-to-text-transcription.com/
 **Business Type:** SaaS / Chrome Extension (single-page product landing)
 **Pages Analyzed:** 2 (homepage, /privacy/)
 
 ---
 
+## Changes Since Last Audit
+
+Three High-priority issues from the original audit were fixed on branch `geo-audit-fixes` (merged to `main`, live in production) and are now verified live:
+
+1. ✅ **`llms.txt` added** — `GET /llms.txt` now returns 200 with a curated site summary (was 404).
+2. ✅ **"Paid plans" claim removed** — the JSON-LD FAQ answer for "Is it free to use?" now reads *"The extension is free to install and use."* — no more mention of a paid tier that doesn't exist anywhere on the site.
+3. ✅ **Avatar filenames fixed** — `review-marco.webp` → `review-sergei-s.webp` and `review-sergei.webp` → `review-sofia-d.webp`; filenames now match the testimonial names they're displayed under.
+
+All three were verified directly against the live site's HTML/response in this re-audit (not just against the build output).
+
+**Still open** (explicitly deferred, unchanged since original audit): no standalone URLs for Features/How-it-works/FAQ (still anchor-only), zero third-party brand presence (no `sameAs`, no Wikipedia/Reddit/LinkedIn/X/YouTube/Product Hunt/G2), no About/Team page or author attribution, no Twitter Card meta tags, thin 2-URL sitemap, no individual `Review` schema backing the aggregate rating.
+
+---
+
 ## Executive Summary
 
-**Overall GEO Score: 51/100 (Poor)**
+**Overall GEO Score: 54/100 (Poor, up from 51/100)**
 
-The site has an unusually strong structured-data foundation for its size (WebSite, Organization, SoftwareApplication, HowTo and FAQPage schema all present via one `@graph`), fast server-rendered HTML, and unrestricted crawler access — so AI systems *can* read and parse it easily. The problem is everything around the schema: the entire product story lives on a single page with no independently citable URLs, there is no visible brand footprint anywhere AI models cross-reference (no Wikipedia, Reddit, LinkedIn, X/Twitter, YouTube, Product Hunt, G2), and there are no E-E-A-T signals (no author, no team/about page, no sourced claims) to back up trust-sensitive statements like "we don't store your data." This combination — good machine-readability, near-zero external authority — caps the score in the "Poor" band even though nothing is broken.
+The three fixes closed real gaps — a missing `llms.txt`, a factual inconsistency in the FAQ schema, and a trust-eroding filename mismatch on testimonials — and nudged the score up across Technical GEO, Content E-E-A-T, and AI Citability. The site's fundamental shape hasn't changed, though: it's still a single page with no independently citable sub-URLs, and it still has essentially zero external brand authority (no Wikipedia, Reddit, LinkedIn, X, YouTube, Product Hunt, or G2 presence). Those two structural gaps — not anything mechanical — are what keep the score in the "Poor" band and are the highest-leverage next steps.
 
 ### Score Breakdown
 
-| Category | Score | Weight | Weighted Score |
-|---|---|---|---|
-| AI Citability | 62/100 | 25% | 15.5 |
-| Brand Authority | 25/100 | 20% | 5.0 |
-| Content E-E-A-T | 30/100 | 20% | 6.0 |
-| Technical GEO | 78/100 | 15% | 11.7 |
-| Schema & Structured Data | 85/100 | 10% | 8.5 |
-| Platform Optimization | 40/100 | 10% | 4.0 |
-| **Overall GEO Score** | | | **50.7 ≈ 51/100** |
+| Category | Score | Weight | Weighted Score | Change |
+|---|---|---|---|---|
+| AI Citability | 64/100 | 25% | 16.0 | +2 |
+| Brand Authority | 25/100 | 20% | 5.0 | — |
+| Content E-E-A-T | 38/100 | 20% | 7.6 | +8 |
+| Technical GEO | 85/100 | 15% | 12.75 | +7 |
+| Schema & Structured Data | 87/100 | 10% | 8.7 | +2 |
+| Platform Optimization | 40/100 | 10% | 4.0 | — |
+| **Overall GEO Score** | | | **54.05 ≈ 54/100** | **+3** |
 
 ---
 
@@ -33,7 +48,7 @@ None. Site is indexable, no crawler blocks, no 5xx errors, structured data is pr
 
 ## High Priority Issues
 
-1. **No `llms.txt` file** (returns 404). Without it, AI crawlers have no curated summary of what the site is and which pages matter.
+1. ~~No `llms.txt` file~~ — **FIXED.** `/llms.txt` now returns 200 with a curated summary.
 2. **No standalone URLs for Features / How-it-works / FAQ.** They exist only as in-page anchors (`#features`, `#how-it-works`, `#faq`) on the homepage. AI systems generally cite a specific URL for a specific answer — an anchor on a single long page is a weak citation target compared to a dedicated `/faq` or `/how-it-works` page.
 3. **Zero third-party brand presence.** No Wikipedia entry, no Reddit mentions, no LinkedIn company page, no X/Twitter, no YouTube channel, no Product Hunt/G2/Capterra listing found. The only external reference point is the Chrome Web Store listing itself. AI models lean heavily on independent corroboration for entity recognition — right now there is essentially none.
 4. **No About/Team page or author attribution.** Nothing on the site identifies who builds or runs the product, which weakens trust signals for a tool that explicitly makes privacy/data-handling claims.
@@ -42,8 +57,8 @@ None. Site is indexable, no crawler blocks, no 5xx errors, structured data is pr
 
 1. **Sitemap covers only 2 URLs** (home + privacy). Even for a single-page product this under-represents the site (no dedicated sitemap entries for anchor sections, no image sitemap for the screenshots).
 2. **No Twitter/X Card meta tags** (`twitter:card`, `twitter:title`, etc.) — Open Graph tags exist and are complete, but Twitter/X-specific tags are absent, which can affect how the link renders when shared/cited on that platform.
-3. **Content/pricing inconsistency**: the homepage and hero messaging position the product as fully free ("Free transcription service," no pricing page, no pricing nav item), but the FAQ schema itself states *"Premium features and higher usage limits are available with paid plans."* There is no pricing page to resolve this — an AI system summarizing the FAQ could tell users about a paid plan that isn't discoverable anywhere else on the site.
-4. **Testimonial/image mismatch**: review avatar filenames don't match the alt text/names shown (e.g., `review-marco.webp` has `alt="Sergei S."`, `review-sergei.webp` has `alt="Sofia D."`). This looks like a copy-paste artifact from templating rather than intentional, but stock-like, mismatched testimonials are a weak E-E-A-T signal and a red flag if an AI system (or a human) checks provenance.
+3. ~~Content/pricing inconsistency~~ — **FIXED.** The FAQ schema's "Is it free to use?" answer now reads *"The extension is free to install and use."* with no mention of paid plans.
+4. ~~Testimonial/image mismatch~~ — **FIXED.** Avatar files renamed (`review-sergei-s.webp`, `review-sofia-d.webp`) to match the testimonial names they're displayed under.
 5. **Only aggregate rating in schema, no individual Review markup** — `aggregateRating` (4.9, 200 reviews) is present on the `SoftwareApplication` node, but there's no backing `Review` array, so the claim isn't independently verifiable from the markup alone.
 
 ## Low Priority Issues
@@ -57,23 +72,23 @@ None. Site is indexable, no crawler blocks, no 5xx errors, structured data is pr
 
 ## Category Deep Dives
 
-### AI Citability (62/100)
-Strengths: FAQ content is structured as direct question → short factual answer pairs both in visible HTML and in `FAQPage` schema — this is exactly the shape AI Overviews/ChatGPT/Perplexity like to lift verbatim. The `HowTo` schema gives a clean 3-step process AI systems can quote directly ("Install the extension" → "Upload or record audio" → "Get your transcript"). `featureList` in the `SoftwareApplication` schema gives a scannable, quotable feature set.
+### AI Citability (64/100, was 62)
+Strengths: FAQ content is structured as direct question → short factual answer pairs both in visible HTML and in `FAQPage` schema — this is exactly the shape AI Overviews/ChatGPT/Perplexity like to lift verbatim. The `HowTo` schema gives a clean 3-step process AI systems can quote directly ("Install the extension" → "Upload or record audio" → "Get your transcript"). `featureList` in the `SoftwareApplication` schema gives a scannable, quotable feature set. The "Is it free to use?" answer is now internally consistent (no dangling paid-plan claim), which removes one small source of doubt for anything extracting that answer.
 Weaknesses: All of this content lives on one page behind anchors, so an AI system can extract the *content* but has no clean, separate URL to attribute a specific answer to (e.g., "according to audio-to-text-transcription.com/faq"). Content depth per topic is shallow — each FAQ answer is 1-3 sentences, which is citable but not comprehensive enough to be the definitive source on any given sub-topic (e.g., "which audio formats are supported" gets one sentence, not a full comparison).
 
-### Brand Authority (25/100)
-No presence detected on Wikipedia, Reddit, LinkedIn, X/Twitter, YouTube, Product Hunt, G2, or Capterra. The `Organization` schema is well-formed (name, url, logo, contactPoint) but there's no `sameAs` array linking out to any of these profiles — even if profiles exist, they aren't connected in the markup. The only externally verifiable signal is the Chrome Web Store listing (referenced twice as a link, and matched by the schema's stated 4.9/200-review aggregate). For a product whose main distribution channel *is* the Chrome Web Store, that store listing is doing all the authority work alone.
+### Brand Authority (25/100, unchanged)
+No presence detected on Wikipedia, Reddit, LinkedIn, X/Twitter, YouTube, Product Hunt, G2, or Capterra. The `Organization` schema is well-formed (name, url, logo, contactPoint) but there's no `sameAs` array linking out to any of these profiles — even if profiles exist, they aren't connected in the markup. The only externally verifiable signal is the Chrome Web Store listing (referenced twice as a link, and matched by the schema's stated 4.9/200-review aggregate). For a product whose main distribution channel *is* the Chrome Web Store, that store listing is doing all the authority work alone. Untouched by this round of fixes — still the single highest-leverage gap.
 
-### Content E-E-A-T (30/100)
-No author bios, no team/about page, no credentials, no case studies, no cited sources for accuracy claims ("99% accuracy," "powered by OpenAI Whisper"). The privacy claims ("we don't store or share your data... everything happens locally when possible") are asserted but not backed by a security/compliance page, audit, or certification. Testimonials exist but read as generic and have the avatar/name mismatch noted above, which undercuts genuineness. `dateModified: 2026-03-19` on the `SoftwareApplication` node is a reasonable freshness signal, but there's no visible "last updated" content elsewhere.
+### Content E-E-A-T (38/100, was 30)
+No author bios, no team/about page, no credentials, no case studies, no cited sources for accuracy claims ("99% accuracy," "powered by OpenAI Whisper"). The privacy claims ("we don't store or share your data... everything happens locally when possible") are asserted but not backed by a security/compliance page, audit, or certification. `dateModified: 2026-03-19` on the `SoftwareApplication` node is a reasonable freshness signal, but there's no visible "last updated" content elsewhere. The two items previously dragging this category down are now resolved: testimonial avatars match their names (no more provenance red flag), and the free/paid messaging is internally consistent. Remaining gap is structural — no third-party-verifiable expertise or authorship signals exist at all.
 
-### Technical GEO (78/100)
-Strong fundamentals: HTTPS, HTTP/2, fast TTFB (~220ms), content is server-rendered (Astro) so all copy is present in the raw HTML — no JS-only rendering risk for crawlers. `robots.txt` uses a blanket `Allow: /` for `User-agent: *`, which implicitly permits GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc. (no bot-specific blocks at all). `meta name="robots" content="index, follow"` is set correctly on both pages. Canonical tag present. Mobile viewport meta present. Main gap: no `llms.txt`, and the sitemap is minimal (2 URLs) relative to what a slightly more segmented site structure could offer.
+### Technical GEO (85/100, was 78)
+Strong fundamentals: HTTPS, HTTP/2, fast TTFB (~220ms), content is server-rendered (Astro) so all copy is present in the raw HTML — no JS-only rendering risk for crawlers. `robots.txt` uses a blanket `Allow: /` for `User-agent: *`, which implicitly permits GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc. (no bot-specific blocks at all). `meta name="robots" content="index, follow"` is set correctly on both pages. Canonical tag present. Mobile viewport meta present. `llms.txt` is now live (verified `GET /llms.txt` → 200) and matches the site's actual scope. Remaining gap: the sitemap is still minimal (2 URLs) relative to what a slightly more segmented site structure could offer, and there are still no Twitter Card meta tags.
 
-### Schema & Structured Data (85/100)
-This is the site's clear strong point. A single `@graph` cleanly connects `WebSite` → `Organization` → `SoftwareApplication` → `HowTo` → `FAQPage` → `BreadcrumbList`, with proper `@id` cross-referencing (e.g., `SoftwareApplication.author` points back to the `Organization` node). `SoftwareApplication` includes `offers`, `aggregateRating`, and a detailed `featureList`. Gaps: no `sameAs` for social/authority profiles, no individual `Review` objects backing the aggregate rating, and no `Person` schema for any team member (there are none to mark up, since no team is disclosed).
+### Schema & Structured Data (87/100, was 85)
+This is the site's clear strong point. A single `@graph` cleanly connects `WebSite` → `Organization` → `SoftwareApplication` → `HowTo` → `FAQPage` → `BreadcrumbList`, with proper `@id` cross-referencing (e.g., `SoftwareApplication.author` points back to the `Organization` node). `SoftwareApplication` includes `offers`, `aggregateRating`, and a detailed `featureList`. The `FAQPage`'s "Is it free to use?" answer is now accurate and matches the rest of the site's messaging. Gaps: no `sameAs` for social/authority profiles, no individual `Review` objects backing the aggregate rating, and no `Person` schema for any team member (there are none to mark up, since no team is disclosed).
 
-### Platform Optimization (40/100)
+### Platform Optimization (40/100, unchanged)
 - **Google AI Overviews**: Reasonable chance of surfacing for FAQ-style queries thanks to `FAQPage`/`HowTo` schema, but lack of a dedicated URL per topic limits how AI Overviews attributes and links back.
 - **ChatGPT/Perplexity/Gemini web search**: No independent citations elsewhere on the web (no Reddit threads, no comparison articles, no Wikipedia) means these engines have almost nothing to cross-reference beyond the site's own claims — lowering the odds of the product being *recommended* rather than just occasionally quoted if a user pastes the URL directly.
 - **Bing Copilot**: Same constraints as above; benefits from the same technical accessibility but no differentiated advantage.
@@ -82,19 +97,19 @@ This is the site's clear strong point. A single `@graph` cleanly connects `WebSi
 
 ## Quick Wins (Implement This Week)
 
-1. Add a `sameAs` array to the `Organization` JSON-LD once social/profile links exist (or create the minimum viable set: a LinkedIn company page and a Product Hunt listing).
-2. Create `/llms.txt` summarizing the product, key pages, and FAQ in AI-crawler-friendly plain text.
-3. Fix the testimonial avatar/name mismatches (`review-marco.webp`/"Sergei S." vs `review-sergei.webp`/"Sofia D.").
-4. Resolve the pricing inconsistency: either remove "paid plans" from the FAQ answer, or add a real pricing section/page so the claim is verifiable.
+1. ~~Publish `/llms.txt`~~ — **DONE.**
+2. ~~Fix testimonial avatar/name mismatches~~ — **DONE.**
+3. ~~Resolve the pricing inconsistency~~ — **DONE.**
+4. Add a `sameAs` array to the `Organization` JSON-LD once social/profile links exist (or create the minimum viable set: a LinkedIn company page and a Product Hunt listing).
 5. Add `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image` meta tags alongside the existing Open Graph tags.
 
 ## 30-Day Action Plan
 
-### Week 1: Fix inconsistencies & low-effort technical gaps
-- [ ] Correct testimonial name/image mismatches
-- [ ] Resolve free-vs-paid messaging inconsistency
-- [ ] Add Twitter Card meta tags
-- [ ] Publish `/llms.txt`
+### Week 1: ~~Fix inconsistencies & low-effort technical gaps~~ — DONE
+- [x] Correct testimonial name/image mismatches
+- [x] Resolve free-vs-paid messaging inconsistency
+- [x] Publish `/llms.txt`
+- [ ] Add Twitter Card meta tags (only item in this week not yet done)
 
 ### Week 2: Split monolithic page into citable URLs
 - [ ] Create standalone `/faq` page (keep FAQ schema, add real URL, cross-link from homepage anchor)
