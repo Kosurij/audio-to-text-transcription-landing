@@ -172,7 +172,7 @@ const short: Testimonial[] = [
     name: 'Sergei S.',
     role: 'Software Engineer',
     text: 'I loved this extension. The audio-to-text conversion is accurate. The browser tab recording feature is especially useful. I recommend it to everyone!',
-    avatar: '/reviews/review-marco.webp',
+    avatar: '/reviews/review-sergei-s.webp',
   },
   {
     name: 'Camila B.',
@@ -194,7 +194,7 @@ const short: Testimonial[] = [
     name: 'Sofia D.',
     role: 'Content Creator',
     text: 'Game changer for my YouTube workflow. I record commentary, transcribe it instantly, and use the TXT file for descriptions and subtitles. Simple and accurate.',
-    avatar: '/reviews/review-sergei.webp',
+    avatar: '/reviews/review-sofia-d.webp',
   },
 ]
 
