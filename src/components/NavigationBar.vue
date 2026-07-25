@@ -327,7 +327,7 @@ html[data-theme='dark'] .mobile-link:hover {
   }
 
   .navbar-cta {
-    display: none;
+    display: none !important;
   }
 
   .navbar-right {
