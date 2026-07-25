@@ -65,13 +65,18 @@ html[data-theme='dark'] .cta-subtitle {
 }
 
 .cta-button {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  padding: 14px 28px;
-  border-radius: 8px;
+  padding: 18px 40px;
+  border-radius: 10px;
   height: auto; /* override InstallButton's internal height: 36px */
   background: #FFFFFF;
   color: var(--accent-primary);
+}
+
+.cta-button :deep(.icon) {
+  width: 22px;
+  height: 22px;
 }
 
 html[data-theme='dark'] .cta-button {
