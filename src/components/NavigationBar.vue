@@ -15,6 +15,7 @@
         <a href="/#features" class="nav-link" @click.prevent="navigateToSection('features')">Features</a>
         <a href="/#how-it-works" class="nav-link" @click.prevent="navigateToSection('how-it-works')">How it works</a>
         <a href="/#faq" class="nav-link" @click.prevent="navigateToSection('faq')">FAQ</a>
+        <a href="/contact" class="nav-link">Contact Us</a>
       </nav>
     </div>
 
@@ -43,6 +44,9 @@
         </a>
         <a href="/#faq" class="mobile-link" @click.prevent="handleMobileNavigate('faq')">
           FAQ
+        </a>
+        <a href="/contact" class="mobile-link">
+          Contact Us
         </a>
       </div>
     </transition>
