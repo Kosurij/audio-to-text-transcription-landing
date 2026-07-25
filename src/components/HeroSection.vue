@@ -31,7 +31,7 @@
 
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-value">3k+</span>
+            <span class="stat-value">8k+</span>
             <span class="stat-label">People use it every week</span>
           </div>
           <div class="stat-divider"></div>
