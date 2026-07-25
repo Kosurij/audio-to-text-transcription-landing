@@ -9,7 +9,7 @@
         <a class="info-email" href="mailto:support@audio-to-text-transcription.com">
           support@audio-to-text-transcription.com
         </a>
-        <p class="info-response-time">We typically reply within 1–2 business days.</p>
+        <p class="info-response-time">We typically reply within 24 hours, but occasionally responses may take a couple of days.</p>
       </div>
 
       <div class="contact-form-wrapper">
@@ -21,10 +21,11 @@
               v-model="form.name"
               type="text"
               :aria-invalid="Boolean(touched.name && errors.name)"
+              :aria-describedby="touched.name && errors.name ? 'contact-name-error' : undefined"
               :disabled="status === 'submitting'"
               @blur="touchField('name')"
             />
-            <span v-if="touched.name && errors.name" class="field-error">{{ errors.name }}</span>
+            <span v-if="touched.name && errors.name" id="contact-name-error" class="field-error">{{ errors.name }}</span>
           </div>
 
           <div class="form-field">
@@ -34,10 +35,11 @@
               v-model="form.email"
               type="email"
               :aria-invalid="Boolean(touched.email && errors.email)"
+              :aria-describedby="touched.email && errors.email ? 'contact-email-error' : undefined"
               :disabled="status === 'submitting'"
               @blur="touchField('email')"
             />
-            <span v-if="touched.email && errors.email" class="field-error">{{ errors.email }}</span>
+            <span v-if="touched.email && errors.email" id="contact-email-error" class="field-error">{{ errors.email }}</span>
           </div>
 
           <div class="form-field">
@@ -47,10 +49,11 @@
               v-model="form.subject"
               type="text"
               :aria-invalid="Boolean(touched.subject && errors.subject)"
+              :aria-describedby="touched.subject && errors.subject ? 'contact-subject-error' : undefined"
               :disabled="status === 'submitting'"
               @blur="touchField('subject')"
             />
-            <span v-if="touched.subject && errors.subject" class="field-error">{{ errors.subject }}</span>
+            <span v-if="touched.subject && errors.subject" id="contact-subject-error" class="field-error">{{ errors.subject }}</span>
           </div>
 
           <div class="form-field">
@@ -60,10 +63,11 @@
               v-model="form.message"
               rows="5"
               :aria-invalid="Boolean(touched.message && errors.message)"
+              :aria-describedby="touched.message && errors.message ? 'contact-message-error' : undefined"
               :disabled="status === 'submitting'"
               @blur="touchField('message')"
             />
-            <span v-if="touched.message && errors.message" class="field-error">{{ errors.message }}</span>
+            <span v-if="touched.message && errors.message" id="contact-message-error" class="field-error">{{ errors.message }}</span>
           </div>
 
           <button type="submit" class="submit-button" :disabled="status === 'submitting'">
@@ -206,7 +210,7 @@ const handleSubmit = async () => {
 
 .form-field input[aria-invalid='true'],
 .form-field textarea[aria-invalid='true'] {
-  border-color: #DC2626;
+  border-color: var(--color-error);
 }
 
 .form-field input:disabled,
@@ -217,7 +221,13 @@ const handleSubmit = async () => {
 
 .field-error {
   font-size: 0.85rem;
-  color: #DC2626;
+  color: var(--color-error);
+}
+
+:global(html[data-theme='dark']) .form-field input,
+:global(html[data-theme='dark']) .form-field textarea {
+  background: var(--color-background);
+  border-color: var(--color-border-strong);
 }
 
 .submit-button {
