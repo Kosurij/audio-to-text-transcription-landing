@@ -75,11 +75,13 @@
               id="contact-message"
               v-model="form.message"
               rows="5"
+              :maxlength="MAX_MESSAGE_LENGTH"
               :aria-invalid="Boolean(touched.message && errors.message)"
               :aria-describedby="touched.message && errors.message ? 'contact-message-error' : undefined"
               :disabled="status === 'submitting'"
               @blur="touchField('message')"
             />
+            <span class="char-counter">{{ form.message.length }} / {{ MAX_MESSAGE_LENGTH }}</span>
             <span v-if="touched.message && errors.message" id="contact-message-error" class="field-error">{{ errors.message }}</span>
           </div>
 
@@ -111,6 +113,8 @@
 import { useContactForm, type ContactFormData } from '../composables/useContactForm'
 
 const { form, errors, touched, status, touchField, validate, firstInvalidField, submit, reset } = useContactForm()
+
+const MAX_MESSAGE_LENGTH = 1000
 
 const fieldElementId: Record<keyof ContactFormData, string> = {
   name: 'contact-name',
@@ -258,6 +262,11 @@ const handleSubmit = async () => {
 .field-error {
   font-size: 0.85rem;
   color: var(--color-error);
+}
+
+.char-counter {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
 }
 
 :global(html[data-theme='dark']) .form-field input,
