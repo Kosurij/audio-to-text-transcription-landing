@@ -29,6 +29,7 @@
         <div class="footer-col">
           <h3 class="footer-col-title">Support</h3>
           <ul class="footer-links">
+            <li><a href="/contact">Contact Us</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
             <li>
               <a

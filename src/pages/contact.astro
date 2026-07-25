@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavigationBar from '../components/NavigationBar.vue';
+import AppFooter from '../components/AppFooter.vue';
+import ContactSection from '../components/ContactSection.vue';
+
+const title = 'Contact Us - Audio To Text Transcription';
+const description = 'Get in touch with the Audio To Text Transcription team. Ask a question, report a bug, or share feedback.';
+---
+
+<Layout title={title} description={description}>
+  <NavigationBar client:load />
+  <main class="contact-page">
+    <header class="contact-page-header">
+      <h1>Contact Us</h1>
+      <p>Have a question or feedback? We'd love to hear from you</p>
+    </header>
+    <ContactSection client:load />
+  </main>
+  <AppFooter client:load />
+</Layout>
+
+<style>
+  .contact-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 16px 120px;
+    gap: 32px;
+    background: var(--gradient-bg);
+  }
+
+  .contact-page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    max-width: 640px;
+  }
+
+  .contact-page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .contact-page-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .contact-page {
+      padding-top: 24px;
+    }
+  }
+</style>

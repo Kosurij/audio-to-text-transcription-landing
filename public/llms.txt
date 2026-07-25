@@ -8,3 +8,6 @@
 
 ## Legal
 - [Privacy Policy](https://audio-to-text-transcription.com/privacy/): Data handling and privacy practices
+
+## Support
+- [Contact Us](https://audio-to-text-transcription.com/contact/): Get in touch with the team via a contact form
