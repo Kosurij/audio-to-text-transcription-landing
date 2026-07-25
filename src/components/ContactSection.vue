@@ -13,7 +13,18 @@
       </div>
 
       <div class="contact-form-wrapper">
-        <form v-if="status !== 'success'" class="contact-form" novalidate @submit.prevent="handleSubmit">
+        <form v-if="status === 'idle' || status === 'submitting'" class="contact-form" novalidate @submit.prevent="handleSubmit">
+          <div class="honeypot-field" aria-hidden="true">
+            <label for="contact-website">Website</label>
+            <input
+              id="contact-website"
+              v-model="form.website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
           <div class="form-row">
             <div class="form-field">
               <label for="contact-name">Name</label>
@@ -76,6 +87,15 @@
             {{ status === 'submitting' ? 'Sending...' : 'Send message' }}
           </button>
         </form>
+
+        <div v-else-if="status === 'error'" class="error-state">
+          <p class="error-title">We couldn't send your message.</p>
+          <p class="error-text">
+            Please try again, or email us at
+            <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a>.
+          </p>
+          <button type="button" class="secondary-button" @click="submit">Try again</button>
+        </div>
 
         <div v-else class="success-state">
           <p class="success-title">Thanks — your message has been sent.</p>
@@ -177,6 +197,14 @@ const handleSubmit = async () => {
   gap: 20px;
 }
 
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -262,21 +290,24 @@ const handleSubmit = async () => {
   cursor: not-allowed;
 }
 
-.success-state {
+.success-state,
+.error-state {
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: flex-start;
 }
 
-.success-title {
+.success-title,
+.error-title {
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
 }
 
-.success-text {
+.success-text,
+.error-text {
   font-size: 1rem;
   color: var(--color-text-secondary);
   margin: 0;
