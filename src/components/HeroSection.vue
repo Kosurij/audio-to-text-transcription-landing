@@ -158,7 +158,7 @@ html[data-theme='dark'] .hero-badge {
   flex-wrap: wrap;
 }
 
-.hero-install-btn {
+.hero-cta-row .hero-install-btn {
   font-size: 16px;
   font-weight: 700;
   padding: 14px 28px;
@@ -186,7 +186,7 @@ html[data-theme='dark'] .hero-badge {
   border-bottom-color: var(--color-text);
 }
 
-html[data-theme='dark'] .hero-install-btn {
+html[data-theme='dark'] .hero-cta-row .hero-install-btn {
   box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
 }
 
@@ -288,7 +288,7 @@ html[data-theme='dark'] .hero-screenshot-dark {
     font-size: 2.25rem;
   }
 
-  .hero-install-btn {
+  .hero-cta-row .hero-install-btn {
     width: 100%;
     max-width: 320px;
     text-align: center;
