@@ -123,10 +123,10 @@ const handleSubmit = async () => {
   border-radius: 28px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-xl);
-  padding: 48px clamp(24px, 4vw, 56px);
+  padding: 48px clamp(24px, 3vw, 40px);
   display: grid;
-  grid-template-columns: minmax(220px, 300px) 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(240px, 360px) 1fr;
+  gap: 40px;
 }
 
 .contact-info {
