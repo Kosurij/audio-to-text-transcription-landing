@@ -13,7 +13,7 @@
       </div>
 
       <div class="contact-form-wrapper">
-        <form v-if="status === 'idle' || status === 'submitting'" class="contact-form" novalidate @submit.prevent="handleSubmit">
+        <form v-if="status === 'idle' || (status === 'submitting' && !isRetrying)" class="contact-form" novalidate @submit.prevent="handleSubmit">
           <div class="honeypot-field" aria-hidden="true">
             <label for="contact-website">Website</label>
             <input
@@ -85,24 +85,23 @@
             <span v-if="touched.message && errors.message" id="contact-message-error" class="field-error">{{ errors.message }}</span>
           </div>
 
-          <button type="submit" class="submit-button" :disabled="status === 'submitting'">
-            {{ status === 'submitting' ? 'Sending...' : 'Send message' }}
-          </button>
+          <AppButton type="submit" variant="primary" :loading="status === 'submitting' && !isRetrying">
+            Send message
+          </AppButton>
         </form>
 
-        <div v-else-if="status === 'error'" class="error-state">
+        <div v-else-if="status === 'error' || (status === 'submitting' && isRetrying)" :key="attemptId" class="error-state">
           <p class="error-title">We couldn't send your message.</p>
-          <p class="error-text">
-            Please try again, or email us at
-            <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a>.
-          </p>
-          <button type="button" class="secondary-button" @click="submit">Try again</button>
+          <p class="error-text">Please try again in a moment.</p>
+          <AppButton type="button" variant="secondary" :loading="status === 'submitting' && isRetrying" @click="retry">
+            Try again
+          </AppButton>
         </div>
 
         <div v-else class="success-state">
           <p class="success-title">Thanks — your message has been sent.</p>
           <p class="success-text">We'll get back to you as soon as we can.</p>
-          <button type="button" class="secondary-button" @click="reset">Send another message</button>
+          <AppButton type="button" variant="secondary" @click="reset">Send another message</AppButton>
         </div>
       </div>
     </div>
@@ -110,11 +109,15 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useContactForm, type ContactFormData } from '../composables/useContactForm'
+import AppButton from './AppButton.vue'
 
 const { form, errors, touched, status, touchField, validate, firstInvalidField, submit, reset } = useContactForm()
 
 const MAX_MESSAGE_LENGTH = 1000
+const isRetrying = ref(false)
+const attemptId = ref(0)
 
 const fieldElementId: Record<keyof ContactFormData, string> = {
   name: 'contact-name',
@@ -132,6 +135,16 @@ const handleSubmit = async () => {
     return
   }
   await submit()
+}
+
+const retry = async () => {
+  isRetrying.value = true
+  try {
+    await submit()
+  } finally {
+    isRetrying.value = false
+    attemptId.value++
+  }
 }
 </script>
 
@@ -275,30 +288,6 @@ const handleSubmit = async () => {
   border-color: var(--color-border-strong);
 }
 
-.submit-button {
-  align-self: flex-start;
-  background: var(--gradient-primary);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 14px 28px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-}
-
-.submit-button:hover:not(:disabled) {
-  background: var(--gradient-primary-hover);
-  box-shadow: var(--shadow-md);
-}
-
-.submit-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
 .success-state,
 .error-state {
   display: flex;
@@ -322,22 +311,28 @@ const handleSubmit = async () => {
   margin: 0;
 }
 
-.secondary-button {
-  margin-top: 8px;
-  background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 10px 20px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent-primary);
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
+.error-state {
+  animation: error-state-shake 0.4s ease;
 }
 
-.secondary-button:hover {
-  background: var(--color-surface);
-  border-color: var(--accent-primary);
+@keyframes error-state-shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
 }
 
 @media (max-width: 768px) {
