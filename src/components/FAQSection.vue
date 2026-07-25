@@ -50,15 +50,15 @@ const toggle = (index: number) => {
 const faqs = [
   {
     question: 'What is Audio To Text Transcription?',
-    answer: 'Audio To Text Transcription is a Chrome extension that turns any audio—from meetings, lectures, podcasts, or browser tabs—into searchable text powered by OpenAI Whisper.'
+    answer: 'Audio To Text Transcription is a Chrome extension that turns any audio—from meetings, lectures, podcasts, or browser tabs—into searchable text powered by advanced AI.'
   },
   {
     question: 'What recording modes are available?',
     answer: 'You can upload an audio file, capture audio from your microphone, record the current browser tab, or combine microphone + tab recording. Switch between modes instantly.'
   },
   {
-    question: 'Which transcription engine do you use?',
-    answer: 'We use OpenAI Whisper to deliver fast, high-quality transcripts—even for long sessions and diverse accents.'
+    question: 'How does the transcription work?',
+    answer: 'We use advanced AI to deliver fast, high-quality transcripts—even for long sessions and diverse accents.'
   },
   {
     question: 'Does the extension support themes?',
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     question: 'How accurate are the results?',
-    answer: 'Accuracy depends on the recording quality. OpenAI Whisper delivers excellent results for clear speech with minimal background noise.'
+    answer: 'Accuracy depends on the recording quality. Our AI model delivers excellent results for clear speech with minimal background noise.'
   }
 ];
 </script>

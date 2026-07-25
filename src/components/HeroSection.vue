@@ -5,7 +5,7 @@
       <!-- Left column -->
       <div class="hero-left">
         <div class="hero-badge">
-          ✦ Powered by OpenAI Whisper
+          ✦ Powered by AI
         </div>
 
         <h1 class="hero-title">
