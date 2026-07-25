@@ -178,6 +178,10 @@ const faqs = [
   box-shadow: var(--shadow-md);
 }
 
+.faq-cta-button svg {
+  flex-shrink: 0;
+}
+
 .faq-item {
   background: var(--color-surface-elevated);
   background-image: var(--gradient-bg-subtle);

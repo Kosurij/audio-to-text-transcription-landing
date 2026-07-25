@@ -64,7 +64,7 @@ html[data-theme='dark'] .cta-subtitle {
   color: var(--color-text-secondary);
 }
 
-.cta-button {
+.cta-container .cta-button {
   font-size: 18px;
   font-weight: 700;
   padding: 18px 40px;
@@ -74,12 +74,12 @@ html[data-theme='dark'] .cta-subtitle {
   color: var(--accent-primary);
 }
 
-.cta-button :deep(.icon) {
+.cta-container .cta-button :deep(.icon) {
   width: 22px;
   height: 22px;
 }
 
-html[data-theme='dark'] .cta-button {
+html[data-theme='dark'] .cta-container .cta-button {
   background: var(--accent-primary);
   color: #FFFFFF;
 }
@@ -99,7 +99,7 @@ html[data-theme='dark'] .cta-hint {
     padding: 60px 0;
   }
 
-  .cta-button {
+  .cta-container .cta-button {
     width: 100%;
     max-width: 320px;
   }
