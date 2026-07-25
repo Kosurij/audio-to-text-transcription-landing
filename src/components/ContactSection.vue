@@ -240,20 +240,21 @@ const handleSubmit = async () => {
 
 .submit-button {
   align-self: flex-start;
-  background: linear-gradient(135deg, #4c8dff 0%, #1a73e8 35%, #5a91ff 68%, #2d7bff 100%);
+  background: var(--gradient-primary);
   color: #fff;
   border: none;
   border-radius: 12px;
   padding: 14px 28px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(26, 115, 232, 0.35);
-  transition: box-shadow 0.3s ease, opacity 0.15s ease;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 }
 
 .submit-button:hover:not(:disabled) {
-  box-shadow: 0 10px 30px rgba(26, 115, 232, 0.45);
+  background: var(--gradient-primary-hover);
+  box-shadow: var(--shadow-md);
 }
 
 .submit-button:disabled {
