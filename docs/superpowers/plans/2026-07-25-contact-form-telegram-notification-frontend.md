@@ -15,6 +15,7 @@
 - No automated/behavioral tests for this change — this repo has no test framework, and per explicit user instruction ("Тестировать в лендосе ничего не нужно") none is being added for this feature either. Verification is `npm run build` only, plus a final manual check the user will do themselves in a browser (no browser-automation tool is available in this session).
 - The honeypot field (`website`) must never be validated, never appear in `errors`/`touched`, and must be excluded from keyboard tab order and screen readers (`tabindex="-1"`, `aria-hidden="true"`) while still being present in the DOM and submitted in the request body.
 - On a failed submit, form field values must NOT be cleared — the user can retry without retyping.
+- The message field is capped at 1000 characters client-side (well under the backend's separate 3500-character validation cap, so the two never conflict), enforced via the native `maxlength` attribute, with an always-visible "X / 1000" counter under the field — per explicit user instruction, no threshold-based show/hide logic, just always show it to keep things simple.
 - The backend endpoint is `https://api.audio-to-text-transcription.com/contact` (already has its own separate implementation plan in the backend repo; not touched here).
 
 ---
@@ -354,7 +355,119 @@ git commit -m "Add honeypot field and error/retry UI to the contact form"
 
 ---
 
-## Task 3: Manual end-to-end check (human, not automated)
+## Task 3: Message length cap with always-visible character counter
+
+**Files:**
+- Modify: `src/components/ContactSection.vue`
+
+**Interfaces:**
+- None new — this is a leaf UI addition, purely local to this component. Does not touch `useContactForm.ts` (the backend's separate 3500-char cap is the actual enforcement backstop; this is a client-side UX guardrail at a tighter, more user-friendly 1000, enforced by the browser's native `maxlength` so it can't be bypassed by typing/pasting).
+
+- [ ] **Step 1: Add the `MAX_MESSAGE_LENGTH` constant**
+
+In `src/components/ContactSection.vue`, find:
+
+```typescript
+const { form, errors, touched, status, touchField, validate, firstInvalidField, submit, reset } = useContactForm()
+
+const fieldElementId: Record<keyof ContactFormData, string> = {
+```
+
+Replace with:
+
+```typescript
+const { form, errors, touched, status, touchField, validate, firstInvalidField, submit, reset } = useContactForm()
+
+const MAX_MESSAGE_LENGTH = 1000
+
+const fieldElementId: Record<keyof ContactFormData, string> = {
+```
+
+- [ ] **Step 2: Add `maxlength` and the counter to the message field**
+
+Find:
+
+```html
+          <div class="form-field">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              v-model="form.message"
+              rows="5"
+              :aria-invalid="Boolean(touched.message && errors.message)"
+              :aria-describedby="touched.message && errors.message ? 'contact-message-error' : undefined"
+              :disabled="status === 'submitting'"
+              @blur="touchField('message')"
+            />
+            <span v-if="touched.message && errors.message" id="contact-message-error" class="field-error">{{ errors.message }}</span>
+          </div>
+```
+
+Replace with:
+
+```html
+          <div class="form-field">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              v-model="form.message"
+              rows="5"
+              :maxlength="MAX_MESSAGE_LENGTH"
+              :aria-invalid="Boolean(touched.message && errors.message)"
+              :aria-describedby="touched.message && errors.message ? 'contact-message-error' : undefined"
+              :disabled="status === 'submitting'"
+              @blur="touchField('message')"
+            />
+            <span class="char-counter">{{ form.message.length }} / {{ MAX_MESSAGE_LENGTH }}</span>
+            <span v-if="touched.message && errors.message" id="contact-message-error" class="field-error">{{ errors.message }}</span>
+          </div>
+```
+
+- [ ] **Step 3: Add CSS for the counter**
+
+Find:
+
+```css
+.field-error {
+  font-size: 0.85rem;
+  color: var(--color-error);
+}
+```
+
+Replace with:
+
+```css
+.field-error {
+  font-size: 0.85rem;
+  color: var(--color-error);
+}
+
+.char-counter {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+```
+
+- [ ] **Step 4: Verify the build**
+
+Run: `npm run build`
+Expected: build succeeds with no errors.
+
+- [ ] **Step 5: Verify the counter and maxlength render in the built output**
+
+Run: `grep -o 'maxlength="1000"' dist/contact/index.html && grep -o '<span class="char-counter">[^<]*</span>' dist/contact/index.html`
+Expected: `maxlength="1000"` found once, and a `char-counter` span found once containing `0 / 1000` (the form starts empty at build/SSR time, so the initial server-rendered count is 0).
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add src/components/ContactSection.vue
+git commit -m "Cap message field at 1000 characters with a visible counter"
+```
+
+---
+
+## Task 4: Manual end-to-end check (human, not automated)
 
 **Files:** none
 
