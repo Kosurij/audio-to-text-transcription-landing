@@ -14,32 +14,34 @@
 
       <div class="contact-form-wrapper">
         <form v-if="status !== 'success'" class="contact-form" novalidate @submit.prevent="handleSubmit">
-          <div class="form-field">
-            <label for="contact-name">Name</label>
-            <input
-              id="contact-name"
-              v-model="form.name"
-              type="text"
-              :aria-invalid="Boolean(touched.name && errors.name)"
-              :aria-describedby="touched.name && errors.name ? 'contact-name-error' : undefined"
-              :disabled="status === 'submitting'"
-              @blur="touchField('name')"
-            />
-            <span v-if="touched.name && errors.name" id="contact-name-error" class="field-error">{{ errors.name }}</span>
-          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contact-name">Name</label>
+              <input
+                id="contact-name"
+                v-model="form.name"
+                type="text"
+                :aria-invalid="Boolean(touched.name && errors.name)"
+                :aria-describedby="touched.name && errors.name ? 'contact-name-error' : undefined"
+                :disabled="status === 'submitting'"
+                @blur="touchField('name')"
+              />
+              <span v-if="touched.name && errors.name" id="contact-name-error" class="field-error">{{ errors.name }}</span>
+            </div>
 
-          <div class="form-field">
-            <label for="contact-email">Email</label>
-            <input
-              id="contact-email"
-              v-model="form.email"
-              type="email"
-              :aria-invalid="Boolean(touched.email && errors.email)"
-              :aria-describedby="touched.email && errors.email ? 'contact-email-error' : undefined"
-              :disabled="status === 'submitting'"
-              @blur="touchField('email')"
-            />
-            <span v-if="touched.email && errors.email" id="contact-email-error" class="field-error">{{ errors.email }}</span>
+            <div class="form-field">
+              <label for="contact-email">Email</label>
+              <input
+                id="contact-email"
+                v-model="form.email"
+                type="email"
+                :aria-invalid="Boolean(touched.email && errors.email)"
+                :aria-describedby="touched.email && errors.email ? 'contact-email-error' : undefined"
+                :disabled="status === 'submitting'"
+                @blur="touchField('email')"
+              />
+              <span v-if="touched.email && errors.email" id="contact-email-error" class="field-error">{{ errors.email }}</span>
+            </div>
           </div>
 
           <div class="form-field">
@@ -175,6 +177,12 @@ const handleSubmit = async () => {
   gap: 20px;
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;
@@ -298,6 +306,10 @@ const handleSubmit = async () => {
     border-radius: 20px;
     padding: 36px 20px;
     gap: 32px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
 </style>
