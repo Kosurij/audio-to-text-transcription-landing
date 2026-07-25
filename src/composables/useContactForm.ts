@@ -7,7 +7,11 @@ export interface ContactFormData {
   message: string
 }
 
-export type ContactFormStatus = 'idle' | 'submitting' | 'success'
+export interface ContactFormValues extends ContactFormData {
+  website: string
+}
+
+export type ContactFormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 const FIELD_ORDER: Array<keyof ContactFormData> = ['name', 'email', 'subject', 'message']
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -34,7 +38,7 @@ const emptyErrors = (): ContactFormData => ({
 })
 
 export function useContactForm() {
-  const form = reactive<ContactFormData>(emptyFormData())
+  const form = reactive<ContactFormValues>({ ...emptyFormData(), website: '' })
   const touched = reactive(emptyTouched())
   const errors = reactive<ContactFormData>(emptyErrors())
   const status: Ref<ContactFormStatus> = ref('idle')
@@ -69,21 +73,32 @@ export function useContactForm() {
     return FIELD_ORDER.find((field) => errors[field] !== '') ?? null
   }
 
-  const submitContactForm = async (_data: ContactFormData): Promise<{ success: boolean }> => {
-    await new Promise((resolve) => setTimeout(resolve, 600))
-    return { success: true }
+  const submitContactForm = async (data: ContactFormValues): Promise<void> => {
+    const response = await fetch('https://api.audio-to-text-transcription.com/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    if (!response.ok) {
+      throw new Error(`Contact form request failed with status ${response.status}`)
+    }
   }
 
   const submit = async (): Promise<boolean> => {
     if (!validate()) return false
     status.value = 'submitting'
-    await submitContactForm({ ...form })
-    status.value = 'success'
-    return true
+    try {
+      await submitContactForm({ ...form })
+      status.value = 'success'
+      return true
+    } catch {
+      status.value = 'error'
+      return false
+    }
   }
 
   const reset = () => {
-    Object.assign(form, emptyFormData())
+    Object.assign(form, emptyFormData(), { website: '' })
     Object.assign(touched, emptyTouched())
     Object.assign(errors, emptyErrors())
     status.value = 'idle'
