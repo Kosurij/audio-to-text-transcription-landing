@@ -34,6 +34,18 @@
           </div>
         </div>
       </div>
+
+      <div class="faq-cta">
+        <h3 class="faq-cta-title">Still have a question?</h3>
+        <p class="faq-cta-subtitle">Can't find the answer you're looking for? We're here to help!</p>
+        <a href="/contact" class="faq-cta-button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6H20C20.5523 6 21 6.44772 21 7V17C21 17.5523 20.5523 18 20 18H4C3.44772 18 3 17.5523 3 17V7C3 6.44772 3.44772 6 4 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M3.5 7L12 13L20.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Contact support team</span>
+        </a>
+      </div>
     </div>
   </section>
 </template>
@@ -126,6 +138,46 @@ const faqs = [
   gap: 16px;
 }
 
+.faq-cta {
+  margin-top: 64px;
+  text-align: center;
+}
+
+.faq-cta-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.faq-cta-subtitle {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.faq-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-cta-button:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  box-shadow: var(--shadow-md);
+}
+
 .faq-item {
   background: var(--color-surface-elevated);
   background-image: var(--gradient-bg-subtle);
@@ -213,6 +265,14 @@ const faqs = [
   .faq-answer {
     padding: 0 20px 20px;
     font-size: 15px;
+  }
+
+  .faq-cta {
+    margin-top: 48px;
+  }
+
+  .faq-cta-title {
+    font-size: 22px;
   }
 }
 </style>
