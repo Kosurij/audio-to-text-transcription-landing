@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Checkout</title>
+    <script type="text/javascript">
+      var p = new URLSearchParams(window.location.search);
+      if (!p.has('_r')) {
+        p.set('_r', '1');
+        window.location.replace(window.location.pathname + '?' + p.toString());
+      }
+    </script>
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+  const urlParams = new URLSearchParams(window.location.search);
+  const successUrl = urlParams.get('success_url');
+  const cancelUrl = urlParams.get('cancel_url');
+  const token = urlParams.get('token');
+  const isTest = urlParams.get('is_test');
+  const customerId = urlParams.get('customer_id');
+  const transactionId = urlParams.get('transaction_id');
+
+  if (isTest) {
+    Paddle.Environment.set('sandbox');
+  }
+
+  Paddle.Initialize({
+    token: token,
+    eventCallback: function (event) {
+      window.parent.postMessage(event, '*');
+    }
+  });
+
+  const checkoutOptions = {
+    settings: {
+      displayMode: "overlay",
+      theme: "light",
+      locale: "en",
+      allowLogout: false,
+      allowDiscountRemoval: false,
+      showAddDiscounts: false,
+      ...(successUrl && { successUrl }),
+      ...(cancelUrl && { cancelUrl }),
+    }
+  };
+
+  if (transactionId) {
+    checkoutOptions.transactionId = transactionId;
+  }
+
+  if (customerId) {
+    checkoutOptions.customer = {
+      id: customerId,
+    };
+  }
+
+  Paddle.Checkout.open(checkoutOptions);
+</script>
+</body>
+</html>

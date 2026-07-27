@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /welcome
 Disallow: /uninstall
+Disallow: /checkout
 
 Sitemap: https://audio-to-text-transcription.com/sitemap.xml
