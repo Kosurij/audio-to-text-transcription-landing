@@ -1,12 +1,7 @@
 <template>
   <nav :class="['navbar', { scrolled: isScrolled }]">
     <div class="navbar-left">
-      <a
-        href="https://audio-to-text-transcription.com"
-        class="branding"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="/" class="branding">
         <Logo loading="eager" />
         <span class="product-name">Audio To Text Transcription</span>
       </a>
