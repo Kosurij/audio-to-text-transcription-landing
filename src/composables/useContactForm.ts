@@ -89,7 +89,7 @@ export function useContactForm() {
         return
       }
       if (file.size > MAX_ATTACHMENT_SIZE) {
-        attachmentError.value = `${file.name} is larger than 5 MB`
+        attachmentError.value = `${file.name} is larger than ${MAX_ATTACHMENT_SIZE / 1024 / 1024} MB`
         return
       }
       if (!isAllowedAttachmentType(file.type)) {

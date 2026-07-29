@@ -1,7 +1,7 @@
 <template>
   <div class="file-dropzone-wrapper">
     <div
-      v-if="files.length < MAX_FILES"
+      v-if="files.length < MAX_ATTACHMENTS"
       class="dropzone"
       :class="{ 'dropzone--active': isDragOver, 'dropzone--disabled': disabled }"
       :tabindex="disabled ? -1 : 0"
@@ -19,19 +19,21 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
       </svg>
       <p class="dropzone-text">Drag & drop, click, or paste to attach files</p>
-      <p class="dropzone-hint">Images or PDF, up to 5 MB each, max 3 files</p>
+      <p class="dropzone-hint">Images or PDF, up to {{ MAX_ATTACHMENT_SIZE / 1024 / 1024 }} MB each, max {{ MAX_ATTACHMENTS }} files</p>
       <input
         ref="fileInput"
         type="file"
         multiple
         accept="image/*,.pdf"
         class="file-input"
+        tabindex="-1"
+        aria-hidden="true"
         :disabled="disabled"
         @change="onFileInputChange"
       />
     </div>
 
-    <p v-if="attachmentError" class="dropzone-error">{{ attachmentError }}</p>
+    <p v-if="attachmentError" class="dropzone-error" role="alert">{{ attachmentError }}</p>
 
     <ul v-if="files.length > 0" class="attachment-list">
       <li v-for="(file, index) in files" :key="`${file.name}-${file.size}-${index}`" class="attachment-item">
@@ -57,6 +59,7 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watch } from 'vue'
+import { MAX_ATTACHMENTS, MAX_ATTACHMENT_SIZE } from '../composables/useContactForm'
 
 const props = withDefaults(
   defineProps<{
@@ -71,8 +74,6 @@ const emit = defineEmits<{
   add: [files: File[]]
   remove: [index: number]
 }>()
-
-const MAX_FILES = 3
 
 const fileInput = ref<HTMLInputElement>()
 const isDragOver = ref(false)
@@ -103,7 +104,7 @@ const revokeStaleUrls = (currentFiles: File[]) => {
   }
 }
 
-watch(() => props.files, (currentFiles) => revokeStaleUrls(currentFiles), { flush: 'post' })
+watch(() => props.files, (currentFiles) => revokeStaleUrls(currentFiles), { flush: 'post', deep: true })
 
 onBeforeUnmount(() => {
   previewUrls.forEach((url) => URL.revokeObjectURL(url))
