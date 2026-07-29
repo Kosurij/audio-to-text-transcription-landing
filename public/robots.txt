@@ -3,5 +3,6 @@ Allow: /
 Disallow: /welcome
 Disallow: /uninstall
 Disallow: /checkout
+Disallow: /payment-success
 
 Sitemap: https://audio-to-text-transcription.com/sitemap.xml
