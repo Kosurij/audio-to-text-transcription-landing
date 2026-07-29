@@ -85,6 +85,14 @@
             <span v-if="touched.message && errors.message" id="contact-message-error" class="field-error">{{ errors.message }}</span>
           </div>
 
+          <FileDropzone
+            :files="form.attachments"
+            :attachment-error="attachmentError"
+            :disabled="status === 'submitting'"
+            @add="addFiles"
+            @remove="removeFile"
+          />
+
           <AppButton type="submit" variant="primary" :loading="status === 'submitting' && !isRetrying">
             Send message
           </AppButton>
@@ -112,8 +120,22 @@
 import { ref } from 'vue'
 import { useContactForm, type ContactFormData } from '../composables/useContactForm'
 import AppButton from './AppButton.vue'
+import FileDropzone from './FileDropzone.vue'
 
-const { form, errors, touched, status, touchField, validate, firstInvalidField, submit, reset } = useContactForm()
+const {
+  form,
+  errors,
+  touched,
+  status,
+  touchField,
+  validate,
+  firstInvalidField,
+  submit,
+  reset,
+  attachmentError,
+  addFiles,
+  removeFile,
+} = useContactForm()
 
 const MAX_MESSAGE_LENGTH = 1000
 const isRetrying = ref(false)
