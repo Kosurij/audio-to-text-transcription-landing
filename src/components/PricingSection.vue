@@ -2,8 +2,8 @@
   <section id="pricing" class="pricing" aria-labelledby="pricing-title">
     <div class="pricing-container">
       <header class="section-header">
-        <h2 id="pricing-title" class="section-title">More minutes, every week</h2>
-        <p class="section-subtitle">Start free, then upgrade when your workflow grows.</p>
+        <h2 id="pricing-title" class="section-title">Pricing</h2>
+        <p class="section-subtitle">Start free, then upgrade when your workflow grows</p>
       </header>
 
       <div class="pricing-grid">
