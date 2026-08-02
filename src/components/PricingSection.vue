@@ -240,17 +240,6 @@ const plans: Plan[] = [
   outline-offset: 3px;
 }
 
-.popular :deep(.plan-button.primary) {
-  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.28);
-  animation: none;
-}
-
-.popular :deep(.plan-button.primary:hover) {
-  background-position: 0 0;
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.28);
-}
-
 .plan-divider {
   height: 1px;
   margin: 24px 0 20px;
@@ -297,8 +286,7 @@ html[data-theme='dark'] .pricing-card {
   background: var(--color-surface-elevated);
 }
 
-html[data-theme='dark'] .popular-badge,
-html[data-theme='dark'] .popular :deep(.plan-button.primary) {
+html[data-theme='dark'] .popular-badge {
   background: linear-gradient(135deg, #8B5CF6 0%, #F472B6 100%);
 }
 
