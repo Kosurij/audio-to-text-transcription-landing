@@ -9,6 +9,7 @@
       <nav class="desktop-nav">
         <a href="/#features" class="nav-link" @click.prevent="navigateToSection('features')">Features</a>
         <a href="/#how-it-works" class="nav-link" @click.prevent="navigateToSection('how-it-works')">How it works</a>
+        <a href="/#pricing" class="nav-link" @click.prevent="navigateToSection('pricing')">Pricing</a>
         <a href="/#faq" class="nav-link" @click.prevent="navigateToSection('faq')">FAQ</a>
       </nav>
     </div>
@@ -35,6 +36,9 @@
         </a>
         <a href="/#how-it-works" class="mobile-link" @click.prevent="handleMobileNavigate('how-it-works')">
           How it works
+        </a>
+        <a href="/#pricing" class="mobile-link" @click.prevent="handleMobileNavigate('pricing')">
+          Pricing
         </a>
         <a href="/#faq" class="mobile-link" @click.prevent="handleMobileNavigate('faq')">
           FAQ

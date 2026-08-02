@@ -23,3 +23,13 @@ test('pricing section exposes every approved plan and benefit', () => {
   assert.doesNotMatch(pricing, /High Accuracy uses (?:2|3)×/);
   assert.ok((pricing.match(/chromewebstore\.google\.com/g) ?? []).length >= 4);
 });
+
+test('rendered home page exposes pricing in the approved order and navigation', () => {
+  const testimonialsIndex = html.indexOf('class="testimonials"');
+  const pricingIndex = html.indexOf('id="pricing"');
+  const faqIndex = html.indexOf('id="faq"');
+
+  assert.ok(testimonialsIndex >= 0 && testimonialsIndex < pricingIndex);
+  assert.ok(pricingIndex < faqIndex);
+  assert.equal((html.match(/href="\/#pricing"/g) ?? []).length, 1);
+});
