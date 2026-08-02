@@ -20,7 +20,11 @@
             {{ plan.price }}<span v-if="plan.period"> / {{ plan.period }}</span>
           </p>
           <p class="plan-limit">{{ plan.minutes }} minutes / week</p>
-          <InstallButton :variant="plan.popular ? 'primary' : 'outline'" class="plan-button">
+          <InstallButton
+            :variant="plan.popular ? 'primary' : 'outline'"
+            :show-icon="false"
+            class="plan-button"
+          >
             {{ plan.cta }}
           </InstallButton>
           <div class="plan-divider" />
@@ -166,12 +170,6 @@ const plans: Plan[] = [
   border-radius: 20px;
   background: var(--color-surface-elevated);
   box-shadow: var(--shadow-sm);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.pricing-card:hover {
-  border-color: var(--accent-primary);
-  box-shadow: var(--shadow-md);
 }
 
 .pricing-card.popular {
@@ -186,7 +184,7 @@ const plans: Plan[] = [
   transform: translateX(-50%);
   padding: 7px 16px;
   border-radius: 999px;
-  background: var(--accent-primary);
+  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
   color: #fff;
   font-size: 0.75rem;
   font-weight: 800;
@@ -242,6 +240,17 @@ const plans: Plan[] = [
   outline-offset: 3px;
 }
 
+.popular :deep(.plan-button.primary) {
+  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.28);
+  animation: none;
+}
+
+.popular :deep(.plan-button.primary:hover) {
+  background-position: 0 0;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.28);
+}
+
 .plan-divider {
   height: 1px;
   margin: 24px 0 20px;
@@ -288,6 +297,11 @@ html[data-theme='dark'] .pricing-card {
   background: var(--color-surface-elevated);
 }
 
+html[data-theme='dark'] .popular-badge,
+html[data-theme='dark'] .popular :deep(.plan-button.primary) {
+  background: linear-gradient(135deg, #8B5CF6 0%, #F472B6 100%);
+}
+
 @media (max-width: 1100px) {
   .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -321,9 +335,4 @@ html[data-theme='dark'] .pricing-card {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .pricing-card {
-    transition: none;
-  }
-}
 </style>
