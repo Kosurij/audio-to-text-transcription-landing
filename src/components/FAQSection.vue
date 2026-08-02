@@ -87,6 +87,22 @@ const faqs = [
   {
     question: 'How accurate are the results?',
     answer: 'Accuracy depends on the recording quality. Our AI model delivers excellent results for clear speech with minimal background noise.'
+  },
+  {
+    question: 'Is Audio To Text Transcription free to use?',
+    answer: 'Yes. The Free plan includes 200 minutes per week. Optional paid subscriptions add larger weekly limits, priority processing and priority support.'
+  },
+  {
+    question: 'How do weekly minute limits work?',
+    answer: 'Your minute allowance resets every week. Unused minutes do not roll over into the next week.'
+  },
+  {
+    question: 'What happens when I upgrade?',
+    answer: 'A paid plan gives you a larger weekly allowance, reduced minute usage in High Accuracy mode, priority processing and priority support.'
+  },
+  {
+    question: 'Can I cancel my subscription?',
+    answer: 'Yes. You can cancel a paid subscription at any time, and every paid plan includes a 30-day money-back guarantee.'
   }
 ];
 </script>

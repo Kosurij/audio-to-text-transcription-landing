@@ -64,12 +64,54 @@ const jsonLd = {
       "dateModified": "2026-03-19",
       "author": { "@id": `${siteUrl}/#organization` },
       "publisher": { "@id": `${siteUrl}/#organization` },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Basic",
+          "price": "6.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "6.99",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "12.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "12.99",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Business",
+          "price": "19.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "19.99",
+            "priceCurrency": "USD",
+            "billingDuration": "P1M"
+          }
+        }
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
@@ -117,7 +159,10 @@ const jsonLd = {
         { "@type": "Question", "name": "Can I export the transcribed text?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can export your transcriptions in multiple formats including plain text (TXT), Word document (DOCX), and PDF. You can also copy the text directly to your clipboard." } },
         { "@type": "Question", "name": "Does it support multiple languages?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the extension supports transcription in multiple languages including English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, Japanese, and many more." } },
         { "@type": "Question", "name": "Do I need an internet connection?", "acceptedAnswer": { "@type": "Answer", "text": "An internet connection is required for the transcription process as it uses advanced AI models. However, once installed, the extension interface works offline." } },
-        { "@type": "Question", "name": "Is it free to use?", "acceptedAnswer": { "@type": "Answer", "text": "The extension is free to install and use." } }
+        { "@type": "Question", "name": "Is Audio To Text Transcription free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Free plan includes 200 minutes per week. Optional paid subscriptions add larger weekly limits, priority processing and priority support." } },
+        { "@type": "Question", "name": "How do weekly minute limits work?", "acceptedAnswer": { "@type": "Answer", "text": "Your minute allowance resets every week. Unused minutes do not roll over into the next week." } },
+        { "@type": "Question", "name": "What happens when I upgrade?", "acceptedAnswer": { "@type": "Answer", "text": "A paid plan gives you a larger weekly allowance, reduced minute usage in High Accuracy mode, priority processing and priority support." } },
+        { "@type": "Question", "name": "Can I cancel my subscription?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can cancel a paid subscription at any time, and every paid plan includes a 30-day money-back guarantee." } }
       ]
     },
     {
@@ -424,4 +469,3 @@ const jsonLd = {
     font-size: 1.25rem;
   }
 </style>
-
