@@ -4,7 +4,7 @@
 
 **Goal:** Add a responsive four-plan pricing section, pricing navigation, subscription FAQs, and matching JSON-LD to the landing page.
 
-**Architecture:** A new self-contained Vue component owns the four static pricing cards and reuses `InstallButton` for every Chrome Web Store CTA. Existing navigation and home-page composition integrate the section, while the visible FAQ and Astro layout receive matching subscription copy and structured offers. Lightweight Node source-contract tests guard exact plan data and cross-file integration without adding dependencies.
+**Architecture:** A new self-contained Vue component owns the four static pricing cards and reuses `InstallButton` for every Chrome Web Store CTA. Existing navigation and home-page composition integrate the section, while the visible FAQ and Astro layout receive matching subscription copy and structured offers. Dependency-free Node integration tests build the real Astro site and assert on the rendered HTML and parsed JSON-LD.
 
 **Tech Stack:** Astro 4, Vue 3, TypeScript, scoped CSS, Node 22 built-in test runner, Schema.org JSON-LD
 
@@ -32,8 +32,8 @@
 - Modify `src/components/NavigationBar.vue`: add desktop and mobile Pricing anchors using existing scroll helpers.
 - Modify `src/components/FAQSection.vue`: append the four approved subscription questions and answers.
 - Modify `src/layouts/Layout.astro`: replace the single free Offer with four Offers and synchronize the FAQ JSON-LD.
-- Create `tests/pricing-section.test.mjs`: source-contract tests for the pricing component and page/navigation integration.
-- Create `tests/pricing-metadata.test.mjs`: source-contract tests for visible FAQ and JSON-LD pricing claims.
+- Create `tests/pricing-section.test.mjs`: rendered-page integration tests for pricing cards and navigation.
+- Create `tests/pricing-metadata.test.mjs`: rendered FAQ and parsed JSON-LD integration tests.
 - Modify `package.json`: add the dependency-free Node test command.
 
 ### Task 1: Pricing component and plan contract
@@ -52,7 +52,7 @@
 Add this script to `package.json`:
 
 ```json
-"test": "node --test tests/*.test.mjs"
+"test": "npm run build && node --test tests/*.test.mjs"
 ```
 
 - [ ] **Step 2: Write the failing pricing component contract test**
@@ -64,23 +64,26 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
-const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
+const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+const pricingStart = html.indexOf('<section id="pricing"');
+const pricingEnd = html.indexOf('<section class="faq"', pricingStart);
+const pricing = pricingStart >= 0 && pricingEnd > pricingStart
+  ? html.slice(pricingStart, pricingEnd)
+  : '';
 
 test('pricing section exposes every approved plan and benefit', async () => {
-  const source = await read('src/components/PricingSection.vue');
-
-  assert.match(source, /id="pricing"/);
-  assert.match(source, /More minutes, every week/);
-  assert.match(source, /name: 'Free'[\s\S]*price: '\$0'[\s\S]*minutes: '200'/);
-  assert.match(source, /name: 'Basic'[\s\S]*price: '\$6\.99'[\s\S]*minutes: '600'/);
-  assert.match(source, /name: 'Pro'[\s\S]*price: '\$12\.99'[\s\S]*minutes: '1,800'/);
-  assert.match(source, /name: 'Business'[\s\S]*price: '\$19\.99'[\s\S]*minutes: '3,500'/);
-  assert.match(source, /3× the weekly minutes/);
-  assert.match(source, /9× the weekly minutes/);
-  assert.match(source, /17\.5× the weekly minutes/);
-  assert.match(source, /Reduced minute usage in High Accuracy mode/);
-  assert.doesNotMatch(source, /High Accuracy uses (?:2|3)×/);
-  assert.match(source, /<InstallButton/);
+  assert.notEqual(pricing, '', 'rendered pricing section is missing');
+  assert.match(pricing, /More minutes, every week/);
+  assert.match(pricing, /Free[\s\S]*\$0[\s\S]*200 minutes \/ week/);
+  assert.match(pricing, /Basic[\s\S]*\$6\.99[\s\S]*600 minutes \/ week/);
+  assert.match(pricing, /Pro[\s\S]*\$12\.99[\s\S]*1,800 minutes \/ week/);
+  assert.match(pricing, /Business[\s\S]*\$19\.99[\s\S]*3,500 minutes \/ week/);
+  assert.match(pricing, /3× the weekly minutes/);
+  assert.match(pricing, /9× the weekly minutes/);
+  assert.match(pricing, /17\.5× the weekly minutes/);
+  assert.match(pricing, /Reduced minute usage in High Accuracy mode/);
+  assert.doesNotMatch(pricing, /High Accuracy uses (?:2|3)×/);
+  assert.ok((pricing.match(/chromewebstore\.google\.com/g) ?? []).length >= 4);
 });
 ```
 
@@ -88,7 +91,7 @@ test('pricing section exposes every approved plan and benefit', async () => {
 
 Run: `npm test -- --test-name-pattern="pricing section exposes"`
 
-Expected: FAIL with `ENOENT` for `src/components/PricingSection.vue`.
+Expected: FAIL with `rendered pricing section is missing`.
 
 - [ ] **Step 4: Implement the pricing component**
 
@@ -287,15 +290,13 @@ Append to `tests/pricing-section.test.mjs`:
 
 ```js
 test('home page and navigation expose pricing in the approved order', async () => {
-  const page = await read('src/pages/index.astro');
-  const navigation = await read('src/components/NavigationBar.vue');
+  const testimonialsIndex = html.indexOf('class="testimonials"');
+  const pricingIndex = html.indexOf('id="pricing"');
+  const faqIndex = html.indexOf('id="faq"');
 
-  assert.match(page, /import PricingSection from '\.\.\/components\/PricingSection\.vue'/);
-  assert.ok(page.indexOf('<TestimonialsSection') < page.indexOf('<PricingSection'));
-  assert.ok(page.indexOf('<PricingSection') < page.indexOf('<FAQSection'));
-  assert.equal((navigation.match(/navigateToSection\('pricing'\)/g) ?? []).length, 1);
-  assert.equal((navigation.match(/handleMobileNavigate\('pricing'\)/g) ?? []).length, 1);
-  assert.equal((navigation.match(/href="\/#pricing"/g) ?? []).length, 2);
+  assert.ok(testimonialsIndex >= 0 && testimonialsIndex < pricingIndex);
+  assert.ok(pricingIndex < faqIndex);
+  assert.equal((html.match(/href="\/#pricing"/g) ?? []).length, 2);
 });
 ```
 
@@ -368,32 +369,40 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
-const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
+const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 
 test('visible FAQ explains free use, weekly resets, upgrades and cancellation', async () => {
-  const source = await read('src/components/FAQSection.vue');
-
-  assert.match(source, /Is Audio To Text Transcription free to use\?/);
-  assert.match(source, /200 minutes per week/);
-  assert.match(source, /How do weekly minute limits work\?/);
-  assert.match(source, /Unused minutes do not roll over/);
-  assert.match(source, /What happens when I upgrade\?/);
-  assert.match(source, /reduced minute usage in High Accuracy mode/i);
-  assert.match(source, /Can I cancel my subscription\?/);
-  assert.match(source, /30-day money-back guarantee/);
+  assert.match(html, /Is Audio To Text Transcription free to use\?/);
+  assert.match(html, /200 minutes per week/);
+  assert.match(html, /How do weekly minute limits work\?/);
+  assert.match(html, /Unused minutes do not roll over/);
+  assert.match(html, /What happens when I upgrade\?/);
+  assert.match(html, /reduced minute usage in High Accuracy mode/i);
+  assert.match(html, /Can I cancel my subscription\?/);
+  assert.match(html, /30-day money-back guarantee/);
 });
 
 test('JSON-LD publishes four USD offers and matching subscription FAQ', async () => {
-  const source = await read('src/layouts/Layout.astro');
+  const match = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(match, 'JSON-LD script is missing');
+  const jsonLd = JSON.parse(match[1]);
+  const software = jsonLd['@graph'].find((item) => item['@type'] === 'SoftwareApplication');
+  const faq = jsonLd['@graph'].find((item) => item['@type'] === 'FAQPage');
 
-  for (const [name, price] of [['Free', '0'], ['Basic', '6.99'], ['Pro', '12.99'], ['Business', '19.99']]) {
-    assert.match(source, new RegExp(`"name": "${name}"[\\s\\S]*?"price": "${price}"`));
-  }
-  assert.equal((source.match(/"priceCurrency": "USD"/g) ?? []).length, 4);
-  assert.match(source, /Is Audio To Text Transcription free to use\?/);
-  assert.match(source, /200 minutes per week/);
-  assert.match(source, /Unused minutes do not roll over/);
-  assert.doesNotMatch(source, /The extension is free to install and use\./);
+  assert.deepEqual(
+    software.offers.map(({ name, price, priceCurrency }) => ({ name, price, priceCurrency })),
+    [
+      { name: 'Free', price: '0', priceCurrency: 'USD' },
+      { name: 'Basic', price: '6.99', priceCurrency: 'USD' },
+      { name: 'Pro', price: '12.99', priceCurrency: 'USD' },
+      { name: 'Business', price: '19.99', priceCurrency: 'USD' },
+    ],
+  );
+  const faqText = JSON.stringify(faq);
+  assert.match(faqText, /Is Audio To Text Transcription free to use\?/);
+  assert.match(faqText, /200 minutes per week/);
+  assert.match(faqText, /Unused minutes do not roll over/);
+  assert.doesNotMatch(faqText, /The extension is free to install and use\./);
 });
 ```
 
