@@ -22,6 +22,7 @@ test('pricing section exposes every approved plan and benefit', () => {
   assert.match(pricing, /Reduced minute usage in High Accuracy mode/);
   assert.doesNotMatch(pricing, /High Accuracy uses (?:2|3)×/);
   assert.ok((pricing.match(/chromewebstore\.google\.com/g) ?? []).length >= 4);
+  assert.equal((pricing.match(/Try in Chrome/g) ?? []).length, 4);
   assert.doesNotMatch(pricing, /class="icon"/);
 });
 
