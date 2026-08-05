@@ -12,6 +12,36 @@
           <p class="footer-tagline">
             Chrome extension for instant audio transcription. Powered by AI.
           </p>
+          <div class="footer-badges">
+            <a
+              class="footer-badge"
+              href="https://www.producthunt.com/products/audio-to-text-transcription?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-audio-to-text-transcription"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1062809&theme=neutral"
+                alt="Audio To Text Transcription - Instantly transcribe audio to text — right in your browser | Product Hunt"
+                width="250"
+                height="54"
+                loading="lazy"
+              />
+            </a>
+            <a
+              class="footer-badge"
+              href="https://www.nxgntools.com/tools/audio-to-text-transcription?utm_source=audio-to-text-transcription"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="https://www.nxgntools.com/api/embed/audio-to-text-transcription?type=PLACED_3RD_ON"
+                alt="Placed 3rd on NxGn Tools"
+                width="180"
+                height="48"
+                loading="lazy"
+              />
+            </a>
+          </div>
         </div>
 
         <!-- Колонка 2: Product -->
@@ -136,6 +166,13 @@ const currentYear = new Date().getFullYear();
 .footer-bottom {
   border-top: 1px solid var(--color-border);
   padding-top: 24px;
+}
+
+.footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
 .footer-badge {

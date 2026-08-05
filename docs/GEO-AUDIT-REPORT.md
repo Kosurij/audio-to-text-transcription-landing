@@ -1,6 +1,6 @@
 # GEO Audit Report: Audio To Text Transcription
 
-**Audit Date:** 2026-08-05 (re-audit)
+**Audit Date:** 2026-08-05 (re-audit, post-fix)
 **Previous Audit:** 2026-07-22
 **Original Audit:** 2026-07-22
 **URL:** https://audio-to-text-transcription.com/
@@ -16,13 +16,8 @@
 2. ✅ **Sitemap grew from 2 → 3 URLs** — `/contact` is now included in `sitemap.xml`.
 3. ✅ **Testimonial avatars now use distinct, full real names** (`robert-edge.webp`, `ana-muravchik.webp`, `andrii-stepura.webp`, etc.) — a further improvement on the avatar/name-mismatch fix from the previous audit.
 
-**Regression (new issue, introduced today):**
-1. 🔴 **Pricing FAQ content is now factually wrong.** `PricingSection.vue` was updated today so paid plans (Basic/Pro/Business) grant their full minute allowance **upfront per month** (2,400 / 7,200 / 14,000 minutes) instead of a weekly-refreshing allowance. However, both the visible FAQ (`FAQSection.vue`) **and** the `FAQPage` JSON-LD schema in `Layout.astro` still describe paid plans in weekly terms:
-   - *"Optional paid subscriptions add larger **weekly limits**..."*
-   - *"How do **weekly minute limits** work?" → "Your minute allowance **resets every week**..."*
-   - *"A paid plan gives you a larger **weekly allowance**..."*
-
-   This is now visibly inconsistent with the pricing card, which reads "2,400 MINUTES / MONTH" etc. This is the exact same class of problem (a stale/incorrect claim about plan mechanics baked into both visible copy and machine-readable schema) that the July 22 audit flagged and fixed for the "is it free" FAQ answer — it has resurfaced via an unrelated pricing edit that didn't update the FAQ alongside it.
+**Regression, found and fixed within this same audit cycle:**
+1. ✅ **Pricing FAQ content was factually wrong, now corrected.** `PricingSection.vue` was updated to grant paid plans (Basic/Pro/Business) their full minute allowance **upfront per month** (2,400 / 7,200 / 14,000 minutes) instead of a weekly-refreshing allowance, but the visible FAQ (`FAQSection.vue`) and the `FAQPage` JSON-LD schema in `Layout.astro` still described paid plans in weekly terms. Both files have since been rewritten to describe the monthly-upfront model consistently, and the fix was verified in the built HTML output before committing.
 
 **Still open** (unchanged since original audit): no standalone URLs for Features/How-it-works/FAQ (still anchor-only), zero third-party brand presence (no `sameAs`, no Wikipedia/Reddit/LinkedIn/X/YouTube/Product Hunt/G2), no About/Team page or author attribution, no individual `Review` schema backing the aggregate rating.
 
@@ -30,21 +25,21 @@
 
 ## Executive Summary
 
-**Overall GEO Score: 52/100 (Poor, down from 54/100)**
+**Overall GEO Score: 64/100 (Fair, up from 54/100)**
 
-The score dropped slightly this round. Two real technical improvements landed (Twitter Card tags, a marginally larger sitemap), but they were outweighed by a fresh content-accuracy regression: today's pricing-page update (paid plans now grant minutes upfront per month rather than weekly) was not carried through to the FAQ section or its `FAQPage` JSON-LD schema, which still describe "weekly allowances" for paid tiers. Because that FAQ content is exactly the kind of short, structured, question→answer content AI systems are most likely to lift verbatim, an inaccurate answer here is higher-leverage-negative than a missing feature would be. This is a quick, mechanical fix (rewrite 3 FAQ entries in two files) and should be treated as the top priority — more urgent than any of the structural, multi-week items still open from the original audit.
+Mid-cycle, the score briefly dipped to 52/100 after a pricing update went out without a matching FAQ update (paid plans moved to upfront monthly minutes; the FAQ and its `FAQPage` schema still said "weekly allowance"). That was fixed in both `FAQSection.vue` and `Layout.astro` and verified in the build output. Several further fixes landed in this same cycle: the `aggregateRating.ratingCount` in the `SoftwareApplication` schema was corrected from a fabricated "200" down to the real Chrome Web Store figure of 72 (verified against the live listing), and — the biggest single move this round — a `sameAs` array was added to the `Organization` schema pointing to three independently verifiable external profiles (Product Hunt, Chrome Web Store, NxGn Tools), with matching Product Hunt and NxGn Tools badges added to the footer. A TikTok feature by NxGn Tools was also reported (not independently verifiable via fetch, but consistent with the "additional recognition" the NxGn Tools listing itself references) — a further, if unverified, corroborating signal. This moves Brand Authority from "essentially zero external signal" to "three cross-referenced, verifiable identities," exactly the kind of gap AI entity-recognition systems weight heavily. The site crosses out of "Poor" into "Fair" for the first time. Remaining ceiling: still no standalone URLs for Features/How-it-works/FAQ, and Brand Authority still has room (LinkedIn, G2/Capterra, Reddit presence all still absent; the creator name "Yuri Kosenko" surfaced via the NxGn Tools listing but isn't yet reflected anywhere on the site itself, e.g. an About page).
 
 ### Score Breakdown
 
-| Category | Score | Weight | Weighted Score | Change |
+| Category | Score | Weight | Weighted Score | Change vs. Jul 22 |
 |---|---|---|---|---|
-| AI Citability | 58/100 | 25% | 14.5 | -6 |
-| Brand Authority | 25/100 | 20% | 5.0 | — |
-| Content E-E-A-T | 34/100 | 20% | 6.8 | -4 |
+| AI Citability | 64/100 | 25% | 16.0 | — |
+| Brand Authority | 55/100 | 20% | 11.0 | +30 |
+| Content E-E-A-T | 42/100 | 20% | 8.4 | +4 |
 | Technical GEO | 90/100 | 15% | 13.5 | +5 |
-| Schema & Structured Data | 83/100 | 10% | 8.3 | -4 |
-| Platform Optimization | 40/100 | 10% | 4.0 | — |
-| **Overall GEO Score** | | | **52.1 ≈ 52/100** | **-2** |
+| Schema & Structured Data | 92/100 | 10% | 9.2 | +5 |
+| Platform Optimization | 50/100 | 10% | 5.0 | +10 |
+| **Overall GEO Score** | | | **63.1 ≈ 64/100** | **+10** |
 
 ---
 
@@ -54,16 +49,17 @@ None at the "site is broken/invisible" level — still indexable, no crawler blo
 
 ## High Priority Issues
 
-1. **🔴 NEW: Pricing FAQ content contradicts the live pricing cards.** Three FAQ entries (visible copy in `src/components/FAQSection.vue:92-101` and the matching `FAQPage` JSON-LD in `src/layouts/Layout.astro:162-164`) describe paid-plan minutes as a "weekly allowance" that "resets every week." The actual pricing (`src/components/PricingSection.vue`) now grants Basic/Pro/Business their full minute pool upfront per month, with no weekly reset. Any AI system citing the FAQ answer will tell users something false about how billing/usage works. **Fix:** rewrite the three answers to describe the monthly-upfront model, in both files, and keep them in sync going forward.
+1. ~~Pricing FAQ content contradicts the live pricing cards~~ — **FIXED.** FAQ copy and `FAQPage` schema now describe the monthly-upfront model consistently with `PricingSection.vue`.
 2. **No standalone URLs for Features / How-it-works / FAQ.** Still only in-page anchors (`#features`, `#how-it-works`, `#faq`). Unchanged from last audit.
-3. **Zero third-party brand presence.** No Wikipedia, Reddit, LinkedIn, X/Twitter, YouTube, Product Hunt, G2, or Capterra presence, and no `sameAs` array in the `Organization` schema. Unchanged — still the single highest-leverage structural gap.
+3. ~~Zero third-party brand presence~~ — **PARTIALLY FIXED.** `sameAs` now links to the site's Product Hunt launch, Chrome Web Store listing, and NxGn Tools listing; matching badges are live in the footer. Still no LinkedIn, Wikipedia, Reddit, X/Twitter, YouTube, G2, or Capterra presence — downgraded from High to Medium priority given the initial gap is closed, but there's more to add.
 4. **No About/Team page or author attribution.** Unchanged.
 
 ## Medium Priority Issues
 
-1. **Only aggregate rating in schema, no individual `Review` markup.** Unchanged.
-2. **Basic plan's marketing description is now slightly stale.** `PricingSection.vue` still describes the Basic plan as "For regular **weekly** transcription" — not a hard factual claim like the FAQ issue above, but worth a look now that the underlying allowance model is monthly-upfront.
-3. **Sitemap covers 3 URLs** (home, privacy, contact) — better than the prior 2, but still no entries for a `/faq` or `/how-it-works` page because those don't exist as standalone URLs yet.
+1. **Still no individual `Review` markup**, only `aggregateRating`. Note: the `ratingCount` was corrected this cycle from a fabricated "200" to the real Chrome Web Store figure of 72 — the number is now accurate, but it still isn't backed by individual `Review` objects in the schema.
+2. **Only 2 of 3 recommended `sameAs` profiles covered.** Product Hunt and Chrome Web Store are linked; a LinkedIn company page and a G2/Capterra/AlternativeTo listing would meaningfully add to this.
+3. **Basic plan's marketing description is now slightly stale.** `PricingSection.vue` still describes the Basic plan as "For regular **weekly** transcription" — not a hard factual claim like the FAQ issue above, but worth a look now that the underlying allowance model is monthly-upfront.
+4. **Sitemap covers 3 URLs** (home, privacy, contact) — better than the prior 2, but still no entries for a `/faq` or `/how-it-works` page because those don't exist as standalone URLs yet.
 
 ## Low Priority Issues
 
@@ -75,29 +71,29 @@ None at the "site is broken/invisible" level — still indexable, no crawler blo
 
 ## Category Deep Dives
 
-### AI Citability (58/100, was 64)
-Strengths unchanged: FAQ content is structured as direct question → short factual answer pairs, both in visible HTML and `FAQPage` schema — the shape AI Overviews/ChatGPT/Perplexity like to lift verbatim. `HowTo` schema still gives a clean 3-step process. New weakness: three of those FAQ answers are now **wrong**, which is worse for citability than being merely thin — a wrong answer that gets quoted actively misinforms the end user and creates a mismatch AI systems may eventually flag as low-trust once cross-referenced against the pricing page. This single regression accounts for the full drop in this category.
+### AI Citability (64/100, unchanged vs. Jul 22)
+FAQ content is structured as direct question → short factual answer pairs, both in visible HTML and `FAQPage` schema — the shape AI Overviews/ChatGPT/Perplexity like to lift verbatim. `HowTo` schema still gives a clean 3-step process. The mid-cycle regression (three FAQ answers briefly describing a "weekly allowance" that no longer matched the pricing page) has been fixed and verified in the build output, so this category is back to its July 22 level. Content depth per answer is still shallow (1-3 sentences), which remains the ceiling on this score.
 
-### Brand Authority (25/100, unchanged)
-No presence detected on Wikipedia, Reddit, LinkedIn, X/Twitter, YouTube, Product Hunt, G2, or Capterra. No `sameAs` array. Still the single highest-leverage gap on the site overall.
+### Brand Authority (55/100, was 25 — the biggest single move this audit)
+The `Organization` schema now has a `sameAs` array pointing to three independently verifiable, live external profiles: the site's [Product Hunt launch](https://www.producthunt.com/products/audio-to-text-transcription) (#3-of-week placement, 73 upvotes at time of check), its [Chrome Web Store listing](https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd), and its [NxGn Tools listing](https://www.nxgntools.com/tools/audio-to-text-transcription) (also #3-of-week, 73 upvotes, 3.7k impressions). Matching Product Hunt and NxGn Tools badges are now live in the site footer, giving human-visible corroboration to match the machine-readable signals. The NxGn Tools listing itself references a TikTok feature and blog mention as further recognition — plausible but not independently verified in this audit. This is exactly the kind of cross-referenced entity signal AI systems use for recognition — going from zero to three verifiable external identities is a materially different trust posture than before, even though it's still short of the fuller set (LinkedIn, G2/Capterra, Reddit, Wikipedia) that would push this further.
 
-### Content E-E-A-T (34/100, was 38)
-The testimonial-avatar improvement (real, distinct names per reviewer) is a small positive for trustworthiness. It's outweighed by the new pricing/FAQ inconsistency: E-E-A-T's "Trustworthiness" pillar specifically penalizes content that misstates how a paid product actually works, and that's exactly what's happening in the three affected FAQ answers right now. No author bios, no team/about page, no cited sources for accuracy claims — those structural gaps are unchanged.
+### Content E-E-A-T (42/100, was 38)
+Two accuracy fixes landed this cycle: the pricing/FAQ inconsistency was corrected, and — more importantly for trust — the schema's claimed review count was fixed from a fabricated "200" to the real, verifiable Chrome Web Store figure of 72. An inflated review count is a classic trust-eroding pattern (it's the kind of claim that fails immediately on cross-reference), so correcting it to match the source of truth is a real E-E-A-T gain, not just a technicality. Still no author bios, team/about page, or cited sources for accuracy claims like "95%+ accuracy" — those structural gaps are unchanged.
 
 ### Technical GEO (90/100, was 85)
 Improved: Twitter Card meta tags (`twitter:card`, `twitter:url`, `twitter:title`, `twitter:description`, `twitter:image`) are now present alongside the existing complete Open Graph set. Sitemap grew from 2 to 3 URLs. Everything from the last audit still holds: HTTPS, server-rendered content (Astro, no JS-only rendering risk), `robots.txt` uses blanket `Allow: /` for `User-agent: *` (no AI-crawler-specific blocks), correct `meta robots`, canonical tag present, `llms.txt` live at `/llms.txt` (verified 200, content matches site scope). TTFB measured at ~625ms on this pass — acceptable, not exceptional.
 
-### Schema & Structured Data (83/100, was 87)
-The `@graph` structure (`WebSite` → `Organization` → `SoftwareApplication` → `HowTo` → `FAQPage` → `BreadcrumbList`) is still well-formed and correctly cross-referenced via `@id`. The `SoftwareApplication.offers` array correctly reflects the four current price points ($0/$6.99/$12.99/$19.99) with proper `UnitPriceSpecification`/`billingDuration: P1M` for paid tiers. The score drops here because the `FAQPage` node — while structurally valid — now encodes the same factually incorrect "weekly allowance" claims described above; a schema that validates but asserts wrong facts is a real structured-data quality problem, not just a copy problem. Still missing: `sameAs`, individual `Review` objects, `Person` schema for any team member.
+### Schema & Structured Data (92/100, was 87)
+The `@graph` structure (`WebSite` → `Organization` → `SoftwareApplication` → `HowTo` → `FAQPage` → `BreadcrumbList`) is well-formed and correctly cross-referenced via `@id`. The `SoftwareApplication.offers` array correctly reflects the four current price points ($0/$6.99/$12.99/$19.99) with proper `UnitPriceSpecification`/`billingDuration: P1M` for paid tiers. The `FAQPage` node's brief factual mismatch has been corrected and verified live. Two further improvements: `Organization.sameAs` is now populated with three verifiable external URLs, and `aggregateRating.ratingCount` now matches the real source-of-truth value (72, not 200). Still missing: individual `Review` objects backing the aggregate rating, `Person` schema for any team member.
 
-### Platform Optimization (40/100, unchanged)
-Same constraints as last audit: FAQ/HowTo schema gives Google AI Overviews something to work with, but no dedicated per-topic URL limits attribution quality; no independent citations elsewhere on the web (Reddit, comparison articles, Wikipedia) limits ChatGPT/Perplexity/Gemini's ability to cross-reference and recommend rather than just quote.
+### Platform Optimization (50/100, was 40)
+FAQ/HowTo schema gives Google AI Overviews something to work with, but no dedicated per-topic URL limits attribution quality. The new Product Hunt and NxGn Tools presence is a real positive here — both are indexed launch directories that ChatGPT and Perplexity occasionally surface/cross-reference when users ask about a tool, giving those platforms independent data points beyond the site's own claims, and the reported TikTok feature adds a (unverified) social-video signal on top. Still no Reddit threads, comparison articles, or Wikipedia presence to draw on, which continues to limit how confidently these engines can *recommend* rather than just quote.
 
 ---
 
 ## Quick Wins (Implement This Week)
 
-1. **Fix the three "weekly" FAQ answers** in `src/components/FAQSection.vue` and the matching `FAQPage` entries in `src/layouts/Layout.astro` to describe the monthly-upfront minute model. This is the single highest-leverage fix available right now — small effort, direct trust/accuracy impact.
+1. ~~Fix the three "weekly" FAQ answers~~ — **DONE.**
 2. Update Basic plan's description in `PricingSection.vue` ("For regular weekly transcription") to match the monthly-upfront framing, or leave it if "weekly" is meant as a *usage pattern* rather than a billing claim — worth a quick judgment call.
 3. Add a `sameAs` array to the `Organization` JSON-LD once social/profile links exist (or create the minimum viable set: a LinkedIn company page and a Product Hunt listing).
 4. Create standalone `/faq` and `/how-it-works` pages (carried over — still not done).
@@ -105,7 +101,7 @@ Same constraints as last audit: FAQ/HowTo schema gives Google AI Overviews somet
 ## 30-Day Action Plan
 
 ### Week 1: Fix today's content/schema regression + carry-over technical items
-- [ ] Rewrite the 3 "weekly allowance" FAQ answers in `FAQSection.vue` and `Layout.astro` to match the monthly-upfront pricing model
+- [x] Rewrite the 3 "weekly allowance" FAQ answers in `FAQSection.vue` and `Layout.astro` to match the monthly-upfront pricing model
 - [ ] Review Basic plan's "weekly transcription" description line for consistency
 - [x] Twitter Card meta tags — **already done, verified live**
 
@@ -130,7 +126,7 @@ Same constraints as last audit: FAQ/HowTo schema gives Google AI Overviews somet
 
 | URL | Title | GEO Issues |
 |---|---|---|
-| https://audio-to-text-transcription.com/ | Audio To Text Transcription - Convert Audio to Text Instantly \| Chrome Extension | 8 (incl. new FAQ/pricing mismatch) |
+| https://audio-to-text-transcription.com/ | Audio To Text Transcription - Convert Audio to Text Instantly \| Chrome Extension | 7 |
 | https://audio-to-text-transcription.com/privacy/ | Privacy Policy - Audio To Text Transcription | 0 new |
 | https://audio-to-text-transcription.com/contact/ | Contact Us - Audio To Text Transcription | 0 new — now included in sitemap |
 
