@@ -16,30 +16,35 @@
 2. ✅ **Sitemap grew from 2 → 3 URLs** — `/contact` is now included in `sitemap.xml`.
 3. ✅ **Testimonial avatars now use distinct, full real names** (`robert-edge.webp`, `ana-muravchik.webp`, `andrii-stepura.webp`, etc.) — a further improvement on the avatar/name-mismatch fix from the previous audit.
 
-**Regression, found and fixed within this same audit cycle:**
+**Regressions, found and fixed within this same audit cycle:**
 1. ✅ **Pricing FAQ content was factually wrong, now corrected.** `PricingSection.vue` was updated to grant paid plans (Basic/Pro/Business) their full minute allowance **upfront per month** (2,400 / 7,200 / 14,000 minutes) instead of a weekly-refreshing allowance, but the visible FAQ (`FAQSection.vue`) and the `FAQPage` JSON-LD schema in `Layout.astro` still described paid plans in weekly terms. Both files have since been rewritten to describe the monthly-upfront model consistently, and the fix was verified in the built HTML output before committing.
+2. ✅ **Basic plan description was stale.** "For regular weekly transcription" → "For regular monthly transcription", matching the same monthly-upfront model.
 
-**Still open** (unchanged since original audit): no standalone URLs for Features/How-it-works/FAQ (still anchor-only), zero third-party brand presence (no `sameAs`, no Wikipedia/Reddit/LinkedIn/X/YouTube/Product Hunt/G2), no About/Team page or author attribution, no individual `Review` schema backing the aggregate rating.
+**Additional fixes landed this cycle** (beyond what the mid-cycle checkpoint above covers):
+3. ✅ **Individual `Review` schema added.** `SoftwareApplication.review` now lists all 7 real testimonials shown in `TestimonialsSection.vue` (same names/text, 5★ each), backing the `aggregateRating` claim with verifiable individual reviews instead of a bare aggregate number.
+4. ✅ **About/author attribution added.** `Organization` schema now includes `legalName` ("PE Yuri Kosenko"), a `founder` (Person: Yuri Kosenko, with email), and a full `PostalAddress` (181/2 Lomov Street, Pavlodar, Kazakhstan). The same identity/address block is now visible on-page as a dedicated "Company" column in the site footer, alongside the existing Product/Support columns.
+
+**Still open:** no standalone URLs for Features/How-it-works/FAQ (still anchor-only, explicitly deferred per site owner's judgment call — anchors are normal practice for a landing page this size), LinkedIn/G2/Capterra/Wikipedia/Reddit presence still absent.
 
 ---
 
 ## Executive Summary
 
-**Overall GEO Score: 64/100 (Fair, up from 54/100)**
+**Overall GEO Score: 67/100 (Fair, up from 54/100)**
 
-Mid-cycle, the score briefly dipped to 52/100 after a pricing update went out without a matching FAQ update (paid plans moved to upfront monthly minutes; the FAQ and its `FAQPage` schema still said "weekly allowance"). That was fixed in both `FAQSection.vue` and `Layout.astro` and verified in the build output. Several further fixes landed in this same cycle: the `aggregateRating.ratingCount` in the `SoftwareApplication` schema was corrected from a fabricated "200" down to the real Chrome Web Store figure of 72 (verified against the live listing), and — the biggest single move this round — a `sameAs` array was added to the `Organization` schema pointing to three independently verifiable external profiles (Product Hunt, Chrome Web Store, NxGn Tools), with matching Product Hunt and NxGn Tools badges added to the footer. A TikTok feature by NxGn Tools was also reported (not independently verifiable via fetch, but consistent with the "additional recognition" the NxGn Tools listing itself references) — a further, if unverified, corroborating signal. This moves Brand Authority from "essentially zero external signal" to "three cross-referenced, verifiable identities," exactly the kind of gap AI entity-recognition systems weight heavily. The site crosses out of "Poor" into "Fair" for the first time. Remaining ceiling: still no standalone URLs for Features/How-it-works/FAQ, and Brand Authority still has room (LinkedIn, G2/Capterra, Reddit presence all still absent; the creator name "Yuri Kosenko" surfaced via the NxGn Tools listing but isn't yet reflected anywhere on the site itself, e.g. an About page).
+This cycle fixed a self-inflicted regression (pricing FAQ briefly contradicted the pricing cards after a pricing model change — caught and corrected same-session) and then closed several real, longstanding gaps from the original audit: a fabricated review count (was "200", corrected to the real Chrome Web Store figure of 72), zero third-party brand presence (now `sameAs` links to three verifiable external profiles — Product Hunt, Chrome Web Store, NxGn Tools — with matching footer badges, one of which adapts to dark mode), zero individual review markup (now 7 real, on-page reviews are also in the `SoftwareApplication.review` schema), and zero author/entity attribution (now a named legal entity, founder, and full postal address are both in schema and visible in the footer). The site crosses out of "Poor" into "Fair" for the first time. Remaining ceiling: standalone `/faq` and `/how-it-works` pages were considered and deliberately deferred (anchors are normal for a site this size); LinkedIn, G2/Capterra, Reddit, and Wikipedia presence are still the biggest lever left for Brand Authority.
 
 ### Score Breakdown
 
 | Category | Score | Weight | Weighted Score | Change vs. Jul 22 |
 |---|---|---|---|---|
-| AI Citability | 64/100 | 25% | 16.0 | — |
-| Brand Authority | 55/100 | 20% | 11.0 | +30 |
-| Content E-E-A-T | 42/100 | 20% | 8.4 | +4 |
+| AI Citability | 66/100 | 25% | 16.5 | +2 |
+| Brand Authority | 58/100 | 20% | 11.6 | +33 |
+| Content E-E-A-T | 52/100 | 20% | 10.4 | +14 |
 | Technical GEO | 90/100 | 15% | 13.5 | +5 |
-| Schema & Structured Data | 92/100 | 10% | 9.2 | +5 |
+| Schema & Structured Data | 95/100 | 10% | 9.5 | +8 |
 | Platform Optimization | 50/100 | 10% | 5.0 | +10 |
-| **Overall GEO Score** | | | **63.1 ≈ 64/100** | **+10** |
+| **Overall GEO Score** | | | **66.5 ≈ 67/100** | **+13** |
 
 ---
 

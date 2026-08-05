@@ -82,6 +82,16 @@
           </ul>
         </div>
 
+        <!-- Колонка 4: Company -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Company</h3>
+          <p class="footer-entity-line">PE Yuri Kosenko</p>
+          <p class="footer-entity-line">181/2 Lomov Street, Pavlodar, Kazakhstan</p>
+          <p class="footer-entity-line">
+            <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a>
+          </p>
+        </div>
+
       </div>
 
       <div class="footer-bottom">
@@ -112,7 +122,7 @@ const currentYear = new Date().getFullYear();
 
 .footer-main {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
   margin-bottom: 48px;
 }
@@ -175,6 +185,27 @@ const currentYear = new Date().getFullYear();
 .footer-bottom {
   border-top: 1px solid var(--color-border);
   padding-top: 24px;
+}
+
+.footer-entity-line {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 10px;
+}
+
+.footer-entity-line:last-child {
+  margin-bottom: 0;
+}
+
+.footer-entity-line a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-entity-line a:hover {
+  color: var(--accent-primary);
 }
 
 .footer-badges {
