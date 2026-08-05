@@ -20,7 +20,16 @@
               rel="noopener noreferrer"
             >
               <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1062809&theme=neutral"
+                class="ph-badge-light"
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1062809&theme=light"
+                alt="Audio To Text Transcription - Instantly transcribe audio to text — right in your browser | Product Hunt"
+                width="250"
+                height="54"
+                loading="lazy"
+              />
+              <img
+                class="ph-badge-dark"
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1062809&theme=dark"
                 alt="Audio To Text Transcription - Instantly transcribe audio to text — right in your browser | Product Hunt"
                 width="250"
                 height="54"
@@ -182,8 +191,20 @@ const currentYear = new Date().getFullYear();
 
 .footer-badge img {
   display: block;
-  height: 48px;
+  height: 36px;
   width: auto;
+}
+
+.ph-badge-dark {
+  display: none;
+}
+
+html[data-theme='dark'] .ph-badge-light {
+  display: none;
+}
+
+html[data-theme='dark'] .ph-badge-dark {
+  display: block;
 }
 
 .footer-copyright {
