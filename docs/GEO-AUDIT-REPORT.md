@@ -22,7 +22,7 @@
 
 **Additional fixes landed this cycle** (beyond what the mid-cycle checkpoint above covers):
 3. ✅ **Individual `Review` schema added.** `SoftwareApplication.review` now lists all 7 real testimonials shown in `TestimonialsSection.vue` (same names/text, 5★ each), backing the `aggregateRating` claim with verifiable individual reviews instead of a bare aggregate number.
-4. ✅ **About/author attribution added.** `Organization` schema now includes `legalName` ("PE Yuri Kosenko"), a `founder` (Person: Yuri Kosenko, with email), and a full `PostalAddress` (181/2 Lomov Street, Pavlodar, Kazakhstan). The same identity/address block is now visible on-page as a dedicated "Company" column in the site footer, alongside the existing Product/Support columns.
+4. ✅ **About/author attribution added.** `Organization` schema now includes `legalName` ("PE Yuri Kosenko"), a `founder` (Person: Yuri Kosenko, with email), and a full `PostalAddress` (181/2 Lomov Street, Pavlodar, Kazakhstan). The same identity/address block is now visible on-page in the site footer's bottom bar, next to the copyright line.
 
 **Still open:** no standalone URLs for Features/How-it-works/FAQ (still anchor-only, explicitly deferred per site owner's judgment call — anchors are normal practice for a landing page this size), LinkedIn/G2/Capterra/Wikipedia/Reddit presence still absent.
 
