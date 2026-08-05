@@ -19,7 +19,7 @@
           <p class="plan-price">
             {{ plan.price }}<span v-if="plan.period"> / {{ plan.period }}</span>
           </p>
-          <p class="plan-limit">{{ plan.minutes }} minutes / week</p>
+          <p class="plan-limit">{{ plan.minutes }} minutes / {{ plan.minutesPeriod }}</p>
           <InstallButton
             :variant="plan.popular ? 'primary' : 'outline'"
             :show-icon="false"
@@ -53,6 +53,7 @@ interface Plan {
   price: string;
   period?: string;
   minutes: string;
+  minutesPeriod: string;
   cta: string;
   benefitHeading: string;
   benefits: string[];
@@ -72,6 +73,7 @@ const plans: Plan[] = [
     description: 'Everything you need to start transcribing',
     price: '$0',
     minutes: '200',
+    minutesPeriod: 'week',
     cta: 'Get started',
     benefitHeading: 'What you can do:',
     benefits: [
@@ -88,10 +90,11 @@ const plans: Plan[] = [
     description: 'For regular weekly transcription',
     price: '$6.99',
     period: 'month',
-    minutes: '600',
+    minutes: '2,400',
+    minutesPeriod: 'month',
     cta: 'Get started',
     benefitHeading: 'Everything in Free, plus:',
-    benefits: ['3× the weekly minutes', ...paidBenefits],
+    benefits: ['3× the minutes', ...paidBenefits],
     guarantee: true,
   },
   {
@@ -99,10 +102,11 @@ const plans: Plan[] = [
     description: 'For frequent and longer recordings',
     price: '$12.99',
     period: 'month',
-    minutes: '1,800',
+    minutes: '7,200',
+    minutesPeriod: 'month',
     cta: 'Get started',
     benefitHeading: 'Everything in Free, plus:',
-    benefits: ['9× the weekly minutes', ...paidBenefits],
+    benefits: ['9× the minutes', ...paidBenefits],
     popular: true,
     guarantee: true,
   },
@@ -111,10 +115,11 @@ const plans: Plan[] = [
     description: 'For high-volume transcription workflows',
     price: '$19.99',
     period: 'month',
-    minutes: '3,500',
+    minutes: '14,000',
+    minutesPeriod: 'month',
     cta: 'Get started',
     benefitHeading: 'Everything in Free, plus:',
-    benefits: ['17.5× the weekly minutes', ...paidBenefits],
+    benefits: ['17.5× the minutes', ...paidBenefits],
     guarantee: true,
   },
 ];
