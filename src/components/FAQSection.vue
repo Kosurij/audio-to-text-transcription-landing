@@ -90,15 +90,15 @@ const faqs = [
   },
   {
     question: 'Is Audio To Text Transcription free to use?',
-    answer: 'Yes. The Free plan includes 200 minutes per week. Optional paid subscriptions add larger weekly limits, priority processing and priority support.'
+    answer: 'Yes. The Free plan includes 200 minutes per week. Optional paid subscriptions grant a larger minute allowance upfront each month, plus priority processing and priority support.'
   },
   {
-    question: 'How do weekly minute limits work?',
-    answer: 'Your minute allowance resets every week. Unused minutes do not roll over into the next week.'
+    question: 'How do paid plan minute allowances work?',
+    answer: 'Paid plans grant your full minute allowance upfront at the start of each month, rather than refreshing weekly. Unused minutes do not roll over into the next month.'
   },
   {
     question: 'What happens when I upgrade?',
-    answer: 'A paid plan gives you a larger weekly allowance, reduced minute usage in High Accuracy mode, priority processing and priority support.'
+    answer: 'A paid plan gives you a larger monthly minute allowance upfront, reduced minute usage in High Accuracy mode, priority processing and priority support.'
   },
   {
     question: 'Can I cancel my subscription?',
