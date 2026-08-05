@@ -179,8 +179,8 @@ const currentYear = new Date().getFullYear();
 
 .footer-badges {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -191,7 +191,7 @@ const currentYear = new Date().getFullYear();
 
 .footer-badge img {
   display: block;
-  height: 36px;
+  height: 48px;
   width: auto;
 }
 
