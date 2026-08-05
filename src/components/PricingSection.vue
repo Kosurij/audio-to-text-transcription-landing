@@ -87,7 +87,7 @@ const plans: Plan[] = [
   },
   {
     name: 'Basic',
-    description: 'For regular weekly transcription',
+    description: 'For regular monthly transcription',
     price: '$6.99',
     period: 'month',
     minutes: '2,400',
