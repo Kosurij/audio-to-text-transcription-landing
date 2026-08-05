@@ -179,8 +179,8 @@ const currentYear = new Date().getFullYear();
 
 .footer-badges {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
 }
 
@@ -195,15 +195,15 @@ const currentYear = new Date().getFullYear();
   width: auto;
 }
 
-.ph-badge-dark {
+.footer-badge img.ph-badge-dark {
   display: none;
 }
 
-html[data-theme='dark'] .ph-badge-light {
+html[data-theme='dark'] .footer-badge img.ph-badge-light {
   display: none;
 }
 
-html[data-theme='dark'] .ph-badge-dark {
+html[data-theme='dark'] .footer-badge img.ph-badge-dark {
   display: block;
 }
 
