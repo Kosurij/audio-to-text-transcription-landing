@@ -41,19 +41,24 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const home = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+const footerStart = home.indexOf('<footer');
+const footerEnd = home.indexOf('</footer>') + '</footer>'.length;
+const footer = home.slice(footerStart, footerEnd);
 
 test('footer shows the SHIFT LLC entity, not the old Kazakhstan entity', () => {
-  assert.match(home, /SHIFT LLC/);
-  assert.match(home, /5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA/);
-  assert.doesNotMatch(home, /PE Yuri Kosenko/);
-  assert.doesNotMatch(home, /Pavlodar/);
+  assert.match(footer, /SHIFT LLC/);
+  assert.match(footer, /5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA/);
+  assert.doesNotMatch(footer, /PE Yuri Kosenko/);
+  assert.doesNotMatch(footer, /Pavlodar/);
 });
 
 test('footer support column links to Terms of Service and Refund Policy', () => {
-  assert.match(home, /<a href="\/terms">Terms of Service<\/a>/);
-  assert.match(home, /<a href="\/refund">Refund Policy<\/a>/);
+  assert.match(footer, /<a href="\/terms"[^>]*>Terms of Service<\/a>/);
+  assert.match(footer, /<a href="\/refund"[^>]*>Refund Policy<\/a>/);
 });
 ```
+
+(Assertions are scoped to the `<footer>` slice, not the whole page — `PE Yuri Kosenko`/`Pavlodar` also appear in `Layout.astro`'s JSON-LD until Task 2 runs, and the `[^>]*` tolerance accounts for Vue's scoped-style `data-v-*` attribute injection on rendered elements.)
 
 - [ ] **Step 2: Run test to verify it fails**
 
