@@ -8,6 +8,8 @@
 
 ## Legal
 - [Privacy Policy](https://audio-to-text-transcription.com/privacy/): Data handling and privacy practices
+- [Terms of Service](https://audio-to-text-transcription.com/terms/): Terms governing use of the service
+- [Refund Policy](https://audio-to-text-transcription.com/refund/): 30-day money-back guarantee details
 
 ## Support
 - [Contact Us](https://audio-to-text-transcription.com/contact/): Get in touch with the team via a contact form

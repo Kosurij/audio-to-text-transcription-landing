@@ -69,3 +69,19 @@ test('refund page promises a 30-day guarantee and 7-business-day processing', ()
   assert.match(refund, /within 7 business days/);
   assert.doesNotMatch(refund, /20-day/);
 });
+
+const sitemap = await readFile(new URL('../dist/sitemap.xml', import.meta.url), 'utf8');
+const llmsTxt = await readFile(new URL('../dist/llms.txt', import.meta.url), 'utf8');
+
+test('sitemap lists the new legal pages and an updated privacy lastmod', () => {
+  assert.match(sitemap, /<loc>https:\/\/audio-to-text-transcription\.com\/terms<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/audio-to-text-transcription\.com\/refund<\/loc>/);
+  const privacyBlock = sitemap.match(/<url>\s*<loc>https:\/\/audio-to-text-transcription\.com\/privacy<\/loc>[\s\S]*?<\/url>/)[0];
+  assert.match(privacyBlock, /<lastmod>2026-08-09<\/lastmod>/);
+});
+
+test('llms.txt lists Terms of Service and Refund Policy under Legal', () => {
+  const legalSection = llmsTxt.slice(llmsTxt.indexOf('## Legal'), llmsTxt.indexOf('## Support'));
+  assert.match(legalSection, /\[Terms of Service\]\(https:\/\/audio-to-text-transcription\.com\/terms\/\)/);
+  assert.match(legalSection, /\[Refund Policy\]\(https:\/\/audio-to-text-transcription\.com\/refund\/\)/);
+});
