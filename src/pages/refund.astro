@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavigationBar from '../components/NavigationBar.vue';
+import AppFooter from '../components/AppFooter.vue';
+
+const title = 'Refund Policy - Audio To Text Transcription';
+const description = '30-day money-back guarantee and refund process for Audio To Text Transcription.';
+---
+
+<Layout title={title} description={description}>
+  <NavigationBar client:load />
+  <main class="privacy-page">
+    <article class="privacy-card">
+      <header class="privacy-card-header">
+        <h1>Refund Policy</h1>
+        <p class="updated">Last Updated: August 9, 2026</p>
+      </header>
+
+      <section>
+        <h2>30-Day Money-Back Guarantee</h2>
+        <p>
+          Your satisfaction is our priority. We offer a 30-day money-back guarantee on paid subscription plans and one-time
+          minute-pack purchases for Audio To Text Transcription. If you are not completely satisfied, you may request a full
+          refund within 30 days of the relevant charge — no questions asked.
+        </p>
+      </section>
+
+      <section>
+        <h2>How to Request a Refund</h2>
+        <p>
+          <strong>Contact Us:</strong> email
+          <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a> or use the
+          <a href="/contact">Contact Us</a> page with your refund request. Please include the email address associated with
+          your purchase and, optionally, your reason for requesting a refund — none is required.
+        </p>
+        <p>
+          <strong>Processing Your Refund:</strong> once we receive your request, we aim to process it within 7 business days.
+          The refund is issued to your original payment method through our payment processor. The time it takes to appear on
+          your bank or card statement can vary by provider.
+        </p>
+      </section>
+
+      <section>
+        <h2>Additional Information</h2>
+        <p>
+          This guarantee covers subscription payments and one-time minute-pack purchases. It is separate from ordinary
+          subscription cancellation, which you can do at any time from your account to stop future billing — cancelling does
+          not by itself refund a past charge. If you have any questions, contact us at
+          <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a>.
+        </p>
+      </section>
+    </article>
+  </main>
+  <AppFooter client:load />
+</Layout>
+
+<style>
+  .privacy-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 140px 16px 120px;
+    gap: 32px;
+    background: var(--gradient-bg);
+  }
+
+  .privacy-card {
+    width: 100%;
+    max-width: 960px;
+    background: var(--color-surface-elevated);
+    border-radius: 28px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-xl);
+    padding: 48px clamp(24px, 4vw, 56px);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .privacy-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .privacy-card-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .updated {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .privacy-card section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .privacy-card h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+  }
+
+  .privacy-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+
+  .privacy-card a {
+    color: var(--accent-primary);
+    text-decoration: none;
+  }
+
+  .privacy-card a:hover,
+  .privacy-card a:focus-visible {
+    color: var(--accent-primary-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .privacy-page {
+      padding-top: 128px;
+    }
+
+    .privacy-card {
+      border-radius: 20px;
+      padding: 36px 20px;
+      gap: 32px;
+    }
+
+    .privacy-card p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+  }
+</style>

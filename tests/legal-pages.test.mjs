@@ -58,3 +58,14 @@ test('terms page covers the SHIFT LLC entity, 30-day-adjacent scope, and drops P
   assert.match(terms, /support@audio-to-text-transcription\.com/);
   assert.doesNotMatch(terms, />Promotions</);
 });
+
+const refund = await readFile(new URL('../dist/refund/index.html', import.meta.url), 'utf8');
+
+test('refund page promises a 30-day guarantee and 7-business-day processing', () => {
+  assert.match(refund, /<h1[^>]*>Refund Policy<\/h1>/);
+  assert.match(refund, /Last Updated: August 9, 2026/);
+  assert.match(refund, /30-day money-back guarantee/);
+  assert.match(refund, /subscription plans and one-time\s+minute-pack purchases/);
+  assert.match(refund, /within 7 business days/);
+  assert.doesNotMatch(refund, /20-day/);
+});
