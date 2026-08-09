@@ -70,6 +70,8 @@
           <ul class="footer-links">
             <li><a href="/contact">Contact Us</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/refund">Refund Policy</a></li>
             <li>
               <a
                 href="https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en"
@@ -87,8 +89,8 @@
       <div class="footer-bottom">
         <p class="footer-copyright">© {{ currentYear }} Audio to Text Transcription. All rights reserved.</p>
         <div class="footer-entity">
-          <p class="footer-entity-line">PE Yuri Kosenko</p>
-          <p class="footer-entity-line">181/2 Lomov Street, Pavlodar, Kazakhstan</p>
+          <p class="footer-entity-line">SHIFT LLC</p>
+          <p class="footer-entity-line">5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA</p>
           <p class="footer-entity-line">
             <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a>
           </p>
