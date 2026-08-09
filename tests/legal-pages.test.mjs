@@ -36,3 +36,13 @@ test('global Organization JSON-LD uses the SHIFT LLC entity and Armenia address'
   });
   assert.equal(org.founder.name, 'Yuri Kosenko');
 });
+
+const privacy = await readFile(new URL('../dist/privacy/index.html', import.meta.url), 'utf8');
+
+test('privacy page names SHIFT LLC as the operating entity', () => {
+  assert.match(privacy, /Last Updated: August 9, 2026/);
+  assert.match(
+    privacy,
+    /Audio To Text Transcription is operated by SHIFT LLC, a company registered in the Republic of Armenia at 5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA\./,
+  );
+});
