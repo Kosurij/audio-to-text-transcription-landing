@@ -64,14 +64,11 @@
           </ul>
         </div>
 
-        <!-- Колонка 3: Legal & Support -->
+        <!-- Колонка 3: Support -->
         <div class="footer-col">
           <h3 class="footer-col-title">Support</h3>
           <ul class="footer-links">
             <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms">Terms of Service</a></li>
-            <li><a href="/refund">Refund Policy</a></li>
             <li>
               <a
                 href="https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en"
@@ -81,6 +78,16 @@
                 Chrome Web Store
               </a>
             </li>
+          </ul>
+        </div>
+
+        <!-- Колонка 4: Documents -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Documents</h3>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/refund">Refund Policy</a></li>
           </ul>
         </div>
 
@@ -121,7 +128,7 @@ const currentYear = new Date().getFullYear();
 
 .footer-main {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
   margin-bottom: 48px;
 }
@@ -183,7 +190,7 @@ const currentYear = new Date().getFullYear();
 
 .footer-bottom {
   border-top: 1px solid var(--color-border);
-  padding-top: 24px;
+  padding-top: 12px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
