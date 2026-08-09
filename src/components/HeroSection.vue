@@ -60,8 +60,8 @@
       <!-- Right column: floating panel -->
       <div class="hero-right">
         <div class="hero-panel">
-          <img src="/hero_light.webp" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot-light" />
-          <img src="/hero_dark.webp" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot-dark" />
+          <img src="/hero_light.webp" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot-light" fetchpriority="high" />
+          <img src="/hero_dark.webp" alt="Extension popup with transcription" class="hero-screenshot hero-screenshot-dark" fetchpriority="high" />
         </div>
       </div>
 
