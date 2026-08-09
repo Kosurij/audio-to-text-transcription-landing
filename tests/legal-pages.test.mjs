@@ -18,3 +18,21 @@ test('footer support column links to Terms of Service and Refund Policy', () => 
   assert.match(footer, /<a href="\/terms"[^>]*>Terms of Service<\/a>/);
   assert.match(footer, /<a href="\/refund"[^>]*>Refund Policy<\/a>/);
 });
+
+test('global Organization JSON-LD uses the SHIFT LLC entity and Armenia address', () => {
+  const match = home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(match, 'JSON-LD script is missing');
+  const jsonLd = JSON.parse(match[1]);
+  const org = jsonLd['@graph'].find((item) => item['@type'] === 'Organization');
+
+  assert.equal(org.legalName, 'SHIFT LLC');
+  assert.deepEqual(org.address, {
+    '@type': 'PostalAddress',
+    streetAddress: '5, Street 17, Argel',
+    addressLocality: 'Nor Hachn',
+    addressRegion: 'Kotayk',
+    postalCode: '2404',
+    addressCountry: 'AM',
+  });
+  assert.equal(org.founder.name, 'Yuri Kosenko');
+});
