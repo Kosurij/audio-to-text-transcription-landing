@@ -64,20 +64,11 @@
           </ul>
         </div>
 
-        <!-- Колонка 3: Support -->
+        <!-- Колонка 3: Company -->
         <div class="footer-col">
-          <h3 class="footer-col-title">Support</h3>
+          <h3 class="footer-col-title">Company</h3>
           <ul class="footer-links">
             <li><a href="/contact">Contact Us</a></li>
-            <li>
-              <a
-                href="https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Chrome Web Store
-              </a>
-            </li>
           </ul>
         </div>
 
