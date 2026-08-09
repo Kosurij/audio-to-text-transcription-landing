@@ -64,21 +64,21 @@
           </ul>
         </div>
 
-        <!-- Колонка 3: Legal & Support -->
+        <!-- Колонка 3: Company -->
         <div class="footer-col">
-          <h3 class="footer-col-title">Support</h3>
+          <h3 class="footer-col-title">Company</h3>
           <ul class="footer-links">
             <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Колонка 4: Documents -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Documents</h3>
+          <ul class="footer-links">
             <li><a href="/privacy">Privacy Policy</a></li>
-            <li>
-              <a
-                href="https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd?hl=en"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Chrome Web Store
-              </a>
-            </li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/refund">Refund Policy</a></li>
           </ul>
         </div>
 
@@ -87,8 +87,8 @@
       <div class="footer-bottom">
         <p class="footer-copyright">© {{ currentYear }} Audio to Text Transcription. All rights reserved.</p>
         <div class="footer-entity">
-          <p class="footer-entity-line">PE Yuri Kosenko</p>
-          <p class="footer-entity-line">181/2 Lomov Street, Pavlodar, Kazakhstan</p>
+          <p class="footer-entity-line">SHIFT LLC</p>
+          <p class="footer-entity-line">5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA</p>
           <p class="footer-entity-line">
             <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a>
           </p>
@@ -119,7 +119,7 @@ const currentYear = new Date().getFullYear();
 
 .footer-main {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
   margin-bottom: 48px;
 }
@@ -181,7 +181,7 @@ const currentYear = new Date().getFullYear();
 
 .footer-bottom {
   border-top: 1px solid var(--color-border);
-  padding-top: 24px;
+  padding-top: 12px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
