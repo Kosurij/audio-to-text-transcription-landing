@@ -4,10 +4,10 @@ import test from 'node:test';
 
 const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 
-test('visible FAQ explains free use, weekly resets, upgrades and cancellation', () => {
+test('visible FAQ explains free use, monthly plan allowances, upgrades and cancellation', () => {
   assert.match(html, /Is Audio To Text Transcription free to use\?/);
   assert.match(html, /200 minutes per week/);
-  assert.match(html, /How do weekly minute limits work\?/);
+  assert.match(html, /How do paid plan minute allowances work\?/);
   assert.match(html, /Unused minutes do not roll over/);
   assert.match(html, /What happens when I upgrade\?/);
   assert.match(html, /reduced minute usage in High Accuracy mode/i);

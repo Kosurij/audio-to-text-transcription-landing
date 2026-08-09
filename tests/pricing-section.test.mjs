@@ -11,14 +11,14 @@ const pricing = pricingStart >= 0 && pricingEnd > pricingStart
 
 test('pricing section exposes every approved plan and benefit', () => {
   assert.notEqual(pricing, '', 'rendered pricing section is missing');
-  assert.match(pricing, /More minutes, every week/);
+  assert.match(pricing, /Start free, then upgrade when your workflow grows/);
   assert.match(pricing, /Free[\s\S]*\$0[\s\S]*200 minutes \/ week/);
-  assert.match(pricing, /Basic[\s\S]*\$6\.99[\s\S]*600 minutes \/ week/);
-  assert.match(pricing, /Pro[\s\S]*\$12\.99[\s\S]*1,800 minutes \/ week/);
-  assert.match(pricing, /Business[\s\S]*\$19\.99[\s\S]*3,500 minutes \/ week/);
-  assert.match(pricing, /3× the weekly minutes/);
-  assert.match(pricing, /9× the weekly minutes/);
-  assert.match(pricing, /17\.5× the weekly minutes/);
+  assert.match(pricing, /Basic[\s\S]*\$6\.99[\s\S]* \/ month[\s\S]*2,400 minutes \/ month/);
+  assert.match(pricing, /Pro[\s\S]*\$12\.99[\s\S]* \/ month[\s\S]*7,200 minutes \/ month/);
+  assert.match(pricing, /Business[\s\S]*\$19\.99[\s\S]* \/ month[\s\S]*14,000 minutes \/ month/);
+  assert.match(pricing, /3× the minutes/);
+  assert.match(pricing, /9× the minutes/);
+  assert.match(pricing, /17\.5× the minutes/);
   assert.match(pricing, /Reduced minute usage in High Accuracy mode/);
   assert.doesNotMatch(pricing, /High Accuracy uses (?:2|3)×/);
   assert.ok((pricing.match(/chromewebstore\.google\.com/g) ?? []).length >= 4);
