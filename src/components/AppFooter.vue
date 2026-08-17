@@ -68,7 +68,7 @@
         <div class="footer-col">
           <h3 class="footer-col-title">Company</h3>
           <ul class="footer-links">
-            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
           </ul>
         </div>
 
@@ -76,9 +76,9 @@
         <div class="footer-col">
           <h3 class="footer-col-title">Documents</h3>
           <ul class="footer-links">
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms">Terms of Service</a></li>
-            <li><a href="/refund">Refund Policy</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+            <li><a href="/refund/">Refund Policy</a></li>
           </ul>
         </div>
 

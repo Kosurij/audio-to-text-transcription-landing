@@ -38,7 +38,7 @@
       <div class="faq-cta">
         <h3 class="faq-cta-title">Still have a question?</h3>
         <p class="faq-cta-subtitle">Can't find the answer you're looking for? We're here to help!</p>
-        <a href="/contact" class="faq-cta-button">
+        <a href="/contact/" class="faq-cta-button">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M4 6H20C20.5523 6 21 6.44772 21 7V17C21 17.5523 20.5523 18 20 18H4C3.44772 18 3 17.5523 3 17V7C3 6.44772 3.44772 6 4 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
             <path d="M3.5 7L12 13L20.5 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

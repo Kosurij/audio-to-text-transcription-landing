@@ -15,8 +15,8 @@ test('footer shows the SHIFT LLC entity, not the old Kazakhstan entity', () => {
 });
 
 test('footer support column links to Terms of Service and Refund Policy', () => {
-  assert.match(footer, /<a href="\/terms"[^>]*>Terms of Service<\/a>/);
-  assert.match(footer, /<a href="\/refund"[^>]*>Refund Policy<\/a>/);
+  assert.match(footer, /<a href="\/terms\/"[^>]*>Terms of Service<\/a>/);
+  assert.match(footer, /<a href="\/refund\/"[^>]*>Refund Policy<\/a>/);
 });
 
 test('global Organization JSON-LD uses the SHIFT LLC entity and Armenia address', () => {
@@ -73,11 +73,20 @@ test('refund page promises a 30-day guarantee and 7-business-day processing', ()
 const sitemap = await readFile(new URL('../dist/sitemap.xml', import.meta.url), 'utf8');
 const llmsTxt = await readFile(new URL('../dist/llms.txt', import.meta.url), 'utf8');
 
-test('sitemap lists the new legal pages and an updated privacy lastmod', () => {
-  assert.match(sitemap, /<loc>https:\/\/audio-to-text-transcription\.com\/terms<\/loc>/);
-  assert.match(sitemap, /<loc>https:\/\/audio-to-text-transcription\.com\/refund<\/loc>/);
-  const privacyBlock = sitemap.match(/<url>\s*<loc>https:\/\/audio-to-text-transcription\.com\/privacy<\/loc>[\s\S]*?<\/url>/)[0];
+test('sitemap lists only canonical trailing-slash URLs for indexable pages', () => {
+  for (const path of ['privacy', 'terms', 'refund', 'contact']) {
+    assert.match(sitemap, new RegExp(`<loc>https://audio-to-text-transcription\\.com/${path}/</loc>`));
+    assert.doesNotMatch(sitemap, new RegExp(`<loc>https://audio-to-text-transcription\\.com/${path}</loc>`));
+  }
+
+  const privacyBlock = sitemap.match(/<url>\s*<loc>https:\/\/audio-to-text-transcription\.com\/privacy\/<\/loc>[\s\S]*?<\/url>/)[0];
   assert.match(privacyBlock, /<lastmod>2026-08-09<\/lastmod>/);
+});
+
+test('rendered internal links do not advertise redirecting page URLs', () => {
+  for (const page of [home, refund]) {
+    assert.doesNotMatch(page, /href="\/(?:privacy|terms|refund|contact)"/);
+  }
 });
 
 test('llms.txt lists Terms of Service and Refund Policy under Legal', () => {
