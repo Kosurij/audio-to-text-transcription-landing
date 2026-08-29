@@ -15,11 +15,17 @@ test('pricing section exposes every approved plan and benefit', () => {
   assert.match(pricing, /Free[\s\S]*\$0[\s\S]*200 minutes \/ week/);
   assert.match(pricing, /Basic[\s\S]*\$6\.99[\s\S]* \/ month[\s\S]*2,400 minutes \/ month/);
   assert.match(pricing, /Pro[\s\S]*\$12\.99[\s\S]* \/ month[\s\S]*7,200 minutes \/ month/);
-  assert.match(pricing, /Business[\s\S]*\$19\.99[\s\S]* \/ month[\s\S]*14,000 minutes \/ month/);
+  assert.match(pricing, /Max[\s\S]*\$19\.99[\s\S]* \/ month[\s\S]*14,000 minutes \/ month/);
   assert.match(pricing, /3× the minutes/);
   assert.match(pricing, /9× the minutes/);
   assert.match(pricing, /17\.5× the minutes/);
-  assert.match(pricing, /Reduced minute usage in High Accuracy mode/);
+  const basicCard = pricing.slice(pricing.indexOf('Basic'), pricing.indexOf('Pro'));
+  const proCard = pricing.slice(pricing.indexOf('Pro'), pricing.indexOf('Max'));
+  const maxCard = pricing.slice(pricing.indexOf('Max'));
+
+  assert.doesNotMatch(basicCard, /High Accuracy uses 33% fewer minutes/);
+  assert.match(proCard, /High Accuracy uses 33% fewer minutes/);
+  assert.match(maxCard, /High Accuracy uses 33% fewer minutes/);
   assert.doesNotMatch(pricing, /High Accuracy uses (?:2|3)×/);
   assert.ok((pricing.match(/chromewebstore\.google\.com/g) ?? []).length >= 4);
   assert.equal((pricing.match(/Get started/g) ?? []).length, 4);

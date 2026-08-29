@@ -98,7 +98,7 @@ const faqs = [
   },
   {
     question: 'What happens when I upgrade?',
-    answer: 'A paid plan gives you a larger monthly minute allowance upfront, reduced minute usage in High Accuracy mode, priority processing and priority support.'
+    answer: 'A paid plan gives you a larger monthly minute allowance upfront, priority processing and priority support. Pro and Max also use 33% fewer minutes in High Accuracy mode.'
   },
   {
     question: 'Can I cancel my subscription?',

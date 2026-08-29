@@ -19,6 +19,14 @@ test('footer support column links to Terms of Service and Refund Policy', () => 
   assert.match(footer, /<a href="\/refund\/"[^>]*>Refund Policy<\/a>/);
 });
 
+test('footer publishes the general information email address', () => {
+  assert.match(
+    footer,
+    /<a href="mailto:info@audio-to-text-transcription\.com"[^>]*>info@audio-to-text-transcription\.com<\/a>/,
+  );
+  assert.doesNotMatch(footer, /support@audio-to-text-transcription\.com/);
+});
+
 test('global Organization JSON-LD uses the SHIFT LLC entity and Armenia address', () => {
   const match = home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   assert.ok(match, 'JSON-LD script is missing');

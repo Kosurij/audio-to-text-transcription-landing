@@ -10,7 +10,8 @@ test('visible FAQ explains free use, monthly plan allowances, upgrades and cance
   assert.match(html, /How do paid plan minute allowances work\?/);
   assert.match(html, /Unused minutes do not roll over/);
   assert.match(html, /What happens when I upgrade\?/);
-  assert.match(html, /reduced minute usage in High Accuracy mode/i);
+  assert.match(html, /Pro and Max also use 33% fewer minutes in High Accuracy mode/);
+  assert.doesNotMatch(html, /A paid plan gives you[\s\S]*reduced minute usage in High Accuracy mode/);
   assert.match(html, /Can I cancel my subscription\?/);
   assert.match(html, /30-day money-back guarantee/);
 });
@@ -28,12 +29,13 @@ test('JSON-LD publishes four USD offers and matching subscription FAQ', () => {
       { name: 'Free', price: '0', priceCurrency: 'USD' },
       { name: 'Basic', price: '6.99', priceCurrency: 'USD' },
       { name: 'Pro', price: '12.99', priceCurrency: 'USD' },
-      { name: 'Business', price: '19.99', priceCurrency: 'USD' },
+      { name: 'Max', price: '19.99', priceCurrency: 'USD' },
     ],
   );
   const faqText = JSON.stringify(faq);
   assert.match(faqText, /Is Audio To Text Transcription free to use\?/);
   assert.match(faqText, /200 minutes per week/);
   assert.match(faqText, /Unused minutes do not roll over/);
+  assert.match(faqText, /Pro and Max also use 33% fewer minutes in High Accuracy mode/);
   assert.doesNotMatch(faqText, /The extension is free to install and use\./);
 });

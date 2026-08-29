@@ -90,7 +90,7 @@
           <p class="footer-entity-line">SHIFT LLC</p>
           <p class="footer-entity-line">5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA</p>
           <p class="footer-entity-line">
-            <a href="mailto:support@audio-to-text-transcription.com">support@audio-to-text-transcription.com</a>
+            <a href="mailto:info@audio-to-text-transcription.com">info@audio-to-text-transcription.com</a>
           </p>
         </div>
       </div>

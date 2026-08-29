@@ -62,10 +62,11 @@ interface Plan {
 }
 
 const paidBenefits = [
-  'Reduced minute usage in High Accuracy mode',
   'Priority processing',
   'Priority support',
 ];
+
+const discountedAccuracyBenefit = 'High Accuracy uses 33% fewer minutes';
 
 const plans: Plan[] = [
   {
@@ -106,12 +107,12 @@ const plans: Plan[] = [
     minutesPeriod: 'month',
     cta: 'Get started',
     benefitHeading: 'Everything in Free, plus:',
-    benefits: ['9× the minutes', ...paidBenefits],
+    benefits: ['9× the minutes', discountedAccuracyBenefit, ...paidBenefits],
     popular: true,
     guarantee: true,
   },
   {
-    name: 'Business',
+    name: 'Max',
     description: 'For high-volume transcription workflows',
     price: '$19.99',
     period: 'month',
@@ -119,7 +120,7 @@ const plans: Plan[] = [
     minutesPeriod: 'month',
     cta: 'Get started',
     benefitHeading: 'Everything in Free, plus:',
-    benefits: ['17.5× the minutes', ...paidBenefits],
+    benefits: ['17.5× the minutes', discountedAccuracyBenefit, ...paidBenefits],
     guarantee: true,
   },
 ];
