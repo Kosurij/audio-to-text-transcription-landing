@@ -7,11 +7,12 @@ const footerStart = home.indexOf('<footer');
 const footerEnd = home.indexOf('</footer>') + '</footer>'.length;
 const footer = home.slice(footerStart, footerEnd);
 
-test('footer shows the SHIFT LLC entity, not the old Kazakhstan entity', () => {
-  assert.match(footer, /SHIFT LLC/);
-  assert.match(footer, /5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA/);
+test('footer shows the Kobaltstack LLC entity, not a previous entity', () => {
+  assert.match(footer, /Kobaltstack LLC/);
+  assert.match(footer, /447 Broadway, 2nd Floor, 3436, New York, NY 10013, New York, US/);
   assert.doesNotMatch(footer, /PE Yuri Kosenko/);
   assert.doesNotMatch(footer, /Pavlodar/);
+  assert.doesNotMatch(footer, /SHIFT LLC|Argel|Kotayk/);
 });
 
 test('footer support column links to Terms of Service and Refund Policy', () => {
@@ -27,55 +28,67 @@ test('footer publishes the general information email address', () => {
   assert.doesNotMatch(footer, /support@audio-to-text-transcription\.com/);
 });
 
-test('global Organization JSON-LD uses the SHIFT LLC entity and Armenia address', () => {
+test('global Organization JSON-LD uses the Kobaltstack LLC entity and US address', () => {
   const match = home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   assert.ok(match, 'JSON-LD script is missing');
   const jsonLd = JSON.parse(match[1]);
   const org = jsonLd['@graph'].find((item) => item['@type'] === 'Organization');
 
-  assert.equal(org.legalName, 'SHIFT LLC');
+  assert.equal(org.legalName, 'Kobaltstack LLC');
   assert.deepEqual(org.address, {
     '@type': 'PostalAddress',
-    streetAddress: '5, Street 17, Argel',
-    addressLocality: 'Nor Hachn',
-    addressRegion: 'Kotayk',
-    postalCode: '2404',
-    addressCountry: 'AM',
+    streetAddress: '447 Broadway, 2nd Floor, 3436',
+    addressLocality: 'New York',
+    addressRegion: 'New York',
+    postalCode: '10013',
+    addressCountry: 'US',
   });
   assert.equal(org.founder.name, 'Yuri Kosenko');
 });
 
 const privacy = await readFile(new URL('../dist/privacy/index.html', import.meta.url), 'utf8');
 
-test('privacy page names SHIFT LLC as the operating entity', () => {
-  assert.match(privacy, /Last Updated: August 9, 2026/);
+test('privacy page names Kobaltstack LLC as the operating entity', () => {
+  assert.match(privacy, /Last Updated: September 15, 2026/);
   assert.match(
     privacy,
-    /Audio To Text Transcription is operated by SHIFT LLC, a company registered in the Republic of Armenia at 5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA\./,
+    /Audio To Text Transcription is operated by Kobaltstack LLC, with its address at 447 Broadway, 2nd Floor, 3436, New York, NY 10013, New York, US\./,
   );
+  assert.match(privacy, /European Economic Area \(GDPR\)/);
+  assert.match(privacy, /California Residents \(CCPA\)/);
+  assert.match(privacy, /Cookies and Similar Technologies/);
+  assert.match(privacy, /Chrome Web Store Limited Use Disclosure/);
+  assert.match(privacy, /We do not retain recordings or completed transcripts on our servers/);
 });
 
 const terms = await readFile(new URL('../dist/terms/index.html', import.meta.url), 'utf8');
 
-test('terms page covers the SHIFT LLC entity, service description, and drops Promotions', () => {
+test('terms page covers the Kobaltstack LLC entity, service description, and drops Promotions', () => {
   assert.match(terms, /<h1[^>]*>Terms of Service<\/h1>/);
-  assert.match(terms, /Last Updated: August 9, 2026/);
-  assert.match(terms, /operated by SHIFT LLC \("Company," "we," "us," or\s+"our"\), a company registered in the Republic of Armenia\./);
-  assert.match(terms, /Chrome extension and companion website that convert uploaded or\s+recorded audio and video into text/);
-  assert.match(terms, /governed by the laws of the Republic of Armenia/);
+  assert.match(terms, /Last Updated: September 15, 2026/);
+  assert.match(terms, /operated under Kobaltstack LLC/);
+  assert.match(terms, /Chrome extension, which convert uploaded or recorded audio and video into text/);
+  assert.match(terms, /governed by the laws applicable to Kobaltstack LLC/);
   assert.match(terms, /support@audio-to-text-transcription\.com/);
   assert.doesNotMatch(terms, />Promotions</);
+  assert.doesNotMatch(terms, /SHIFT LLC|Armenia|American Arbitration Association/);
+  assert.match(terms, /If unresolved within 60 days/);
 });
 
 const refund = await readFile(new URL('../dist/refund/index.html', import.meta.url), 'utf8');
 
 test('refund page promises a 30-day guarantee and 7-business-day processing', () => {
   assert.match(refund, /<h1[^>]*>Refund Policy<\/h1>/);
-  assert.match(refund, /Last Updated: August 9, 2026/);
+  assert.match(refund, /Last Updated: September 15, 2026/);
   assert.match(refund, /30-day money-back guarantee/);
-  assert.match(refund, /subscription plans and one-time\s+minute-pack purchases/);
+  assert.match(refund, /paid subscriptions and one-time minute-pack purchases/);
   assert.match(refund, /within 7 business days/);
   assert.doesNotMatch(refund, /20-day/);
+  assert.match(refund, /within 30 days of the relevant charge/);
+  assert.match(refund, /within 2 business days/);
+  assert.match(refund, /statutory consumer rights/);
+  assert.match(refund, /reason is optional/);
+  assert.doesNotMatch(refund, /within 14 days/);
 });
 
 const sitemap = await readFile(new URL('../dist/sitemap.xml', import.meta.url), 'utf8');
@@ -88,7 +101,7 @@ test('sitemap lists only canonical trailing-slash URLs for indexable pages', () 
   }
 
   const privacyBlock = sitemap.match(/<url>\s*<loc>https:\/\/audio-to-text-transcription\.com\/privacy\/<\/loc>[\s\S]*?<\/url>/)[0];
-  assert.match(privacyBlock, /<lastmod>2026-08-09<\/lastmod>/);
+  assert.match(privacyBlock, /<lastmod>2026-09-15<\/lastmod>/);
 });
 
 test('rendered internal links do not advertise redirecting page URLs', () => {

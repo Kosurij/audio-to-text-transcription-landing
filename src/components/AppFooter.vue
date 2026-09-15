@@ -87,8 +87,8 @@
       <div class="footer-bottom">
         <p class="footer-copyright">© {{ currentYear }} Audio to Text Transcription. All rights reserved.</p>
         <div class="footer-entity">
-          <p class="footer-entity-line">SHIFT LLC</p>
-          <p class="footer-entity-line">5, Street 17, Argel, Nor Hachn, Kotayk region, 2404, RA</p>
+          <p class="footer-entity-line">Kobaltstack LLC</p>
+          <p class="footer-entity-line">447 Broadway, 2nd Floor, 3436, New York, NY 10013, New York, US</p>
           <p class="footer-entity-line">
             <a href="mailto:info@audio-to-text-transcription.com">info@audio-to-text-transcription.com</a>
           </p>
