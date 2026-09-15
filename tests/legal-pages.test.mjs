@@ -43,7 +43,7 @@ test('global Organization JSON-LD uses the Kobaltstack LLC entity and US address
     postalCode: '10013',
     addressCountry: 'US',
   });
-  assert.equal(org.founder.name, 'Yuri Kosenko');
+  assert.equal(org.founder, undefined);
 });
 
 const privacy = await readFile(new URL('../dist/privacy/index.html', import.meta.url), 'utf8');

@@ -50,27 +50,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { steps } from '../data/landingContent'
 import EmblaCarousel from 'embla-carousel'
 import type { EmblaCarouselType } from 'embla-carousel'
 
-// TODO: replace each media-placeholder with <img> or <video autoplay loop muted playsinline>
-const steps = [
-  {
-    title: 'Install the Extension',
-    description: 'Add Audio to Text to Chrome with one click. The extension appears in your toolbar instantly.',
-    mediaLabel: 'Screenshot → /screenshots/chrome-store.png\nСкрин страницы расширения в Chrome Web Store: кнопка "Add to Chrome", иконка, рейтинг',
-  },
-  {
-    title: 'Upload or Record Audio',
-    description: 'Drop an audio or video file, or click Record to capture your microphone or any browser tab in real time. MP3, WAV, M4A, OGG, MP4 and more.',
-    mediaLabel: 'GIF → /gifs/upload-step.gif\nЗапись: открыть попап → нажать Upload → выбрать файл в диалоге → появляется прогресс-бар загрузки',
-  },
-  {
-    title: 'Get Your Transcript',
-    description: 'Accurate text appears in seconds. Edit inline, copy to clipboard, or download as TXT.',
-    mediaLabel: 'GIF → /gifs/transcript-result.gif\nЗапись: прогресс завершается → текст транскрипции появляется → пользователь нажимает Copy или Download TXT',
-  },
-]
+
 
 const emblaViewportRef = ref<HTMLElement | null>(null)
 const progress = ref(0)

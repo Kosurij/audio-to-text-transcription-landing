@@ -1,5 +1,6 @@
 ---
 import 'modern-normalize/modern-normalize.css';
+import { faqs, steps, storeRating } from '../data/landingContent';
 interface Props {
   title: string;
   description: string;
@@ -10,39 +11,31 @@ interface Props {
 const { title, description, image = '/og-image.jpg', noindex = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const siteUrl = new URL(Astro.site!).origin;
+const isHome = Astro.url.pathname === '/';
+const pageUrl = canonicalURL.href;
+const pageName = title.replace(' - Audio To Text Transcription', '');
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
       "url": `${siteUrl}/`,
-      "name": "Audio To Text Transcription - Convert Audio to Text Instantly",
-      "description": "Transform any audio into accurate text with our powerful Chrome extension. Perfect for meetings, interviews, podcasts, and more.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Audio To Text Transcription",
-        "url": `${siteUrl}/`
-      },
-      "potentialAction": [
-        {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": `${siteUrl}/?q={search_term_string}`
-          },
-          "query-input": "required name=search_term_string"
-        }
-      ],
+      "name": "Audio To Text Transcription",
+      "publisher": { "@id": `${siteUrl}/#organization` },
       "inLanguage": "en"
     },
     {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      "name": "Audio To Text Transcription",
+      "name": "Kobaltstack LLC",
+      "legalName": "Kobaltstack LLC",
       "url": `${siteUrl}/`,
       "logo": {
         "@type": "ImageObject",
-        "url": `${siteUrl}/logo.png`
+        "url": `${siteUrl}/favicon/web-app-manifest-512x512.png`,
+        "width": 512,
+        "height": 512
       },
       "contactPoint": {
         "@type": "ContactPoint",
@@ -56,33 +49,36 @@ const jsonLd = {
         "addressRegion": "New York",
         "postalCode": "10013",
         "addressCountry": "US"
-      },
-      "legalName": "Kobaltstack LLC",
-      "founder": {
-        "@type": "Person",
-        "name": "Yuri Kosenko",
-        "email": "support@audio-to-text-transcription.com"
-      },
-      "sameAs": [
-        "https://www.producthunt.com/products/audio-to-text-transcription",
-        "https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd",
-        "https://www.nxgntools.com/tools/audio-to-text-transcription"
-      ]
+      }
     },
+    {
+      "@type": Astro.url.pathname === '/contact/' ? "ContactPage" : "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      "url": pageUrl,
+      "name": title,
+      "description": description,
+      "isPartOf": { "@id": `${siteUrl}/#website` },
+      "publisher": { "@id": `${siteUrl}/#organization` },
+      "inLanguage": "en",
+      ...(isHome ? { "mainEntity": { "@id": `${siteUrl}/#software` } } : {
+        "breadcrumb": { "@id": `${pageUrl}#breadcrumb` }
+      })
+    },
+    ...(isHome ? [
     {
       "@type": "SoftwareApplication",
       "@id": `${siteUrl}/#software`,
       "name": "Audio To Text Transcription",
-      "description": "A powerful Chrome extension that converts audio to text instantly. Perfect for transcribing meetings, interviews, podcasts, lectures, and any audio content with high accuracy.",
+      "description": "A Chrome extension for transcribing uploaded audio and video files, microphone recordings, and browser-tab audio, with optional AI-generated summaries.",
       "url": `${siteUrl}/`,
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "Chrome Browser",
-      "browserRequirements": "Requires Chrome browser",
-      "softwareVersion": "1.5",
-      "datePublished": "2025-01-01",
-      "dateModified": "2026-08-29",
-      "author": { "@id": `${siteUrl}/#organization` },
       "publisher": { "@id": `${siteUrl}/#organization` },
+      "sameAs": [
+        "https://www.producthunt.com/products/audio-to-text-transcription",
+        "https://chromewebstore.google.com/detail/audio-to-text-transcripti/pkfoaaglghblmjjjpbniicjcpehfbmgd",
+        "https://www.nxgntools.com/tools/audio-to-text-transcription"
+      ],
       "offers": [
         {
           "@type": "Offer",
@@ -133,8 +129,8 @@ const jsonLd = {
       ],
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "72",
+        "ratingValue": storeRating.value,
+        "ratingCount": storeRating.count,
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -155,7 +151,7 @@ const jsonLd = {
           "@type": "Review",
           "author": { "@type": "Person", "name": "Andrii Stepura" },
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "reviewBody": "It transcribes audio to text wonderfully. I didn't expect such high quality."
+          "reviewBody": "It transcribes audio to text wonderfully. I didn’t expect such high quality."
         },
         {
           "@type": "Review",
@@ -183,57 +179,45 @@ const jsonLd = {
         }
       ],
       "featureList": [
-        "Instant Audio to Text Conversion",
-        "High Accuracy Transcription",
-        "Support for Multiple Audio Formats",
-        "Real-time Transcription",
-        "Export to Multiple Formats (TXT, DOCX, PDF)",
-        "Multilingual Support",
-        "Privacy-Focused (no data collection)",
-        "Offline Functionality",
-        "Easy to Use Interface",
-        "Fast Processing"
+        "Audio and video file transcription",
+        "Microphone and browser-tab recording",
+        "AI-generated summaries",
+        "Multilingual transcription",
+        "Editable transcripts",
+        "Local transcription history"
       ]
     },
     {
       "@type": "HowTo",
-      "name": "How to use Audio To Text Transcription Chrome Extension",
-      "description": "Step-by-step guide to install and use the Audio To Text Transcription extension",
-      "totalTime": "PT2M",
-      "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
-      "supply": [
-        { "@type": "HowToSupply", "name": "Chrome Browser" },
-        { "@type": "HowToSupply", "name": "Audio file or source" }
-      ],
-      "tool": [{ "@type": "HowToTool", "name": "Audio To Text Transcription Chrome Extension" }],
-      "step": [
-        { "@type": "HowToStep", "position": 1, "name": "Install the extension", "text": "One click in Chrome Web Store to add the extension to your browser" },
-        { "@type": "HowToStep", "position": 2, "name": "Upload your audio", "text": "Click the extension icon and upload your audio file or select an audio source" },
-        { "@type": "HowToStep", "position": 3, "name": "Get your transcription", "text": "Wait a few moments and receive accurate text transcription that you can edit and export" }
-      ]
+      "@id": `${siteUrl}/#how-it-works`,
+      "name": "How it works",
+      "step": steps.map((step, index) => ({
+        "@type": "HowToStep",
+        "position": index + 1,
+        "name": step.title,
+        "text": step.description
+      }))
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What is Audio To Text Transcription?", "acceptedAnswer": { "@type": "Answer", "text": "Audio To Text Transcription is a powerful Chrome extension that converts any audio into accurate text. It's perfect for transcribing meetings, interviews, podcasts, lectures, and any other audio content quickly and efficiently." } },
-        { "@type": "Question", "name": "What audio formats are supported?", "acceptedAnswer": { "@type": "Answer", "text": "The extension supports all major audio formats including MP3, WAV, M4A, OGG, FLAC, and more. You can also transcribe audio from video files and live audio sources." } },
-        { "@type": "Question", "name": "How accurate is the transcription?", "acceptedAnswer": { "@type": "Answer", "text": "Our transcription engine provides high accuracy, typically above 95% for clear audio. The accuracy depends on audio quality, speaker clarity, and background noise levels." } },
-        { "@type": "Question", "name": "Is my data private and secure?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We prioritize your privacy. Audio files are processed securely, and we don't store or share your data. Everything happens locally in your browser when possible." } },
-        { "@type": "Question", "name": "Can I export the transcribed text?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can export your transcriptions in multiple formats including plain text (TXT), Word document (DOCX), and PDF. You can also copy the text directly to your clipboard." } },
-        { "@type": "Question", "name": "Does it support multiple languages?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the extension supports transcription in multiple languages including English, Spanish, French, German, Italian, Portuguese, Russian, Chinese, Japanese, and many more." } },
-        { "@type": "Question", "name": "Do I need an internet connection?", "acceptedAnswer": { "@type": "Answer", "text": "An internet connection is required for the transcription process as it uses advanced AI models. However, once installed, the extension interface works offline." } },
-        { "@type": "Question", "name": "Is Audio To Text Transcription free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Free plan includes 200 minutes per week. Optional paid subscriptions grant a larger minute allowance upfront each month, plus priority processing and priority support." } },
-        { "@type": "Question", "name": "How do paid plan minute allowances work?", "acceptedAnswer": { "@type": "Answer", "text": "Paid plans grant your full minute allowance upfront at the start of each month, rather than refreshing weekly. Unused minutes do not roll over into the next month." } },
-        { "@type": "Question", "name": "What happens when I upgrade?", "acceptedAnswer": { "@type": "Answer", "text": "A paid plan gives you a larger monthly minute allowance upfront, priority processing and priority support. Pro and Max also use 33% fewer minutes in High Accuracy mode." } },
-        { "@type": "Question", "name": "Can I cancel my subscription?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can cancel a paid subscription at any time, and every paid plan includes a 30-day money-back guarantee." } }
-      ]
-    },
+      "@id": `${siteUrl}/#faq`,
+      "isPartOf": { "@id": `${pageUrl}#webpage` },
+      "mainEntity": faqs.map(({ question, answer }) => ({
+        "@type": "Question",
+        "name": question,
+        "acceptedAnswer": { "@type": "Answer", "text": answer }
+      }))
+    }
+    ] : [
     {
       "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+        { "@type": "ListItem", "position": 2, "name": pageName, "item": pageUrl }
       ]
     }
+    ])
   ]
 };
 ---
