@@ -1,0 +1,226 @@
+[
+  {
+    "path": "/_astro/AppFooter.DvtFKxp9.css",
+    "status": 200,
+    "content_type": "text/css; charset=UTF-8",
+    "bytes": "8440",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/_astro/Layout.BXfJd-Gk.css",
+    "status": 200,
+    "content_type": "text/css; charset=UTF-8",
+    "bytes": "4184",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/_astro/contact.V5XoztRJ.css",
+    "status": 200,
+    "content_type": "text/css; charset=UTF-8",
+    "bytes": "7256",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/_astro/index.C-ljXyx4.css",
+    "status": 200,
+    "content_type": "text/css; charset=UTF-8",
+    "bytes": "25099",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/_astro/logo.BTsyTSV8.png",
+    "status": 200,
+    "content_type": "image/png",
+    "bytes": "8580",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/_astro/welcome.Dh9F-EeD.css",
+    "status": 200,
+    "content_type": "text/css; charset=UTF-8",
+    "bytes": "4419",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/favicon/favicon-96x96.png",
+    "status": 200,
+    "content_type": "image/png",
+    "bytes": "9276",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/favicon/favicon.ico",
+    "status": 200,
+    "content_type": "image/vnd.microsoft.icon",
+    "bytes": "15086",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/favicon/favicon.svg",
+    "status": 200,
+    "content_type": "image/svg+xml",
+    "bytes": "11810",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/favicon/site.webmanifest",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": "477",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/favicon/web-app-manifest-192x192.png",
+    "status": 200,
+    "content_type": "image/png",
+    "bytes": "25389",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/favicon/web-app-manifest-512x512.png",
+    "status": 200,
+    "content_type": "image/png",
+    "bytes": "85133",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/hero_dark.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "60964",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/hero_light.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "70628",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/how_to_pin.gif",
+    "status": 200,
+    "content_type": "image/gif",
+    "bytes": "1177082",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/logos/google-meet.svg",
+    "status": 200,
+    "content_type": "image/svg+xml",
+    "bytes": "715",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/logos/spotify.svg",
+    "status": 200,
+    "content_type": "image/svg+xml",
+    "bytes": "1535",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/logos/teams.svg",
+    "status": 200,
+    "content_type": "image/svg+xml",
+    "bytes": "2469",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/logos/youtube.svg",
+    "status": 200,
+    "content_type": "image/svg+xml",
+    "bytes": "1444",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/logos/zoom.svg",
+    "status": 200,
+    "content_type": "image/svg+xml",
+    "bytes": "5639",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/og-image.jpg",
+    "status": 404,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": null,
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/reviews/ana-muravchik.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "5668",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/reviews/andrii-stepura.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "1812",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/reviews/ilaiya-oliveira.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "3672",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/reviews/podowon.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "712",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/reviews/robert-edge.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "468",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/reviews/sergei-semenov.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "1684",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/reviews/vanessa-bianchi.webp",
+    "status": 200,
+    "content_type": "image/webp",
+    "bytes": "3788",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/videos/feature-history.mp4",
+    "status": 200,
+    "content_type": "video/mp4",
+    "bytes": "513187",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/videos/feature-summary.mp4",
+    "status": 200,
+    "content_type": "video/mp4",
+    "bytes": "358513",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/videos/feature-timestamps.mp4",
+    "status": 200,
+    "content_type": "video/mp4",
+    "bytes": "451575",
+    "cache": "public,max-age=0,must-revalidate"
+  },
+  {
+    "path": "/videos/feature-upload.mp4",
+    "status": 200,
+    "content_type": "video/mp4",
+    "bytes": "490408",
+    "cache": "public,max-age=0,must-revalidate"
+  }
+]

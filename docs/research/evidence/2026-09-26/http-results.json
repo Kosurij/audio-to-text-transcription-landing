@@ -1,0 +1,275 @@
+[
+  {
+    "url": "https://audio-to-text-transcription.com/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/",
+    "redirects": [],
+    "seconds": 0.715,
+    "bytes": 75979,
+    "body_file": "0.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/privacy/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/privacy/",
+    "redirects": [],
+    "seconds": 0.599,
+    "bytes": 33824,
+    "body_file": "1.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/terms/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/terms/",
+    "redirects": [],
+    "seconds": 0.644,
+    "bytes": 28351,
+    "body_file": "2.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/refund/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/refund/",
+    "redirects": [],
+    "seconds": 0.604,
+    "bytes": 25403,
+    "body_file": "3.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/contact/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/contact/",
+    "redirects": [],
+    "seconds": 0.677,
+    "bytes": 23314,
+    "body_file": "4.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/welcome/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/welcome/",
+    "redirects": [],
+    "seconds": 0.58,
+    "bytes": 14885,
+    "body_file": "5.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/uninstall/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/uninstall/",
+    "redirects": [],
+    "seconds": 0.558,
+    "bytes": 7611,
+    "body_file": "6.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/robots.txt",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/robots.txt",
+    "redirects": [],
+    "seconds": 0.445,
+    "bytes": 172,
+    "body_file": "7.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/plain; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/sitemap.xml",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/sitemap.xml",
+    "redirects": [],
+    "seconds": 0.553,
+    "bytes": 1003,
+    "body_file": "8.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "application/xml",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/llms.txt",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/llms.txt",
+    "redirects": [],
+    "seconds": 0.516,
+    "bytes": 950,
+    "body_file": "9.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/plain; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/og-image.jpg",
+    "status": 404,
+    "final_url": "https://audio-to-text-transcription.com/og-image.jpg",
+    "redirects": [],
+    "seconds": 0.36,
+    "bytes": 3449,
+    "body_file": "10.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=utf-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/checkout.html",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/checkout.html",
+    "redirects": [],
+    "seconds": 0.55,
+    "bytes": 1676,
+    "body_file": "11.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/payment-success.html",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/payment-success.html",
+    "redirects": [],
+    "seconds": 0.484,
+    "bytes": 880,
+    "body_file": "12.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/contact",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/contact/",
+    "redirects": [
+      {
+        "status": 301,
+        "url": "https://audio-to-text-transcription.com/contact",
+        "location": "https://audio-to-text-transcription.com/contact/"
+      }
+    ],
+    "seconds": 0.866,
+    "bytes": 23314,
+    "body_file": "13.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://audio-to-text-transcription.com/not-a-real-page-audit-20260926/",
+    "status": 404,
+    "final_url": "https://audio-to-text-transcription.com/not-a-real-page-audit-20260926/",
+    "redirects": [],
+    "seconds": 0.463,
+    "bytes": 3449,
+    "body_file": "14.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=utf-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "http://audio-to-text-transcription.com/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/",
+    "redirects": [
+      {
+        "status": 301,
+        "url": "http://audio-to-text-transcription.com/",
+        "location": "https://audio-to-text-transcription.com/"
+      }
+    ],
+    "seconds": 1.192,
+    "bytes": 75979,
+    "body_file": "15.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  {
+    "url": "https://www.audio-to-text-transcription.com/",
+    "status": 200,
+    "final_url": "https://audio-to-text-transcription.com/",
+    "redirects": [
+      {
+        "status": 301,
+        "url": "https://www.audio-to-text-transcription.com/",
+        "location": "https://audio-to-text-transcription.com/"
+      }
+    ],
+    "seconds": 1.068,
+    "bytes": 75979,
+    "body_file": "16.body",
+    "headers": {
+      "Cache-Control": "public,max-age=0,must-revalidate",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Server": "Netlify",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  }
+]

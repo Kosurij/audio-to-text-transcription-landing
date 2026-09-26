@@ -17,7 +17,7 @@ export const faqs = [
   },
   {
     question: 'Which audio/video formats are supported?',
-    answer: 'We support the following audio and video formats: FLAC, MP3, MP4, MPEG, MPGA, M4A, OGG, OPUS, WAV, and WEBM. The extension can extract and transcribe audio from video files as well.'
+    answer: 'We support 14 audio and video formats: FLAC, MP3, M4A, MPEG, MPGA, OGG, WAV, WEBM, AAC, OPUS, WMA, MOV, MP4, and M4V. The extension can extract and transcribe audio from video files as well.'
   },
   {
     question: 'Can I edit transcripts inside the extension?',

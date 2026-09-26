@@ -51,7 +51,7 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
-            <span class="stat-value">20+</span>
+            <span class="stat-value">14</span>
             <span class="stat-label">Audio & video formats</span>
           </div>
         </div>
