@@ -15,7 +15,7 @@
 
         <p class="hero-subtitle">
           Chrome extension for meetings, interviews and lectures.
-          Upload audio files, record mic or browser tab — get accurate text instantly.
+          Upload recordings or capture microphone and browser audio, then copy or save your transcript.
         </p>
 
         <div class="hero-cta">
@@ -23,8 +23,8 @@
             <InstallButton class="hero-install-btn">
               + Add to Chrome
             </InstallButton>
-            <a href="#demo" class="watch-demo-btn" @click.prevent="scrollToDemo">
-              ▶ Watch Demo
+            <a href="#try-transcription" class="hero-preview-btn" @click="trackPreview">
+              Demo
             </a>
           </div>
         </div>
@@ -73,8 +73,11 @@
 import InstallButton from './InstallButton.vue';
 import { storeRating } from '../data/landingContent';
 
-const scrollToDemo = () => {
-  document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
+const trackPreview = () => {
+  try {
+    const analytics = (window as any).ym;
+    if (typeof analytics === 'function') analytics(105283733, 'reachGoal', 'preview_hero_click');
+  } catch { /* Analytics must not interrupt navigation. */ }
 }
 </script>
 
@@ -159,37 +162,21 @@ html[data-theme='dark'] .hero-badge {
   flex-wrap: wrap;
 }
 
-.hero-cta-row .hero-install-btn {
-  font-size: 16px;
-  font-weight: 700;
-  padding: 14px 28px;
-  border-radius: 8px;
-  width: fit-content;
-  height: auto; /* override InstallButton's internal height: 36px */
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-}
-
-.watch-demo-btn {
+.hero-preview-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 15px;
-  font-weight: 600;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 8px;
+  background: transparent;
   color: var(--color-text-secondary);
   text-decoration: none;
-  padding: 8px 4px;
-  border-bottom: 2px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  font-weight: 700;
+  min-height: 48px;
 }
-
-.watch-demo-btn:hover {
-  color: var(--color-text);
-  border-bottom-color: var(--color-text);
-}
-
-html[data-theme='dark'] .hero-cta-row .hero-install-btn {
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
-}
+.hero-preview-btn:hover { color: var(--accent-primary); text-decoration: underline; }
+.hero-preview-btn:focus-visible { outline: 3px solid var(--accent-primary); outline-offset: 4px; }
+.hero-cta-row .hero-install-btn { min-height: 48px; height: auto; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 700; }
 
 
 .hero-stats {
@@ -289,7 +276,7 @@ html[data-theme='dark'] .hero-screenshot-dark {
     font-size: 2.25rem;
   }
 
-  .hero-cta-row .hero-install-btn {
+  .hero-preview-btn, .hero-cta-row .hero-install-btn {
     width: 100%;
     max-width: 320px;
     text-align: center;
@@ -302,9 +289,7 @@ html[data-theme='dark'] .hero-screenshot-dark {
     gap: 12px;
   }
 
-  .watch-demo-btn {
-    align-self: center;
-  }
+  .hero-left, .hero-cta, .hero-cta-row { width: 100%; }
 
   .hero-stats {
     display: flex;

@@ -23,11 +23,42 @@ test('does not submit while unavailable or already running',async()=>{
   await c.submit(); assert.equal(calls,0);
   await c.init();c.select(file);const first=c.submit();await c.submit();assert.equal(calls,1);finish(result);await first;
 });
-test('service config controls availability instead of a fake form',async()=>{
-  const c=createPreviewController({getConfig:async()=>({...config,enabled:false}),transcribe:async()=>{throw Error('should not send');}});
-  await c.init();c.select(file);await c.submit();assert.equal(c.state.status,'disabled');
+test('disabled config does not prevent trying the endpoint; its error is shown',async()=>{
+  let calls=0;
+  const c=createPreviewController({getConfig:async()=>({...config,enabled:false}),transcribe:async()=>{calls++;throw Error('Service unavailable');}});
+  await c.init();c.select(file);await c.submit();assert.equal(calls,1);assert.equal(c.state.status,'error');assert.equal(c.state.error,'Service unavailable');
 });
 test('late responses after dispose do not change the page',async()=>{
   let finish;const c=createPreviewController({getConfig:async()=>config,transcribe:()=>new Promise(r=>finish=r)});
   await c.init();c.select(file);const p=c.submit();c.dispose();finish(result);await p;assert.equal(c.state.result,null);
+});
+test('file selection works before config arrives or when the API is offline', async()=>{
+  let calls=0;
+  const c=createPreviewController({getConfig:async()=>{throw Error('Offline')},transcribe:async()=>{calls++;throw Error('Service unavailable')}});
+  c.select(file);assert.equal(c.state.file,file);
+  await c.init();c.select({...file,name:'second.wav'});assert.equal(c.state.file.name,'second.wav');
+  await c.submit();assert.equal(calls,1);assert.match(c.state.error,/unavailable/i);
+});
+test('offline selection still rejects files above 100 MiB and unsupported formats',()=>{
+  const c=createPreviewController();
+  c.select({...file,size:100*1024*1024});assert.ok(c.state.file);
+  c.select({...file,size:100*1024*1024+1});assert.equal(c.state.file,null);
+  c.select({...file,name:'bad.exe'});assert.equal(c.state.file,null);
+});
+
+test('removing or replacing the selected file clears its transcript even with unavailable config',async()=>{
+  for(const nextFile of [null,{name:'next.mp3',size:100},{name:'invalid.exe',size:100}]){
+    const c=createPreviewController({getConfig:async()=>({...config,enabled:false}),transcribe:async()=>result});
+    await c.init();c.select(file);await c.submit();assert.equal(c.state.result,result);
+    c.state.progress=100;c.select(nextFile);
+    assert.equal(c.state.result,null);assert.equal(c.state.progress,0);assert.equal(c.state.status,'idle');
+  }
+});
+test('a late config response cannot replace the active upload abort controller',async()=>{
+  let resolveConfig, resolveUpload, uploadSignal;
+  const c=createPreviewController({getConfig:()=>new Promise(r=>resolveConfig=r),transcribe:(_f,signal)=>{uploadSignal=signal;return new Promise(r=>resolveUpload=r)}});
+  c.select(file);const uploading=c.submit();const loading=c.init();
+  c.dispose();assert.equal(uploadSignal.aborted,true);
+  resolveConfig(config);resolveUpload(result);await Promise.all([loading,uploading]);
+  assert.equal(c.state.result,null);
 });

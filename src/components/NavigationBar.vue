@@ -7,6 +7,7 @@
       </a>
 
       <nav class="desktop-nav">
+        <a href="/#try-transcription" class="nav-link" @click.prevent="navigateToSection('try-transcription')">Demo</a>
         <a href="/#features" class="nav-link" @click.prevent="navigateToSection('features')">Features</a>
         <a href="/#how-it-works" class="nav-link" @click.prevent="navigateToSection('how-it-works')">How it works</a>
         <a href="/#pricing" class="nav-link" @click.prevent="navigateToSection('pricing')">Pricing</a>
@@ -22,6 +23,8 @@
         :class="{ open: isMenuOpen }"
         @click="isMenuOpen = !isMenuOpen"
         aria-label="Toggle navigation"
+        :aria-expanded="isMenuOpen"
+        aria-controls="mobile-navigation"
       >
         <span />
         <span />
@@ -30,7 +33,8 @@
     </div>
 
     <transition name="fade">
-      <div v-if="isMenuOpen" class="mobile-menu">
+      <div v-if="isMenuOpen" id="mobile-navigation" class="mobile-menu">
+        <a href="/#try-transcription" class="mobile-link" @click.prevent="handleMobileNavigate('try-transcription')">Demo</a>
         <a href="/#features" class="mobile-link" @click.prevent="handleMobileNavigate('features')">
           Features
         </a>
@@ -302,7 +306,7 @@ html[data-theme='dark'] .mobile-link:hover {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   .navbar {
     padding: 0 20px;
     min-height: 56px;

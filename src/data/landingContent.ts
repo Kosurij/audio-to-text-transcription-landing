@@ -1,7 +1,7 @@
 export const faqs = [
   {
     question: 'What is Audio To Text Transcription?',
-    answer: 'Audio To Text Transcription is a Chrome extension that turns any audio—from meetings, lectures, podcasts, or browser tabs—into searchable text powered by advanced AI.'
+    answer: 'Audio To Text Transcription is a Chrome extension for transcribing recordings, microphone and browser audio. It includes transcript history and summaries. You can optionally try a free file demo on this website before installing.'
   },
   {
     question: 'What recording modes are available?',
@@ -29,7 +29,7 @@ export const faqs = [
   },
   {
     question: 'Is Audio To Text Transcription free to use?',
-    answer: 'Yes. The Free plan includes 200 minutes per week. Optional paid subscriptions grant a larger minute allowance upfront each month, plus priority processing and priority support.'
+    answer: 'The website demo includes up to 60 minutes of free transcription per day per network. Separately, the Chrome extension Free plan includes 200 minutes per week. Optional paid subscriptions provide a larger monthly allowance, priority processing and priority support.'
   },
   {
     question: 'How do paid plan minute allowances work?',
@@ -42,24 +42,37 @@ export const faqs = [
   {
     question: 'Can I cancel my subscription?',
     answer: 'Yes. You can cancel a paid subscription at any time, and every paid plan includes a 30-day money-back guarantee.'
+  },
+  {
+    question: 'What can I transcribe on this page?',
+    answer: 'Upload an audio or video file up to 100 MB. The demo transcribes your recording in full, within the remaining daily allowance. Copy the result or download it as TXT. No account or installation is needed.'
+  },
+  {
+    question: 'What are the free preview limits?',
+    answer: 'The demo includes 60 minutes of audio per day per network, resetting at midnight UTC. Files must fit within the remaining allowance; failed transcriptions do not use your allowance. There is also a shared daily limit, so the preview may be temporarily unavailable. The Chrome extension has its own Free plan and separate limits.'
+  },
+  {
+    question: 'Can I try it on my phone?',
+    answer: 'Use the file picker on this page to select a saved recording. Keep the page open while it uploads and transcribes. The Chrome extension is for computers; you do not need it to try the online preview.'
+  },
+  {
+    question: 'How do I transcribe the rest of a recording?',
+    answer: 'Install the Chrome extension on your computer and upload the original file there again. The preview does not transfer your file to the extension. Transcribing the full recording uses your extension plan allowance.'
   }
 ];
 
 export const steps = [
   {
-    title: 'Install the Extension',
-    description: 'Add Audio to Text to Chrome with one click. The extension appears in your toolbar instantly.',
-    mediaLabel: 'Screenshot → /screenshots/chrome-store.png\nСкрин страницы расширения в Chrome Web Store: кнопка "Add to Chrome", иконка, рейтинг',
+    title: 'Install the extension',
+    description: 'Add Audio To Text Transcription to Chrome on your computer and open it from the toolbar.'
   },
   {
-    title: 'Upload or Record Audio',
-    description: 'Drop an audio or video file, or click Record to capture your microphone or any browser tab in real time. MP3, WAV, M4A, OGG, MP4 and more.',
-    mediaLabel: 'GIF → /gifs/upload-step.gif\nЗапись: открыть попап → нажать Upload → выбрать файл в диалоге → появляется прогресс-бар загрузки',
+    title: 'Upload or record audio',
+    description: 'Choose an audio or video file, or record your microphone or a browser tab in the extension.'
   },
   {
-    title: 'Get Your Transcript',
-    description: 'Accurate text appears in seconds. Edit inline, copy to clipboard, or download as TXT.',
-    mediaLabel: 'GIF → /gifs/transcript-result.gif\nЗапись: прогресс завершается → текст транскрипции появляется → пользователь нажимает Copy или Download TXT',
+    title: 'Get your transcript',
+    description: 'Read and edit the text, copy it or download a TXT file. Your transcripts stay available in the extension history.'
   },
 ];
 
