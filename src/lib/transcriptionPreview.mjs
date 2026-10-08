@@ -3,7 +3,7 @@ const apiBase = (import.meta.env?.PUBLIC_PREVIEW_API_URL || 'https://api.audio-t
 export function validatePreviewFile(file, config) {
   if (!file || !file.size) return 'Choose a non-empty audio or video file.';
   if (file.size > config.maxFileBytes) return `This file is too large. The preview limit is ${Math.round(config.maxFileBytes / 1024 / 1024)} MB.`;
-  if (!config.supportedExtensions.includes(file.name.split('.').pop().toLowerCase())) return 'This file format is not supported. Choose one of the formats listed below.';
+  if (!config.supportedExtensions.includes(file.name.split('.').pop().toLowerCase())) return 'This file format is not supported. Choose an audio or video file.';
   return '';
 }
 async function getConfig(signal) {
