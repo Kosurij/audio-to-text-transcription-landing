@@ -30,8 +30,8 @@ export function uploadPreview(file, signal, onProgress, onUploaded) {
       try { data = JSON.parse(xhr.responseText); } catch { reject(new Error('The preview service returned an unexpected response. Please try again.')); return; }
       if (xhr.status < 200 || xhr.status >= 300) {
         let message = data.message || 'The preview could not be completed. Please try again.';
-        if (data.retryAfterSeconds) message += ` Try again after ${new Date(Date.now() + data.retryAfterSeconds * 1000).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}.`;
-        reject(new Error(message)); return;
+        if (data.retryAfterSeconds && data.code !== 'DAILY_PREVIEW_LIMIT') message += ` Try again after ${new Date(Date.now() + data.retryAfterSeconds * 1000).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}.`;
+        reject(Object.assign(new Error(message), {code:typeof data.code === 'string' ? data.code : ''})); return;
       }
       if (typeof data.text !== 'string' || typeof data.hasMoreAudio !== 'boolean' || !(data.processedSeconds > 0 && data.processedSeconds <= 3600)) {
         reject(new Error('The preview service returned an unexpected response.')); return;
@@ -45,7 +45,7 @@ export function uploadPreview(file, signal, onProgress, onUploaded) {
   });
 }
 export function initialPreviewState() {
-  return {config:null, file:null, status:'loading', error:'', progress:0, result:null};
+  return {config:null, file:null, status:'loading', error:'', errorCode:'', progress:0, result:null};
 }
 export function createPreviewController(options = {}) {
   const state = options.state || initialPreviewState();
@@ -67,6 +67,7 @@ export function createPreviewController(options = {}) {
       if (disposed || busy()) return;
       state.error = file ? validatePreviewFile(file, state.config || previewFileDefaults) : '';
       state.file = state.error ? null : file;
+      state.errorCode = '';
       state.result = null;
       state.progress = 0;
       state.status = 'idle';
@@ -75,13 +76,14 @@ export function createPreviewController(options = {}) {
       if (disposed || busy() || !state.file) return;
       state.error = validatePreviewFile(state.file, state.config || previewFileDefaults);
       if (state.error) return;
+      state.errorCode = '';
       current = new AbortController(); state.status = 'uploading'; state.progress = 0;
       try {
         const result = await transcribe(state.file, current.signal,
           value => { if (!disposed) state.progress = value; },
           () => { if (!disposed) state.status = 'processing'; });
         if (!disposed) { state.result = result; state.status = 'success'; }
-      } catch (e) { if (!disposed) { state.error = e.message; state.status = 'error'; } }
+      } catch (e) { if (!disposed) { state.error = e.message; state.errorCode = e.code || ''; state.status = 'error'; } }
     },
     dispose() { disposed = true; current?.abort(); configController?.abort(); },
   };

@@ -62,3 +62,27 @@ test('a late config response cannot replace the active upload abort controller',
   resolveConfig(config);resolveUpload(result);await Promise.all([loading,uploading]);
   assert.equal(c.state.result,null);
 });
+
+test('only an IP demo quota error offers the extension, without reset messaging',async()=>{
+  for(const code of ['DAILY_PREVIEW_LIMIT','PREVIEW_CAPACITY_REACHED','REQUEST_RATE_LIMIT']){
+    const c=createPreviewController({getConfig:async()=>config,transcribe:async()=>{throw Object.assign(new Error('Limit'),{code})}});
+    await c.init();c.select(file);await c.submit();
+    assert.equal(c.state.errorCode,code);
+    assert.equal(c.state.status,'error');
+    c.select(null);assert.equal(c.state.errorCode,'');
+  }
+});
+
+test('API error codes survive upload and the demo limit has no reset-time suffix',async()=>{
+  const {uploadPreview}=await import('../src/lib/transcriptionPreview.mjs');
+  const original=globalThis.XMLHttpRequest;
+  try {
+    for(const code of ['DAILY_PREVIEW_LIMIT','PREVIEW_CAPACITY_REACHED','REQUEST_RATE_LIMIT']){
+      globalThis.XMLHttpRequest=class {upload={};status=429;responseText=JSON.stringify({code,message:'Limit',retryAfterSeconds:60});open(){}send(){queueMicrotask(()=>this.onload())}abort(){this.onabort()}};
+      await assert.rejects(uploadPreview(new Blob(['audio']),new AbortController().signal,()=>{},()=>{}),e=>{
+        assert.equal(e.code,code);
+        assert.equal(e.message.includes('Try again after'),code!=='DAILY_PREVIEW_LIMIT');return true;
+      });
+    }
+  } finally {globalThis.XMLHttpRequest=original;}
+});

@@ -37,6 +37,11 @@
                     <div class="progress-track" role="progressbar" aria-label="File upload progress" :aria-valuenow="state.progress" aria-valuemin="0" aria-valuemax="100"><span class="progress-fill" :style="{width: `${state.progress}%`}"></span></div>
                   </div>
                   <div v-else-if="state.status === 'processing' || (state.file && readingDuration)" class="processing-status" role="status" aria-live="polite"><span class="spinner" aria-hidden="true"></span>{{ state.status === 'processing' ? 'Transcribing your recording…' : 'Reading your file…' }}</div>
+                  <div v-else-if="state.errorCode === 'DAILY_PREVIEW_LIMIT'" class="demo-limit" role="status">
+                    <p class="limit-heading">Keep transcribing in Chrome</p>
+                    <p class="limit-description">You’ve reached the free demo limit. Continue in the Chrome extension.</p>
+                    <a :href="storeUrl" target="_blank" rel="noopener noreferrer" class="extension-cta limit-cta" @click="track('preview_limit_extension_click')"><span class="cta-label">Add to Chrome</span></a>
+                  </div>
                   <template v-else-if="state.error && state.file">
                     <p class="error-message" role="alert"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v6m0 3v1"/></svg><span>{{ state.error }}</span></p>
                     <button class="retry-button" type="submit">Try again</button>
@@ -58,7 +63,17 @@
           <Teleport to="body"><div class="copy-notification" :class="{'is-visible': actionStatus}" role="status" aria-live="polite" aria-atomic="true"><span v-if="actionStatus"><span aria-hidden="true">✓</span> {{ actionStatus }}</span></div></Teleport>
           <p v-if="copyError" class="small-note" role="alert">Select the transcript above to copy it. Your browser could not access the clipboard.</p>
           <div class="complete-note">
-            <div class="extension-copy"><p class="extension-title">Transcribe audio and video in Chrome</p><p>Transcribe your files in the background with the Chrome extension. Keep working and get an email when your transcript is ready.</p></div>
+            <div class="extension-copy">
+              <p class="extension-title">Do more with your transcript</p>
+              <ul class="extension-benefits">
+                <li>Edit your transcript</li>
+                <li>Transcribe in the background and get an email when it’s ready</li>
+                <li>Download your transcript as a file</li>
+                <li>Get an AI summary of your recording</li>
+                <li>See your past transcripts</li>
+                <li>Get automatic timestamps</li>
+              </ul>
+            </div>
             <a :href="storeUrl" target="_blank" rel="noopener noreferrer" class="extension-cta" @click="track('preview_extension_click')"><span class="cta-label">Add to Chrome</span></a>
           </div>
         </div>
@@ -176,6 +191,10 @@ h2{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.03em;li
 .error-message span{max-height:40px;overflow-y:auto;overflow-wrap:anywhere;scrollbar-width:thin}
 .retry-button{min-height:24px;padding:0;border:0;border-radius:4px;background:transparent;color:var(--accent-primary);font-size:13px;font-weight:500;cursor:pointer}
 .retry-button:hover{text-decoration:underline}
+.demo-limit{text-align:center}
+.limit-heading{margin:0 0 3px;font-size:15px;font-weight:700;color:var(--color-text)}
+.limit-description{margin:0 0 8px;font-size:12px;line-height:1.4;color:var(--color-text-secondary)}
+.extension-cta.limit-cta{min-height:34px;padding:7px 20px;font-size:13px}
 .validation-error{margin:12px 0 0;color:var(--color-error)}
 .success-status{font-size:13px;line-height:1.5;color:#15803d}
 :global(html[data-theme='dark']) .success-status{color:#86efac}
@@ -192,6 +211,9 @@ h2{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.03em;li
 .extension-copy{flex:1;min-width:0}
 .extension-copy .extension-title{font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 8px;line-height:1.4}
 .extension-copy p{font-size:14px;line-height:1.6;color:var(--color-text-secondary);margin:0}
+.extension-benefits{margin:0;padding-left:20px;color:var(--color-text-secondary);font-size:14px;line-height:1.6}
+.extension-benefits li+li{margin-top:5px}
+.extension-benefits li::marker{color:var(--accent-primary)}
 .extension-cta{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:14px 23px;min-height:48px;box-sizing:border-box;border-radius:12px;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 55%,#db2777 100%);color:#fff;text-decoration:none;font-size:15px;font-weight:700;box-shadow:0 5px 18px #4f46e530;transition:box-shadow .2s,filter .2s}
 .extension-cta:hover{filter:brightness(1.06);box-shadow:0 8px 24px #4f46e550}
 .extension-cta::before{content:"";position:absolute;z-index:1;top:-50%;left:-70%;width:42%;height:200%;pointer-events:none;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,#ffffff61,transparent);animation:extension-cta-shimmer 3s ease-in-out infinite}
