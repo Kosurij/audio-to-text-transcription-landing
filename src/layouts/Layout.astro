@@ -69,7 +69,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": `${siteUrl}/#software`,
       "name": "Audio To Text Transcription",
-      "description": "A Chrome extension for transcribing uploaded audio and video files, microphone recordings, and browser-tab audio, with optional AI-generated summaries.",
+      "description": "A Chrome extension for transcribing uploaded audio and video files, microphone recordings, and browser-tab audio, with background processing, email notifications when transcripts are ready, and optional AI-generated summaries.",
       "url": `${siteUrl}/`,
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "Chrome Browser",
@@ -179,6 +179,8 @@ const jsonLd = {
         }
       ],
       "featureList": [
+        "Background transcription processing",
+        "Email notification when a transcript is ready",
         "Audio and video file transcription",
         "Microphone and browser-tab recording",
         "AI-generated summaries",
@@ -190,7 +192,7 @@ const jsonLd = {
     {
       "@type": "HowTo",
       "@id": `${siteUrl}/#how-it-works`,
-      "name": "How it works",
+      "name": "How to use the Chrome extension",
       "step": steps.map((step, index) => ({
         "@type": "HowToStep",
         "position": index + 1,
@@ -342,6 +344,36 @@ const jsonLd = {
 
       mediaQuery.addEventListener('change', (event) => {
         root.setAttribute('data-theme', event.matches ? 'dark' : 'light');
+      });
+
+      const readyThemeImages = new Set();
+      const updateThemeImage = (image) => {
+        const dark = root.getAttribute('data-theme') === 'dark';
+        const source = image.getAttribute(dark ? 'data-dark-src' : 'data-light-src');
+        if (source && image.getAttribute('src') !== source) image.setAttribute('src', source);
+      };
+      document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('img[data-light-src][data-dark-src]');
+        if (!('IntersectionObserver' in window)) {
+          images.forEach((image) => {
+            readyThemeImages.add(image);
+            updateThemeImage(image);
+          });
+          return;
+        }
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(({ target, isIntersecting }) => {
+            if (!isIntersecting) return;
+            readyThemeImages.add(target);
+            updateThemeImage(target);
+            observer.unobserve(target);
+          });
+        }, { rootMargin: '300px 0px' });
+        images.forEach((image) => observer.observe(image));
+      });
+      new MutationObserver(() => readyThemeImages.forEach(updateThemeImage)).observe(root, {
+        attributes: true,
+        attributeFilter: ['data-theme'],
       });
     </script>
 

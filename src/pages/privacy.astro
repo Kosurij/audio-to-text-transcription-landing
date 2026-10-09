@@ -91,19 +91,18 @@ const description = 'Learn how Audio To Text Transcription collects, uses, and p
         <h2>Free Website Transcription Preview</h2>
         <p>
           If you use the website preview, the file you select is uploaded to our server when you press
-          “Transcribe.” Our server extracts the audio and sends it to Groq for transcription,
-          within the daily allowance of 60 minutes per network.
+          “Transcribe.” Our server extracts the audio and sends it to Groq for transcription.
           This preview does not require an account and does not use your extension's minute balance.
         </p>
         <p>
           Uploaded preview files are temporary and are deleted when processing ends. A cleanup process
           removes files left behind after an interruption. Preview transcripts are returned to your browser
           and are not saved in our database. The website keeps the result in page memory until you leave
-          or reload; you can copy or download it yourself.
+          or reload; you can copy the text yourself.
         </p>
         <p>
-          To limit abuse, we use daily counters linked to a keyed hash of your IP address. These counters
-          expire after their daily window plus a short cleanup period. People sharing one network may
+          To limit abuse, we use usage counters linked to a keyed hash of your IP address. These counters
+          expire after their usage-limit period plus a short cleanup period. People sharing one network may
           share a preview allowance. Operational logs contain request identifiers, timings and error codes,
           not your transcript, audio or original file name.
         </p>

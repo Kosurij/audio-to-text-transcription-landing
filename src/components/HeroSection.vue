@@ -10,7 +10,7 @@
 
         <h1 class="hero-title">
           Audio to Text<br />
-          <span class="gradient-text">in seconds.</span>
+          <span class="gradient-text">Transcription</span>
         </h1>
 
         <p class="hero-subtitle">
@@ -38,11 +38,6 @@
           <div class="stat">
             <span class="stat-value"><span class="stat-star">★</span>{{ storeRating.value }}</span>
             <span class="stat-label">Chrome Store · {{ storeRating.count }} ratings</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-value">99%</span>
-            <span class="stat-label">Transcription accuracy</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">

@@ -56,7 +56,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .demo {
-  padding: 80px 0;
+  padding: 24px 0 80px;
   background: var(--color-surface);
 }
 
@@ -128,7 +128,7 @@ html[data-theme='dark'] .youtube-wrapper {
 
 @media (max-width: 768px) {
   .demo {
-    padding: 60px 0;
+    padding: 16px 0 60px;
   }
 }
 </style>

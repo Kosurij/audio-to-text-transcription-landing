@@ -21,6 +21,8 @@ After success: “Do more with your transcript”, Add to Chrome, and these bull
 
 IP quota refusal is a separate state: “Keep transcribing in Chrome” / “You’ve reached the free demo limit. Continue in the Chrome extension.” / “Add to Chrome”. Do not expose renewal/tomorrow messaging for this state. Shared capacity and technical errors remain separate. No promise of unlimited free extension use or automatic transfer of the current transcript.
 
+Public-copy clarification, 8 October: do not describe the 24-hour quota window or reset schedule in FAQ or other public demo copy. The demo is a limited trial; the extension remains the product and primary CTA. FAQ and Privacy now describe copying the demo result, with editing/download/history in the extension, without the obsolete midnight-reset promise. The backend quota details below are internal implementation notes.
+
 ## Backend
 
 Separate worktree: `/private/tmp/audio-web-preview-backend`; main checkout `/Users/yuri/projects/audio-to-text-transcription` stays unchanged. The worktree's missing files/Git link were restored from its saved branch before this change.

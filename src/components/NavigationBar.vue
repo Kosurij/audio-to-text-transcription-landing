@@ -7,11 +7,11 @@
       </a>
 
       <nav class="desktop-nav">
-        <a href="/#try-transcription" class="nav-link" @click.prevent="navigateToSection('try-transcription')">Demo</a>
-        <a href="/#features" class="nav-link" @click.prevent="navigateToSection('features')">Features</a>
-        <a href="/#how-it-works" class="nav-link" @click.prevent="navigateToSection('how-it-works')">How it works</a>
-        <a href="/#pricing" class="nav-link" @click.prevent="navigateToSection('pricing')">Pricing</a>
-        <a href="/#faq" class="nav-link" @click.prevent="navigateToSection('faq')">FAQ</a>
+        <a href="/#try-transcription" class="nav-link">Demo</a>
+        <a href="/#features" class="nav-link">Features</a>
+        <a href="/#how-it-works" class="nav-link">How it works</a>
+        <a href="/#pricing" class="nav-link">Pricing</a>
+        <a href="/#faq" class="nav-link">FAQ</a>
       </nav>
     </div>
 
@@ -34,17 +34,17 @@
 
     <transition name="fade">
       <div v-if="isMenuOpen" id="mobile-navigation" class="mobile-menu">
-        <a href="/#try-transcription" class="mobile-link" @click.prevent="handleMobileNavigate('try-transcription')">Demo</a>
-        <a href="/#features" class="mobile-link" @click.prevent="handleMobileNavigate('features')">
+        <a href="/#try-transcription" class="mobile-link" @click="isMenuOpen = false">Demo</a>
+        <a href="/#features" class="mobile-link" @click="isMenuOpen = false">
           Features
         </a>
-        <a href="/#how-it-works" class="mobile-link" @click.prevent="handleMobileNavigate('how-it-works')">
+        <a href="/#how-it-works" class="mobile-link" @click="isMenuOpen = false">
           How it works
         </a>
-        <a href="/#pricing" class="mobile-link" @click.prevent="handleMobileNavigate('pricing')">
+        <a href="/#pricing" class="mobile-link" @click="isMenuOpen = false">
           Pricing
         </a>
-        <a href="/#faq" class="mobile-link" @click.prevent="handleMobileNavigate('faq')">
+        <a href="/#faq" class="mobile-link" @click="isMenuOpen = false">
           FAQ
         </a>
       </div>
@@ -62,28 +62,6 @@ const isMenuOpen = ref(false);
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 8;
-};
-
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
-const navigateToSection = (sectionId: string) => {
-  if (typeof window === 'undefined') return;
-  const currentPath = window.location.pathname;
-  if (currentPath === '/' || currentPath === '/index.html') {
-    scrollToSection(sectionId);
-  } else {
-    window.location.href = `/#${sectionId}`;
-  }
-};
-
-const handleMobileNavigate = (sectionId: string) => {
-  isMenuOpen.value = false;
-  navigateToSection(sectionId);
 };
 
 onMounted(() => {

@@ -12,6 +12,10 @@ export const faqs = [
     answer: 'We use advanced AI to deliver fast, high-quality transcripts—even for long sessions and diverse accents.'
   },
   {
+    question: 'Can I keep working while my recording is transcribed?',
+    answer: 'Yes. The Chrome extension processes your recording in the background, so you can keep working. We’ll email you when your transcript is ready.'
+  },
+  {
     question: 'Does the extension support themes?',
     answer: 'Yes. Audio To Text Transcription adapts to both light and dark themes automatically, and you can toggle them manually in the settings.'
   },
@@ -29,7 +33,7 @@ export const faqs = [
   },
   {
     question: 'Is Audio To Text Transcription free to use?',
-    answer: 'The website demo includes up to 60 minutes of free transcription per day per network. Separately, the Chrome extension Free plan includes 200 minutes per week. Optional paid subscriptions provide a larger monthly allowance, priority processing and priority support.'
+    answer: 'The Chrome extension Free plan includes 200 minutes per week. Optional paid subscriptions provide a larger monthly allowance, priority processing and priority support. You can also try a limited free demo on this website before installing.'
   },
   {
     question: 'How do paid plan minute allowances work?',
@@ -45,19 +49,19 @@ export const faqs = [
   },
   {
     question: 'What can I transcribe on this page?',
-    answer: 'Upload an audio or video file up to 100 MB. The demo transcribes your recording in full, within the remaining daily allowance. Copy the result or download it as TXT. No account or installation is needed.'
+    answer: 'Try the demo with an audio or video file up to 100 MB and copy the resulting text. No account or installation is needed. Use the Chrome extension to edit, download and save your transcripts in history.'
   },
   {
-    question: 'What are the free preview limits?',
-    answer: 'The demo includes 60 minutes of audio per day per network, resetting at midnight UTC. Files must fit within the remaining allowance; failed transcriptions do not use your allowance. There is also a shared daily limit, so the preview may be temporarily unavailable. The Chrome extension has its own Free plan and separate limits.'
+    question: 'What happens when I reach the demo limit?',
+    answer: 'The website demo is a limited way to try transcription before installing. If you reach its free limit, continue in the Chrome extension, which has its own Free plan and optional paid plans. The demo may also be temporarily unavailable when the service is busy.'
   },
   {
     question: 'Can I try it on my phone?',
     answer: 'Use the file picker on this page to select a saved recording. Keep the page open while it uploads and transcribes. The Chrome extension is for computers; you do not need it to try the online preview.'
   },
   {
-    question: 'How do I transcribe the rest of a recording?',
-    answer: 'Install the Chrome extension on your computer and upload the original file there again. The preview does not transfer your file to the extension. Transcribing the full recording uses your extension plan allowance.'
+    question: 'How do I continue in the Chrome extension?',
+    answer: 'Install the Chrome extension on your computer and upload your original file there. Files and transcripts from the website demo are not transferred automatically. Transcription in the extension uses your extension plan allowance.'
   }
 ];
 

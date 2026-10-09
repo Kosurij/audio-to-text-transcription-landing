@@ -2,8 +2,8 @@
   <section class="features" id="features">
     <div class="features-container">
       <div class="section-header">
-        <h2 class="section-title">Everything you need to transcribe</h2>
-        <p class="section-subtitle">Powerful features that make audio-to-text conversion fast and effortless</p>
+        <h2 class="section-title">Key Features of Chrome Extension</h2>
+        <p class="section-subtitle">Upload, record and work with your transcripts right in Chrome.</p>
       </div>
 
       <div class="features-list">
@@ -21,10 +21,12 @@
           </div>
 
           <!-- Media -->
-          <div class="feature-media">
+          <div v-if="feature.media" class="feature-media">
             <video
               v-if="feature.mediaType === 'video'"
               :src="feature.media"
+              :width="feature.width"
+              :height="feature.height"
               class="feature-gif"
               autoplay
               loop
@@ -44,27 +46,43 @@
 <script setup lang="ts">
 const features = [
   {
+    title: 'Background Processing & Email Notification',
+    description: 'Keep working while your recording is being transcribed in the background. We’ll email you when your transcript is ready.',
+    media: '/videos/feature-background.mp4',
+    width: 492,
+    height: 1080,
+    mediaType: 'video',
+  },
+  {
     title: 'Upload Files or Record Live',
     description: 'Drag and drop any audio or video file — MP3, WAV, M4A, OGG, MP4. Or click Record to capture your microphone or any browser tab in real time. Supports 90+ languages, detected automatically.',
     media: '/videos/feature-upload.mp4',
+    width: 500,
+    height: 1080,
     mediaType: 'video',
   },
   {
     title: 'Navigate by Timestamps',
     description: 'Every transcript is split into segments with precise timestamps. Jump to any moment instantly — no more scrubbing through audio to find a quote.',
     media: '/videos/feature-timestamps.mp4',
+    width: 500,
+    height: 1080,
     mediaType: 'video',
   },
   {
     title: 'AI-Powered Summary',
     description: 'After transcription, get an automatic summary of key points. No more reading through long transcripts — the important parts are extracted for you instantly.',
     media: '/videos/feature-summary.mp4',
+    width: 500,
+    height: 1080,
     mediaType: 'video',
   },
   {
     title: 'History, Edit & Export',
     description: 'All your transcriptions are saved. Edit the text directly in the extension, then download as TXT or copy to clipboard. Your history is always one click away.',
     media: '/videos/feature-history.mp4',
+    width: 500,
+    height: 1080,
     mediaType: 'video',
   },
 ];
@@ -84,7 +102,7 @@ const features = [
 
 .section-header {
   text-align: center;
-  margin-bottom: 72px;
+  margin-bottom: 40px;
 }
 
 .section-title {
