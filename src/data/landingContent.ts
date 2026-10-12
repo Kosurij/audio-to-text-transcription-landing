@@ -80,5 +80,6 @@ export const steps = [
   },
 ];
 
-// Chrome Web Store snapshot checked on 2026-09-15. Keep display and schema in sync.
-export const storeRating = { value: "5.0", count: "70" };
+// Attributed Chrome Web Store display snapshot checked on 2026-10-12.
+// External store reviews are intentionally excluded from our JSON-LD.
+export const storeRating = { value: "5.0", count: "76" };

@@ -54,10 +54,12 @@ test('entity graph uses a real logo and does not invent ownership or search feat
   assert.doesNotMatch(JSON.stringify(graph), /no data collection|we don't store or share your data|Offline Functionality|Real-time Transcription|above 95%/);
 });
 
-test('rating metadata matches the visible rating and count', async () => {
+test('store testimonials remain visible without imported review rich-result markup', async () => {
   const { html, graph } = await readPage();
-  const rating = graph.find(x => x['@type'] === 'SoftwareApplication').aggregateRating;
+  const app = graph.find(x => x['@type'] === 'SoftwareApplication');
+  assert.equal(app.aggregateRating, undefined);
+  assert.equal(app.review, undefined);
   const body = html.slice(html.indexOf('<body'));
-  assert.match(body, new RegExp(`>${rating.ratingValue.replace('.', '\\.')}<`));
-  assert.match(text(body), new RegExp(`${rating.ratingCount} ratings`));
+  assert.match(text(body), /76 ratings/);
+  assert.match(text(body), /Robert Edge/);
 });
