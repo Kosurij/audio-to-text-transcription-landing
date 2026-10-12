@@ -90,7 +90,7 @@ const features = [
 
 <style scoped>
 .features {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   background: var(--color-background);
 }
 
@@ -102,7 +102,7 @@ const features = [
 
 .section-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: var(--section-heading-gap);
 }
 
 .section-title {
@@ -124,7 +124,7 @@ const features = [
 .features-list {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: var(--section-gap);
 }
 
 .feature-row {
@@ -197,7 +197,7 @@ html[data-theme='dark'] .feature-media {
 /* Mobile */
 @media (max-width: 768px) {
   .features {
-    padding: 60px 0;
+    padding: var(--section-padding) 0;
   }
 
   .feature-row {

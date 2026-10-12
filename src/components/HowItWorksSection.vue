@@ -21,9 +21,9 @@ import { steps } from '../data/landingContent';
 </script>
 
 <style scoped>
-.how-it-works { padding: 48px 0 32px; background: var(--color-surface); scroll-margin-top: 100px; }
+.how-it-works { padding: var(--section-padding) 0; background: var(--color-surface); scroll-margin-top: 100px; }
 .how-it-works-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section-header { text-align: center; margin-bottom: 28px; }
+.section-header { text-align: center; margin-bottom: var(--section-heading-gap); }
 h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -.03em; color: var(--color-text); margin: 0 0 12px; }
 .section-header p, .step p { color: var(--color-text-secondary); line-height: 1.7; margin: 0; }
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; list-style: none; padding: 0; margin: 0; }
@@ -31,7 +31,7 @@ h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: 
 .step-number { font-size: 1.75rem; font-weight: 800; color: var(--accent-primary); }
 h3 { font-size: 1.15rem; color: var(--color-text); margin: 10px 0 8px; }
 @media (max-width: 768px) {
-  .how-it-works { padding: 40px 0 24px; }
+  .how-it-works { padding: var(--section-padding) 0; }
   .how-it-works-container { padding: 0 16px; }
   .steps { grid-template-columns: 1fr; gap: 16px; }
   .step { padding: 18px; }

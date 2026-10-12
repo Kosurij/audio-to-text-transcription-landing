@@ -65,7 +65,7 @@ const toggle = (index: number) => {
 
 <style scoped>
 .faq {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   background: var(--color-surface);
 }
 
@@ -77,7 +77,7 @@ const toggle = (index: number) => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: var(--section-heading-gap);
 }
 
 .section-title {
@@ -226,11 +226,11 @@ const toggle = (index: number) => {
 
 @media (max-width: 768px) {
   .faq {
-    padding: 60px 0;
+    padding: var(--section-padding) 0;
   }
 
   .section-header {
-    margin-bottom: 48px;
+    margin-bottom: var(--section-heading-gap);
   }
 
   .faq-question {

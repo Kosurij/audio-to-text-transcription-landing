@@ -146,9 +146,9 @@ onBeforeUnmount(()=>{controller.dispose();clearTimeout(notificationTimer)})
 </script>
 
 <style scoped>
-.preview-section{padding:80px 0;background:var(--color-background);scroll-margin-top:100px}
+.preview-section{padding:var(--section-padding) 0;background:var(--color-background);scroll-margin-top:100px}
 .preview-container{max-width:1000px;margin:0 auto;padding:0 24px}
-.section-heading{text-align:center;margin-bottom:32px}
+.section-heading{text-align:center;margin-bottom:var(--section-heading-gap)}
 h2{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;color:var(--color-text);margin:12px 0}
 .section-heading p{font-size:1.125rem;line-height:1.6;color:var(--color-text-secondary);margin:0}
 .preview-panel{max-width:820px;margin:0 auto}

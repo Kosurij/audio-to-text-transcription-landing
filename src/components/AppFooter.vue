@@ -108,7 +108,7 @@ const currentYear = new Date().getFullYear();
 .footer {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
-  padding: 56px 0 24px;
+  padding: var(--section-padding) 0 24px;
 }
 
 .footer-container {
