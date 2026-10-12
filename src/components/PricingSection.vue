@@ -128,7 +128,7 @@ const plans: Plan[] = [
 
 <style scoped>
 .pricing {
-  padding: 96px 0;
+  padding: var(--section-padding) 0;
   background: var(--color-background);
 }
 
@@ -139,7 +139,7 @@ const plans: Plan[] = [
 
 .section-header {
   max-width: 720px;
-  margin: 0 auto 56px;
+  margin: 0 auto var(--section-heading-gap);
   text-align: center;
 }
 
@@ -304,7 +304,7 @@ html[data-theme='dark'] .popular-badge {
 
 @media (max-width: 640px) {
   .pricing {
-    padding: 64px 0;
+    padding: var(--section-padding) 0;
   }
 
   .pricing-container {
@@ -312,7 +312,7 @@ html[data-theme='dark'] .popular-badge {
   }
 
   .section-header {
-    margin-bottom: 44px;
+    margin-bottom: var(--section-heading-gap);
   }
 
   .section-subtitle {

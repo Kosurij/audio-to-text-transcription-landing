@@ -19,7 +19,7 @@ import InstallButton from './InstallButton.vue';
 
 <style scoped>
 .cta {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   background: var(--accent-primary);
   text-align: center;
 }
@@ -96,7 +96,7 @@ html[data-theme='dark'] .cta-hint {
 
 @media (max-width: 600px) {
   .cta {
-    padding: 60px 0;
+    padding: var(--section-padding) 0;
   }
 
   .cta-container .cta-button {

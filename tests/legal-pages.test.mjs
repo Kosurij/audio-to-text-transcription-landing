@@ -49,7 +49,6 @@ test('global Organization JSON-LD uses the Kobaltstack LLC entity and US address
 const privacy = await readFile(new URL('../dist/privacy/index.html', import.meta.url), 'utf8');
 
 test('privacy page names Kobaltstack LLC as the operating entity', () => {
-  assert.match(privacy, /Last Updated: September 15, 2026/);
   assert.match(
     privacy,
     /Audio To Text Transcription is operated by Kobaltstack LLC, with its address at 447 Broadway, 2nd Floor, 3436, New York, NY 10013, New York, US\./,

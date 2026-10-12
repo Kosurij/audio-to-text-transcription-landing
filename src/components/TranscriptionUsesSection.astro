@@ -1,0 +1,99 @@
+<div class="transcription-reading" lang="en">
+  <section aria-labelledby="transcription-comparison-title">
+    <h2 id="transcription-comparison-title">When automatic audio transcription is useful</h2>
+    <div class="section-description">
+      <p>Automatic transcription is useful whenever you need text from an audio or video recording, whether it’s the whole recording or just one part. For example, when you need to:</p>
+    </div>
+    <div class="content-with-picture draft-intro">
+      <img class="draft-picture" style="align-self: center;" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1536' height='1024'/%3E" data-light-src="/transcription-guide/audio-to-draft-drawn.png" data-dark-src="/transcription-guide/audio-to-draft-drawn.dark-transparent.png" alt="An audio recording becomes a text draft, with a pencil highlighting the review step." width="1536" height="1024" loading="lazy" decoding="async" />
+      <ol class="use-cases">
+          <li><strong>Get the full transcript.</strong> You have an interview, lecture, voice memo, or another recording of someone speaking that you need to turn into text. Our transcription tool converts the audio into text. You don’t have to listen to the whole recording and type out what was said by hand.</li>
+          <li><strong>Find specific information.</strong> You remember a topic being discussed during a conversation, but don’t want to listen through hours of a recorded call. Searching for words in the transcript can help you find that part.</li>
+        </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="transcription-uses-title">
+    <h2 id="transcription-uses-title">When to record tab audio and when to use your microphone</h2>
+    <div class="section-description">
+      <p>Our extension offers several recording modes: microphone, audio from an open browser tab, and both together (microphone + tab). Let’s look at when each mode can be useful:</p>
+    </div>
+    <div class="content-with-picture uses-layout">
+      <ul class="use-cases">
+      <li><strong>Microphone — to record your own voice.</strong> For example, you can quickly dictate a note, save an idea, or say a draft of an email out loud, then turn the recording into text to work on later.</li>
+      <li><strong>Tab — to record audio playing in your browser.</strong> For example, you’re listening to a lecture, webinar, video, or audio clip. If you don’t have a file to upload, record the audio as it plays, then get a transcript.</li>
+      <li><strong>Microphone and tab — to record both sides of a conversation.</strong> If the call takes place in your browser, this mode records the other people’s voices from the tab and your replies through the microphone.</li>
+    </ul>
+      <img class="meeting-picture" style="align-self: center;" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1536' height='1024'/%3E" data-light-src="/transcription-guide/recording-source-choice.png" data-dark-src="/transcription-guide/recording-source-choice.dark.png" alt="A woman choosing what to record: her microphone, tab audio, or both together." width="1536" height="1024" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <section aria-labelledby="transcript-and-recording-title">
+    <h2 id="transcript-and-recording-title">How to capture key agreements from a meeting</h2>
+    <div class="content-with-picture recording-intro">
+      <img class="paired-picture" src="/transcription-guide/meeting-key-points.png" alt="A curly-haired woman carefully highlighting key points in a printed meeting transcript." width="1536" height="1024" loading="lazy" decoding="async" />
+      <div class="section-description">
+      <p>After almost every meeting, it’s important to keep a record of what was agreed: the main points, decisions, possible deadlines, and so on. Our extension has a summary feature for this.</p>
+      <p>Let’s compare how it can make this easier than listening to the recording or looking through the transcript yourself.</p>
+      </div>
+    </div>
+    <div class="summary-table">
+      <table>
+        <caption class="sr-only">Comparison of a meeting recording, transcript, and summary</caption>
+        <thead><tr><th scope="col">Feature</th><th scope="col">Summary <span aria-hidden="true">✨</span></th><th scope="col">Audio recording</th><th scope="col">Transcript</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Review the meeting later</th><td>✅ Yes</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+          <tr><th scope="row">Quickly find information by searching the text</th><td>✅ Yes</td><td>❌ No</td><td>✅ Yes</td></tr>
+          <tr><th scope="row">Copy a passage into notes or an email</th><td>✅ Yes</td><td>❌ No</td><td>✅ Yes</td></tr>
+          <tr><th scope="row">Read a short summary of the conversation</th><td>✅ Yes</td><td>❌ No</td><td>❌ No</td></tr>
+          <tr><th scope="row">See decisions and tasks listed separately</th><td>✅ Yes</td><td>❌ No</td><td>❌ No</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<style>
+  .transcription-reading { max-width: 1120px; margin: 0 auto; padding: var(--section-padding) 24px; color: var(--color-text-secondary); }
+  section + section { margin-top: var(--section-gap); }
+  h2 { max-width: 1000px; margin: 0 auto var(--section-heading-gap); text-align: center; scroll-margin-top: 110px; color: var(--color-text); font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1.25; font-weight: 750; letter-spacing: -.025em; }
+  p { margin: 0 0 18px; font-size: 16px; line-height: 1.75; }
+  strong { color: var(--color-text); font-weight: 650; }
+  .section-description { margin-bottom: 18px; }
+  .section-description p:last-child { margin-bottom: 0; }
+  .content-with-picture { display: grid; gap: 36px; align-items: center; }
+  .draft-intro { display: grid; grid-template-columns: 320px minmax(0, 1fr); }
+  .draft-intro > .draft-picture { grid-column: 1; grid-row: 1; }
+  .draft-intro > .use-cases { grid-column: 2; grid-row: 1; }
+  .uses-layout { grid-template-columns: minmax(0, 1fr) 400px; }
+  .recording-intro { grid-template-columns: 360px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .recording-intro > .paired-picture { margin: 0; justify-self: start; }
+  .recording-intro table { margin-top: 0; }
+  img { display: block; width: 100%; height: auto; border-radius: 14px; margin: 0 auto; }
+  .draft-picture { max-width: 320px; }
+  .meeting-picture { max-width: 400px; }
+  .paired-picture { max-width: 360px; }
+  :global([data-theme="dark"]) .paired-picture { filter: brightness(.85); }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 24px; font-size: 15px; line-height: 1.6; }
+  th, td { border: 1px solid var(--color-border); padding: 16px 20px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+  thead th { background: color-mix(in srgb, var(--accent-primary) 8%, var(--color-background)); color: var(--color-text); font-weight: 650; }
+  th:first-child { width: 24%; }
+  tbody th { color: var(--color-text); font-weight: 600; }
+  .use-cases { margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.75; }
+  .use-cases li + li { margin-top: 14px; }
+  .notes-explanation { margin: 20px 0 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (max-width: 768px) {
+    .transcription-reading { padding: var(--section-padding) 16px; }
+    section + section { margin-top: var(--section-gap); }
+    .content-with-picture { grid-template-columns: 1fr; gap: 24px; }
+    .draft-intro { grid-template-columns: 1fr; }
+    .draft-intro > .use-cases { grid-column: 1; grid-row: 1; }
+    .draft-intro > .draft-picture { grid-column: 1; grid-row: 2; }
+    table { font-size: 14px; }
+    th, td { padding: 12px 10px; }
+    th:first-child { width: 25%; }
+
+  }
+  @media (max-width: 380px) { th, td { padding: 10px 7px; } table { font-size: 13px; } }
+</style>

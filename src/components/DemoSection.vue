@@ -56,7 +56,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .demo {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   background: var(--color-surface);
 }
 
@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: var(--section-heading-gap);
 }
 
 .section-title {
@@ -128,7 +128,7 @@ html[data-theme='dark'] .youtube-wrapper {
 
 @media (max-width: 768px) {
   .demo {
-    padding: 60px 0;
+    padding: var(--section-padding) 0;
   }
 }
 </style>

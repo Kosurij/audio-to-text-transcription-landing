@@ -138,7 +138,7 @@ onUnmounted(() => {
 
 <style scoped>
 .testimonials {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   background: var(--color-surface);
 }
 
@@ -150,7 +150,7 @@ onUnmounted(() => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: var(--section-heading-gap);
 }
 
 .section-title {
@@ -276,11 +276,11 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .testimonials {
-    padding: 64px 0;
+    padding: var(--section-padding) 0;
   }
 
   .section-header {
-    margin-bottom: 36px;
+    margin-bottom: var(--section-heading-gap);
   }
 
   .testimonials-grid {

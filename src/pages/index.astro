@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import NavigationBar from '../components/NavigationBar.vue';
 import HeroSection from '../components/HeroSection.vue';
 import UploadRecordSection from '../components/UploadRecordSection.vue';
+import DemoGuideSection from '../components/DemoGuideSection.astro';
+import TranscriptionUsesSection from '../components/TranscriptionUsesSection.astro';
 import BenefitsSection from '../components/BenefitsSection.vue';
 import HowItWorksSection from '../components/HowItWorksSection.vue';
 import DemoSection from '../components/DemoSection.vue';
@@ -12,17 +14,19 @@ import FAQSection from '../components/FAQSection.vue';
 import CTASection from '../components/CTASection.vue';
 import AppFooter from '../components/AppFooter.vue';
 
-const title = 'Audio To Text Transcription - Convert Audio to Text Instantly | Chrome Extension';
-const description = 'Convert audio and video to text instantly with our Chrome extension. Upload files, record from microphone or browser tab. Powered by advanced AI. Edit transcripts and export to multiple formats.';
+const title = 'Audio to Text Converter';
+const description = 'An audio to text converter lets you transcribe audio and video files to text or record microphone and browser audio. Works online right in your browser.';
 ---
 
 <Layout title={title} description={description}>
   <NavigationBar client:load />
   <main class="landing-page">
     <HeroSection client:load />
-    <UploadRecordSection client:visible />
+    <UploadRecordSection client:load />
+    <DemoGuideSection />
+    <TranscriptionUsesSection />
     <BenefitsSection client:visible />
-    <HowItWorksSection client:visible />
+    <HowItWorksSection />
     <DemoSection client:visible />
     <TestimonialsSection client:visible />
     <PricingSection client:visible />
