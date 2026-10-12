@@ -31,7 +31,7 @@
   <section aria-labelledby="transcript-and-recording-title">
     <h2 id="transcript-and-recording-title">How to capture key agreements from a meeting</h2>
     <div class="content-with-picture recording-intro">
-      <img class="paired-picture" src="/transcription-guide/meeting-summary.png" alt="A woman reviewing a meeting summary with main points, decisions, and tasks beside her laptop." width="1536" height="1024" loading="lazy" decoding="async" />
+      <img class="paired-picture" src="/transcription-guide/meeting-key-points.png" alt="A curly-haired woman carefully highlighting key points in a printed meeting transcript." width="1536" height="1024" loading="lazy" decoding="async" />
       <div class="section-description">
       <p>After almost every meeting, it’s important to keep a record of what was agreed: the main points, decisions, possible deadlines, and so on. Our extension has a summary feature for this.</p>
       <p>Let’s compare how it can make this easier than listening to the recording or looking through the transcript yourself.</p>
@@ -66,12 +66,14 @@
   .draft-intro > .draft-picture { grid-column: 1; grid-row: 1; }
   .draft-intro > .use-cases { grid-column: 2; grid-row: 1; }
   .uses-layout { grid-template-columns: minmax(0, 1fr) 400px; }
-  .recording-intro { grid-template-columns: 360px minmax(0, 1fr); }
+  .recording-intro { grid-template-columns: 360px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .recording-intro > .paired-picture { margin: 0; justify-self: start; }
   .recording-intro table { margin-top: 0; }
   img { display: block; width: 100%; height: auto; border-radius: 14px; margin: 0 auto; }
   .draft-picture { max-width: 320px; }
   .meeting-picture { max-width: 400px; }
   .paired-picture { max-width: 360px; }
+  :global([data-theme="dark"]) .paired-picture { filter: brightness(.85); }
   table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 24px; font-size: 15px; line-height: 1.6; }
   th, td { border: 1px solid var(--color-border); padding: 16px 20px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
   thead th { background: color-mix(in srgb, var(--accent-primary) 8%, var(--color-background)); color: var(--color-text); font-weight: 650; }
