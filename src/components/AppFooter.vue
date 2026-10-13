@@ -7,7 +7,7 @@
         <div class="footer-brand">
           <div class="footer-logo">
             <Logo loading="lazy" />
-            <span class="footer-logo-text">Audio to Text</span>
+            <span class="footer-logo-text">Audio To Text Transcription</span>
           </div>
           <p class="footer-tagline">
             Chrome extension for instant audio transcription. Powered by AI.
