@@ -45,7 +45,7 @@ export const faqs = [
   },
   {
     question: 'Can I cancel my subscription?',
-    answer: 'Yes. You can cancel a paid subscription at any time, and every paid plan includes a 30-day money-back guarantee.'
+    answer: 'Yes. You can cancel a paid subscription at any time, and every paid plan includes a 14-day money-back guarantee.'
   },
   {
     question: 'What can I transcribe on this page?',

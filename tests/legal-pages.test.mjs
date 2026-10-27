@@ -76,18 +76,18 @@ test('terms page covers the Kobaltstack LLC entity, service description, and dro
 
 const refund = await readFile(new URL('../dist/refund/index.html', import.meta.url), 'utf8');
 
-test('refund page promises a 30-day guarantee and 7-business-day processing', () => {
+test('refund page promises a 14-day guarantee and 7-business-day processing', () => {
   assert.match(refund, /<h1[^>]*>Refund Policy<\/h1>/);
-  assert.match(refund, /Last Updated: September 15, 2026/);
-  assert.match(refund, /30-day money-back guarantee/);
+  assert.match(refund, /Last Updated: October 27, 2026/);
+  assert.match(refund, /14-day money-back guarantee/);
   assert.match(refund, /paid subscriptions and one-time minute-pack purchases/);
   assert.match(refund, /within 7 business days/);
   assert.doesNotMatch(refund, /20-day/);
-  assert.match(refund, /within 30 days of the relevant charge/);
+  assert.match(refund, /within 14 days of the relevant charge/);
   assert.match(refund, /within 2 business days/);
   assert.match(refund, /statutory consumer rights/);
   assert.match(refund, /reason is optional/);
-  assert.doesNotMatch(refund, /within 14 days/);
+  assert.doesNotMatch(refund, /30-day|30-Day|within 30 days/);
 });
 
 const sitemap = await readFile(new URL('../dist/sitemap.xml', import.meta.url), 'utf8');

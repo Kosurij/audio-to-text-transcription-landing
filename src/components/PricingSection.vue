@@ -36,7 +36,7 @@
             </li>
           </ul>
           <p v-if="plan.guarantee" class="guarantee">
-            Cancel anytime · 30-day money-back guarantee
+            Cancel anytime · 14-day money-back guarantee
           </p>
         </article>
       </div>

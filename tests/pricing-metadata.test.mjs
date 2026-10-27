@@ -13,7 +13,7 @@ test('visible FAQ explains free use, monthly plan allowances, upgrades and cance
   assert.match(html, /Pro and Max also use 33% fewer minutes in High Accuracy mode/);
   assert.doesNotMatch(html, /A paid plan gives you[\s\S]*reduced minute usage in High Accuracy mode/);
   assert.match(html, /Can I cancel my subscription\?/);
-  assert.match(html, /30-day money-back guarantee/);
+  assert.match(html, /14-day money-back guarantee/);
 });
 
 test('JSON-LD publishes four USD offers and matching subscription FAQ', () => {
