@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavigationBar from '../components/NavigationBar.vue';
+import AppFooter from '../components/AppFooter.vue';
+import SubscribePage from '../components/SubscribePage.vue';
+---
+<Layout title="Choose your subscription - Audio To Text Transcription" description="Subscribe to Audio To Text Transcription for Chrome on your computer." noindex>
+  <NavigationBar client:load />
+  <SubscribePage client:load />
+  <noscript><p>Enable JavaScript to continue to checkout, or <a href="/#pricing">install the extension</a> and subscribe there.</p></noscript>
+  <AppFooter client:load />
+</Layout>

@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/lib/subscriptionBilling.ts",
+    "src/lib/subscriptionFlow.mjs",
+    "src/components/SubscribePage.vue",
+    "src/components/PricingSection.vue",
+    ".astro/types.d.ts"
+  ],
+  "compilerOptions": {
+    "types": ["astro/client"],
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true
+  }
+}

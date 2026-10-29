@@ -26,12 +26,13 @@
           </p>
           <p class="plan-limit">{{ plan.minutes }} minutes / {{ plan.minutesPeriod }}</p>
           <p class="plan-charge">{{ plan.charge || 'No payment required' }}</p>
-          <InstallButton
+          <a v-if="webCheckoutEnabled && plan.monthlyPrice" :href="subscriptionHref(plan.name, billingInterval)!" class="plan-button checkout-link" :class="{ primary: plan.popular }">Get {{ plan.name }}</a>
+          <InstallButton v-else
             :variant="plan.popular ? 'primary' : 'outline'"
             :show-icon="false"
             class="plan-button"
           >
-            {{ plan.cta }}
+            {{ webCheckoutEnabled && !plan.monthlyPrice ? 'Add to Chrome' : plan.cta }}
           </InstallButton>
           <div class="plan-divider" />
           <p class="benefit-heading">{{ plan.benefitHeading }}</p>
@@ -54,6 +55,9 @@
 import { computed, ref } from 'vue';
 import InstallButton from './InstallButton.vue';
 import { plans } from '../data/pricing';
+import { subscriptionHref } from '../lib/subscriptionFlow.mjs';
+
+const webCheckoutEnabled = import.meta.env.PUBLIC_WEB_BILLING_ENABLED === 'true';
 
 const billingInterval = ref<'month' | 'year'>('year');
 const displayedPlans = computed(() => plans.map(plan => ({
@@ -68,6 +72,9 @@ const displayedPlans = computed(() => plans.map(plan => ({
 </script>
 
 <style scoped>
+.checkout-link { display: flex; align-items: center; justify-content: center; padding: 12px 20px; border: 1px solid var(--color-border); border-radius: 12px; text-decoration: none; color: var(--accent-primary); font-weight: 600; box-sizing: border-box; }
+.checkout-link.primary { background: var(--gradient-primary); color: #fff; }
+.checkout-link:focus-visible { outline: 3px solid var(--accent-primary); outline-offset: 3px; }
 .pricing {
   padding: var(--section-padding) 0;
   background: var(--color-background);
