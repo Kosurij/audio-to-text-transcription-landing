@@ -6,7 +6,7 @@
         <p class="section-subtitle">Start free, then upgrade when your workflow grows</p>
       </header>
 
-      <div class="billing-control" role="group" aria-label="Billing period">
+      <div class="billing-control" :data-interval="billingInterval" role="group" aria-label="Billing period">
         <button type="button" :aria-pressed="billingInterval === 'month'" @click="billingInterval = 'month'">Monthly</button>
         <button type="button" :aria-pressed="billingInterval === 'year'" @click="billingInterval = 'year'">Yearly</button>
       </div>
@@ -18,12 +18,18 @@
           class="pricing-card"
           :class="{ popular: plan.popular }"
         >
-          <span v-if="plan.savings !== null" class="popular-badge">Save {{ plan.savings }}%</span>
+          <Transition name="savings">
+            <span v-if="plan.savings !== null" class="popular-badge">Save {{ plan.savings }}%</span>
+          </Transition>
           <h3 class="plan-name">{{ plan.name }}</h3>
           <p class="plan-description">{{ plan.description }}</p>
-          <p class="plan-price">
-            {{ plan.price }}<span v-if="plan.monthlyPrice"> / month</span>
-          </p>
+          <div class="plan-price-slot">
+            <Transition name="price-swap">
+              <p :key="plan.price" class="plan-price">
+                {{ plan.price }}<span v-if="plan.monthlyPrice"> / month</span>
+              </p>
+            </Transition>
+          </div>
           <p class="plan-limit">{{ plan.minutes }} minutes / {{ plan.minutesPeriod }}</p>
           <p class="plan-charge">{{ plan.charge || 'No payment required' }}</p>
           <InstallButton
@@ -100,7 +106,9 @@ const displayedPlans = computed(() => plans.map(plan => ({
 }
 
 .billing-control {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   width: fit-content;
   margin: 0 auto 40px;
   padding: 4px;
@@ -110,7 +118,26 @@ const displayedPlans = computed(() => plans.map(plan => ({
   background: var(--color-surface-elevated);
 }
 
+.billing-control::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc((100% - 12px) / 2);
+  border-radius: 999px;
+  background: var(--color-background);
+  box-shadow: var(--shadow-sm);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.billing-control[data-interval='year']::before {
+  transform: translateX(calc(100% + 4px));
+}
+
 .billing-control button {
+  position: relative;
   border: 0;
   border-radius: 999px;
   padding: 9px 18px;
@@ -119,12 +146,11 @@ const displayedPlans = computed(() => plans.map(plan => ({
   font: inherit;
   font-size: 0.875rem;
   cursor: pointer;
+  transition: color 160ms ease;
 }
 
 .billing-control button[aria-pressed='true'] {
-  background: var(--color-background);
   color: var(--color-text);
-  box-shadow: var(--shadow-sm);
 }
 
 .billing-control button:focus-visible {
@@ -191,6 +217,53 @@ const displayedPlans = computed(() => plans.map(plan => ({
   font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: -0.04em;
+}
+
+.plan-price-slot {
+  position: relative;
+}
+
+.price-swap-enter-active,
+.price-swap-leave-active {
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.price-swap-leave-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.price-swap-enter-from {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.price-swap-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.savings-enter-active,
+.savings-leave-active {
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.savings-enter-from,
+.savings-leave-to {
+  opacity: 0;
+  transform: translate(-50%, 4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .billing-control::before,
+  .billing-control button,
+  .price-swap-enter-active,
+  .price-swap-leave-active,
+  .savings-enter-active,
+  .savings-leave-active {
+    transition: none;
+  }
 }
 
 .plan-price span {
