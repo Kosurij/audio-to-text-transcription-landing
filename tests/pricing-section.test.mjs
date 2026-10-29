@@ -13,9 +13,16 @@ test('pricing section exposes every approved plan and benefit', () => {
   assert.notEqual(pricing, '', 'rendered pricing section is missing');
   assert.match(pricing, /Start free, then upgrade when your workflow grows/);
   assert.match(pricing, /Free[\s\S]*\$0[\s\S]*200 minutes \/ week/);
-  assert.match(pricing, /Basic[\s\S]*\$6\.99[\s\S]* \/ month[\s\S]*2,400 minutes \/ month/);
-  assert.match(pricing, /Pro[\s\S]*\$12\.99[\s\S]* \/ month[\s\S]*7,200 minutes \/ month/);
-  assert.match(pricing, /Max[\s\S]*\$19\.99[\s\S]* \/ month[\s\S]*14,000 minutes \/ month/);
+  assert.match(pricing, /Basic[\s\S]*\$6\.25[\s\S]* \/ month[\s\S]*2,400 minutes \/ 30 days[\s\S]*\$74\.99 billed annually/);
+  assert.match(pricing, /Pro[\s\S]*\$10\.00[\s\S]* \/ month[\s\S]*7,200 minutes \/ 30 days[\s\S]*\$119\.99 billed annually/);
+  assert.match(pricing, /Max[\s\S]*\$15\.83[\s\S]* \/ month[\s\S]*14,000 minutes \/ 30 days[\s\S]*\$189\.99 billed annually/);
+  assert.match(pricing, /aria-pressed="true"[^>]*>Yearly/);
+  assert.match(pricing, /aria-pressed="false"[^>]*>Monthly/);
+  assert.doesNotMatch(pricing, /Most popular/);
+  for (const percent of [11, 23, 21]) assert.match(pricing, new RegExp(`Save ${percent}%`));
+  for (const total of ['74.99', '119.99', '189.99']) {
+    assert.equal(pricing.split(`$${total} billed annually`).length - 1, 1);
+  }
   assert.match(pricing, /3× the minutes/);
   assert.match(pricing, /9× the minutes/);
   assert.match(pricing, /17\.5× the minutes/);
