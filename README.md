@@ -59,3 +59,11 @@ npm run build
 - [ ] Добавить sitemap.xml
 - [ ] Добавить аналитику (если нужно)
 
+
+## Подписка на сайте
+
+Первая покупка: `/subscribe/` → email без кода → hosted checkout. Вход по коду нужен для управления действующей подпиской; после оплаты пользователь входит в расширении с той же почтой. `/subscription-result/` не считает возврат подтверждением оплаты.
+
+Сборочные переменные: `PUBLIC_WEB_BILLING_ENABLED=false` (по умолчанию) и `PUBLIC_BILLING_API_URL=https://api.audio-to-text-transcription.com`. Секреты Monetize остаются на backend. Сначала развернуть backend `/account/web-billing`, затем лендинг. Полный sandbox путь оплата → вход в расширении и совместимость managed Polar обязательны перед включением обоих флагов. Подробности: [дизайн](docs/superpowers/specs/2026-10-29-direct-checkout-design.md).
+
+Проверки: `npm test`, `npm run typecheck:billing`, `npm run test:billing`. Браузерные тесты поднимают отдельный локальный сервер на 4323 и подменяют API; настоящих оплат и email они не отправляют. Для Chromium один раз выполнить `npx playwright install chromium`.
