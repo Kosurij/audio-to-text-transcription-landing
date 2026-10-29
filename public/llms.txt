@@ -6,6 +6,12 @@
 - [Homepage](https://audio-to-text-transcription.com/): Features, how it works, FAQ, and demo
 - [Chrome Web Store listing](https://chromewebstore.google.com/detail/audio-to-text-transcription/pkfoaaglghblmjjjpbniicjcpehfbmgd): Install the extension
 
+## Pricing and subscriptions
+- [Plans and current prices](https://audio-to-text-transcription.com/#pricing): Free, Basic, Pro and Max. Paid plans offer monthly or yearly billing. Yearly cards show a monthly equivalent and the full amount charged for the year.
+- [Billing and minute allowances FAQ](https://audio-to-text-transcription.com/#faq): Paid plan minutes reset every 30 days for both billing periods. A yearly payment does not grant all of the year's minutes at once. Covers monthly-to-yearly conversion, Extra Minutes, cancellation and the 14-day money-back guarantee.
+
+Subscriptions apply to the Chrome extension on computers. The website's free transcription demo has separate limits; purchasing a subscription does not increase those demo limits. See the linked pricing section and FAQ for current amounts and conditions.
+
 ## Legal
 - [Privacy Policy](https://audio-to-text-transcription.com/privacy/): Data handling and privacy practices
 - [Terms of Service](https://audio-to-text-transcription.com/terms/): Terms governing use of the service
