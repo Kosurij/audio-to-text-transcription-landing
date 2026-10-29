@@ -6,20 +6,26 @@
         <p class="section-subtitle">Start free, then upgrade when your workflow grows</p>
       </header>
 
-      <div class="pricing-grid">
+      <div class="billing-control" role="group" aria-label="Billing period">
+        <button type="button" :aria-pressed="billingInterval === 'month'" @click="billingInterval = 'month'">Monthly</button>
+        <button type="button" :aria-pressed="billingInterval === 'year'" @click="billingInterval = 'year'">Yearly</button>
+      </div>
+
+      <div class="pricing-grid" aria-live="polite" aria-atomic="false">
         <article
-          v-for="plan in plans"
+          v-for="plan in displayedPlans"
           :key="plan.name"
           class="pricing-card"
           :class="{ popular: plan.popular }"
         >
-          <span v-if="plan.popular" class="popular-badge">Most popular</span>
+          <span v-if="plan.savings !== null" class="popular-badge">Save {{ plan.savings }}%</span>
           <h3 class="plan-name">{{ plan.name }}</h3>
           <p class="plan-description">{{ plan.description }}</p>
           <p class="plan-price">
-            {{ plan.price }}<span v-if="plan.period"> / {{ plan.period }}</span>
+            {{ plan.price }}<span v-if="plan.monthlyPrice"> / month</span>
           </p>
           <p class="plan-limit">{{ plan.minutes }} minutes / {{ plan.minutesPeriod }}</p>
+          <p class="plan-charge">{{ plan.charge || 'No payment required' }}</p>
           <InstallButton
             :variant="plan.popular ? 'primary' : 'outline'"
             :show-icon="false"
@@ -45,85 +51,20 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from 'vue';
 import InstallButton from './InstallButton.vue';
+import { plans } from '../data/pricing';
 
-interface Plan {
-  name: string;
-  description: string;
-  price: string;
-  period?: string;
-  minutes: string;
-  minutesPeriod: string;
-  cta: string;
-  benefitHeading: string;
-  benefits: string[];
-  popular?: boolean;
-  guarantee?: boolean;
-}
-
-const paidBenefits = [
-  'Priority processing',
-  'Priority support',
-];
-
-const discountedAccuracyBenefit = 'High Accuracy uses 33% fewer minutes';
-
-const plans: Plan[] = [
-  {
-    name: 'Free',
-    description: 'Everything you need to start transcribing',
-    price: '$0',
-    minutes: '200',
-    minutesPeriod: 'week',
-    cta: 'Get started',
-    benefitHeading: 'What you can do:',
-    benefits: [
-      'Balanced and High Accuracy modes',
-      'Record browser tabs or your microphone',
-      'Upload 14 audio and video formats up to 500 MB',
-      'Transcribe in 90+ languages',
-      'Create AI-powered summaries',
-      'Edit, export and revisit transcripts',
-    ],
-  },
-  {
-    name: 'Basic',
-    description: 'For regular monthly transcription',
-    price: '$6.99',
-    period: 'month',
-    minutes: '2,400',
-    minutesPeriod: 'month',
-    cta: 'Get started',
-    benefitHeading: 'Everything in Free, plus:',
-    benefits: ['3× the minutes', ...paidBenefits],
-    guarantee: true,
-  },
-  {
-    name: 'Pro',
-    description: 'For frequent and longer recordings',
-    price: '$12.99',
-    period: 'month',
-    minutes: '7,200',
-    minutesPeriod: 'month',
-    cta: 'Get started',
-    benefitHeading: 'Everything in Free, plus:',
-    benefits: ['9× the minutes', discountedAccuracyBenefit, ...paidBenefits],
-    popular: true,
-    guarantee: true,
-  },
-  {
-    name: 'Max',
-    description: 'For high-volume transcription workflows',
-    price: '$19.99',
-    period: 'month',
-    minutes: '14,000',
-    minutesPeriod: 'month',
-    cta: 'Get started',
-    benefitHeading: 'Everything in Free, plus:',
-    benefits: ['17.5× the minutes', discountedAccuracyBenefit, ...paidBenefits],
-    guarantee: true,
-  },
-];
+const billingInterval = ref<'month' | 'year'>('year');
+const displayedPlans = computed(() => plans.map(plan => ({
+  ...plan,
+  price: plan.monthlyPrice === 0 ? '$0' : `$${(billingInterval.value === 'year'
+    ? plan.annualPrice! / 12 : plan.monthlyPrice).toFixed(2)}`,
+  charge: plan.annualPrice === undefined ? '' : billingInterval.value === 'year'
+    ? `$${plan.annualPrice.toFixed(2)} billed annually` : 'Billed monthly',
+  savings: billingInterval.value === 'year' && plan.annualPrice !== undefined
+    ? Math.round((1 - plan.annualPrice / (plan.monthlyPrice * 12)) * 100) : null,
+})));
 </script>
 
 <style scoped>
@@ -139,7 +80,7 @@ const plans: Plan[] = [
 
 .section-header {
   max-width: 720px;
-  margin: 0 auto var(--section-heading-gap);
+  margin: 0 auto 24px;
   text-align: center;
 }
 
@@ -156,6 +97,39 @@ const plans: Plan[] = [
   color: var(--color-text-secondary);
   font-size: 1.25rem;
   line-height: 1.6;
+}
+
+.billing-control {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 40px;
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-elevated);
+}
+
+.billing-control button {
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 18px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.billing-control button[aria-pressed='true'] {
+  background: var(--color-background);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.billing-control button:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
 }
 
 .pricing-grid {
@@ -227,11 +201,19 @@ const plans: Plan[] = [
 }
 
 .plan-limit {
-  margin: 6px 0 22px;
+  margin: 6px 0 0;
   color: var(--accent-primary);
   font-size: 0.875rem;
   font-weight: 800;
   text-transform: uppercase;
+}
+
+.plan-charge {
+  margin: 12px 0 10px;
+  min-height: 1.5em;
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 
 .plan-button {
@@ -312,7 +294,7 @@ html[data-theme='dark'] .popular-badge {
   }
 
   .section-header {
-    margin-bottom: var(--section-heading-gap);
+    margin-bottom: 24px;
   }
 
   .section-subtitle {

@@ -33,19 +33,31 @@ export const faqs = [
   },
   {
     question: 'Is Audio To Text Transcription free to use?',
-    answer: 'The Chrome extension Free plan includes 200 minutes per week. Optional paid subscriptions provide a larger monthly allowance, priority processing and priority support. You can also try a limited free demo on this website before installing.'
+    answer: 'The Chrome extension Free plan includes 200 minutes per week. Optional monthly or yearly subscriptions provide a larger allowance, priority processing and priority support. You can also try a limited free demo on this website before installing.'
   },
   {
     question: 'How do paid plan minute allowances work?',
-    answer: 'Paid plans grant your full minute allowance upfront at the start of each month, rather than refreshing weekly. Unused minutes do not roll over into the next month.'
+    answer: 'Both monthly and yearly plans include the same allowance: Basic gives you 2,400 minutes, Pro 7,200 and Max 14,000. Your allowance resets every 30 days while your subscription is active. Annual billing does not give you a full year of minutes at once. Unused minutes do not roll over into the next 30-day period; Extra Minutes are kept separately.'
+  },
+  {
+    question: 'Can I pay yearly?',
+    answer: 'Yes. Basic costs $74.99 per year, Pro $119.99 and Max $189.99. You pay for the full year upfront, and the subscription renews yearly. The monthly equivalent shown in the pricing cards is the yearly price divided by 12. Monthly billing is also available at $6.99, $12.99 and $19.99 respectively.'
   },
   {
     question: 'What happens when I upgrade?',
     answer: 'A paid plan gives you a larger monthly minute allowance upfront, priority processing and priority support. Pro and Max also use 33% fewer minutes in High Accuracy mode.'
   },
   {
+    question: 'What happens when I switch from monthly to yearly?',
+    answer: 'You can switch to a yearly subscription for the same plan or a higher tier. The full annual payment is charged immediately, your old monthly subscription is cancelled, and your unused paid monthly minutes are added to Extra Minutes once. Your new plan allowance starts immediately and resets every 30 days.'
+  },
+  {
+    question: 'Can I buy extra minutes without a subscription?',
+    answer: 'Yes. In the extension, you can buy 500 Extra Minutes for $4.99 or 1,500 for $9.99 as a one-time purchase. These minutes are kept separately from your subscription allowance.'
+  },
+  {
     question: 'Can I cancel my subscription?',
-    answer: 'Yes. You can cancel a paid subscription at any time, and every paid plan includes a 14-day money-back guarantee.'
+    answer: 'Yes. You can cancel a monthly or yearly subscription at any time to stop its next renewal. You retain access until the end of the paid billing period. Every paid plan includes a 14-day money-back guarantee.'
   },
   {
     question: 'What can I transcribe on this page?',
